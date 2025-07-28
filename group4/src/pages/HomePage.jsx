@@ -3,6 +3,7 @@ import { getAllProducts } from '../services/products';
 import { getAllCategories } from '../services/categories';
 import { ListGroup, Card, Container, Row, Col } from 'react-bootstrap';
 
+
 const HomePage = () => {
     const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
