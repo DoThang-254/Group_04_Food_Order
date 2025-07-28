@@ -1,0 +1,155 @@
+{
+    "stores": [
+        {
+            "id": 1,
+            "name": "Pizza House",
+            "address": "123 Main St",
+            "ownerId": 5
+        },
+        {
+            "id": 2,
+            "name": "Burger Town",
+            "address": "456 Market St",
+            "ownerId": 6
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "email": "john@example.com",
+            "password": "hashed123",
+            "role": "customer",
+            "active": true
+        },
+        {
+            "id": 2,
+            "name": "Alice Admin",
+            "email": "admin@example.com",
+            "password": "hashedAdmin",
+            "role": "admin",
+            "active": true
+        },
+        {
+            "id": 3,
+            "name": "Bob Staff",
+            "email": "staff1@pizzahouse.com",
+            "password": "hashedStaff",
+            "role": "staff",
+            "storeId": 1,
+            "active": true
+        },
+        {
+            "id": 4,
+            "name": "Eve Staff",
+            "email": "staff2@burgertown.com",
+            "password": "hashedStaff2",
+            "role": "staff",
+            "storeId": 2,
+            "active": false
+        },
+        {
+            "id": 5,
+            "name": "Mike Owner",
+            "email": "owner1@pizzahouse.com",
+            "password": "hashedOwner1",
+            "role": "owner",
+            "storeId": 1,
+            "active": true
+        },
+        {
+            "id": 6,
+            "name": "Sarah Owner",
+            "email": "owner2@burgertown.com",
+            "password": "hashedOwner2",
+            "role": "owner",
+            "storeId": 2,
+            "active": true
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "Pizza",
+            "storeId": 1
+        },
+        {
+            "id": 2,
+            "name": "Drinks",
+            "storeId": 1
+        },
+        {
+            "id": 3,
+            "name": "Burgers",
+            "storeId": 2
+        },
+        {
+            "id": 4,
+            "name": "Drinks",
+            "storeId": 2
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Margherita Pizza",
+            "price": 8.99,
+            "categoryId": 1
+        },
+        {
+            "id": 2,
+            "name": "Pepperoni Pizza",
+            "price": 10.99,
+            "categoryId": 1
+        },
+        {
+            "id": 3,
+            "name": "Cheese Burger",
+            "price": 6.49,
+            "categoryId": 3
+        },
+        {
+            "id": 4,
+            "name": "Bacon Burger",
+            "price": 7.99,
+            "categoryId": 3
+        }
+    ],
+    "orders": [
+        {
+            "id": 1,
+            "userId": 1,
+            "status": "pending",
+            "total": 19.97,
+            "items": [
+                {
+                    "productId": 1,
+                    "storeId": 1,
+                    "quantity": 1
+                },
+                {
+                    "productId": 3,
+                    "storeId": 2,
+                    "quantity": 2
+                }
+            ],
+            "createdAt": "2025-07-28T10:00:00Z"
+        }
+    ],
+    "cart": [
+        {
+            "id": 1,
+            "userId": 1,
+            "productId": 1,
+            "quantity": 1,
+            "storeId": 1
+        },
+        {
+            "id": 2,
+            "userId": 1,
+            "productId": 3,
+            "quantity": 2,
+            "storeId": 2
+        }
+    ]
+}
