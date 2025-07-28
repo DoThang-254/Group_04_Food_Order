@@ -1,19 +1,24 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { login } from '../services/users';
+import { register } from '../services/users';
 import * as Yup from "yup";
-import { Link } from 'react-router-dom';
-const Login = () => {
-    const LoginSchema = Yup.object().shape({
+const Register = () => {
+    const RegisterSchema = Yup.object().shape({
         password: Yup.string()
             .required('Required'),
         email: Yup.string()
             .email('Required email format!')
             .required('Required'),
     });
-    const handleLogin = (value) => {
-        const data = value
-        login(data).then(res => {
+    const handleSignUp = (value) => {
+        const data = {
+            name: "Do Thang",
+            email: value.email,
+            password: value.password,
+            role: "customer",
+            active: true
+        }
+        register(data).then(res => {
             console.log(res)
         }).catch(err => {
             console.log(err)
@@ -25,8 +30,8 @@ const Login = () => {
     return (
         <Formik
             initialValues={{ email: '', password: '' }}
-            onSubmit={value => handleLogin(value)}
-            validationSchema={LoginSchema}
+            onSubmit={value => handleSignUp(value)}
+            validationSchema={RegisterSchema}
         >
             <Form>
                 <div>
@@ -42,13 +47,10 @@ const Login = () => {
                     <ErrorMessage name="password" type="password" component={'div'} className='text-danger' />
                 </div>
 
-                <button type='submit'>Login</button>
-                <div>
-                    Don't have account , <Link to="/register">Sign Up Now</Link>
-                </div>
+                <button type='submit'>Sign Up</button>
             </Form>
         </Formik>
     );
 };
 
-export default Login;
+export default Register;
