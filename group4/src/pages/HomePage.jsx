@@ -3,30 +3,44 @@ import { getAllProducts } from '../services/products';
 import { getAllCategories } from '../services/categories';
 import { ListGroup, Card, Container, Row, Col } from 'react-bootstrap';
 
-
 const HomePage = () => {
-    const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("all");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   useEffect(() => {
-      const fetchProducts = async () => {
-        const data = await getAllProducts();
-        setProducts(data);
-      };
-      fetchProducts();
-    }, []);
+    const fetchData = async () => {
+      try {
+        const categoriesResponse = await getAllCategories();
+        setCategories(categoriesResponse);
+
+        const productsResponse = await getAllProducts();
+        const categoryMap = new Map(categoriesResponse.map(item => [Number(item.id), item.name]));
+
+        const mappedProducts = productsResponse.map(product => ({
+          ...product,
+          categoryId: categoryMap.get(product.categoryId), // category name
+          price: product.price,
+        }));
+
+        setProducts(mappedProducts);
+      } catch (error) {
+        console.error("Lỗi fetch api");
+      }
+    };
+
+    fetchData();
+  }, []);
+
   
-    
-    useEffect(() => {
-      const fetchCategories = async () => {
-        const data = await getAllCategories();
-        setCategories(data);
-      };
-      fetchCategories();
-    }, []);
-     const filteredProducts = products.filter((p) => {
-    return selectedCategoryId === "all" || p.categoryId === parseInt(selectedCategoryId);
-  });
+  useEffect(() => {
+    let filtered = [...products];
+    if (selectedCategoryId !== "all") {
+      filtered = filtered.filter(p => p.categoryId === selectedCategoryId);
+    }
+    setFilteredProducts(filtered);
+  }, [selectedCategoryId, products]);
 
   return (
     <Container fluid>
@@ -44,8 +58,8 @@ const HomePage = () => {
             {categories.map((cat) => (
               <ListGroup.Item
                 key={cat.id}
-                active={selectedCategoryId === String(cat.id)}
-                onClick={() => setSelectedCategoryId(String(cat.id))}
+                active={selectedCategoryId === cat.name}
+                onClick={() => setSelectedCategoryId(cat.name)}
                 style={{ cursor: 'pointer' }}
               >
                 {cat.name}
@@ -62,9 +76,7 @@ const HomePage = () => {
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>Price: ${product.price}</Card.Text>
-                    <Card.Text>
-  Category: {categories.find(cat => cat.id === product.categoryId)?.name || "Unknown"}
-</Card.Text>
+                    <Card.Text>Category: {product.categoryId || "Unknown"}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
