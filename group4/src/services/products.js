@@ -7,6 +7,6 @@ const res = await instance.get(endpoint.PRODUCTS)
 
     } catch (err) {
         console.log(err)
-         return [];
+         
     }
 }
