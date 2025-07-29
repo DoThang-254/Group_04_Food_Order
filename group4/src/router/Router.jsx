@@ -4,6 +4,7 @@ import Layout from '../pages/Layout';
 import Login from '../pages/Login';
 import HomePage from '../pages/HomePage';
 import Register from '../pages/Register';
+import AdminDashboard from '../pages/admin/AdminDashboard';
 const router = createBrowserRouter([
     {
         path: '/',
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path:'register' , 
                 element: <Register/>
+            },
+            {
+                path: 'admin',
+                element: <AdminDashboard/>
             }
 
         ]

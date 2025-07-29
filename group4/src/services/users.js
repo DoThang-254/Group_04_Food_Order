@@ -25,3 +25,13 @@ export const register = async (data) => {
 
     }
 }
+
+export const getAllUsers = async () => {
+    try {
+        const res = await instance.get(endpoint.USERS);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+};
