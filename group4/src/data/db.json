@@ -65,6 +65,14 @@
       "role": "owner",
       "storeId": 2,
       "active": true
+    },
+    {
+      "id": "7057",
+      "name": "do thang",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "Thang2231977",
+      "role": "customer",
+      "active": true
     }
   ],
   "categories": [
@@ -94,29 +102,25 @@
       "id": "1",
       "name": "Margherita Pizza",
       "price": 8.99,
-      "categoryId": 1,
-      "storeId": 1
+      "categoryId": 1
     },
     {
       "id": "2",
       "name": "Pepperoni Pizza",
       "price": 10.99,
-      "categoryId": 1,
-      "storeId": 1
+      "categoryId": 1
     },
     {
       "id": "3",
       "name": "Cheese Burger",
       "price": 6.49,
-      "categoryId": 3,
-      "storeId": 2
+      "categoryId": 3
     },
     {
       "id": "4",
       "name": "Bacon Burger",
       "price": 7.99,
-      "categoryId": 3,
-      "storeId": 2
+      "categoryId": 3
     }
   ],
   "orders": [
