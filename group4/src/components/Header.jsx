@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useCartStore } from '../stores/stores';
 import {
   Navbar,
@@ -10,10 +10,12 @@ import {
   ListGroup,
 } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import {ShoppingCartOutlined} from '@ant-design/icons';
+import { ShoppingCartOutlined } from '@ant-design/icons';
+import { loginContext } from '../context/LoginContext';
 
 const Header = () => {
   const cart = useCartStore((state) => state.cart);
+  const { islogin , setIsLogin } = useContext(loginContext);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
@@ -32,6 +34,10 @@ const Header = () => {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="/">My Shop</Navbar.Brand>
+          {islogin ? <Button onClick={() => {
+            setIsLogin(false)
+            navigate('/login')
+          }}>Logout</Button> : <Navbar.Brand href="/login">Login</Navbar.Brand>}
           <Nav className="ml-auto">
             <Button variant="outline-primary" onClick={handleShow}>
               <ShoppingCartOutlined /> <Badge bg="secondary">{totalItems}</Badge>

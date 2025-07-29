@@ -11,6 +11,26 @@
       "name": "Burger Town",
       "address": "456 Market St",
       "ownerId": 6
+    },
+    {
+      "id": "2f77",
+      "name": "a",
+      "address": "60 Phạm Ngũ Lão, Cần Thơ"
+    },
+    {
+      "id": "7e14",
+      "name": "a",
+      "address": "60 Phạm Ngũ Lão, Cần Thơ"
+    },
+    {
+      "id": "7ea2",
+      "name": "a",
+      "address": "60 Phạm Ngũ Lão, Cần Thơ"
+    },
+    {
+      "id": "d138",
+      "name": "a",
+      "address": "60 Phạm Ngũ Lão, Cần Thơ"
     }
   ],
   "users": [
@@ -73,6 +93,23 @@
       "password": "Thang2231977",
       "role": "customer",
       "active": true
+    },
+    {
+      "id": "56a4",
+      "name": "t ",
+      "email": "thang2542004@gmail.com",
+      "password": "Thang2231977",
+      "role": "owner",
+      "active": false,
+      "storeId": "d138"
+    },
+    {
+      "id": "9831",
+      "name": "t a",
+      "email": "thangbachi2542004@gmail.com",
+      "password": "Thang2231977",
+      "role": "customer",
+      "active": true
     }
   ],
   "categories": [
@@ -98,8 +135,6 @@
     }
   ],
   "products": [
-  
-
     {
       "id": "1",
       "name": "Margherita Pizza",
