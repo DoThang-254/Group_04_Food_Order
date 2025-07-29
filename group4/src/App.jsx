@@ -1,13 +1,13 @@
-
-import HomePage from "./pages/HomePage"
+import LoginContext from "./context/LoginContext"
 import Router from "./router/Router"
 
 function App() {
 
   return (
     <>
-      <Router/>
-           
+      <LoginContext>
+        <Router />
+      </LoginContext>
     </>
   )
 }

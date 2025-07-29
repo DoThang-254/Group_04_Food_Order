@@ -1,46 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import { getAllProducts } from '../services/products';
 import { getAllCategories } from '../services/categories';
-import { ListGroup, Card, Container, Row, Col } from 'react-bootstrap';
+import { ListGroup, Card, Container, Row, Col, Button } from 'react-bootstrap';
+import { useCartStore } from '../stores/stores';
+import { getAllStores } from '../services/stores';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [stores,setStores] = useState([])
   const [selectedCategoryId, setSelectedCategoryId] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const addToCart = useCartStore((state) => state.addToCart);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const categoriesResponse = await getAllCategories();
         setCategories(categoriesResponse);
-
+        const storesResponse = await getAllStores();
+        setStores(storesResponse)
         const productsResponse = await getAllProducts();
         const categoryMap = new Map(categoriesResponse.map(item => [Number(item.id), item.name]));
+        const storeMap = new Map(storesResponse.map(item => [Number(item.id),item.name]))
+        const categoryStoreMap = new Map(categoriesResponse.map(item => [Number(item.id), item.storeId]));
 
         const mappedProducts = productsResponse.map(product => ({
           ...product,
-          categoryId: categoryMap.get(product.categoryId), // category name
+          categoryName: categoryMap.get(product.categoryId),
+  storeName: storeMap.get(categoryStoreMap.get(product.categoryId)) || "Unknown",
           price: product.price,
         }));
 
         setProducts(mappedProducts);
       } catch (error) {
-        console.error("Lỗi fetch api");
+        console.error("Lỗi fetch api", error);
       }
     };
 
     fetchData();
   }, []);
 
-  
   useEffect(() => {
     let filtered = [...products];
     if (selectedCategoryId !== "all") {
-      filtered = filtered.filter(p => p.categoryId === selectedCategoryId);
+      filtered = filtered.filter(p => p.categoryName === selectedCategoryId);
     }
     setFilteredProducts(filtered);
   }, [selectedCategoryId, products]);
+
+  const uniqueCategories = categories.filter(
+    (cat, index, self) =>
+      self.findIndex(c => c.name === cat.name) === index
+  );
+
+  const handleAddToCart = (product) => {
+    addToCart({ ...product, quantity: 1 });
+  };
 
   return (
     <Container fluid>
@@ -55,9 +72,10 @@ const HomePage = () => {
             >
               All
             </ListGroup.Item>
-            {categories.map((cat) => (
+
+            {uniqueCategories.map((cat) => (
               <ListGroup.Item
-                key={cat.id}
+                key={cat.name}
                 active={selectedCategoryId === cat.name}
                 onClick={() => setSelectedCategoryId(cat.name)}
                 style={{ cursor: 'pointer' }}
@@ -76,7 +94,9 @@ const HomePage = () => {
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>Price: ${product.price}</Card.Text>
-                    <Card.Text>Category: {product.categoryId || "Unknown"}</Card.Text>
+                    <Card.Text>Category: {product.categoryName || "Unknown"}</Card.Text>
+                    <Card.Text>Store: {product.storeName || "Unknown"}</Card.Text>
+                    <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
                   </Card.Body>
                 </Card>
               </Col>

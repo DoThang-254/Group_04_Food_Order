@@ -1,12 +1,12 @@
-import { endpoint } from "./endpoint";
+import  { endpoint } from "./endpoint";
 import instance from "./index";
-
-export const getAllStores = async () => {
+export const getAllStores = async()=>{
     try {
-        const res = await instance.get(endpoint.STORES);
-        return res.data;
+const res = await instance.get(endpoint.STORES)
+    return res.data;
+
     } catch (err) {
-        console.log(err);
-        return [];
+        console.log(err)
+         
     }
-};
+}
