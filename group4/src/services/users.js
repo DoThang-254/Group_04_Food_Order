@@ -18,8 +18,19 @@ export const login = async (data) => {
 
 export const register = async (data) => {
     try {
-        const res = await instance.post(endpoint.USERS , data)
+        const res = await instance.post(endpoint.USERS, data)
         return res.data;
+    } catch (err) {
+        console.log(err)
+
+    }
+}
+
+export const checkEmail = async (data) => {
+    try {
+        const res = await instance.get(endpoint.USERS + `?email=${data.email}`);
+
+        return res.length > 0;
     } catch (err) {
         console.log(err)
 

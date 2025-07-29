@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React, { useState } from 'react';
 import { useCartStore } from '../stores/stores';
 import {
@@ -74,6 +73,5 @@ const Header = () => {
       </Offcanvas>
     </>
   );
-};
-
+}
 export default Header;
