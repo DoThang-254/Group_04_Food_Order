@@ -10,6 +10,7 @@ import FoodDetail from '../pages/FoodDetail';
 import RouterPrivate from './RouterPrivate';
 import UserInfo from '../pages/UserInfo'
 import PageNotFound from '../pages/PageNotFound';
+import ShopDetail from '../pages/ShopDetail';
 import RouterAuthorize from './RouterAuthorize';
 const router = createBrowserRouter([
     {
@@ -41,8 +42,12 @@ const router = createBrowserRouter([
                 element: <Checkout/>
             },
             {    
-                path: 'home/:id',
+                path: 'food/:id/detail',
                 element: <FoodDetail />
+            },
+            {
+                path:'shop/:id/detail',
+                element:<ShopDetail/>
             },
             {
                 path: 'register',

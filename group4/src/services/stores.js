@@ -10,6 +10,16 @@ export const getAllStores = async () => {
 
     }
 }
+export const getAnStore = async (id) => {
+    try {
+        const res = await instance.get(endpoint.STORES + id)
+        return res.data;
+
+    } catch (err) {
+        console.log(err)
+
+    }
+}
 
 export const postStore = async (data) => {
     try {

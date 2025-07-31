@@ -92,19 +92,23 @@
     }
   ],
   "stores_categories": [
-    {
+    { 
+      "scid" :"1",
       "storeId": "1",
       "categoryId": "1"
     },
     {
+      "scid" :"2",
       "storeId": "1",
       "categoryId": "2"
     },
     {
+      "scid" :"3",
       "storeId": "2",
       "categoryId": "1"
     },
     {
+      "scid" :"4",
       "storeId": "2",
       "categoryId": "2"
     }

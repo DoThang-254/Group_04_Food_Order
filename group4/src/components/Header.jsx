@@ -6,26 +6,26 @@ import {
   Nav,
   Badge,
   Button,
-  Offcanvas,
-  ListGroup,
 } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import {
+  ShoppingCartOutlined,
+  FrownOutlined,
+} from '@ant-design/icons';
+import { Drawer, List, Typography } from 'antd';
 import { loginContext } from '../context/LoginContext';
+
 
 const Header = () => {
   const cart = useCartStore((state) => state.cart);
   const { token , setToken } = useContext(loginContext);
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const handleViewDetails = () => {
-    handleClose();
+    setOpen(false);
     navigate('/checkout');
   };
 
@@ -34,51 +34,56 @@ const Header = () => {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="/">My Shop</Navbar.Brand>
+          <Nav className="ml-auto" style={{marginLeft:"1000px"}}>
+            <Button variant="outline-primary" onClick={() => setOpen(true)}>
+              <ShoppingCartOutlined  />{' '}
+              <Badge bg="secondary">{totalItems}</Badge>
+            </Button>
+          </Nav>
           {token ? <Button onClick={() => {
             setToken('')
             localStorage.removeItem('token')
             navigate('/login')
           }}>Logout</Button> : <Navbar.Brand href="/login">Login</Navbar.Brand>}
-          <Nav className="ml-auto">
-            <Button variant="outline-primary" onClick={handleShow}>
-              <ShoppingCartOutlined /> <Badge bg="secondary">{totalItems}</Badge>
-            </Button>
-          </Nav>
+          
         </Container>
       </Navbar>
 
-      <Offcanvas show={show} onHide={handleClose} placement="end">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Cart Summary</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          {cart.length === 0 ? (
-            <p>Your cart is empty.</p>
-          ) : (
-            <>
-              <ListGroup variant="flush">
-                {cart.map((item) => (
-                  <ListGroup.Item key={item.id}>
-                    <div className="d-flex justify-content-between">
-                      <div>
-                        <strong>{item.name}</strong>
-                        <br />
-                        Quantity: {item.quantity}
-                      </div>
-                      <div>${item.price * item.quantity}</div>
-                    </div>
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-              <hr />
-              <Button variant="primary" onClick={handleViewDetails}>
-                View Details
-              </Button>
-            </>
-          )}
-        </Offcanvas.Body>
-      </Offcanvas>
+      <Drawer
+        title="Cart Summary"
+        placement="right"
+        onClose={() => setOpen(false)}
+        open={open}
+      >
+        {cart.length === 0 ? (
+          <div className="text-center mt-5">
+            <FrownOutlined style={{ fontSize: '64px', marginBottom: '16px' }} />
+            <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+          </div>
+        ) : (
+          <>
+            <List
+              itemLayout="horizontal"
+              dataSource={cart}
+              renderItem={(item) => (
+                <List.Item>
+                  <List.Item.Meta
+                    title={item.name}
+                    description={`Quantity: ${item.quantity}`}
+                  />
+                  <div>${item.price * item.quantity}</div>
+                </List.Item>
+              )}
+            />
+            <hr />
+            <Button type="primary" block onClick={handleViewDetails}>
+              View Details
+            </Button>
+          </>
+        )}
+      </Drawer>
     </>
   );
-}
+};
+
 export default Header;
