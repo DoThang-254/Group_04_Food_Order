@@ -4,7 +4,7 @@ import { login } from '../services/users';
 import * as Yup from "yup";
 import { Link, useNavigate } from 'react-router-dom';
 import { loginContext } from '../context/LoginContext';
-import { createFakeToken } from '../data/createToken';
+import { createFakeToken } from '../data/token';
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         password: Yup.string()
