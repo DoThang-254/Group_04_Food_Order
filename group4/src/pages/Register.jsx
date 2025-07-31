@@ -3,6 +3,7 @@ import { checkEmail, register } from '../services/users';
 import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import { postStore } from '../services/stores';
+import { hashPassword } from '../data/util';
 const Register = () => {
     const RegisterSchema = Yup.object().shape({
         password: Yup.string()
@@ -28,11 +29,11 @@ const Register = () => {
 
     const navToHome = useNavigate();
     const handleSignUp = async (value) => {
-
+        const hashedPassword = await hashPassword(value.password);
         const commonData = {
             name: `${value.firstname} ${value.lastname}`,
             email: value.email,
-            password: value.password,
+            password: hashedPassword,
             role: value.role,
             active: value.role === "customer" ? true : false
         };

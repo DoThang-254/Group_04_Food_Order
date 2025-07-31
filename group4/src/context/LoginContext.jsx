@@ -3,17 +3,21 @@ import { createContext, useEffect, useState } from 'react';
 export const loginContext = createContext();
 
 const LoginContext = ({ children }) => {
-    const [islogin, setIsLogin] = useState(() => {
-        const stored = localStorage.getItem('islogin');
-        return stored === 'true'; 
+    const [token, setToken] = useState(() => {
+        const stored = localStorage.getItem('token');
+        return stored;
     });
-
+    console.log(token);
     useEffect(() => {
-        localStorage.setItem('islogin', islogin);
-    }, [islogin]); 
+        if (token) {
+            localStorage.setItem('token', token);
+        } else {
+            localStorage.removeItem('token');
+        }
+    }, [token]);
 
     return (
-        <loginContext.Provider value={{ islogin, setIsLogin }}>
+        <loginContext.Provider value={{ token, setToken }}>
             {children}
         </loginContext.Provider>
     );
