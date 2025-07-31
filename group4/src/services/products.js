@@ -10,3 +10,13 @@ const res = await instance.get(endpoint.PRODUCTS)
          
     }
 }
+export const getAnProduct = async(id)=>{
+    try {
+const res = await instance.get(endpoint.PRODUCTS + id)
+    return res.data;
+
+    } catch (err) {
+        console.log(err)
+         
+    }
+}

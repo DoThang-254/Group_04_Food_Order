@@ -1,8 +1,8 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from 'formik'
 import { checkEmail, register } from '../services/users';
 import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
+import { postStore } from '../services/stores';
 const Register = () => {
     const RegisterSchema = Yup.object().shape({
         password: Yup.string()
@@ -15,27 +15,42 @@ const Register = () => {
             .email('Required email format!')
             .required('Required')
             .test(
-                'checkUsernameUnique',
+                'checkEmailUnique',
                 'email already exists',
                 async function (value) {
                     if (!value) return false;
-                    const exists = await checkEmail(value);
-                    return !exists;
+                    const isUnique = await checkEmail(value);
+                    return isUnique;
                 }
-            ),
+            )
     });
 
 
     const navToHome = useNavigate();
-    const handleSignUp = (value) => {
-        const data = {
+    const handleSignUp = async (value) => {
+
+        const commonData = {
             name: `${value.firstname} ${value.lastname}`,
             email: value.email,
             password: value.password,
-            role: "customer",
-            active: true
+            role: value.role,
+            active: value.role === "customer" ? true : false
+        };
+
+        if (value.role === "owner") {
+            const storeData = {
+                name: value.storeName,
+                address: value.address
+            }
+            try {
+                const store = await postStore(storeData);
+                commonData.storeId = store.id;
+            } catch (error) {
+                console.log(error)
+            }
+
         }
-        register(data).then(res => {
+        register(commonData).then(res => {
             console.log(res)
             navToHome('/login');
         }).catch(err => {
@@ -45,11 +60,35 @@ const Register = () => {
         )
     }
 
+    //option  
+    const RoleDependentFields = () => {
+        const { values } = useFormikContext();
+
+        return (
+            <>
+                {values.role === 'owner' && (
+                    <>
+                        <div>
+                            <label htmlFor="storeName">Store Name:</label>
+                            <Field name="storeName" />
+                            <ErrorMessage name="storeName" component="div" className="text-danger" />
+                        </div>
+                        <div>
+                            <label htmlFor="address">Address:</label>
+                            <Field name="address" />
+                            <ErrorMessage name="address" component="div" className="text-danger" />
+                        </div>
+                    </>
+                )}
+            </>
+        );
+    };
+
     return (
         <Formik
             initialValues={{
                 email: '', password: '', firstname: '',
-                lastname: ''
+                lastname: '', role: 'customer', store: ''
             }}
             onSubmit={value => handleSignUp(value)}
             validationSchema={RegisterSchema}
@@ -79,7 +118,14 @@ const Register = () => {
                     <Field name="password" />
                     <ErrorMessage name="password" type="password" component={'div'} className='text-danger' />
                 </div>
-
+                <div>
+                    <label htmlFor="role">Role:</label>
+                    <Field as="select" name="role">
+                        <option value="customer">Customer</option>
+                        <option value="owner">Owner</option>
+                    </Field>
+                </div>
+                <RoleDependentFields />
                 <button type='submit'>Sign Up</button>
             </Form>
         </Formik>

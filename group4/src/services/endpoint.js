@@ -1,8 +1,8 @@
 export const endpoint = {
-STORES : "stores",
+STORES : "stores/",
 USERS :"users",
-CATEGORIES: "categories",
-PRODUCTS:"products",
-ORDERS:"orders",
-CART:"cart"
+CATEGORIES: "categories/",
+PRODUCTS:"products/",
+ORDERS:"orders/",
+CART:"cart/"
 }
