@@ -36,6 +36,7 @@ const Header = () => {
           <Navbar.Brand href="/">My Shop</Navbar.Brand>
           {token ? <Button onClick={() => {
             setToken('')
+            localStorage.removeItem('token')
             navigate('/login')
           }}>Logout</Button> : <Navbar.Brand href="/login">Login</Navbar.Brand>}
           <Nav className="ml-auto">

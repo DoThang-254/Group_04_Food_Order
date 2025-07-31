@@ -1,18 +1,18 @@
 import { jwtVerify, SignJWT } from 'jose';
 
-export const createFakeToken = async (user) => {
+export const createFakeToken = async (data) => {
   const secret = new TextEncoder().encode('my_fake_secret');
-  const token = await new SignJWT({})
-    .setProtectedHeader({ alg: 'HS256' })
+  const alg = 'HS256';
+  console.log(data.user.role)
+  const token = await new SignJWT({
+    id: data.user.id,
+    email: data.user.email,
+    role: data.user.role,
+  })
+    .setProtectedHeader({ alg })
     .setIssuedAt()
     .setExpirationTime('1h')
-    .setPayload({
-      id: user.id,
-      email: user.email,
-      role: user.role,
-    })
     .sign(secret);
-
   return token;
 };
 
@@ -23,7 +23,6 @@ export const decodeFakeToken = async (token) => {
     const { payload } = await jwtVerify(token, secret);
     return payload;
   } catch (err) {
-    console.error('token is expired:', err);
     return null;
   }
 };

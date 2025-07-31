@@ -6,17 +6,20 @@ import { decodeFakeToken } from '../data/token';
 const RouterPrivate = () => {
     const { token } = useContext(loginContext);
     const [role, setRole] = useState(null);
-    console.log(token)
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const decode = async () => {
             const info = await decodeFakeToken(token);
             if (info) {
-                console.log(info);      
-                setRole(info.role);      
+                setRole(info.role);
             }
+            setLoading(false);
         };
         decode();
     }, [token]);
+
+    if (loading) return null; 
 
     return (
         <div>
@@ -24,5 +27,6 @@ const RouterPrivate = () => {
         </div>
     );
 };
+
 
 export default RouterPrivate;
