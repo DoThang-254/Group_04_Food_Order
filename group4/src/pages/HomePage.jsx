@@ -15,7 +15,7 @@ const HomePage = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 6;
+  const pageSize =9;
 
   const addToCart = useCartStore((state) => state.addToCart);
   const nav = useNavigate();
