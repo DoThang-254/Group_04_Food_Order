@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from 'formik'
-import { checkEmail, register } from '../services/users';
+import { checkEmail, register, updateUser } from '../services/users';
 import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import { postStore } from '../services/stores';
@@ -38,26 +38,29 @@ const Register = () => {
             active: value.role === "customer" ? true : false
         };
 
-        if (value.role === "owner") {
-            const storeData = {
-                name: value.storeName,
-                address: value.address
-            }
-            try {
-                const store = await postStore(storeData);
-                commonData.storeId = store.id;
-            } catch (error) {
-                console.log(error)
-            }
+        try {
+            const user = await register(commonData)
+            if (value.role === "owner") {
+                const storeData = {
+                    name: value.storeName,
+                    address: value.address,
+                    img: "",
+                    ownerId: user.id
+                }
+                try {
+                    const store = await postStore(storeData);
+                    await updateUser(user.id, { storeId: store.id });
+                    navToHome('/login');
+                } catch (error) {
+                    console.log(error)
+                }
 
-        }
-        register(commonData).then(res => {
-            navToHome('/login');
-        }).catch(err => {
-            console.log(err)
+            }
+        } catch (error) {
+            console.log(error)
         }
 
-        )
+
     }
 
     //option  

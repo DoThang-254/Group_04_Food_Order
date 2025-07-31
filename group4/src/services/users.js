@@ -61,3 +61,12 @@ export const checkEmail = async (email) => {
     }
 };
 
+export const updateUser = async (id , updateData) => {
+    try {
+        const res = await instance.patch(endpoint.USERS + `/${id}` , updateData);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+};

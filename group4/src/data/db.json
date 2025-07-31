@@ -68,6 +68,23 @@
       "role": "owner",
       "active": false,
       "storeId": "6236"
+    },
+    {
+      "id": "6324",
+      "name": "do thang",
+      "email": "thangbachi2542004@gmail.com",
+      "password": "$2b$10$p9ngmVcqnX5ijD3mcuJV6.OZiRv5I2Odx1DhOQqyldbR4BomQ2f2K",
+      "role": "owner",
+      "active": false,
+      "storeId": "f1c6"
+    },
+    {
+      "id": "bb4f",
+      "name": "do thang",
+      "email": "thangchimteo2542004@gmail.com",
+      "password": "$2b$10$iO3IlxFzoEZQiPiYB788a.2vam7uyPW/mexPWGMOuN3b2qO1CJ85.",
+      "role": "owner",
+      "active": false
     }
   ],
   "stores": [
@@ -89,26 +106,39 @@
       "id": "6236",
       "name": "a",
       "address": "a"
+    },
+    {
+      "id": "f1c6",
+      "name": "gg",
+      "address": "hcm",
+      "img": ""
+    },
+    {
+      "id": "a858",
+      "name": "gg",
+      "address": "hcm",
+      "img": "",
+      "ownerId": "bb4f"
     }
   ],
   "stores_categories": [
-    { 
-      "scid" :"1",
+    {
+      "scid": "1",
       "storeId": "1",
       "categoryId": "1"
     },
     {
-      "scid" :"2",
+      "scid": "2",
       "storeId": "1",
       "categoryId": "2"
     },
     {
-      "scid" :"3",
+      "scid": "3",
       "storeId": "2",
       "categoryId": "1"
     },
     {
-      "scid" :"4",
+      "scid": "4",
       "storeId": "2",
       "categoryId": "2"
     }
@@ -134,14 +164,14 @@
       "price": 8.99,
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP0HbRY0SsECXq3XHqjXUBw3CqK1VfE5PX1w&s",
       "categoryId": 1,
-      "storeId" : 1
+      "storeId": 1
     },
     {
       "id": "2",
       "name": "Pepperoni Pizza",
       "price": 10.99,
       "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png",
-      "categoryId": 1 , 
+      "categoryId": 1,
       "storeId": 2
     },
     {
@@ -149,7 +179,7 @@
       "name": "Cheese Burger",
       "price": 6.49,
       "img": "",
-      "categoryId": 3 , 
+      "categoryId": 3,
       "storeId": 1
     },
     {
@@ -157,7 +187,7 @@
       "name": "Bacon Burger",
       "price": 7.99,
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
-      "categoryId": 3 , 
+      "categoryId": 3,
       "storeId": 2
     }
   ],
