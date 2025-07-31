@@ -7,6 +7,7 @@ import Image from 'react-bootstrap/Image';
 import { useCartStore } from '../stores/stores';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from 'antd';
+import { getAllStoresCategories } from '../services/stores_categories';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -28,20 +29,16 @@ const HomePage = () => {
 
         const storesResponse = await getAllStores();
         setStores(storesResponse);
-
         const productsResponse = await getAllProducts();
 
         const categoryMap = new Map(categoriesResponse.map(item => [Number(item.id), item.name]));
-        const storeMap = new Map(storesResponse.map(item => [Number(item.id), item.name]));
-        const categoryStoreMap = new Map(categoriesResponse.map(item => [Number(item.id), item.storeId]));
-        const storeImgMap = new Map(storesResponse.map(item => [Number(item.id), item.img]));
-
+        const storeNameMap = new Map(storesResponse.map(item=>[Number(item.id),item.name]))
+        const storeImgMap = new Map(storesResponse.map(item=>[Number(item.id),item.img]))
         const mappedProducts = productsResponse.map(product => ({
           ...product,
+          storeName: storeNameMap.get(product.storeId),
           categoryName: categoryMap.get(product.categoryId),
-          storeName: storeMap.get(categoryStoreMap.get(product.categoryId)) || "Unknown",
-          storeId: categoryStoreMap.get(product.categoryId),
-          storeImg: storeImgMap.get(categoryStoreMap.get(product.categoryId)) || "Unknown",
+          storeImg:storeImgMap.get(product.storeId)
         }));
 
         setProducts(mappedProducts);

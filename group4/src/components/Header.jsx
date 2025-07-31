@@ -18,7 +18,7 @@ import { loginContext } from '../context/LoginContext';
 
 const Header = () => {
   const cart = useCartStore((state) => state.cart);
-  const { islogin , setIsLogin } = useContext(loginContext);
+  const { token , setToken } = useContext(loginContext);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -40,8 +40,8 @@ const Header = () => {
               <Badge bg="secondary">{totalItems}</Badge>
             </Button>
           </Nav>
-          {islogin ? <Button onClick={() => {
-            setIsLogin(false)
+          {token ? <Button onClick={() => {
+            setToken('')
             navigate('/login')
           }}>Logout</Button> : <Navbar.Brand href="/login">Login</Navbar.Brand>}
           

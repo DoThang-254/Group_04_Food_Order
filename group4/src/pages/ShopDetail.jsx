@@ -18,27 +18,23 @@ const ShopDetail = () => {
         const storeResponse = await getAnStore(id);
         setStore(storeResponse);
 
-        const categoriesResponse = await getAllCategories();
-        setCategories(categoriesResponse);
 
         const productsResponse = await getAllProducts();
         setProducts(productsResponse);
 
        
-        const categoryStoreMap = new Map(
-          categoriesResponse.map((item) => [Number(item.id), item.storeId])
-        );
+        
 
         
         const mappedProducts = productsResponse.map((product) => {
          
           return {
             ...product,
-            storeId:  categoryStoreMap.get(Number(product.categoryId))
+            
           };
         });
 
-        // Lọc sản phẩm thuộc store hiện tại
+        
         const filtered = mappedProducts.filter(
           (p) => Number(p.storeId) === Number(id)
         );

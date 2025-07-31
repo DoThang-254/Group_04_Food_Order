@@ -11,6 +11,7 @@ import RouterPrivate from './RouterPrivate';
 import UserInfo from '../pages/UserInfo'
 import PageNotFound from '../pages/PageNotFound';
 import ShopDetail from '../pages/ShopDetail';
+import RouterAuthorize from './RouterAuthorize';
 const router = createBrowserRouter([
     {
         path: '/',
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
                         path: 'user-info',
                         element: <UserInfo />
                     },
+                    
                 ]
             },
             {
