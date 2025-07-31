@@ -18,9 +18,9 @@ const Login = () => {
     const { setToken } = useContext(loginContext)
     const [loginError, setLoginError] = useState('');
     const navToHome = useNavigate();
-    const handleLogin = (value) => {
+    const handleLogin = async (value) => {
         const data = value
-        login(data).then( async (res) => {
+        login(data).then(async (res) => {
             if (res) {
                 if (!res.msg) {
                     const fakeToken = await createFakeToken(res)
@@ -31,7 +31,6 @@ const Login = () => {
                     setToken('');
                     setLoginError(res.msg);
                 }
-
             }
         }).catch(err => {
             console.log(err)

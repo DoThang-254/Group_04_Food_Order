@@ -7,11 +7,13 @@ const LoginContext = ({ children }) => {
         const stored = localStorage.getItem('token');
         return stored; 
     });
-
     useEffect(() => {
-        localStorage.setItem('token', token);
-    }, [token]); 
-
+        if (token) {
+            localStorage.setItem('token', token);
+        } else {
+            localStorage.removeItem('token');
+        }
+    }, [token]);
     return (
         <loginContext.Provider value={{ token, setToken }}>
             {children}
