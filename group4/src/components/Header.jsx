@@ -15,7 +15,7 @@ import { loginContext } from '../context/LoginContext';
 
 const Header = () => {
   const cart = useCartStore((state) => state.cart);
-  const { islogin , setIsLogin } = useContext(loginContext);
+  const { token , setToken } = useContext(loginContext);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
@@ -34,8 +34,8 @@ const Header = () => {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="/">My Shop</Navbar.Brand>
-          {islogin ? <Button onClick={() => {
-            setIsLogin(false)
+          {token ? <Button onClick={() => {
+            setToken('')
             navigate('/login')
           }}>Logout</Button> : <Navbar.Brand href="/login">Login</Navbar.Brand>}
           <Nav className="ml-auto">

@@ -7,7 +7,7 @@ export const createFakeToken = async (user) => {
   const token = await new SignJWT({
     id: user.id,
     email: user.email,
-    role: user.role || 'user',
+    role: user.role ,
   })
     .setProtectedHeader({ alg })
     .setIssuedAt()

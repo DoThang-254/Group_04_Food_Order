@@ -69,27 +69,10 @@
       "active": true
     },
     {
-      "id": "7057",
+      "id": "c50f",
       "name": "do thang",
-      "email": "thangmoneo2542004@gmail.com",
-      "password": "Thang2231977",
-      "role": "customer",
-      "active": true
-    },
-    {
-      "id": "56a4",
-      "name": "t ",
-      "email": "thang2542004@gmail.com",
-      "password": "Thang2231977",
-      "role": "owner",
-      "active": false,
-      "storeId": "d138"
-    },
-    {
-      "id": "9831",
-      "name": "t a",
       "email": "thangbachi2542004@gmail.com",
-      "password": "Thang2231977",
+      "password": "$2b$10$VgTcgfddkXRcJUA44G2kN./YEpjsWnLoz.MkvbHRCLmUh3WI5RNDK",
       "role": "customer",
       "active": true
     }
@@ -128,7 +111,7 @@
       "id": "2",
       "name": "Pepperoni Pizza",
       "price": 10.99,
-      "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png" ,
+      "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png",
       "categoryId": 1
     },
     {
@@ -142,7 +125,7 @@
       "id": "4",
       "name": "Bacon Burger",
       "price": 7.99,
-      "img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s" ,
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
       "categoryId": 3
     }
   ],
