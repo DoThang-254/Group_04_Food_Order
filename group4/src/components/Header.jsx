@@ -42,6 +42,7 @@ const Header = () => {
           </Nav>
           {token ? <Button onClick={() => {
             setToken('')
+            localStorage.removeItem('token')
             navigate('/login')
           }}>Logout</Button> : <Navbar.Brand href="/login">Login</Navbar.Brand>}
           

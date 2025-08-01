@@ -23,9 +23,20 @@ const Login = () => {
         login(data).then(async (res) => {
             if (res) {
                 if (!res.msg) {
+
+                    // set(true);
+                    // Nếu là admin thì lưu tên vào localStorage
+                    // if (res.user && res.user.role === 'admin') {
+                    //     localStorage.setItem('adminName', res.user.name || 'Admin');
+                    //     navToHome('/admin');
+                    // } else {
+                    //     navToHome('/home');
+                    // }
+
                     const fakeToken = await createFakeToken(res)
                     setToken(fakeToken);
                     navToHome('/home');
+
                 }
                 else {
                     setToken('');
@@ -35,9 +46,7 @@ const Login = () => {
         }).catch(err => {
             console.log(err)
             setLoginError('Something went wrong.')
-        }
-
-        )
+        })
     }
 
     return (

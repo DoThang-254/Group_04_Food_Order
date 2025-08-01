@@ -1,0 +1,59 @@
+/* General layout */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+button {
+  font-weight: 500;
+}
+
+/* Back button */
+.btn-warning {
+  background-color: #fff3cd;
+  color: #8B0000;
+  border: 1px solid #8B0000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-warning:hover {
+  background-color: #ffe8a1;
+  color: #8B0000;
+}
+
+/* Image section */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 3px solid #8B0000;
+  border-radius: 10px;
+}
+
+/* Quantity buttons */
+.btn-secondary {
+  background-color: #8B0000;
+  border-color: #8B0000;
+}
+
+.btn-secondary:hover {
+  background-color: #a60000;
+  border-color: #a60000;
+}
+
+span {
+  font-size: 1.2rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Add to Cart button */
+.btn-primary {
+  background-color: #8B0000;
+  border-color: #8B0000;
+}
+
+.btn-primary:hover {
+  background-color: #a60000;
+  border-color: #a60000;
+}
