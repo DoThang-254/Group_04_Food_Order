@@ -7,6 +7,7 @@ import Image from 'react-bootstrap/Image';
 import { useCartStore } from '../stores/stores';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from 'antd';
+import './customerstyle/HomePage.css';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
