@@ -7,6 +7,7 @@ import Image from 'react-bootstrap/Image';
 import { useCartStore } from '../stores/stores';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from 'antd';
+import './customerstyle/HomePage.css';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -15,7 +16,7 @@ const HomePage = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 6;
+  const pageSize =9;
 
   const addToCart = useCartStore((state) => state.addToCart);
   const nav = useNavigate();

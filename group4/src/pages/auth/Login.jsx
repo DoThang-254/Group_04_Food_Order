@@ -25,7 +25,16 @@ const Login = () => {
                 if (!res.msg) {
                     const fakeToken = await createFakeToken(res)
                     setToken(fakeToken);
-                    navToHome('/home');
+                    switch (res.user.role) {
+                        case 'customer': {
+                            navToHome('/home');
+                            break;
+                        }
+                        case 'admin': {
+                            navToHome('/admin');
+                            break;
+                        }
+                    }
                 }
                 else {
                     setToken('');

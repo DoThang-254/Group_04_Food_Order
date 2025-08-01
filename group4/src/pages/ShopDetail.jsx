@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getAllStores, getAnStore } from '../services/stores';
 import { getAllCategories } from '../services/categories';
 import { getAllProducts } from '../services/products';
+import './customerstyle/ShopDetail.css';
+
 
 const ShopDetail = () => {
   const { id } = useParams();

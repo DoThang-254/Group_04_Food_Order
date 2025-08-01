@@ -5,89 +5,94 @@ import Login from '../pages/auth/Login';
 import HomePage from '../pages/HomePage';
 import Register from '../pages/auth/Register';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import AdminLayout from '../pages/admin/AdminLayout';
 import Checkout from '../pages/Checkout';
 import FoodDetail from '../pages/FoodDetail';
 import RouterPrivate from './RouterPrivate';
-import UserInfo from '../pages/UserInfo'
 import PageNotFound from '../pages/auth/PageNotFound';
 import ShopDetail from '../pages/ShopDetail';
-import RouterAuthorize from './RouterAuthorize';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword'
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Layout />,
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '',
+        element: <Navigate to='/home' />
+      },
+      {
+        path: 'login',
+        element: <Login />
+      },
+      {
+        path: 'home',
+        element: <HomePage />
+      },
+      {
+        path: 'register',
+        element: <Register />
+      },
+      {
+        path: 'admin',
+        element: <AdminDashboard />
+      },
+      {
+        path: 'checkout',
+        element: <Checkout />
+      },
+      {
+        path: 'food/:id/detail',
+        element: <FoodDetail />
+      },
+      {
+        path: 'shop/:id/detail',
+        element: <ShopDetail />
+      },
+      {
+        path: 'register',
+        element: <Register />
+      },
+      {
+        path: 'forgot-password',
+        element: <ForgotPassword />
+      },
+      {
+        path: 'reset-password',
+        element: <ResetPassword />
+      },
+      {
+        path: '*',
+        element: <PageNotFound />
+      }
+    ]
+  } , 
+  {
+    element: <RouterPrivate />,
+    children: [
+      {
+        path: '/admin',
+        element: <AdminLayout />,
         children: [
-            {
-                path: '',
-                element: <Navigate to='/home' />
-            },
-            {
-                path: 'login',
-                element: <Login />
-            },
-            {
-                path: 'home',
-                element: <HomePage />
-            },
-            {
-                path: 'register',
-                element: <Register />
-            },
-            {
-                path: 'admin',
-                element: <AdminDashboard />
-            },
-            {
-                path: 'checkout',
-                element: <Checkout />
-            },
-            {
-                path: 'food/:id/detail',
-                element: <FoodDetail />
-            },
-            {
-                path: 'shop/:id/detail',
-                element: <ShopDetail />
-            },
-            {
-                path: 'register',
-                element: <Register />
-            },
-            {
-                path: 'forgot-password',
-                element: <ForgotPassword />
-            },
-            {
-                path: 'reset-password',
-                element: <ResetPassword/>
-            },
-            {
-                element: <RouterPrivate />,
-                children: [
-                    {
-                        path: 'user-info',
-                        element: <UserInfo />
-                    },
-
-                ]
-            },
-            {
-                path: '*',
-                element: <PageNotFound />
-
-            }
-
+          {
+            path: '',
+            element: <AdminDashboard />
+          }
         ]
-    }
-])
+      },
+
+    ]
+  }
+]
+
+)
 const Router = () => {
-    return (
-        <div>
-            <RouterProvider router={router} />
-        </div>
-    );
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default Router;

@@ -1,0 +1,67 @@
+/* Layout */
+.shop-detail-container {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Store section */
+.shop-detail-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.shop-detail-header h2 {
+  color: #8B0000;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.shop-detail-header img {
+  height: 200px;
+  border-radius: 10px;
+  border: 3px solid #8B0000;
+}
+
+/* Menu title */
+.menu-title {
+  font-size: 1.5rem;
+  color: #8B0000;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Product list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 16px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+li:hover {
+  background-color: #fdf1f1;
+}
+
+li img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #8B0000;
+}
+
+li strong {
+  color: #8B0000;
+  font-size: 1rem;
+}

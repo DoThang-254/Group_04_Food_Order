@@ -56,8 +56,8 @@
       "id": "4fc5",
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$J6eUUnBtEFZw2AUxDWmcVOqm93gO9XagbjsPRyiR2FM05p7TMo2oe",
-      "role": "customer",
+      "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
+      "role": "admin",
       "active": true
     }
   ],
@@ -68,32 +68,16 @@
       "name": "Pizza House",
       "address": "123 Main St",
       "img": "",
-      "ownerId": 5
+      "ownerId": 5,
+      "state": true
     },
     {
       "id": "2",
       "name": "Burger Town",
       "address": "456 Market St",
       "img": "",
-      "ownerId": 6
-    },
-    {
-      "id": "6236",
-      "name": "a",
-      "address": "a"
-    },
-    {
-      "id": "f1c6",
-      "name": "gg",
-      "address": "hcm",
-      "img": ""
-    },
-    {
-      "id": "a858",
-      "name": "gg",
-      "address": "hcm",
-      "img": "",
-      "ownerId": "bb4f"
+      "ownerId": 6,
+      "state": true
     }
   ],
   "stores_categories": [
@@ -101,25 +85,25 @@
       "scid": "1",
       "storeId": "1",
       "categoryId": "1",
-      "id": "0dc2"
+      "id": "8313"
     },
     {
       "scid": "2",
       "storeId": "1",
       "categoryId": "2",
-      "id": "641a"
+      "id": "a41c"
     },
     {
       "scid": "3",
       "storeId": "2",
       "categoryId": "1",
-      "id": "e9aa"
+      "id": "a4a7"
     },
     {
       "scid": "4",
       "storeId": "2",
       "categoryId": "2",
-      "id": "043c"
+      "id": "a144"
     }
   ],
   "categories": [
