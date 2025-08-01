@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       }
     ]
   },
-  
+
   {
     path: '/',
     element: <Layout />,
@@ -54,6 +54,14 @@ const router = createBrowserRouter([
         element: <FoodDetail />
       },
       {
+        path: 'shop/:id/detail',
+        element: <ShopDetail/>
+      },
+      {
+        path: 'food/:id/detail' , 
+        element: <FoodDetail/>
+      },
+      {
         element: <RouterPrivate />,
         children: [
           {
@@ -71,11 +79,11 @@ const router = createBrowserRouter([
   }
 ])
 const Router = () => {
-    return (
-        <div>
-            <RouterProvider router={router} />
-        </div>
-    );
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default Router;
