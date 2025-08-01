@@ -1,14 +1,4 @@
 {
-  "stores": [
-    {
-      "id": "1",
-      "name": "Pizza House",
-      "address": "123 Main St",
-      "img": "data:image/jpeg;base64,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",
-      "ownerId": 5,
-      "state": true
-    }
-  ],
   "users": [
     {
       "id": "1",
@@ -63,51 +53,96 @@
       "active": true
     },
     {
-      "id": "7057",
+      "id": "4fc5",
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "Thang2231977",
+      "password": "$2b$10$SBIlFqLf9Jiftyjpo1R0WuGdGN7vCoTY960EZd.OXKHFDIeQVtyMK",
       "role": "customer",
       "active": true
     },
     {
-      "id": "56a4",
-      "name": "t ",
-      "email": "thang2542004@gmail.com",
-      "password": "Thang2231977",
+      "id": "caf3",
+      "name": "do thang",
+      "email": "than2542004@gmail.com",
+      "password": "$2b$10$aNsYHLvOubqVTOJs3kSLneNDkpXfOdN3.03m5wWz7rOfRsCWOfGJu",
       "role": "owner",
       "active": false,
-      "storeId": "d138"
+      "storeId": "6236"
     },
     {
-      "id": "9831",
-      "name": "t a",
+      "id": "6324",
+      "name": "do thang",
       "email": "thangbachi2542004@gmail.com",
-      "password": "Thang2231977",
-      "role": "customer",
-      "active": true
+      "password": "$2b$10$p9ngmVcqnX5ijD3mcuJV6.OZiRv5I2Odx1DhOQqyldbR4BomQ2f2K",
+      "role": "owner",
+      "active": false,
+      "storeId": "f1c6"
+    },
+    {
+      "id": "bb4f",
+      "name": "do thang",
+      "email": "thangchimteo2542004@gmail.com",
+      "password": "$2b$10$iO3IlxFzoEZQiPiYB788a.2vam7uyPW/mexPWGMOuN3b2qO1CJ85.",
+      "role": "owner",
+      "active": false
+    }
+  ],
+  "stores": [
+    {
+      "id": "1",
+      "name": "Pizza House",
+      "address": "123 Main St",
+      "img": "",
+      "ownerId": 5,
+      "state": true
+    },
+    {
+      "id": "2",
+      "name": "Burger Town",
+      "address": "456 Market St",
+      "img": "",
+      "ownerId": 6,
+      "state": true
+    }
+  ],
+  "stores_categories": [
+    {
+      "scid": "1",
+      "storeId": "1",
+      "categoryId": "1",
+      "id": "8313"
+    },
+    {
+      "scid": "2",
+      "storeId": "1",
+      "categoryId": "2",
+      "id": "a41c"
+    },
+    {
+      "scid": "3",
+      "storeId": "2",
+      "categoryId": "1",
+      "id": "a4a7"
+    },
+    {
+      "scid": "4",
+      "storeId": "2",
+      "categoryId": "2",
+      "id": "a144"
     }
   ],
   "categories": [
     {
       "id": "1",
-      "name": "Pizza",
-      "storeId": 1
+      "name": "Pizza"
     },
     {
       "id": "2",
-      "name": "Drinks",
-      "storeId": 1
+      "name": "Drinks"
     },
     {
       "id": "3",
-      "name": "Burgers",
-      "storeId": 2
-    },
-    {
-      "id": "4",
-      "name": "Drinks",
-      "storeId": 2
+      "name": "Burgers"
     }
   ],
   "products": [
@@ -116,28 +151,32 @@
       "name": "Margherita Pizza",
       "price": 8.99,
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP0HbRY0SsECXq3XHqjXUBw3CqK1VfE5PX1w&s",
-      "categoryId": 1
+      "categoryId": 1,
+      "storeId": 1
     },
     {
       "id": "2",
       "name": "Pepperoni Pizza",
       "price": 10.99,
       "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png",
-      "categoryId": 1
+      "categoryId": 1,
+      "storeId": 2
     },
     {
       "id": "3",
       "name": "Cheese Burger",
       "price": 6.49,
-      "img": "data:image/jpeg;base64,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",
-      "categoryId": 3
+      "img": "",
+      "categoryId": 3,
+      "storeId": 1
     },
     {
       "id": "4",
       "name": "Bacon Burger",
       "price": 7.99,
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
-      "categoryId": 3
+      "categoryId": 3,
+      "storeId": 2
     }
   ],
   "orders": [

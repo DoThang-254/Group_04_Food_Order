@@ -1,19 +1,29 @@
+import { comparePassword } from "../data/util";
 import { endpoint } from "./endpoint";
 import instance from "./index";
 export const login = async (data) => {
     try {
-        const res = await instance.get(endpoint.USERS + `?email=${data.email}&password=${data.password}`)
+
+        const res = await instance.get(endpoint.USERS + `?email=${data.email}`);
         if (res.data.length > 0) {
-            const user = res.data[0]
+            const user = res.data[0];
+            const check = await comparePassword(data.password, user.password);
+            if (!check) {
+                return {
+                    user: null,
+                    msg: 'Email or password is wrong'
+                }
+
+            }
             return {
                 user: user,
-                msg : user.active ? null : 'Please wait for activation'
+                msg: user.active ? null : 'Please wait for activation'
             }
         }
         else {
             return {
                 user: null,
-                msg : 'Email or password is wrong'
+                msg: 'Email or password is wrong'
             };
         }
     } catch (err) {
@@ -51,3 +61,12 @@ export const checkEmail = async (email) => {
     }
 };
 
+export const updateUser = async (id , updateData) => {
+    try {
+        const res = await instance.patch(endpoint.USERS + `/${id}` , updateData);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+};

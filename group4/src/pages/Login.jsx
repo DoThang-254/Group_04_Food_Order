@@ -4,6 +4,7 @@ import { login } from '../services/users';
 import * as Yup from "yup";
 import { Link, useNavigate } from 'react-router-dom';
 import { loginContext } from '../context/LoginContext';
+import { createFakeToken } from '../data/token';
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         password: Yup.string()
@@ -14,31 +15,33 @@ const Login = () => {
     });
 
 
-    const { setIsLogin } = useContext(loginContext)
+    const { setToken } = useContext(loginContext)
     const [loginError, setLoginError] = useState('');
     const navToHome = useNavigate();
-    const handleLogin = (value) => {
+    const handleLogin = async (value) => {
         const data = value
-        login(data).then(res => {
+        login(data).then(async (res) => {
             if (res) {
                 if (!res.msg) {
-                    setIsLogin(true);
+
+                    // set(true);
                     // Nếu là admin thì lưu tên vào localStorage
-                    if (res.user && res.user.role === 'admin') {
-                        localStorage.setItem('adminName', res.user.name || 'Admin');
-                        navToHome('/admin');
-                    } else {
-                        navToHome('/home');
-                    }
+                    // if (res.user && res.user.role === 'admin') {
+                    //     localStorage.setItem('adminName', res.user.name || 'Admin');
+                    //     navToHome('/admin');
+                    // } else {
+                    //     navToHome('/home');
+                    // }
+
+                    const fakeToken = await createFakeToken(res)
+                    setToken(fakeToken);
+                    navToHome('/home');
+
                 }
                 else {
-                    setIsLogin(false);
+                    setToken('');
                     setLoginError(res.msg);
                 }
-            }
-            else {
-                setIsLogin(false);
-                setLoginError(res.msg);
             }
         }).catch(err => {
             console.log(err)
