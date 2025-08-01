@@ -23,13 +23,18 @@ const Login = () => {
             if (res) {
                 if (!res.msg) {
                     setIsLogin(true);
-                    navToHome('/home');
+                    // Nếu là admin thì lưu tên vào localStorage
+                    if (res.user && res.user.role === 'admin') {
+                        localStorage.setItem('adminName', res.user.name || 'Admin');
+                        navToHome('/admin');
+                    } else {
+                        navToHome('/home');
+                    }
                 }
                 else {
                     setIsLogin(false);
                     setLoginError(res.msg);
                 }
-
             }
             else {
                 setIsLogin(false);
@@ -38,9 +43,7 @@ const Login = () => {
         }).catch(err => {
             console.log(err)
             setLoginError('Something went wrong.')
-        }
-
-        )
+        })
     }
 
     return (
