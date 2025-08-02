@@ -6,6 +6,7 @@ import {
   Nav,
   Badge,
   Button,
+  Dropdown,
 } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -18,7 +19,7 @@ import { loginContext } from '../context/LoginContext';
 
 const Header = () => {
   const cart = useCartStore((state) => state.cart);
-  const { token , setToken } = useContext(loginContext);
+  const { token, setToken } = useContext(loginContext);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -34,18 +35,37 @@ const Header = () => {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="/">My Shop</Navbar.Brand>
-          <Nav className="ml-auto" style={{marginLeft:"1000px"}}>
+          <Nav className="ml-auto" style={{ marginLeft: "70%" }}>
             <Button variant="outline-primary" onClick={() => setOpen(true)}>
-              <ShoppingCartOutlined  />{' '}
+              <ShoppingCartOutlined />{' '}
               <Badge bg="secondary">{totalItems}</Badge>
             </Button>
           </Nav>
-          {token ? <Button onClick={() => {
-            setToken('')
-            localStorage.removeItem('token')
-            navigate('/login')
-          }}>Logout</Button> : <Navbar.Brand href="/login">Login</Navbar.Brand>}
-          
+          {token ? (
+            <Dropdown align="end">
+              <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
+                Account
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => navigate('/profile')}>Profile</Dropdown.Item>
+                <Dropdown.Item onClick={() => navigate('/settings')}>Settings</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item
+                  onClick={() => {
+                    setToken('');
+                    localStorage.removeItem('token');
+                    navigate('/login');
+                  }}
+                >
+                  Logout
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          ) : (
+            <Navbar.Brand href="/login">Login</Navbar.Brand>
+          )}
+
         </Container>
       </Navbar>
 

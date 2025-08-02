@@ -23,7 +23,13 @@ const Register = () => {
                     const isUnique = await checkEmail(value);
                     return isUnique.length === 0;
                 }
-            )
+            ),
+        dob: Yup.date()
+            .required('Please enter your date of birth')
+            .max(new Date(), 'Date of birth cannot be in the future'),
+        phone: Yup.string().matches(/^\d{10,11}$/, 'Phone number must be 10 or 11 digits')
+
+
     });
 
 
@@ -33,7 +39,10 @@ const Register = () => {
         const commonData = {
             name: `${value.firstname} ${value.lastname}`,
             email: value.email,
+            phone: value.phone,
             password: hashedPassword,
+            gender: value.gender,
+            dob: value.dob,
             role: value.role,
             active: value.role === "customer" ? true : false
         };
@@ -56,11 +65,12 @@ const Register = () => {
                 }
 
             }
+            else {
+                navToHome('/login')
+            }
         } catch (error) {
             console.log(error)
         }
-
-
     }
 
     //option  
@@ -91,7 +101,7 @@ const Register = () => {
         <Formik
             initialValues={{
                 email: '', password: '', firstname: '',
-                lastname: '', role: 'customer', store: ''
+                lastname: '', role: 'customer', store: '', phone: '', gender: 'male', dob: ''
             }}
             onSubmit={value => handleSignUp(value)}
             validationSchema={RegisterSchema}
@@ -108,7 +118,11 @@ const Register = () => {
                     <Field name="lastname" />
                     <ErrorMessage name="lastname" component={'div'} className='text-danger' />
                 </div>
-
+                <div>
+                    <label htmlFor="phone">Phone:</label>
+                    <Field name="phone" />
+                    <ErrorMessage type="tel" name="phone" component={'div'} className='text-danger' />
+                </div>
                 <div>
                     <label htmlFor="email">Email:</label>
                     <Field name="email" />
@@ -121,6 +135,30 @@ const Register = () => {
                     <Field name="password" />
                     <ErrorMessage name="password" type="password" component={'div'} className='text-danger' />
                 </div>
+                <div>
+                    <label htmlFor="dob">Date of Birth:</label>
+                    <Field type="date" name="dob" />
+                    <ErrorMessage name="dob" component="div" className="text-danger" />
+                </div>
+
+                <div>
+                    <label>Gender:</label>
+                    <div role="group" aria-labelledby="gender">
+                        <label>
+                            <Field type="radio" name="gender" value="male" />
+                            Male
+                        </label>
+                        <label>
+                            <Field type="radio" name="gender" value="female" />
+                            Female
+                        </label>
+                        <label>
+                            <Field type="radio" name="gender" value="other" />
+                            Other
+                        </label>
+                    </div>
+                </div>
+
                 <div>
                     <label htmlFor="role">Role:</label>
                     <Field as="select" name="role">
