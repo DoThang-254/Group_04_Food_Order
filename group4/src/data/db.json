@@ -57,7 +57,7 @@
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
       "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
-      "role": "admin",
+      "role": "owner",
       "active": true
     }
   ],
@@ -68,7 +68,7 @@
       "name": "Pizza House",
       "address": "123 Main St",
       "img": "",
-      "ownerId": 5,
+      "ownerId": "4fc5",
       "state": true
     },
     {

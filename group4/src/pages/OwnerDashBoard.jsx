@@ -3,29 +3,68 @@ import { Card, Table, Container, Row, Col } from "react-bootstrap";
 import { loginContext } from "../context/LoginContext";
 import db from "../data/db.json";
 import { Navigate } from "react-router-dom";
-
+import { decodeFakeToken } from "../data/token";
 const OwnerDashboard = () => {
-  const { user } = useContext(loginContext);
+  const { token } = useContext(loginContext);
   const [store, setStore] = useState(null);
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (user && user.role === "owner") {
-      const storeData = db.stores.find((s) => s.ownerId === user.id);
+    const decode = async () => {
+      const info = await decodeFakeToken(token);
+      if (info) {
+        setUser(info);
+      }
+      setLoading(false);
+    };
+    decode();
+  }, [token]);
+
+  useEffect(() => {
+    if (user && user?.role === "owner") {
+      const storeData = db.stores.find((s) => s?.ownerId === user?.id);
       setStore(storeData);
 
       const storeProducts = db.products.filter(
-        (p) => p.storeId === storeData.id
+        (p) => p.storeId == Number(storeData.id)
       );
       setProducts(storeProducts);
 
-      const storeOrders = db.orders.filter((o) => o.storeId === storeData.id);
+      const storeOrders = db.orders
+        .map((x) => {
+          const filteredItems = x.items.filter(
+            (item) => item.storeId == storeData.id
+          );
+
+
+          if (filteredItems.length > 0) {
+            const total = filteredItems.reduce((sum, item) => {
+              const product = db.products.find((p) => p.id == item.productId);
+              return sum + (product ? product.price * item.quantity : 0);
+            }, 0);
+
+            return {
+              ...x,
+              items: filteredItems,
+              total
+            };
+          }
+
+          return null;
+        })
+        .filter(Boolean);
+
       setOrders(storeOrders);
+
     }
   }, [user]);
 
-  if (!user || user.role !== "owner") {
+  if (loading) return null;
+
+  if (!user || user?.role !== "owner") {
     return <Navigate to="/" replace />;
   }
 

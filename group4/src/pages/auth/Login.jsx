@@ -34,6 +34,10 @@ const Login = () => {
                             navToHome('/admin');
                             break;
                         }
+                        case 'owner': {
+                            navToHome('/owner-dashboard');
+                            break;
+                        }
                     }
                 }
                 else {

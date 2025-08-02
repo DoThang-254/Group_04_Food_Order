@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Layout from '../pages/Layout';
@@ -14,6 +13,7 @@ import PageNotFound from '../pages/auth/PageNotFound';
 import ShopDetail from '../pages/ShopDetail';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword'
+import OwnerDashboard from '../pages/OwnerDashBoard';
 const router = createBrowserRouter([
   {
     path: '/',
