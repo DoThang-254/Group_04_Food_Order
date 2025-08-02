@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Layout from '../pages/Layout';
@@ -65,6 +66,9 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <PageNotFound />
+      }, {
+        path: "owner-dashboard",
+        element: <OwnerDashboard />,
       }
     ]
   } , 
