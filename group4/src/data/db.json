@@ -1,64 +1,16 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "password": "$2b$10$J3ouopoDHOfh7WSNIdlR7eziq/IVTblCAa3q.JMuitMHwyiD4.Pqe",
-      "role": "customer",
-      "active": true
-    },
-    {
-      "id": "2",
-      "name": "Alice Admin",
-      "email": "admin@example.com",
-      "password": "hashedAdmin",
-      "role": "admin",
-      "active": true
-    },
-    {
-      "id": "3",
-      "name": "Bob Staff",
-      "email": "staff1@pizzahouse.com",
-      "password": "hashedStaff",
-      "role": "staff",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "4",
-      "name": "Eve Staff",
-      "email": "staff2@burgertown.com",
-      "password": "hashedStaff2",
-      "role": "staff",
-      "storeId": 2,
-      "active": false
-    },
-    {
-      "id": "5",
-      "name": "Mike Owner",
-      "email": "owner1@pizzahouse.com",
-      "password": "hashedOwner1",
-      "role": "owner",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "6",
-      "name": "Sarah Owner",
-      "email": "owner2@burgertown.com",
-      "password": "hashedOwner2",
-      "role": "owner",
-      "storeId": 2,
-      "active": true
-    },
-    {
-      "id": "4fc5",
+      "id": "a839",
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
-      "role": "owner",
-      "active": true
+      "password": "$2b$10$Rvm6IZV9tFWLvhpetrB4ruw2usiv9Q/GrjiY2UfDur5n11OzzB6kO",
+      "role": "customer",
+      "birthDate": "2004-04-25",
+      "gender": "Female",
+      "address": "van dinh",
+      "active": true,
+      "phone": "0865753821"
     }
   ],
   "resetRequests": [],

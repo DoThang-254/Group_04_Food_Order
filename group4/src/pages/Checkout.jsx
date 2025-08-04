@@ -30,8 +30,6 @@ const Checkout = () => {
 
           <Col xs={5}>
             <div className="fw-bold">{item.name}</div>
-            <div>Màu: {item.color}</div>
-            <div>Size: {item.size}</div>
           </Col>
 
           <Col xs={2} className="d-flex align-items-center">
