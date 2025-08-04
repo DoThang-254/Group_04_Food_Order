@@ -4,8 +4,12 @@ import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import { postStore } from '../../services/stores';
 import { hashPassword } from '../../data/util';
+import { useContext } from 'react';
+import { themeContext } from '../../context/ThemeContext';
 
 const Register = () => {
+    const { theme } = useContext(themeContext);
+
     const RegisterSchema = Yup.object().shape({
         password: Yup.string()
             .required('Required')
@@ -39,7 +43,20 @@ const Register = () => {
 
                     return birthDate <= thirteenYearsAgo;
                 }
-            )
+            ),
+        gender: Yup.string().required('Gender is required'),
+        phone: Yup.string()
+            .required('Phone is required')
+            .matches(/^[0-9]{10,11}$/, 'Invalid phone number'),
+        address: Yup.string().required('Address is required'),
+        storeName: Yup.string().when('role', {
+            is: 'owner',
+            then: Yup.string().required('Store name is required'),
+        }),
+        storeAddress: Yup.string().when('role', {
+            is: 'owner',
+            then: Yup.string().required('Store address is required'),
+        }),
     });
 
     const navToHome = useNavigate();
@@ -105,7 +122,7 @@ const Register = () => {
     };
 
     return (
-        <div className="container mt-5">
+        <div className={`container mt-5 ${theme === 'dark' ? 'bg-dark text-white' : ''}`} style={{ borderRadius: '8px', padding: '20px' }}>
             <div className="row justify-content-center">
                 <div className="col-md-6">
                     <h3 className="mb-4 text-center">Register</h3>
@@ -122,8 +139,8 @@ const Register = () => {
                             dob: '',
                             phone: ''
                         }}
-                        onSubmit={handleSignUp}
                         validationSchema={RegisterSchema}
+                        onSubmit={(values) => console.log(values)}
                     >
                         <Form>
                             <div className="mb-3">
@@ -143,10 +160,12 @@ const Register = () => {
                                 <Field name="email" type="email" className="form-control" />
                                 <ErrorMessage name="email" component="div" className="text-danger" />
                             </div>
+
                             <div className="mb-3">
                                 <label htmlFor="phone" className="form-label">Phone</label>
-                                <Field type="text" name="phone" className="form-control" />
+                                <Field name="phone" className="form-control" />
                             </div>
+
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password</label>
                                 <Field name="password" type="password" className="form-control" />
@@ -160,6 +179,7 @@ const Register = () => {
                                     <option value="owner">Owner</option>
                                 </Field>
                             </div>
+
                             <div className="mb-3">
                                 <label htmlFor="dob" className="form-label">Date of Birth</label>
                                 <Field type="date" name="dob" className="form-control" />
@@ -172,12 +192,13 @@ const Register = () => {
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
                                 </Field>
-                                <ErrorMessage name="gender" component="div" className="text-danger" />
                             </div>
+
                             <div className="mb-3">
                                 <label htmlFor="address" className="form-label">Address</label>
-                                <Field type="text" name="address" className="form-control" />
+                                <Field name="address" className="form-control" />
                             </div>
+
                             <RoleDependentFields />
 
                             <div className="d-grid">

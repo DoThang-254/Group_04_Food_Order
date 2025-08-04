@@ -87,7 +87,7 @@ const Header = () => {
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/login" style={{color: 'white' , fontSize: 'large'}}>Login</Nav.Link>
             )}
           </Nav>
 

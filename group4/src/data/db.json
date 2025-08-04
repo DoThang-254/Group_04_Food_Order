@@ -149,14 +149,9 @@
   ],
   "cart": [
     {
-      "id": "0187",
-      "productId": 2,
-      "storeId": 2,
-      "quantity": 3
-    },
-    {
-      "id": "4c8a",
-      "productId": 3,
+      "id": "52b8",
+      "userId": "a839",
+      "productId": 1,
       "storeId": 1,
       "quantity": 1
     }
