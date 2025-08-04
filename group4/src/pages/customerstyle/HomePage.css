@@ -1,4 +1,4 @@
-/* Chủ đề chính: đỏ đậm #8B0000 và trắng */
+/* Chủ đề chính: đỏ tươi #E53935 và trắng */
 body {
   background-color: #fff;
   color: #333;
@@ -14,14 +14,14 @@ body {
 }
 
 .list-group-item.active {
-  background-color: #8B0000 !important;
+  background-color: #E53935 !important;
   color: #fff !important;
   border-radius: 6px;
 }
 
 .list-group-item:hover {
   background-color: #f0f0f0;
-  color: #8B0000;
+  color: #E53935;
 }
 
 /* Product Card */
@@ -45,7 +45,7 @@ body {
 }
 
 .card-title {
-  color: #8B0000;
+  color: #E53935;
   font-weight: bold;
 }
 
@@ -56,7 +56,7 @@ body {
 
 /* Store image */
 .card-text img {
-  border: 2px solid #8B0000;
+  border: 2px solid #E53935;
 }
 
 /* Buttons */
@@ -67,13 +67,13 @@ body {
 }
 
 .btn-primary {
-  background-color: #8B0000;
-  border-color: #8B0000;
+  background-color: #E53935;
+  border-color: #E53935;
 }
 
 .btn-primary:hover {
-  background-color: #a60000;
-  border-color: #a60000;
+  background-color: #cc2f2f;
+  border-color: #cc2f2f;
 }
 
 .btn-secondary {
@@ -88,13 +88,15 @@ body {
 
 /* Pagination */
 .ant-pagination-item-active {
-  border-color: #8B0000 !important;
+  border-color: #E53935 !important;
 }
 
 .ant-pagination-item-active a {
-  color: #8B0000 !important;
+  color: #E53935 !important;
 }
 
 .ant-pagination-item a:hover {
-  color: #a60000 !important;
+  color: #cc2f2f !important;
 }
+
+

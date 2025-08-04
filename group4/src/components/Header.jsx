@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useCartStore } from '../stores/stores';
 import {
   Navbar,
   Container,
   Nav,
-  Badge,
   Button,
   Dropdown,
 } from 'react-bootstrap';
@@ -13,17 +12,35 @@ import {
   ShoppingCartOutlined,
   FrownOutlined,
 } from '@ant-design/icons';
-import { Drawer, List, Typography } from 'antd';
+import { Drawer, List, Badge } from 'antd';
 import { loginContext } from '../context/LoginContext';
-
+import { decodeFakeToken } from '../data/token';
+import './style/Header.css';
 
 const Header = () => {
   const cart = useCartStore((state) => state.cart);
+
+  const fetchCart = useCartStore((state) => state.fetchCart);
+  const clearCart = useCartStore((state) => state.clearCart);
+
+
   const { token, setToken } = useContext(loginContext);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [userId, setUserId] = useState();
 
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+
+  useEffect(() => {
+    const decode = async () => {
+      const info = await decodeFakeToken(token);
+      if (info?.id) {
+        
+        fetchCart(info.id);
+      }
+    };
+    if (token) decode();
+  }, [token]);
 
   const handleViewDetails = () => {
     setOpen(false);
@@ -32,42 +49,40 @@ const Header = () => {
 
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" className="shadow-sm">
         <Container>
           <Navbar.Brand href="/">My Shop</Navbar.Brand>
+
           <Nav className="ml-auto" style={{ marginLeft: "1000px" }}>
             <Button variant="outline-primary" onClick={() => setOpen(true)}>
               <ShoppingCartOutlined />{' '}
               <Badge bg="secondary">{totalItems}</Badge>
             </Button>
           </Nav>
-          <Nav className="ms-auto">
+          <Nav className="ml-auto nav-actions">
+            <Badge count={totalItems} offset={[-2, 2]} color="#E53935">
+              <Button className="cart-button" onClick={() => setOpen(true)}>
+                <ShoppingCartOutlined style={{ fontSize: '20px' }} />
+              </Button>
+            </Badge>
             {token ? (
-              <Dropdown align="end">
-                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                  Account
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={() => navigate('/profile')}>
-                    Profile
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => navigate('/settings')}>
-                    Settings
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item onClick={() => {
-                    setToken('')
-                    localStorage.removeItem('token')
-                    navigate('/login')
-                  }}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <Button
+                className="logout-btn"
+                onClick={() => {
+                  clearCart();
+                  setToken('');
+                  localStorage.removeItem('token');
+                  navigate('/login');
+                }}
+              >
+                Logout
+              </Button>
             ) : (
-              <Nav.Link href="/login">Login</Nav.Link>
+              <a className="login-link" href="/login">
+                Login
+              </a>
             )}
           </Nav>
-
         </Container>
       </Navbar>
 
@@ -90,10 +105,10 @@ const Header = () => {
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta
-                    title={item.name}
+                    title={item.name || 'Tên sản phẩm'}
                     description={`Quantity: ${item.quantity}`}
                   />
-                  <div>${item.price * item.quantity}</div>
+                  <div>${(item.price || 0) * (item.quantity || 0)}</div>
                 </List.Item>
               )}
             />

@@ -11,6 +11,14 @@
       "address": "van dinh",
       "active": true,
       "phone": "0865753821"
+    },
+    {
+      "id": "adb7",
+      "name": "Đỗ Thái",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "$2b$10$NGDA/8Jp.0oIpPb43MdWNufQzwY4UYK2VRElwhD7YJVR.yUL.cnxm",
+      "role": "owner",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -20,7 +28,7 @@
       "name": "Pizza House",
       "address": "123 Main St",
       "img": "",
-      "ownerId": "4fc5",
+      "ownerId": "adb7",
       "state": true
     },
     {
@@ -129,18 +137,44 @@
   ],
   "cart": [
     {
-      "id": "1",
-      "userId": 1,
+      "id": "ba1f",
+      "userId": "4fc5",
       "productId": 1,
-      "quantity": 1,
-      "storeId": 1
+      "storeId": 1,
+      "quantity": 8
     },
     {
-      "id": "2",
-      "userId": 1,
+      "id": "0c81",
+      "userId": "4fc5",
+      "productId": 2,
+      "storeId": 2,
+      "quantity": 1
+    },
+    {
+      "id": "a101",
+      "userId": "4fc6",
+      "productId": 2,
+      "storeId": 2,
+      "quantity": 1
+    },
+    {
+      "id": "2773",
+      "userId": "4fc6",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 1
+    },
+    {
+      "id": "a31b",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 2
+    },
+    {
+      "id": "a9ec",
       "productId": 3,
-      "quantity": 2,
-      "storeId": 2
+      "storeId": 1,
+      "quantity": 1
     }
   ]
 }

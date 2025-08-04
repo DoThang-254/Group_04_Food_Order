@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getAllStores, getAnStore } from '../services/stores';
 import { getAllCategories } from '../services/categories';
 import { getAllProducts } from '../services/products';
 import './customerstyle/ShopDetail.css';
+import { useCartStore } from '../stores/stores';
+import Button from 'react-bootstrap/Button';
+import { loginContext } from '../context/LoginContext';
+
+
 
 
 const ShopDetail = () => {
@@ -13,6 +18,37 @@ const ShopDetail = () => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [idUser,setIdUser] = useState()
+const { token } = useContext(loginContext);
+const addToCart = useCartStore((state) => state.addToCart);
+useEffect(() => {
+      const decode = async () => {
+        const info = await decodeFakeToken(token);
+        console.log(info.id)
+        if (info) {
+          setIdUser(info.id);
+           
+        }
+  
+      };
+      decode();
+    }, [token]);
+    const handleAddToCart = (product) => {
+    if (!token) {
+      alert("Please log in to add to cart.");
+      nav('/login');
+      return;
+    }
+    const item = {
+      userId: idUser,
+      productId: Number(product.id),
+      storeId: Number(product.storeId),
+      quantity: 1
+    };
+    addToCart(item);
+  };
+
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,6 +103,7 @@ const ShopDetail = () => {
               <li key={item.id}>
                 <img src={item.img}/>
                 <strong>{item.name}</strong> - {item.price}₫
+                  <Button onClick={() => handleAddToCart(item)} className="me-2">Add to Cart</Button>
               </li>
             ))}
           </ul>
