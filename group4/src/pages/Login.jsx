@@ -35,6 +35,7 @@ const Login = () => {
 
                     const fakeToken = await createFakeToken(res)
                     setToken(fakeToken);
+                 
                     navToHome('/home');
 
                 }

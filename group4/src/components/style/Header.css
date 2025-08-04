@@ -1,0 +1,110 @@
+/* Header Navbar */
+.navbar {
+  background-color: #fff !important;
+  border-bottom: 1px solid #eee;
+  padding: 12px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Navbar brand (shop name) */
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #E53935 !important;
+  transition: color 0.3s;
+  margin-right: auto;
+}
+
+.navbar-brand:hover {
+  color: #cc2f2f !important;
+}
+
+/* Right-side navigation (cart + login/logout) */
+.navbar .nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Cart Button */
+.btn-outline-primary {
+  border-color: #E53935;
+  color: #E53935;
+  background-color: transparent;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-outline-primary:hover {
+  background-color: #E53935;
+  color: white;
+  border-color: #E53935;
+}
+
+/* Logout button */
+button.btn.logout-btn {
+  background-color: #E53935;
+  border-color: #E53935;
+  color: #fff;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button.btn.logout-btn:hover {
+  background-color: #cc2f2f;
+  border-color: #cc2f2f;
+}
+
+/* Login link styled like a button */
+.navbar .login-link {
+  color: #E53935;
+  font-weight: 500;
+  padding: 6px 16px;
+  text-decoration: none;
+  border: 1px solid #E53935;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .login-link:hover {
+  background-color: #E53935;
+  color: white;
+}
+
+/* Ant Design Drawer (Cart Summary) */
+.ant-drawer-title {
+  color: #E53935;
+  font-weight: bold;
+}
+
+.ant-list-item-meta-title {
+  color: #E53935;
+  font-weight: 500;
+}
+
+/* Cart Empty State */
+.text-center p {
+  color: #888;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* View Details Button in Drawer */
+.ant-btn-primary {
+  background-color: #E53935;
+  border-color: #E53935;
+  font-weight: 500;
+}
+
+.ant-btn-primary:hover {
+  background-color: #cc2f2f !important;
+  border-color: #cc2f2f !important;
+}

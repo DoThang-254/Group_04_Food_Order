@@ -4,7 +4,7 @@
       "id": "1",
       "name": "John Doe",
       "email": "john@example.com",
-      "password": "hashed123",
+      "password": "$2b$10$J3ouopoDHOfh7WSNIdlR7eziq/IVTblCAa3q.JMuitMHwyiD4.Pqe",
       "role": "customer",
       "active": true
     },
@@ -56,37 +56,20 @@
       "id": "4fc5",
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$SBIlFqLf9Jiftyjpo1R0WuGdGN7vCoTY960EZd.OXKHFDIeQVtyMK",
-      "role": "customer",
+      "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
+      "role": "admin",
       "active": true
     },
     {
-      "id": "caf3",
-      "name": "do thang",
-      "email": "than2542004@gmail.com",
-      "password": "$2b$10$aNsYHLvOubqVTOJs3kSLneNDkpXfOdN3.03m5wWz7rOfRsCWOfGJu",
-      "role": "owner",
-      "active": false,
-      "storeId": "6236"
-    },
-    {
-      "id": "6324",
-      "name": "do thang",
-      "email": "thangbachi2542004@gmail.com",
-      "password": "$2b$10$p9ngmVcqnX5ijD3mcuJV6.OZiRv5I2Odx1DhOQqyldbR4BomQ2f2K",
-      "role": "owner",
-      "active": false,
-      "storeId": "f1c6"
-    },
-    {
-      "id": "bb4f",
-      "name": "do thang",
-      "email": "thangchimteo2542004@gmail.com",
-      "password": "$2b$10$iO3IlxFzoEZQiPiYB788a.2vam7uyPW/mexPWGMOuN3b2qO1CJ85.",
-      "role": "owner",
-      "active": false
+      "id": "4fc6",
+      "name": "do thai",
+      "email": "thaimoneo2542004@gmail.com",
+      "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
+      "role": "customer",
+      "active": true
     }
   ],
+  "resetRequests": [],
   "stores": [
     {
       "id": "1",
@@ -202,18 +185,44 @@
   ],
   "cart": [
     {
-      "id": "1",
-      "userId": 1,
+      "id": "ba1f",
+      "userId": "4fc5",
       "productId": 1,
-      "quantity": 1,
-      "storeId": 1
+      "storeId": 1,
+      "quantity": 2
     },
     {
-      "id": "2",
-      "userId": 1,
+      "id": "0c81",
+      "userId": "4fc5",
+      "productId": 2,
+      "storeId": 2,
+      "quantity": 1
+    },
+    {
+      "id": "a101",
+      "userId": "4fc6",
+      "productId": 2,
+      "storeId": 2,
+      "quantity": 1
+    },
+    {
+      "id": "2773",
+      "userId": "4fc6",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 1
+    },
+    {
+      "id": "a31b",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 2
+    },
+    {
+      "id": "a9ec",
       "productId": 3,
-      "quantity": 2,
-      "storeId": 2
+      "storeId": 1,
+      "quantity": 1
     }
   ]
 }
