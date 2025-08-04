@@ -1,71 +1,11 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "password": "$2b$10$J3ouopoDHOfh7WSNIdlR7eziq/IVTblCAa3q.JMuitMHwyiD4.Pqe",
-      "role": "customer",
-      "active": true
-    },
-    {
-      "id": "2",
-      "name": "Alice Admin",
-      "email": "admin@example.com",
-      "password": "hashedAdmin",
-      "role": "admin",
-      "active": true
-    },
-    {
-      "id": "3",
-      "name": "Bob Staff",
-      "email": "staff1@pizzahouse.com",
-      "password": "hashedStaff",
-      "role": "staff",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "4",
-      "name": "Eve Staff",
-      "email": "staff2@burgertown.com",
-      "password": "hashedStaff2",
-      "role": "staff",
-      "storeId": 2,
-      "active": false
-    },
-    {
-      "id": "5",
-      "name": "Mike Owner",
-      "email": "owner1@pizzahouse.com",
-      "password": "hashedOwner1",
-      "role": "owner",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "6",
-      "name": "Sarah Owner",
-      "email": "owner2@burgertown.com",
-      "password": "hashedOwner2",
-      "role": "owner",
-      "storeId": 2,
-      "active": true
-    },
-    {
-      "id": "4fc5",
-      "name": "do thang",
+      "id": "adb7",
+      "name": "Đỗ Thái",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
-      "role": "admin",
-      "active": true
-    },
-    {
-      "id": "4fc6",
-      "name": "do thai",
-      "email": "thaimoneo2542004@gmail.com",
-      "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
-      "role": "customer",
+      "password": "$2b$10$NGDA/8Jp.0oIpPb43MdWNufQzwY4UYK2VRElwhD7YJVR.yUL.cnxm",
+      "role": "owner",
       "active": true
     }
   ],
@@ -76,7 +16,7 @@
       "name": "Pizza House",
       "address": "123 Main St",
       "img": "",
-      "ownerId": 5,
+      "ownerId": "adb7",
       "state": true
     },
     {
@@ -189,7 +129,7 @@
       "userId": "4fc5",
       "productId": 1,
       "storeId": 1,
-      "quantity": 2
+      "quantity": 8
     },
     {
       "id": "0c81",

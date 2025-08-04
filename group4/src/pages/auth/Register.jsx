@@ -1,9 +1,9 @@
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from 'formik'
-import { checkEmail, register, updateUser } from '../services/users';
+import { checkEmail, register, updateUser } from '../../services/users';
 import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
-import { postStore } from '../services/stores';
-import { hashPassword } from '../data/util';
+import { postStore } from '../../services/stores';
+import { hashPassword } from '../../data/util';
 const Register = () => {
     const RegisterSchema = Yup.object().shape({
         password: Yup.string()
@@ -21,7 +21,7 @@ const Register = () => {
                 async function (value) {
                     if (!value) return false;
                     const isUnique = await checkEmail(value);
-                    return isUnique;
+                    return isUnique.length === 0;
                 }
             )
     });

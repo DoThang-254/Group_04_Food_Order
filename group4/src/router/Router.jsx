@@ -1,30 +1,20 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Layout from '../pages/Layout';
-import Login from '../pages/Login';
+import Login from '../pages/auth/Login';
 import HomePage from '../pages/HomePage';
-import Register from '../pages/Register';
+import Register from '../pages/auth/Register';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import AdminLayout from '../pages/admin/AdminLayout';
 import Checkout from '../pages/Checkout';
 import FoodDetail from '../pages/FoodDetail';
 import RouterPrivate from './RouterPrivate';
-import UserInfo from '../pages/UserInfo'
-import PageNotFound from '../pages/PageNotFound';
+import PageNotFound from '../pages/auth/PageNotFound';
 import ShopDetail from '../pages/ShopDetail';
-import RouterAuthorize from './RouterAuthorize';
+import ForgotPassword from '../pages/auth/ForgotPassword';
+import ResetPassword from '../pages/auth/ResetPassword'
+import OwnerDashboard from '../pages/OwnerDashBoard';
 const router = createBrowserRouter([
-  {
-    path: '/admin',
-    element: <AdminLayout />,
-    children: [
-      {
-        path: '',
-        element: <AdminDashboard />
-      }
-    ]
-  },
-
   {
     path: '/',
     element: <Layout />,
@@ -46,38 +36,61 @@ const router = createBrowserRouter([
         element: <Register />
       },
       {
+        path: 'admin',
+        element: <AdminDashboard />
+      },
+      {
         path: 'checkout',
         element: <Checkout />
       },
       {
-        path: 'home/:id',
+        path: 'food/:id/detail',
         element: <FoodDetail />
       },
       {
         path: 'shop/:id/detail',
-        element: <ShopDetail/>
+        element: <ShopDetail />
       },
       {
-        path: 'food/:id/detail' , 
-        element: <FoodDetail/>
+        path: 'register',
+        element: <Register />
       },
       {
-        element: <RouterPrivate />,
-        children: [
-          {
-            path: 'user-info',
-            element: <UserInfo />
-          },
-
-        ]
+        path: 'forgot-password',
+        element: <ForgotPassword />
+      },
+      {
+        path: 'reset-password',
+        element: <ResetPassword />
       },
       {
         path: '*',
         element: <PageNotFound />
+      }, {
+        path: "owner-dashboard",
+        element: <OwnerDashboard />,
       }
     ]
+  } , 
+  {
+    element: <RouterPrivate />,
+    children: [
+      {
+        path: '/admin',
+        element: <AdminLayout />,
+        children: [
+          {
+            path: '',
+            element: <AdminDashboard />
+          }
+        ]
+      },
+
+    ]
   }
-])
+]
+
+)
 const Router = () => {
   return (
     <div>

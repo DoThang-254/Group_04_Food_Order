@@ -4,5 +4,6 @@ USERS :"users",
 CATEGORIES: "categories/",
 PRODUCTS:"products/",
 ORDERS:"orders/",
-CART:"cart/"
+CART:"cart/" ,
+REQUEST: "resetRequests",
 }

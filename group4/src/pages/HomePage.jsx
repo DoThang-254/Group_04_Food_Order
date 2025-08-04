@@ -72,7 +72,9 @@ const HomePage = () => {
       filtered = filtered.filter(p => p.categoryName === selectedCategoryId);
     }
     setFilteredProducts(filtered);
+
     setCurrentPage(1);
+
   }, [selectedCategoryId, products]);
 
   const paginatedProducts = useMemo(() => {

@@ -54,19 +54,47 @@ export const getAllUsers = async () => {
 export const checkEmail = async (email) => {
     try {
         const res = await instance.get(endpoint.USERS + `?email=${email}`);
-        return res.data.length === 0;
+        return res.data;
     } catch (err) {
         console.log(err);
-        return false;
     }
 };
 
-export const updateUser = async (id , updateData) => {
+export const updateUser = async (id, updateData) => {
     try {
-        const res = await instance.patch(endpoint.USERS + `/${id}` , updateData);
+        const res = await instance.patch(endpoint.USERS + `/${id}`, updateData);
         return res.data;
     } catch (err) {
         console.log(err);
         return false;
     }
 };
+
+export const saveRequest = async (email) => {
+    try {
+        await instance.post(endpoint.REQUEST, {
+            email,
+            createdAt: new Date().toISOString()
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+export const checkEmailForgot = async (email) => {
+    try {
+        const res = await instance.get(endpoint.REQUEST + `?email=${email}`);
+        return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const removeRequest = async (id) => {
+    try {
+        await instance.delete(endpoint.REQUEST + `/${id}`);
+    } catch (error) {
+        console.log(error);
+    }
+}
