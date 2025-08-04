@@ -1,9 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Card, Table, Container, Row, Col } from "react-bootstrap";
+import {
+  Card,
+  Table,
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+} from "react-bootstrap";
 import { loginContext } from "../context/LoginContext";
-import db from "../data/db.json";
 import { Navigate } from "react-router-dom";
 import { decodeFakeToken } from "../data/token";
+
+// 👉 Import từ services
+import { getStoreByOwnerId } from "../services/stores";
+import { getProductsByStoreId, addProduct } from "../services/products";
+import { getOrders } from "../services/orders";
+
 const OwnerDashboard = () => {
   const { token } = useContext(loginContext);
   const [store, setStore] = useState(null);
@@ -11,64 +24,85 @@ const OwnerDashboard = () => {
   const [orders, setOrders] = useState([]);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [newProduct, setNewProduct] = useState({
+    name: "",
+    price: "",
+    categoryId: "",
+    img: "",
+  });
 
   useEffect(() => {
-    const decode = async () => {
+    const fetchData = async () => {
       const info = await decodeFakeToken(token);
-      if (info) {
-        setUser(info);
-      }
-      setLoading(false);
-    };
-    decode();
-  }, [token]);
+      if (!info || info.role !== "owner") return setLoading(false);
+      setUser(info);
 
-  useEffect(() => {
-    if (user && user?.role === "owner") {
-      const storeData = db.stores.find((s) => s?.ownerId === user?.id);
-      setStore(storeData);
+      try {
+        const store = await getStoreByOwnerId(info.id);
+        if (!store) return setLoading(false);
+        setStore(store);
 
-      const storeProducts = db.products.filter(
-        (p) => p.storeId == Number(storeData.id)
-      );
-      setProducts(storeProducts);
+        const [products, allOrders] = await Promise.all([
+          getProductsByStoreId(store.id),
+          getOrders(),
+        ]);
 
-      const storeOrders = db.orders
-        .map((x) => {
-          const filteredItems = x.items.filter(
-            (item) => item.storeId == storeData.id
-          );
+        setProducts(products);
 
+        const relevantOrders = allOrders
+          .map((order) => {
+            const items = order.items.filter(
+              (item) => item.storeId == store.id
+            );
+            if (!items.length) return null;
 
-          if (filteredItems.length > 0) {
-            const total = filteredItems.reduce((sum, item) => {
-              const product = db.products.find((p) => p.id == item.productId);
-              return sum + (product ? product.price * item.quantity : 0);
+            const total = items.reduce((sum, item) => {
+              const prod = products.find((p) => p.id == item.productId);
+              return sum + (prod ? prod.price * item.quantity : 0);
             }, 0);
 
-            return {
-              ...x,
-              items: filteredItems,
-              total
-            };
-          }
+            return { ...order, items, total };
+          })
+          .filter(Boolean);
 
-          return null;
-        })
-        .filter(Boolean);
+        setOrders(relevantOrders);
+      } catch (err) {
+        console.log("Error loading data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      setOrders(storeOrders);
+    fetchData();
+  }, [token]);
 
-    }
-  }, [user]);
-
-  if (loading) return null;
-
-  if (!user || user?.role !== "owner") {
-    return <Navigate to="/" replace />;
-  }
+  if (loading) return <p>Loading...</p>;
+  if (!user || user.role !== "owner") return <Navigate to="/" replace />;
 
   const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
+
+  const handleAddProduct = async (e) => {
+    e.preventDefault();
+
+    const newProd = {
+      id: crypto.randomUUID(),
+      name: newProduct.name,
+      price: parseFloat(newProduct.price),
+      img: newProduct.img || "",
+      categoryId: parseInt(newProduct.categoryId) || 1,
+      storeId: store.id,
+    };
+
+    try {
+      const saved = await addProduct(newProd);
+      setProducts((prev) => [...prev, saved]);
+      setNewProduct({ name: "", price: "", categoryId: "", img: "" });
+      setShowAddForm(false);
+    } catch (err) {
+      alert("Thêm sản phẩm thất bại!");
+    }
+  };
 
   return (
     <Container className="my-4">
@@ -78,12 +112,12 @@ const OwnerDashboard = () => {
         <Card className="mb-4">
           <Card.Body>
             <Card.Title>Store Info</Card.Title>
-            <Card.Text>
+            <p>
               <strong>Name:</strong> {store.name}
-            </Card.Text>
-            <Card.Text>
+            </p>
+            <p>
               <strong>Address:</strong> {store.address}
-            </Card.Text>
+            </p>
           </Card.Body>
         </Card>
       )}
@@ -109,7 +143,73 @@ const OwnerDashboard = () => {
 
       <Card className="mb-4">
         <Card.Body>
-          <Card.Title>Product List</Card.Title>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <Card.Title>Product List</Card.Title>
+            <Button onClick={() => setShowAddForm(true)}>Add Product</Button>
+          </div>
+
+          {showAddForm && (
+            <Form onSubmit={handleAddProduct} className="mb-4">
+              <Row>
+                <Col md={3}>
+                  <Form.Control
+                    type="text"
+                    placeholder="Name"
+                    value={newProduct.name}
+                    onChange={(e) =>
+                      setNewProduct({ ...newProduct, name: e.target.value })
+                    }
+                    required
+                  />
+                </Col>
+                <Col md={2}>
+                  <Form.Control
+                    type="number"
+                    step="0.01"
+                    placeholder="Price"
+                    value={newProduct.price}
+                    onChange={(e) =>
+                      setNewProduct({ ...newProduct, price: e.target.value })
+                    }
+                    required
+                  />
+                </Col>
+                <Col md={3}>
+                  <Form.Control
+                    type="text"
+                    placeholder="Image URL"
+                    value={newProduct.img}
+                    onChange={(e) =>
+                      setNewProduct({ ...newProduct, img: e.target.value })
+                    }
+                  />
+                </Col>
+                <Col md={2}>
+                  <Form.Select
+                    value={newProduct.categoryId}
+                    onChange={(e) =>
+                      setNewProduct({
+                        ...newProduct,
+                        categoryId: e.target.value,
+                      })
+                    }
+                    required
+                  >
+                    <option value="">Category</option>
+                    <option value="1">Pizza</option>
+                    <option value="2">Drinks</option>
+                    <option value="3">Burgers</option>
+                  </Form.Select>
+                </Col>
+                <Col md={2}>
+                  <Button type="submit" className="w-100" variant="success">
+                    Save
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          )}
+
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -118,10 +218,10 @@ const OwnerDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {products.map((prod) => (
-                <tr key={prod.id}>
-                  <td>{prod.name}</td>
-                  <td>${prod.price.toFixed(2)}</td>
+              {products.map((p) => (
+                <tr key={p.id}>
+                  <td>{p.name}</td>
+                  <td>${p.price.toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
@@ -129,7 +229,7 @@ const OwnerDashboard = () => {
         </Card.Body>
       </Card>
 
-      <Card className="mb-4">
+      <Card>
         <Card.Body>
           <Card.Title>Recent Orders</Card.Title>
           <Table striped bordered hover>

@@ -59,6 +59,23 @@
       "password": "$2b$10$LNvjcxD6QaKS8Ycw.uKUWONsn1.TYR7heljdozEokrDTT.LQKb9ui",
       "role": "owner",
       "active": true
+    },
+    {
+      "id": "2cc4",
+      "name": "Nguyễn Tuấn",
+      "email": "tuanminh2424@gmail.com",
+      "password": "$2b$10$oxM6LyMD9K/Y9WLyvjgtsOVgSl76T032U7l0TUsNn9v2REl8RHbli",
+      "role": "owner",
+      "active": true,
+      "storeId": "0556"
+    },
+    {
+      "id": "8a87",
+      "name": "Tuấn Nguyễn",
+      "email": "magicmoonkid@gmail.com",
+      "password": "$2b$10$s7DWdK0c5xQmHZOH4Pn3NOirRFKoJuJWYIEY4ibsEjeG94BLiqqvm",
+      "role": "customer",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -78,6 +95,13 @@
       "img": "",
       "ownerId": 6,
       "state": true
+    },
+    {
+      "id": "0556",
+      "name": "TulasStore",
+      "address": "Hoa Lac",
+      "img": "",
+      "ownerId": "2cc4"
     }
   ],
   "stores_categories": [
@@ -152,6 +176,14 @@
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
       "categoryId": 3,
       "storeId": 2
+    },
+    {
+      "id": "2dc309d5-baca-4b28-b070-d3d2b6e87a9c",
+      "name": "Banhmi",
+      "price": 20,
+      "img": "https://cdn.loveandlemons.com/wp-content/uploads/2019/02/banh-mi-sandwich.jpg",
+      "categoryId": 1,
+      "storeId": "0556"
     }
   ],
   "orders": [

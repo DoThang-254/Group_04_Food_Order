@@ -1,33 +1,31 @@
 import { endpoint } from "./endpoint";
 import instance from "./index";
 export const getAllStores = async () => {
-    try {
-        const res = await instance.get(endpoint.STORES)
-        return res.data;
-
-    } catch (err) {
-        console.log(err)
-
-    }
-}
+  try {
+    const res = await instance.get(endpoint.STORES);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 export const getAnStore = async (id) => {
-    try {
-        const res = await instance.get(endpoint.STORES + id)
-        return res.data;
-
-    } catch (err) {
-        console.log(err)
-
-    }
-}
+  try {
+    const res = await instance.get(endpoint.STORES + id);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const postStore = async (data) => {
-    try {
-        const res = await instance.post(endpoint.STORES, data)
-        return res.data;
-
-    } catch (err) {
-        console.log(err)
-
-    }
-}
+  try {
+    const res = await instance.post(endpoint.STORES, data);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const getStoreByOwnerId = async (ownerId) => {
+  const res = await instance.get(`${endpoint.STORES}?ownerId=${ownerId}`);
+  return res.data[0]; // vì trả về mảng
+};
