@@ -1,6 +1,6 @@
 /* Header Navbar */
 .navbar {
-  background-color: #fff !important;
+  background-color: red !important;
   border-bottom: 1px solid #eee;
   padding: 12px 24px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -13,7 +13,7 @@
 .navbar-brand {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #E53935 !important;
+  color: white !important;
   transition: color 0.3s;
   margin-right: auto;
 }
@@ -92,7 +92,7 @@ button.btn.logout-btn:hover {
 
 /* Cart Empty State */
 .text-center p {
-  color: #888;
+  color: white;
   font-size: 1rem;
   margin-top: 8px;
 }
@@ -107,4 +107,46 @@ button.btn.logout-btn:hover {
 .ant-btn-primary:hover {
   background-color: #cc2f2f !important;
   border-color: #cc2f2f !important;
+}
+
+.cart-list-dark .ant-list-item,
+.cart-list-dark .ant-list-item-meta-title,
+.cart-list-dark .ant-list-item-meta-description,
+.cart-list-dark .ant-list-item>div {
+  color: white !important;
+}
+
+.cart-list-light .ant-list-item,
+.cart-list-light .ant-list-item-meta-title,
+.cart-list-light .ant-list-item-meta-description,
+.cart-list-light .ant-list-item>div {
+  color: black !important;
+}
+
+.ant-list-item:hover {
+  background-color: transparent !important;
+  cursor: default;
+}
+
+.ant-list-item {
+  border: none;
+
+}
+
+.drawer-dark .ant-drawer-body {
+  background-color: #1e1e1e !important;
+  color: #fff !important;
+}
+
+.drawer-light .ant-drawer-body {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.drawer-dark .ant-drawer-close {
+  color: white !important;
+}
+
+.drawer-light .ant-drawer-close {
+  color: black !important;
 }

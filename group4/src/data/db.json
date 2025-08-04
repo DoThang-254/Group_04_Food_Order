@@ -4,7 +4,7 @@
       "id": "a839",
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$Rvm6IZV9tFWLvhpetrB4ruw2usiv9Q/GrjiY2UfDur5n11OzzB6kO",
+      "password": "$2b$10$UAPu3WQbAGmxD9M8EVh9fOINUCjjn3TjT8tasZ9gf6Vrav2B05Gfu",
       "role": "customer",
       "birthDate": "2004-04-25",
       "gender": "Female",
@@ -18,6 +18,18 @@
       "email": "thangmoneo2542004@gmail.com",
       "password": "$2b$10$NGDA/8Jp.0oIpPb43MdWNufQzwY4UYK2VRElwhD7YJVR.yUL.cnxm",
       "role": "owner",
+      "active": true
+    },
+    {
+      "id": "7e9c",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangbachi2542004@gmail.com",
+      "password": "$2b$10$r6v8ZYbCFtiJU8gpupevOemCjjsF6ecem7PQN7XsLh6F0bqB4ROb2",
+      "role": "customer",
+      "birthDate": "2004-04-25",
+      "gender": "",
+      "address": "van dinh",
       "active": true
     }
   ],
@@ -137,41 +149,13 @@
   ],
   "cart": [
     {
-      "id": "ba1f",
-      "userId": "4fc5",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 8
-    },
-    {
-      "id": "0c81",
-      "userId": "4fc5",
+      "id": "0187",
       "productId": 2,
       "storeId": 2,
-      "quantity": 1
+      "quantity": 3
     },
     {
-      "id": "a101",
-      "userId": "4fc6",
-      "productId": 2,
-      "storeId": 2,
-      "quantity": 1
-    },
-    {
-      "id": "2773",
-      "userId": "4fc6",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1
-    },
-    {
-      "id": "a31b",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 2
-    },
-    {
-      "id": "a9ec",
+      "id": "4c8a",
       "productId": 3,
       "storeId": 1,
       "quantity": 1
