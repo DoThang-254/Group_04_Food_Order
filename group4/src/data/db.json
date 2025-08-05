@@ -8,6 +8,7 @@
       "role": "customer",
       "active": true
     }
+    
   ],
   "resetRequests": [],
   "stores": [
@@ -27,6 +28,7 @@
       "ownerId": 6,
       "state": true
     }
+    
   ],
   "stores_categories": [
     {
@@ -105,6 +107,7 @@
       "storeId": 2,
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
     }
+
   ],
   "orders": [
     {
@@ -127,39 +130,6 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-  "cart": [
-    {
-      "id": "8e95",
-      "userId": "6bb6",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 2
-    },
-    {
-      "id": "d724",
-      "userId": "5e7a",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 3
-    },
-    {
-      "id": "6328",
-      "userId": "5e7a",
-      "productId": 2,
-      "storeId": 2,
-      "quantity": 2
-    },
-    {
-      "id": "6cfd",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1
-    },
-    {
-      "id": "ebf0",
-      "productId": 2,
-      "storeId": 2,
-      "quantity": 1
-    }
-  ]
+
+  "cart": []
 }
