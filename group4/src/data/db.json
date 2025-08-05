@@ -18,7 +18,13 @@
       "storeId": "0556"
     }
   ],
-  "resetRequests": [],
+  "resetRequests": [
+    {
+      "id": "25bc",
+      "email": "thangmoneo2542004@gmail.com",
+      "createdAt": "2025-08-05T02:25:20.499Z"
+    }
+  ],
   "stores": [
     {
       "id": "1",

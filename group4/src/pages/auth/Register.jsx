@@ -84,7 +84,8 @@ const Register = () => {
                     name: value.storeName,
                     storeAddress: value.storeAddress,
                     img: "",
-                    ownerId: user.id
+                    ownerId: user.id ,
+                    state: false,
                 }
                 try {
                     const store = await postStore(storeData);
