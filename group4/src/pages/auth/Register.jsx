@@ -11,6 +11,9 @@ const Register = () => {
     const { theme } = useContext(themeContext);
 
     const RegisterSchema = Yup.object().shape({
+        firstname: Yup.string().required("First name is required"),
+        lastname: Yup.string().required("Last name is required"),
+        role: Yup.string().required("Role is required"),
         password: Yup.string()
             .required('Required')
             .min(8, 'Password must be at least 8 characters')
@@ -30,34 +33,33 @@ const Register = () => {
             ),
         dob: Yup.date()
             .required('Date of birth is required')
-            .test(
-                'is-13-or-older',
-                'You must be at least 13 years old',
-                function (value) {
-                    if (!value) return false;
-
-                    const birthDate = new Date(value);
-                    const today = new Date();
-                    const thirteenYearsAgo = new Date();
-                    thirteenYearsAgo.setFullYear(today.getFullYear() - 13);
-
-                    return birthDate <= thirteenYearsAgo;
-                }
-            ),
+            .test('is-13-or-older', 'You must be at least 13 years old', function (value) {
+                if (!value) return false;
+                const birthDate = new Date(value);
+                const today = new Date();
+                const thirteenYearsAgo = new Date();
+                thirteenYearsAgo.setFullYear(today.getFullYear() - 13);
+                return birthDate <= thirteenYearsAgo;
+            }),
         gender: Yup.string().required('Gender is required'),
         phone: Yup.string()
             .required('Phone is required')
             .matches(/^[0-9]{10,11}$/, 'Invalid phone number'),
         address: Yup.string().required('Address is required'),
-        storeName: Yup.string().when('role', {
-            is: 'owner',
-            then: Yup.string().required('Store name is required'),
-        }),
-        storeAddress: Yup.string().when('role', {
-            is: 'owner',
-            then: Yup.string().required('Store address is required'),
-        }),
+
+        // // 👇 Dynamic store validation
+        // storeName: Yup.string().when('role', {
+        //     is: 'owner',
+        //     then: Yup.string().required('Store name is required'),
+        //     otherwise: Yup.string().notRequired()
+        // }),
+        // storeAddress: Yup.string().when('role', {
+        //     is: 'owner',
+        //     then: Yup.string().required('Store address is required'),
+        //     otherwise: Yup.string().notRequired()
+        // }),
     });
+
 
     const navToHome = useNavigate();
 
@@ -79,12 +81,12 @@ const Register = () => {
 
         try {
             const user = await register(commonData)
-            if (value.role === "owner") {
+            if (value.role == "owner") {
                 const storeData = {
                     name: value.storeName,
                     storeAddress: value.storeAddress,
                     img: "",
-                    ownerId: user.id ,
+                    ownerId: user.id,
                     state: false,
                 }
                 try {
@@ -105,7 +107,6 @@ const Register = () => {
 
     const RoleDependentFields = () => {
         const { values } = useFormikContext();
-
         return (
             <>
                 {values.role === 'owner' && (
@@ -141,8 +142,9 @@ const Register = () => {
                             lastname: '',
                             role: 'customer',
                             storeName: '',
+                            storeAddress: '',
                             address: '',
-                            gender: '',
+                            gender: 'male',
                             dob: '',
                             phone: ''
                         }}
@@ -171,6 +173,7 @@ const Register = () => {
                             <div className="mb-3">
                                 <label htmlFor="phone" className="form-label">Phone</label>
                                 <Field name="phone" className="form-control" />
+                                <ErrorMessage name="phone" component="div" className="text-danger" />
                             </div>
 
                             <div className="mb-3">
@@ -185,25 +188,26 @@ const Register = () => {
                                     <option value="customer">Customer</option>
                                     <option value="owner">Owner</option>
                                 </Field>
+                                <ErrorMessage name="role" component="div" className="text-danger" />
                             </div>
 
                             <div className="mb-3">
                                 <label htmlFor="dob" className="form-label">Date of Birth</label>
                                 <Field type="date" name="dob" className="form-control" />
+                                <ErrorMessage name="dob" component="div" className="text-danger" />
                             </div>
 
-                            <div className="mb-3">
-                                <label htmlFor="gender" className="form-label">Gender</label>
-                                <Field as="select" name="gender" className="form-select">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Other</option>
-                                </Field>
-                            </div>
+                            <Field as="select" name="gender" className="form-select">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </Field>
+
 
                             <div className="mb-3">
                                 <label htmlFor="address" className="form-label">Address</label>
                                 <Field name="address" className="form-control" />
+                                <ErrorMessage name="address" component="div" className="text-danger" />
                             </div>
 
                             <RoleDependentFields />

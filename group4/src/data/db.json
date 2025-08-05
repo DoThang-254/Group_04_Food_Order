@@ -1,54 +1,11 @@
 {
   "users": [
-    {
-      "id": "4fc5",
-      "name": "do thang",
-      "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$IXM7wlzfgZngSB3FK.xMKOoIlsBsr5ssVcnqAaJJyUoaaTs8GmsVi",
-      "active": true,
-      "role": "customer"
-    },
-    {
-      "id": "2cc4",
-      "name": "Nguyễn Tuấn",
-      "email": "tuanminh2424@gmail.com",
-      "password": "$2b$10$RHSecwhmKTzVki63nXIQSOxchTuLx6FeGqs0FeFly.EzsiVzJFS3C",
-      "role": "owner",
-      "active": true,
-      "storeId": "0556"
-    }
+    
   ],
   "resetRequests": [
-    {
-      "id": "25bc",
-      "email": "thangmoneo2542004@gmail.com",
-      "createdAt": "2025-08-05T02:25:20.499Z"
-    }
   ],
   "stores": [
-    {
-      "id": "1",
-      "name": "Pizza House",
-      "address": "123 Main St",
-      "img": "",
-      "ownerId": "adb7",
-      "state": true
-    },
-    {
-      "id": "2",
-      "name": "Burger Town",
-      "address": "456 Market St",
-      "img": "",
-      "ownerId": 6,
-      "state": true
-    },
-    {
-      "id": "0556",
-      "name": "TulasStore",
-      "address": "Hoa Lac",
-      "img": "",
-      "ownerId": "2cc4"
-    }
+    
   ],
   "stores_categories": [
     {
@@ -91,46 +48,7 @@
     }
   ],
   "products": [
-    {
-      "id": "1",
-      "name": "Margherita Pizza",
-      "price": 8.99,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP0HbRY0SsECXq3XHqjXUBw3CqK1VfE5PX1w&s",
-      "categoryId": 1,
-      "storeId": 1
-    },
-    {
-      "id": "2",
-      "name": "Pepperoni Pizza",
-      "price": 10.99,
-      "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png",
-      "categoryId": 1,
-      "storeId": 2
-    },
-    {
-      "id": "3",
-      "name": "Cheese Burger",
-      "price": 6.49,
-      "img": "",
-      "categoryId": 3,
-      "storeId": 1
-    },
-    {
-      "id": "4",
-      "name": "Bacon Burger",
-      "price": 7.99,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
-      "categoryId": 3,
-      "storeId": 2
-    },
-    {
-      "id": "2dc309d5-baca-4b28-b070-d3d2b6e87a9c",
-      "name": "Banhmi",
-      "price": 20,
-      "img": "https://cdn.loveandlemons.com/wp-content/uploads/2019/02/banh-mi-sandwich.jpg",
-      "categoryId": 1,
-      "storeId": "0556"
-    }
+    
   ],
   "orders": [
     {
@@ -153,13 +71,5 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-  "cart": [
-    {
-      "id": "52b8",
-      "userId": "a839",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1
-    }
-  ]
+  "cart": []
 }

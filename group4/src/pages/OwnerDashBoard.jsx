@@ -116,7 +116,7 @@ const OwnerDashboard = () => {
               <strong>Name:</strong> {store.name}
             </p>
             <p>
-              <strong>Address:</strong> {store.address}
+              <strong>Address:</strong> {store.storeAddress}
             </p>
           </Card.Body>
         </Card>
