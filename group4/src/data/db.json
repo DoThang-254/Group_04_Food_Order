@@ -5,13 +5,14 @@
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
       "password": "$2b$10$IXM7wlzfgZngSB3FK.xMKOoIlsBsr5ssVcnqAaJJyUoaaTs8GmsVi",
-      "role": "admin"
+      "active": true,
+      "role": "customer"
     },
     {
       "id": "2cc4",
       "name": "Nguyễn Tuấn",
       "email": "tuanminh2424@gmail.com",
-      "password": "$2b$10$oxM6LyMD9K/Y9WLyvjgtsOVgSl76T032U7l0TUsNn9v2REl8RHbli",
+      "password": "$2b$10$RHSecwhmKTzVki63nXIQSOxchTuLx6FeGqs0FeFly.EzsiVzJFS3C",
       "role": "owner",
       "active": true,
       "storeId": "0556"
@@ -24,7 +25,7 @@
       "name": "Pizza House",
       "address": "123 Main St",
       "img": "",
-      "ownerId": "4fc5",
+      "ownerId": "adb7",
       "state": true
     },
     {
@@ -148,18 +149,11 @@
   ],
   "cart": [
     {
-      "id": "1",
-      "userId": 1,
+      "id": "52b8",
+      "userId": "a839",
       "productId": 1,
-      "quantity": 1,
-      "storeId": 1
-    },
-    {
-      "id": "2",
-      "userId": 1,
-      "productId": 3,
-      "quantity": 2,
-      "storeId": 2
+      "storeId": 1,
+      "quantity": 1
     }
   ]
 }

@@ -1,0 +1,152 @@
+/* Header Navbar */
+.navbar {
+  background-color: red !important;
+  border-bottom: 1px solid #eee;
+  padding: 12px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Navbar brand (shop name) */
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white !important;
+  transition: color 0.3s;
+  margin-right: auto;
+}
+
+.navbar-brand:hover {
+  color: #cc2f2f !important;
+}
+
+/* Right-side navigation (cart + login/logout) */
+.navbar .nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Cart Button */
+.btn-outline-primary {
+  border-color: #E53935;
+  color: #E53935;
+  background-color: transparent;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-outline-primary:hover {
+  background-color: #E53935;
+  color: white;
+  border-color: #E53935;
+}
+
+/* Logout button */
+button.btn.logout-btn {
+  background-color: #E53935;
+  border-color: #E53935;
+  color: #fff;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button.btn.logout-btn:hover {
+  background-color: #cc2f2f;
+  border-color: #cc2f2f;
+}
+
+/* Login link styled like a button */
+.navbar .login-link {
+  color: #E53935;
+  font-weight: 500;
+  padding: 6px 16px;
+  text-decoration: none;
+  border: 1px solid #E53935;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .login-link:hover {
+  background-color: #E53935;
+  color: white;
+}
+
+/* Ant Design Drawer (Cart Summary) */
+.ant-drawer-title {
+  color: #E53935;
+  font-weight: bold;
+}
+
+.ant-list-item-meta-title {
+  color: #E53935;
+  font-weight: 500;
+}
+
+/* Cart Empty State */
+.text-center p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* View Details Button in Drawer */
+.ant-btn-primary {
+  background-color: #E53935;
+  border-color: #E53935;
+  font-weight: 500;
+}
+
+.ant-btn-primary:hover {
+  background-color: #cc2f2f !important;
+  border-color: #cc2f2f !important;
+}
+
+.cart-list-dark .ant-list-item,
+.cart-list-dark .ant-list-item-meta-title,
+.cart-list-dark .ant-list-item-meta-description,
+.cart-list-dark .ant-list-item>div {
+  color: white !important;
+}
+
+.cart-list-light .ant-list-item,
+.cart-list-light .ant-list-item-meta-title,
+.cart-list-light .ant-list-item-meta-description,
+.cart-list-light .ant-list-item>div {
+  color: black !important;
+}
+
+.ant-list-item:hover {
+  background-color: transparent !important;
+  cursor: default;
+}
+
+.ant-list-item {
+  border: none;
+
+}
+
+.drawer-dark .ant-drawer-body {
+  background-color: #1e1e1e !important;
+  color: #fff !important;
+}
+
+.drawer-light .ant-drawer-body {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.drawer-dark .ant-drawer-close {
+  color: white !important;
+}
+
+.drawer-light .ant-drawer-close {
+  color: black !important;
+}

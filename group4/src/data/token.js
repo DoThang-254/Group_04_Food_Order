@@ -3,10 +3,18 @@ import { jwtVerify, SignJWT } from 'jose';
 export const createFakeToken = async (data) => {
   const secret = new TextEncoder().encode('my_fake_secret');
   const alg = 'HS256';
+  console.log(data.user);
+  const user = data.user
   const token = await new SignJWT({
-    id: data.user.id,
-    email: data.user.email,
-    role: data.user.role,
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    password: user.password,
+    role: user.role,
+    phone: user.phone,
+    gender: user.gender,
+    birthDate: user.birthDate,
+    address: user.address
   })
     .setProtectedHeader({ alg })
     .setIssuedAt()

@@ -1,4 +1,4 @@
-/* Chủ đề chính: đỏ đậm #8B0000 và trắng */
+/* Chủ đề chính: đỏ tươi #E53935 và trắng */
 body {
   background-color: #fff;
   color: #333;
@@ -14,14 +14,14 @@ body {
 }
 
 .list-group-item.active {
-  background-color: #8B0000 !important;
+  background-color: #E53935 !important;
   color: #fff !important;
   border-radius: 6px;
 }
 
 .list-group-item:hover {
   background-color: #f0f0f0;
-  color: #8B0000;
+  color: #E53935;
 }
 
 /* Product Card */
@@ -45,7 +45,7 @@ body {
 }
 
 .card-title {
-  color: #8B0000;
+  color: #E53935;
   font-weight: bold;
 }
 
@@ -56,7 +56,7 @@ body {
 
 /* Store image */
 .card-text img {
-  border: 2px solid #8B0000;
+  border: 2px solid #E53935;
 }
 
 /* Buttons */
@@ -67,13 +67,13 @@ body {
 }
 
 .btn-primary {
-  background-color: #8B0000;
-  border-color: #8B0000;
+  background-color: #E53935;
+  border-color: #E53935;
 }
 
 .btn-primary:hover {
-  background-color: #a60000;
-  border-color: #a60000;
+  background-color: #cc2f2f;
+  border-color: #cc2f2f;
 }
 
 .btn-secondary {
@@ -88,13 +88,108 @@ body {
 
 /* Pagination */
 .ant-pagination-item-active {
-  border-color: #8B0000 !important;
+  border-color: #E53935 !important;
 }
 
 .ant-pagination-item-active a {
-  color: #8B0000 !important;
+  color: #E53935 !important;
 }
 
 .ant-pagination-item a:hover {
-  color: #a60000 !important;
+  color: #cc2f2f !important;
+}
+
+
+/* DARK THEME PAGINATION */
+.pagination-dark .ant-pagination-item {
+  background-color: #1e1e1e !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+}
+
+.pagination-dark .ant-pagination-item a {
+  color: #fff !important;
+  transform: translateY(-5px);
+
+}
+
+.pagination-dark .ant-pagination-item-active {
+  background-color: #f44336 !important;
+  border-color: #f44336 !important;
+  color: #fff !important;
+
+}
+
+.pagination-dark .ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+/* Nút Prev và Next */
+.pagination-dark .ant-pagination-prev,
+.pagination-dark .ant-pagination-next {
+  background-color: #1e1e1e !important;
+  border: 1px solid #fff !important;
+}
+
+.pagination-dark .ant-pagination-prev .ant-pagination-item-link,
+.pagination-dark .ant-pagination-next .ant-pagination-item-link {
+  color: #fff !important;
+  background-color: #1e1e1e !important;
+  border: none !important;
+}
+
+.pagination-dark .ant-pagination-prev .ant-pagination-item-link,
+.pagination-dark .ant-pagination-next .ant-pagination-item-link {
+  color: #fff !important;
+  background-color: #1e1e1e !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  transform: translateY(-5px);
+}
+
+
+.pagination-light .ant-pagination-item {
+  background-color: #fff !important;
+  border: 1px solid #000 !important;
+  color: #000 !important;
+}
+
+.pagination-light .ant-pagination-item a {
+  color: #000 !important;
+  transform: translateY(-5px);
+}
+
+.pagination-light .ant-pagination-item-active {
+  background-color: #f44336  !important;
+  /* màu nổi bật */
+  border-color: #f44336  !important;
+  color: #fff !important;
+}
+
+.pagination-light .ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+/* Nút Prev và Next */
+.pagination-light .ant-pagination-prev,
+.pagination-light .ant-pagination-next {
+  background-color: #fff !important;
+  border: 1px solid #000 !important;
+}
+
+.pagination-light .ant-pagination-prev .ant-pagination-item-link,
+.pagination-light .ant-pagination-next .ant-pagination-item-link {
+  color: #000 !important;
+  background-color: #fff !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  transform: translateY(-5px);
 }
