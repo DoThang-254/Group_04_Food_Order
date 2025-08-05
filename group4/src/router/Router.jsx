@@ -14,6 +14,7 @@ import ShopDetail from '../pages/ShopDetail';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword'
 import OwnerDashboard from '../pages/OwnerDashBoard';
+import Profile from '../pages/auth/Profile';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: 'reset-password',
         element: <ResetPassword />
+      },
+      {
+        path: 'profile' ,
+        element: <Profile/>
       },
       {
         path: '*',

@@ -1,0 +1,14 @@
+body.light {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+button {
+  padding: 8px 16px;
+  margin-top: 8px;
+}

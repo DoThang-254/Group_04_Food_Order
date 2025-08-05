@@ -12,7 +12,7 @@ import { loginContext } from '../context/LoginContext';
 import './customerstyle/HomePage.css';
 import { decodeFakeToken } from '../data/token';
 import HomeCarousel from '../components/HomeCarousel';
-
+import { themeContext } from '../context/ThemeContext';
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -22,6 +22,7 @@ const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [idUser, setIdUser] = useState();
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const { theme } = useContext(themeContext);
   const pageSize = 9;
   const sectionRef = useRef();
 
@@ -35,9 +36,7 @@ const HomePage = () => {
     sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-    useEffect(() => {
-    if (token) fetchCart();
-  }, [token]);
+    
 
   useEffect(() => {
     const fetchData = async () => {
@@ -118,6 +117,7 @@ const HomePage = () => {
     <HomeCarousel onClickButton={handleScrollToContent}/>
     <Container fluid ref={sectionRef}>
       {/* Nút mở Drawer */}
+
       <AntButton
         icon={<MenuOutlined />}
         type="primary"
@@ -131,38 +131,82 @@ const HomePage = () => {
         title="Categories"
         placement="left"
         onClose={() => setDrawerVisible(false)}
-        visible={drawerVisible}
+        open={drawerVisible}
+        className={theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark'}
+        bodyStyle={{
+          backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
+          color: theme === 'dark' ? 'white' : 'black'
+        }}
+        headerStyle={{
+          backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
+          color: theme === 'dark' ? 'white' : 'black'
+        }}
       >
         <Menu
           mode="inline"
           selectedKeys={[selectedCategoryId]}
           onClick={(e) => handleCategoryClick(e.key)}
+          theme={theme}
+          style={{
+            backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#000',
+          }}
         >
-          <Menu.Item key="all">All</Menu.Item>
+          <Menu.Item
+            key="all"
+            style={{
+              color: theme === 'dark' ? '#fff' : '#000',
+              backgroundColor: selectedCategoryId === 'all'
+                ? theme === 'dark' ? '#f44336' : '#f0f0f0'
+                : 'transparent',
+            }}
+          >
+            All
+          </Menu.Item>
           {uniqueCategories.map((cat) => (
-            <Menu.Item key={cat.name}>{cat.name}</Menu.Item>
+            <Menu.Item
+              key={cat.name}
+              style={{
+                color: theme === 'dark' ? '#fff' : '#000',
+                backgroundColor: selectedCategoryId === cat.name
+                  ? theme === 'dark' ? '#f44336' : '#f0f0f0'
+                  : 'transparent',
+              }}
+            >
+              {cat.name}
+            </Menu.Item>
           ))}
         </Menu>
+
       </Drawer>
+
 
       {/* Sản phẩm */}
       <Row>
         {paginatedProducts.map((product) => (
           <Col key={product.id} sm={6} md={4} className="mb-4">
-            <Card>
-              <Card.Img variant="top" src={product.img} onClick={() => handleViewDetail(product.id)} style={{cursor:"pointer"}} />
+            <Card className={theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark'}>
+              <Card.Img variant="top" src={product.img} onClick={() => handleViewDetail(product.id)} style={{ cursor: "pointer" }} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-                <Card.Text>Price: ${product.price}</Card.Text>
-                <Card.Text>Category: {product.categoryName || "Unknown"}</Card.Text>
+                <Card.Text style={{ color: theme === 'dark' ? 'white' : 'black' }}
+                >Price: ${product.price}</Card.Text>
+                <Card.Text style={{
+                  color: theme === 'dark' ? 'white' : 'black'
+                }}>Category: {product.categoryName || "Unknown"}</Card.Text>
                 <Card.Text>
                   <Image
                     src={product.storeImg}
                     roundedCircle
-                    style={{ width: '30px', height: '30px', cursor: 'pointer', marginRight: '8px' }}
+                    style={{
+                      width: '30px', height: '30px', cursor: 'pointer', marginRight: '8px'
+                    }}
                     onClick={() => handleShopDetail(product.storeId)}
                   />
-              <span  onClick={() => handleShopDetail(product.storeId)} style={{cursor:"pointer"}} > {product.storeName || "Unknown"}</span>   
+                  <span onClick={() => handleShopDetail(product.storeId)} style={{
+                    cursor: "pointer",
+                    color: theme === 'dark' ? 'white' : 'black'
+                  }} > {product.storeName || "Unknown"}</span>
                 </Card.Text>
                 <Button onClick={() => handleAddToCart(product)} className="me-2">Add to Cart</Button>
               </Card.Body>
@@ -176,6 +220,7 @@ const HomePage = () => {
         pageSize={pageSize}
         total={filteredProducts.length}
         onChange={(page) => setCurrentPage(page)}
+        className={theme === 'dark' ? 'pagination-dark' : 'pagination-light'}
         style={{ textAlign: 'center', marginTop: '20px' }}
       />
     </Container>

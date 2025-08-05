@@ -134,6 +134,32 @@
       "productId": 1,
       "storeId": 1,
       "quantity": 2
+    },
+    {
+      "id": "d724",
+      "userId": "5e7a",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 3
+    },
+    {
+      "id": "6328",
+      "userId": "5e7a",
+      "productId": 2,
+      "storeId": 2,
+      "quantity": 2
+    },
+    {
+      "id": "6cfd",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 1
+    },
+    {
+      "id": "ebf0",
+      "productId": 2,
+      "storeId": 2,
+      "quantity": 1
     }
   ]
 }
