@@ -36,7 +36,9 @@ const HomePage = () => {
     sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-    
+    useEffect(() => {
+    if (token) fetchCart();
+  }, [token]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -208,7 +210,7 @@ const HomePage = () => {
                     color: theme === 'dark' ? 'white' : 'black'
                   }} > {product.storeName || "Unknown"}</span>
                 </Card.Text>
-                <Button onClick={() => handleAddToCart(product)} className="me-2">Add to Cart</Button>
+                <Button type="button" onClick={() => handleAddToCart(product)} className="me-2">Add to Cart</Button>
               </Card.Body>
             </Card>
           </Col>

@@ -69,7 +69,18 @@ export const useCartStore = create((set, get) => ({
           storeId,
           quantity,
         });
-        
+         const newItem = newItemRes.data;
+         set((state) => ({
+    cart: [
+      ...state.cart,
+      {
+        ...newItem,
+        name: product.name,
+        price: product.price,
+        img: product.img,
+      },
+    ],
+  }));
       }
     } catch (err) {
       console.error("Add to cart failed:", err);
