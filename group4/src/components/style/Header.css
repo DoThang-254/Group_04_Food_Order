@@ -1,303 +1,409 @@
-/* Header Navbar */
+/* Header.css - Red & White Theme */
+
+/* Custom Navbar Styling */
 .navbar {
-  background-color: red !important;
-  border-bottom: 1px solid #eee;
-  padding: 12px 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%) !important;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(229, 57, 53, 0.3) !important;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 6px 25px rgba(229, 57, 53, 0.4) !important;
+}
+
+/* Container Styling */
+.navbar .container {
+  background: transparent !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Navbar brand (shop name) */
+/* Brand/Logo Styling */
 .navbar-brand {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: white !important;
-  transition: color 0.3s;
-  margin-right: auto;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
 
 .navbar-brand:hover {
-  color: #cc2f2f !important;
-}
-
-/* Right-side navigation (cart + login/logout) */
-.navbar .nav {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* Cart Button */
-.btn-outline-primary {
-  border-color: #E53935;
-  color: #E53935;
-  background-color: transparent;
-  font-weight: 500;
-  transition: background-color 0.3s, color 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.btn-outline-primary:hover {
-  background-color: #E53935;
-  color: white;
-  border-color: #E53935;
-}
-
-/* Logout button */
-button.btn.logout-btn {
-  background-color: #E53935;
-  border-color: #E53935;
-  color: #fff;
-  font-weight: 500;
-  padding: 6px 16px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-button.btn.logout-btn:hover {
-  background-color: #cc2f2f;
-  border-color: #cc2f2f;
-}
-
-/* Login link styled like a button */
-.navbar .login-link {
-  color: #E53935;
-  font-weight: 500;
-  padding: 6px 16px;
-  text-decoration: none;
-  border: 1px solid #E53935;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.navbar .login-link:hover {
-  background-color: #E53935;
-  color: white;
-}
-
-/* Ant Design Drawer (Cart Summary) */
-.ant-drawer-title {
-  color: #E53935;
-  font-weight: bold;
-}
-
-.ant-list-item-meta-title {
-  color: #E53935;
-  font-weight: 500;
-}
-
-/* Cart Empty State */
-.text-center p {
-  color: white;
-  font-size: 1rem;
-  margin-top: 8px;
-}
-
-/* View Details Button in Drawer */
-.ant-btn-primary {
-  background-color: #E53935;
-  border-color: #E53935;
-  font-weight: 500;
-}
-
-.ant-btn-primary:hover {
-  background-color: #cc2f2f !important;
-  border-color: #cc2f2f !important;
-}
-/* Logo trong Navbar */
-.logo-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
-  transition: transform 0.3s;
-}
-
-.logo-img:hover {
   transform: scale(1.05);
 }
 
-/* Brand wrapper chứa logo + text */
-.brand-wrapper {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-/* Tên app cạnh logo */
-.brand-text {
-  font-weight: bold;
-  font-size: 20px;
-  color: #E53935;
-}
-
-/* Navbar tổng thể */
-.navbar {
-  background-color: #fff !important;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  z-index: 1000;
-}
-
-/* Nav actions bên phải */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Nút logout */
-.logout-btn {
-  background-color: #E53935 !important;
-  border: none;
-  color: white;
-  font-weight: 500;
-}
-
-.logout-btn:hover {
-  background-color: #c62828 !important;
-  color: white;
-}
-
-/* Nút giỏ hàng */
-.cart-button {
-  background-color: transparent;
-  border: none;
-  padding: 4px 8px;
-}
-
-/* Link Login */
-.login-link {
-  text-decoration: none;
-  color: #E53935;
-  font-weight: 500;
-}
-
-.login-link:hover {
-  color: #b71c1c;
-}
-/* --- Tổng thể navbar --- */
-.navbar {
-  background-color: #ffffff !important;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
-}
-
-/* --- Phần logo --- */
-.brand-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+.navbar-brand img {
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
-  transform: scale(1.2);        /* Phóng lớn mà không làm to Navbar */
-  transform-origin: center;
-  margin-left: -10px;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
-/* --- Nav actions (giỏ hàng, login/logout) --- */
+.navbar-brand img:hover {
+  border-color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: rotate(5deg);
+}
+
+/* Navigation Actions */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 15px;
 }
 
-/* --- Nút giỏ hàng --- */
+/* Cart Button Styling */
 .cart-button {
-  background-color: transparent;
-  border: none;
-  padding: 6px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* --- Badge đếm số lượng sản phẩm --- */
-.ant-badge {
-  cursor: pointer;
-}
-
-/* --- Nút Logout --- */
-.logout-btn {
-  background-color: #E53935 !important;
-  border: none;
-  color: white;
-  font-weight: 500;
-  padding: 6px 16px;
-  border-radius: 6px;
-}
-
-.logout-btn:hover {
-  background-color: #b71c1c !important;
-  color: white;
-}
-
-/* --- Link Login --- */
-.login-link {
-  text-decoration: none;
-  color: #E53935;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 6px 12px;
-}
-
-.login-link:hover {
-  color: #b71c1c;
-}
-
-
-
-
-
-.cart-list-dark .ant-list-item,
-.cart-list-dark .ant-list-item-meta-title,
-.cart-list-dark .ant-list-item-meta-description,
-.cart-list-dark .ant-list-item>div {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px) !important;
   color: white !important;
 }
 
-.cart-list-light .ant-list-item,
-.cart-list-light .ant-list-item-meta-title,
-.cart-list-light .ant-list-item-meta-description,
-.cart-list-light .ant-list-item>div {
-  color: black !important;
+.cart-button:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
 }
 
-.ant-list-item:hover {
-  background-color: transparent !important;
-  cursor: default;
+.cart-button:active {
+  transform: translateY(0px) !important;
 }
 
-.ant-list-item {
-  border: none;
-
+/* Badge Styling */
+.ant-badge-count {
+  background: white !important;
+  color: #E53935 !important;
+  border: 2px solid #E53935 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  animation: pulse 2s infinite !important;
 }
 
-.drawer-dark .ant-drawer-body {
-  background-color: #1e1e1e !important;
-  color: #fff !important;
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Dropdown Styling */
+.dropdown-toggle {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 25px !important;
+  padding: 8px 20px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.dropdown-toggle:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.dropdown-toggle:focus {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25) !important;
+}
+
+.dropdown-toggle::after {
+  border-top-color: white !important;
+  margin-left: 8px !important;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  background: white !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(229, 57, 53, 0.2) !important;
+  padding: 8px 0 !important;
+  margin-top: 8px !important;
+  min-width: 180px !important;
+}
+
+.dropdown-item {
+  color: #333 !important;
+  padding: 12px 20px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(135deg, #E53935, #C62828) !important;
+  color: white !important;
+  transform: translateX(5px) !important;
+}
+
+.dropdown-item:active {
+  background: linear-gradient(135deg, #D32F2F, #B71C1C) !important;
+  color: white !important;
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgba(229, 57, 53, 0.2) !important;
+  margin: 8px 0 !important;
+}
+
+/* Login Link */
+.nav-link {
+  color: white !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  padding: 8px 20px !important;
+  border-radius: 25px !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.nav-link:hover {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Drawer Styling */
+.drawer-light .ant-drawer-header {
+  background: linear-gradient(135deg, #E53935, #C62828) !important;
+  border-bottom: none !important;
+  padding: 20px 24px !important;
+}
+
+.drawer-light .ant-drawer-title {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+}
+
+.drawer-light .ant-drawer-close {
+  color: white !important;
 }
 
 .drawer-light .ant-drawer-body {
-  background-color: #fff !important;
-  color: #000 !important;
+  background: #fafafa !important;
+  padding: 20px !important;
+}
+
+.drawer-dark .ant-drawer-header {
+  background: linear-gradient(135deg, #E53935, #C62828) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.drawer-dark .ant-drawer-title {
+  color: white !important;
+  font-weight: 700 !important;
 }
 
 .drawer-dark .ant-drawer-close {
   color: white !important;
 }
 
-.drawer-light .ant-drawer-close {
-  color: black !important;
+.drawer-dark .ant-drawer-body {
+  background: #1e1e1e !important;
+  color: white !important;
+}
+
+/* Cart List Styling */
+.cart-list-light .ant-list-item {
+  background: white !important;
+  margin-bottom: 8px !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.1) !important;
+  border: 1px solid rgba(229, 57, 53, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.cart-list-light .ant-list-item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.15) !important;
+  border-color: rgba(229, 57, 53, 0.2) !important;
+}
+
+.cart-list-dark .ant-list-item {
+  background: #2a2a2a !important;
+  margin-bottom: 8px !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(229, 57, 53, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.cart-list-dark .ant-list-item:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4) !important;
+  border-color: rgba(229, 57, 53, 0.5) !important;
+}
+
+.cart-list-light .ant-list-item-meta-title {
+  color: #333 !important;
+  font-weight: 600 !important;
+}
+
+.cart-list-light .ant-list-item-meta-description {
+  color: #666 !important;
+}
+
+.cart-list-dark .ant-list-item-meta-title {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.cart-list-dark .ant-list-item-meta-description {
+  color: #ccc !important;
+}
+
+/* Empty Cart State */
+.text-center {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 40px 20px !important;
+}
+
+.text-center .anticon {
+  color: #E53935 !important;
+  margin-bottom: 16px !important;
+  animation: bounce 2s infinite !important;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.text-center p {
+  color: #666 !important;
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  max-width: 250px !important;
+  line-height: 1.5 !important;
+}
+
+/* View Details Button */
+.ant-btn-primary {
+  background: linear-gradient(135deg, #E53935, #C62828) !important;
+  border-color: transparent !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  height: 45px !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #D32F2F, #B71C1C) !important;
+  border-color: transparent !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(229, 57, 53, 0.4) !important;
+}
+
+.ant-btn-primary:focus {
+  background: linear-gradient(135deg, #E53935, #C62828) !important;
+  border-color: transparent !important;
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2) !important;
+}
+
+/* Affix Shadow */
+.ant-affix {
+  z-index: 1000;
+}
+
+/* Price in cart */
+.cart-list-light .ant-list-item > div:last-child,
+.cart-list-dark .ant-list-item > div:last-child {
+  font-weight: 700 !important;
+  color: #E53935 !important;
+  font-size: 1.1rem !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 8px 0;
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .cart-button {
+    width: 45px !important;
+    height: 45px !important;
+  }
+  
+  .dropdown-toggle {
+    padding: 6px 15px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .nav-link {
+    font-size: 1rem !important;
+    padding: 6px 15px !important;
+  }
+  
+  .ant-drawer-content {
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 10px !important;
+  }
+  
+  .nav-actions {
+    gap: 10px;
+  }
+  
+  .dropdown-toggle {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .ant-drawer-content {
+    width: 280px !important;
+  }
 }

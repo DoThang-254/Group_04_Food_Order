@@ -202,7 +202,7 @@ const ShopDetail = () => {
                         }}
                       >
                         <i className="view-icon" >👁️</i>
-                        Xem chi tiết
+                        View Detail
                       </button>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ const ShopDetail = () => {
                       }}
                     >
                       <span className="btn-icon">🛒</span>
-                      Thêm vào giỏ
+                      Add To Cart
                     </Button>
                   </Card.Body>
                 </Card>
