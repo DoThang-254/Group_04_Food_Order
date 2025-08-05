@@ -13,6 +13,7 @@ import PageNotFound from '../pages/auth/PageNotFound';
 import ShopDetail from '../pages/ShopDetail';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword'
+import OwnerDashboard from '../pages/OwnerDashBoard';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -65,6 +66,9 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <PageNotFound />
+      }, {
+        path: "owner-dashboard",
+        element: <OwnerDashboard />,
       }
     ]
   } , 

@@ -1,64 +1,20 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "password": "$2b$10$J3ouopoDHOfh7WSNIdlR7eziq/IVTblCAa3q.JMuitMHwyiD4.Pqe",
-      "role": "customer",
-      "active": true
-    },
-    {
-      "id": "2",
-      "name": "Alice Admin",
-      "email": "admin@example.com",
-      "password": "hashedAdmin",
-      "role": "admin",
-      "active": true
-    },
-    {
-      "id": "3",
-      "name": "Bob Staff",
-      "email": "staff1@pizzahouse.com",
-      "password": "hashedStaff",
-      "role": "staff",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "4",
-      "name": "Eve Staff",
-      "email": "staff2@burgertown.com",
-      "password": "hashedStaff2",
-      "role": "staff",
-      "storeId": 2,
-      "active": false
-    },
-    {
-      "id": "5",
-      "name": "Mike Owner",
-      "email": "owner1@pizzahouse.com",
-      "password": "hashedOwner1",
-      "role": "owner",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "6",
-      "name": "Sarah Owner",
-      "email": "owner2@burgertown.com",
-      "password": "hashedOwner2",
-      "role": "owner",
-      "storeId": 2,
-      "active": true
-    },
-    {
       "id": "4fc5",
       "name": "do thang",
       "email": "thangmoneo2542004@gmail.com",
       "password": "$2b$10$IXM7wlzfgZngSB3FK.xMKOoIlsBsr5ssVcnqAaJJyUoaaTs8GmsVi",
-      "role": "admin",
-      "active": true
+      "role": "admin"
+    },
+    {
+      "id": "2cc4",
+      "name": "Nguyễn Tuấn",
+      "email": "tuanminh2424@gmail.com",
+      "password": "$2b$10$oxM6LyMD9K/Y9WLyvjgtsOVgSl76T032U7l0TUsNn9v2REl8RHbli",
+      "role": "owner",
+      "active": true,
+      "storeId": "0556"
     }
   ],
   "resetRequests": [],
@@ -68,7 +24,7 @@
       "name": "Pizza House",
       "address": "123 Main St",
       "img": "",
-      "ownerId": 5,
+      "ownerId": "4fc5",
       "state": true
     },
     {
@@ -78,6 +34,13 @@
       "img": "",
       "ownerId": 6,
       "state": true
+    },
+    {
+      "id": "0556",
+      "name": "TulasStore",
+      "address": "Hoa Lac",
+      "img": "",
+      "ownerId": "2cc4"
     }
   ],
   "stores_categories": [
@@ -152,6 +115,14 @@
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
       "categoryId": 3,
       "storeId": 2
+    },
+    {
+      "id": "2dc309d5-baca-4b28-b070-d3d2b6e87a9c",
+      "name": "Banhmi",
+      "price": 20,
+      "img": "https://cdn.loveandlemons.com/wp-content/uploads/2019/02/banh-mi-sandwich.jpg",
+      "categoryId": 1,
+      "storeId": "0556"
     }
   ],
   "orders": [
