@@ -108,3 +108,153 @@ button.btn.logout-btn:hover {
   background-color: #cc2f2f !important;
   border-color: #cc2f2f !important;
 }
+/* Logo trong Navbar */
+.logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: transform 0.3s;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Brand wrapper chứa logo + text */
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Tên app cạnh logo */
+.brand-text {
+  font-weight: bold;
+  font-size: 20px;
+  color: #E53935;
+}
+
+/* Navbar tổng thể */
+.navbar {
+  background-color: #fff !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 1000;
+}
+
+/* Nav actions bên phải */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Nút logout */
+.logout-btn {
+  background-color: #E53935 !important;
+  border: none;
+  color: white;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background-color: #c62828 !important;
+  color: white;
+}
+
+/* Nút giỏ hàng */
+.cart-button {
+  background-color: transparent;
+  border: none;
+  padding: 4px 8px;
+}
+
+/* Link Login */
+.login-link {
+  text-decoration: none;
+  color: #E53935;
+  font-weight: 500;
+}
+
+.login-link:hover {
+  color: #b71c1c;
+}
+/* --- Tổng thể navbar --- */
+.navbar {
+  background-color: #ffffff !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
+/* --- Phần logo --- */
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  transform: scale(1.2);        /* Phóng lớn mà không làm to Navbar */
+  transform-origin: center;
+  margin-left: -10px;
+}
+
+/* --- Nav actions (giỏ hàng, login/logout) --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* --- Nút giỏ hàng --- */
+.cart-button {
+  background-color: transparent;
+  border: none;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Badge đếm số lượng sản phẩm --- */
+.ant-badge {
+  cursor: pointer;
+}
+
+/* --- Nút Logout --- */
+.logout-btn {
+  background-color: #E53935 !important;
+  border: none;
+  color: white;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 6px;
+}
+
+.logout-btn:hover {
+  background-color: #b71c1c !important;
+  color: white;
+}
+
+/* --- Link Login --- */
+.login-link {
+  text-decoration: none;
+  color: #E53935;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 6px 12px;
+}
+
+.login-link:hover {
+  color: #b71c1c;
+}
+
+
+

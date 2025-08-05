@@ -1,0 +1,51 @@
+.slide {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.slide-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(0.6); /* Làm mờ nhẹ để caption nổi bật */
+  transition: transform 0.5s ease;
+}
+
+.slide:hover .slide-img {
+  transform: scale(1.05);
+}
+
+.slide-caption {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  max-width: 40%;
+}
+
+.slide-caption h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.slide-caption p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.slide-caption .ant-btn-primary {
+  background-color: #8B0000;
+  border-color: #8B0000;
+  font-weight: 500;
+}
+
+.slide-caption .ant-btn-primary:hover,
+.slide-caption .ant-btn-primary:focus {
+  background-color: #E53935;
+  border-color: #E53935;
+}

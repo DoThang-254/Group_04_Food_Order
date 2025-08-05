@@ -8,14 +8,19 @@ const Checkout = () => {
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
    const fetchCart = useCartStore((state) => state.fetchCart);
+  const clearAfterCheckout = useCartStore((state) => state.clearAfterCheckout);
   useEffect(()=>{
     fetchCart();
-  })
+  },[])
 
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+   const handleCheckout = async () => {
+    await clearAfterCheckout(); 
+    alert("Checkout successfully");
+  };
 
   return (
     <Container className="py-4">
@@ -90,8 +95,8 @@ const Checkout = () => {
 
       <Row className="justify-content-end mt-2">
         <Col xs="auto">
-          <Button variant="dark" className="px-4 py-2" >
-            TIẾN HÀNH THANH TOÁN
+          <Button variant="dark" className="px-4 py-2" onClick = {handleCheckout} >
+            Checkout
           </Button>
         </Col>
       </Row>

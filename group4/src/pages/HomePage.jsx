@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useContext } from 'react';
+import React, { useEffect, useState, useMemo, useContext, useRef } from 'react';
 import { getAllProducts } from '../services/products';
 import { getAllCategories } from '../services/categories';
 import { getAllStores } from '../services/stores';
@@ -11,6 +11,7 @@ import { MenuOutlined } from '@ant-design/icons';
 import { loginContext } from '../context/LoginContext';
 import './customerstyle/HomePage.css';
 import { decodeFakeToken } from '../data/token';
+import HomeCarousel from '../components/HomeCarousel';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -22,6 +23,7 @@ const HomePage = () => {
   const [idUser, setIdUser] = useState();
   const [drawerVisible, setDrawerVisible] = useState(false);
   const pageSize = 9;
+  const sectionRef = useRef();
 
   const nav = useNavigate();
   const { token } = useContext(loginContext);
@@ -29,12 +31,12 @@ const HomePage = () => {
   const addToCart = useCartStore((state) => state.addToCart);
   const fetchCart = useCartStore((state) => state.fetchCart);
 
-  useEffect(() => {
-    const decode = async () => {
-      const info = await decodeFakeToken(token);
-      if (info) setIdUser(info.id);
-    };
-    decode();
+   const handleScrollToContent = () => {
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+    useEffect(() => {
+    if (token) fetchCart();
   }, [token]);
 
   useEffect(() => {
@@ -95,7 +97,7 @@ const HomePage = () => {
       return;
     }
     const item = {
-      userId: idUser,
+      
       productId: Number(product.id),
       storeId: Number(product.storeId),
       quantity: 1
@@ -112,7 +114,9 @@ const HomePage = () => {
   };
 
   return (
-    <Container fluid>
+    <>
+    <HomeCarousel onClickButton={handleScrollToContent}/>
+    <Container fluid ref={sectionRef}>
       {/* Nút mở Drawer */}
       <AntButton
         icon={<MenuOutlined />}
@@ -175,6 +179,7 @@ const HomePage = () => {
         style={{ textAlign: 'center', marginTop: '20px' }}
       />
     </Container>
+    </>
   );
 };
 

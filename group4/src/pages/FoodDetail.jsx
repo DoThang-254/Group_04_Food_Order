@@ -1,12 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
+import { Rate } from 'antd';
 import { getAnProduct } from '../services/products';
-import { useCartStore } from "../stores/stores";
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
+import { useCartStore } from '../stores/stores';
 import { loginContext } from '../context/LoginContext';
 import './customerstyle/FoodDetail.css';
 
@@ -14,10 +10,11 @@ const FoodDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(1); // Default 1 cho UX tốt hơn
-const [idUser,setIdUser] = useState()
+  const [quantity, setQuantity] = useState(1);
   const addToCart = useCartStore((state) => state.addToCart);
- const { token } = useContext(loginContext);
+  const fetchCart = useCartStore((state) => state.fetchCart);
+  const { token } = useContext(loginContext);
+
   useEffect(() => {
     const fetchProduct = async () => {
       const data = await getAnProduct(id);
@@ -25,73 +22,95 @@ const [idUser,setIdUser] = useState()
     };
     fetchProduct();
   }, [id]);
-   useEffect(() => {
-      const decode = async () => {
-        const info = await decodeFakeToken(token);
-        console.log(info.id)
-        if (info) {
-          setIdUser(info.id);
-           
-        }
-  
-      };
-      decode();
-    }, [token]);
-  
+
+  useEffect(() => {
+    if (token) fetchCart();
+  }, [token]);
 
   const handleAddToCart = () => {
     if (!token) {
-      alert("Please log in to add to cart.");
+      alert('Please log in to add to cart.');
       navigate('/login');
       return;
     }
 
     if (product && quantity > 0) {
       const item = {
-        userId: idUser,
         productId: Number(product.id),
         storeId: Number(product.storeId),
         quantity: quantity,
       };
 
       addToCart(item);
-      alert("Added to cart!");
+      alert('Added to cart!');
     }
   };
 
-  return (
-    <div>
-      <div>
-        <Button
-          variant="warning"
-          onClick={() => navigate(-1)}
-          className="mt-3 mb-3"
-        >
-          BACK TO PRODUCTS
-        </Button>
-      </div>
+  if (!product) return <div className="loading">Loading...</div>;
 
-      <Container>
-        <Row>
-          <Col xs={12} md={6}>
-            <Image src={product?.img} rounded fluid />
-          </Col>
-          <Col xs={12} md={6}>
-            <h4>{product?.name}</h4>
-            <p><strong>Price:</strong> ${Number(product?.price).toLocaleString()}</p>
-            
-            <div className="mt-3">
-              <Button
-                variant="primary"
-                onClick={handleAddToCart}
-                disabled={quantity === 0}
-              >
-                Add to Cart
-              </Button>
+  return (
+    <div className="food-detail-wrapper">
+      <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
+
+      <div className="food-detail-container">
+        <div className="food-detail-img">
+          <img src={product?.img} alt={product?.name} />
+        </div>
+
+        <div className="food-detail-info">
+          <h1 className="food-name">{product?.name}</h1>
+          <p className="food-price">${Number(product?.price).toLocaleString()}</p>
+          
+          {/* Rating Section */}
+          <div className="rating-section">
+            <Rate disabled defaultValue={4.5} allowHalf />
+            <span className="rating-text">(4.5 Rating)</span>
+          </div>
+
+          <p className="food-desc">
+            {product?.description || 'Delicious food made from fresh ingredients, ensuring hygiene and authentic restaurant flavors. Sweet spicy vegetable with delicious prosciutto. Fried and the yellow sauce flavoring served.'}
+          </p>
+
+          {/* Food Info */}
+          <div className="food-info">
+            <div className="info-item">
+              <span className="info-label">SKU:</span>
+              <span className="info-value">R1017</span>
             </div>
-          </Col>
-        </Row>
-      </Container>
+            <div className="info-item">
+              <span className="info-label">Category:</span>
+              <span className="info-value">Burgers</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">Tags:</span>
+              <span className="info-value">Fast Food, Hot, Soft, Trend</span>
+            </div>
+          </div>
+
+          <div className="quantity-box">
+            <span>Quantity:</span>
+            <div className="quantity-controls">
+              <button
+                className="qty-btn"
+                onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}
+              >
+                −
+              </button>
+              <span className="qty-value">{quantity}</span>
+              <button
+                className="qty-btn"
+                onClick={() => setQuantity((prev) => prev + 1)}
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <button className="add-to-cart-btn" onClick={handleAddToCart}>
+            Add To Cart
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

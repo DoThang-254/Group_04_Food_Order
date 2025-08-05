@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "id": "adb7",
+      "id": "5e7a",
       "name": "Đỗ Thái",
-      "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$NGDA/8Jp.0oIpPb43MdWNufQzwY4UYK2VRElwhD7YJVR.yUL.cnxm",
-      "role": "owner",
+      "email": "thaido11204@gmail.com",
+      "password": "$2b$10$USMtRVszjC5SbnVTIADIEe7yYrTCP7MNsXCAX6wU27UcMJl.SbEri",
+      "role": "customer",
       "active": true
     }
   ],
@@ -15,7 +15,7 @@
       "id": "1",
       "name": "Pizza House",
       "address": "123 Main St",
-      "img": "",
+      "img": "https://static.vecteezy.com/system/resources/previews/021/121/143/original/pizza-logo-pizzeria-logotype-fast-food-logo-illustration-vector.jpg",
       "ownerId": "adb7",
       "state": true
     },
@@ -23,7 +23,7 @@
       "id": "2",
       "name": "Burger Town",
       "address": "456 Market St",
-      "img": "",
+      "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
       "state": true
     }
@@ -73,9 +73,10 @@
       "id": "1",
       "name": "Margherita Pizza",
       "price": 8.99,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP0HbRY0SsECXq3XHqjXUBw3CqK1VfE5PX1w&s",
+      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg",
       "categoryId": 1,
-      "storeId": 1
+      "storeId": 1,
+      "description": "Pizza truyền thống với sốt cà chua tươi, phô mai mozzarella và lá húng quế."
     },
     {
       "id": "2",
@@ -83,23 +84,26 @@
       "price": 10.99,
       "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png",
       "categoryId": 1,
-      "storeId": 2
+      "storeId": 2,
+      "description": "Pizza phủ pepperoni cay nồng và phô mai béo ngậy, hoàn hảo cho tín đồ thịt."
     },
     {
       "id": "3",
       "name": "Cheese Burger",
       "price": 6.49,
-      "img": "",
+      "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg",
       "categoryId": 3,
-      "storeId": 1
+      "storeId": 1,
+      "description": "Bánh burger cổ điển với lớp thịt bò nướng và phô mai cheddar tan chảy."
     },
     {
       "id": "4",
       "name": "Bacon Burger",
       "price": 7.99,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
+      "img": "https://simply-delicious-food.com/wp-content/uploads/2015/07/Bacon-and-cheese-burgers-3.jpg",
       "categoryId": 3,
-      "storeId": 2
+      "storeId": 2,
+      "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
     }
   ],
   "orders": [
@@ -125,44 +129,11 @@
   ],
   "cart": [
     {
-      "id": "ba1f",
-      "userId": "4fc5",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 8
-    },
-    {
-      "id": "0c81",
-      "userId": "4fc5",
-      "productId": 2,
-      "storeId": 2,
-      "quantity": 1
-    },
-    {
-      "id": "a101",
-      "userId": "4fc6",
-      "productId": 2,
-      "storeId": 2,
-      "quantity": 1
-    },
-    {
-      "id": "2773",
-      "userId": "4fc6",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1
-    },
-    {
-      "id": "a31b",
+      "id": "8e95",
+      "userId": "6bb6",
       "productId": 1,
       "storeId": 1,
       "quantity": 2
-    },
-    {
-      "id": "a9ec",
-      "productId": 3,
-      "storeId": 1,
-      "quantity": 1
     }
   ]
 }
