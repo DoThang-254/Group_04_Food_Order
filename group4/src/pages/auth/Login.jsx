@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginContext } from '../../context/LoginContext';
 import { createFakeToken } from '../../data/token';
 import { themeContext } from '../../context/ThemeContext';
+import { getStoreByOwnerId } from '../../services/stores';
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         password: Yup.string()
@@ -24,6 +25,8 @@ const Login = () => {
         login(data).then(async (res) => {
             if (res) {
                 if (!res.msg) {
+
+                    const checkStore = await getStoreByOwnerId(res.user.id);
                     const fakeToken = await createFakeToken(res)
                     setToken(fakeToken);
                     switch (res.user.role) {
@@ -36,7 +39,12 @@ const Login = () => {
                             break;
                         }
                         case 'owner': {
-                            navToHome('/owner-dashboard');
+                            if (checkStore) {
+                                navToHome('/owner-dashboard');
+                            }
+                            else {
+                                navToHome('/login')
+                            }
                             break;
                         }
                     }

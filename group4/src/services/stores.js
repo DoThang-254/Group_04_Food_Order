@@ -27,5 +27,5 @@ export const postStore = async (data) => {
 };
 export const getStoreByOwnerId = async (ownerId) => {
   const res = await instance.get(`${endpoint.STORES}?ownerId=${ownerId}`);
-  return res.data[0]; // vì trả về mảng
+  return res.data[0]; 
 };

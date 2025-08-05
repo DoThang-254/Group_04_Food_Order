@@ -1,10 +1,13 @@
 import { comparePassword } from "../data/util";
 import { endpoint } from "./endpoint";
 import instance from "./index";
+import { getStoreByOwnerId } from "./stores";
 export const login = async (data) => {
     try {
 
         const res = await instance.get(endpoint.USERS + `?email=${data.email}`);
+        const checkStore = await getStoreByOwnerId(data.id);
+        console.log(checkStore)
         if (res.data.length > 0) {
             const user = res.data[0];
             const check = await comparePassword(data.password, user.password);
