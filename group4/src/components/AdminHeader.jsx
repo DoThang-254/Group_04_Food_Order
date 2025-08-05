@@ -7,7 +7,7 @@ const AdminHeader = () => {
   const { setIsLogin } = useContext(loginContext);
   const navigate = useNavigate();
   // Lấy tên tài khoản admin từ localStorage (giả định đã lưu khi đăng nhập)
-  const adminName = localStorage.getItem('adminName') || 'Admin';
+  // const adminName = localStorage.getItem('adminName') || 'Admin';
 
   const handleLogout = () => {
     setIsLogin(false);
@@ -29,7 +29,7 @@ const AdminHeader = () => {
       letterSpacing: 1
     }}>
       <div>
-        Admin &nbsp;|&nbsp; {adminName}
+        {/* Admin &nbsp;|&nbsp; {adminName} */}
       </div>
       <button
         onClick={handleLogout}
