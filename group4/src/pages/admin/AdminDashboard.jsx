@@ -8,6 +8,7 @@ import { getAllCart } from "../../services/cart";
 import { getAllUsers } from "../../services/users";
 import styles from "./styles/AdminDashboard.module.css";
 import AdminUserControl from "./AdminUserControl";
+import AdminBlacklist from "./AdminBlacklist";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -68,9 +69,7 @@ const AdminDashboard = () => {
 
   return (
     <div className={styles.dashboardContainer}>
-      <h2 className={styles.dashboardTitle}>Admin Dashboard</h2>
       <div style={{ display: 'flex', flexDirection: 'row', gap: 0 }}>
-        {/* Sidebar sát trái ngoài cùng, có thể ẩn hiện */}
         <div style={{ position: 'relative', minWidth: sidebarOpen ? 200 : 48, maxWidth: sidebarOpen ? 220 : 48, background: '#fff', borderRight: '2px solid #bbb', height: '100vh', transition: 'min-width 0.2s, max-width 0.2s', display: 'flex', flexDirection: 'column', alignItems: sidebarOpen ? 'flex-start' : 'center', zIndex: 10 }}>
           <button onClick={()=>setSidebarOpen(o=>!o)} style={{ position: 'absolute', top: 12, right: sidebarOpen ? -18 : -18, background: '#1890ff', color: '#fff', border: 'none', borderRadius: '50%', width: 28, height: 28, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>
             {sidebarOpen ? '<' : '>'}
@@ -81,6 +80,7 @@ const AdminDashboard = () => {
               <div style={{ width: '100%' }}>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='users'?'#1890ff':'#333', fontWeight: sidebarTab==='users'?600:400 }} onClick={()=>setSidebarTab('users')}>Users</div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='stores'?'#1890ff':'#333', fontWeight: sidebarTab==='stores'?600:400 }} onClick={()=>setSidebarTab('stores')}>Stores</div>
+                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='blacklist'?'#1890ff':'#333', fontWeight: sidebarTab==='blacklist'?600:400 }} onClick={()=>setSidebarTab('blacklist')}>Blacklist</div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='reports'?'#1890ff':'#333', fontWeight: sidebarTab==='reports'?600:400 }} onClick={()=>setSidebarTab('reports')}>Reports</div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='feedbacks'?'#1890ff':'#333', fontWeight: sidebarTab==='feedbacks'?600:400 }} onClick={()=>setSidebarTab('feedbacks')}>Feedbacks</div>
               </div>
@@ -93,6 +93,7 @@ const AdminDashboard = () => {
         <div style={{ flex: 1, minHeight: '100vh', background: '#f7f7f7', padding: 32 }}>
           {sidebarTab === 'users' && <AdminUserControl />}
           {sidebarTab === 'stores' && <AdminStoreControl />}
+          {sidebarTab === 'blacklist' && <AdminBlacklist />}
           {sidebarTab === 'reports' && (
             <div style={{ background: '#fff', borderRadius: 8, border: '2px solid #bbb', padding: 32, minHeight: 300 }}>
               <h3 style={{ marginBottom: 16 }}>Reports</h3>

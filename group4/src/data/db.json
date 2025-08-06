@@ -26,6 +26,21 @@
       "birthDate": "2004-12-14",
       "address": "hn",
       "active": true
+    },
+    {
+      "id": "0b68",
+      "name": "trang uyen",
+      "phone": "0123456789",
+      "email": "tranguyen123@gmail.com",
+      "password": "$2b$10$Sub/sxy2Hfnu910TLcvyHujr6lHbQyVo1BrEe/zq3N1EhblVLUdU2",
+      "gender": "female",
+      "dob": "2004-12-14",
+      "role": "owner",
+      "birthDate": "2004-12-14",
+      "address": "HN",
+      "active": false,
+      "storeId": "a5dd",
+      "ban": true
     }
   ],
   "resetRequests": [],
@@ -52,7 +67,15 @@
       "storeAddress": "hcm",
       "img": "",
       "ownerId": "0e36",
-      "state": true
+      "state": false
+    },
+    {
+      "id": "a5dd",
+      "name": "TrangUyenShop",
+      "storeAddress": "123 Street - HN - VN",
+      "img": "",
+      "ownerId": "0b68",
+      "state": false
     }
   ],
   "stores_categories": [

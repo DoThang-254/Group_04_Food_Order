@@ -70,7 +70,18 @@ const AdminStoreControl = () => {
         </thead>
         <tbody>
           {paginatedStores.map(store => (
-            <tr key={store.id} style={{ cursor: 'pointer' }} onClick={() => setSelectedStore(store)}>
+            <tr
+              key={store.id}
+              style={{ cursor: 'pointer', position: 'relative' }}
+              onClick={() => setSelectedStore(store)}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = '#ffe5e5';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = '';
+              }}
+              title="Xem chi tiết cửa hàng"
+            >
               <td>{store.name}</td>
               <td>{store.address}</td>
               <td>{getOwnerName(store.ownerId)}</td>
@@ -114,15 +125,6 @@ const AdminStoreControl = () => {
                   {products.filter(p => String(p.storeId) === String(selectedStore.id)).length === 0 && <li>Không có sản phẩm</li>}
                   {products.filter(p => String(p.storeId) === String(selectedStore.id)).map(p => (
                     <li key={p.id}>{p.name}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="adminstore-modal-row adminstore-modal-row-menu">
-                <div className="adminstore-modal-label">Nhân viên:</div>
-                <ul className="adminstore-modal-list">
-                  {users.filter(u => u.role === 'staff' && String(u.storeId) === String(selectedStore.id)).length === 0 && <li>Không có nhân viên</li>}
-                  {users.filter(u => u.role === 'staff' && String(u.storeId) === String(selectedStore.id)).map(u => (
-                    <li key={u.id}>{u.name} ({u.email})</li>
                   ))}
                 </ul>
               </div>
