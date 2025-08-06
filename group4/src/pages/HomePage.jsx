@@ -54,15 +54,15 @@ const HomePage = () => {
         setCategories(categoriesResponse);
         setStores(storesResponse);
 
-        const categoryMap = new Map(categoriesResponse.map(item => [Number(item.id), item.name]));
-        const storeNameMap = new Map(storesResponse.map(item => [item.id, item.name]));
-        const storeImgMap = new Map(storesResponse.map(item => [Number(item.id), item.img]));
+        const categoryMap = new Map(categoriesResponse.map(item => [(item.id), item.name]));
+        const storeNameMap = new Map(storesResponse.map(item => [(item.id), item.name]));
+        const storeImgMap = new Map(storesResponse.map(item => [(item.id), item.img]));
 
         const mappedProducts = productsResponse.map(product => ({
           ...product,
-          storeName: storeNameMap.get(product.storeId),
-          categoryName: categoryMap.get(product.categoryId),
-          storeImg: storeImgMap.get(product.storeId)
+          storeName: storeNameMap.get(String(product.storeId)),
+          categoryName: categoryMap.get(String(product.categoryId)),
+          storeImg: storeImgMap.get(String(product.storeId))
         }));
 
         setProducts(mappedProducts);
@@ -113,8 +113,8 @@ const HomePage = () => {
     }
     const item = {
       
-      productId: Number(product.id),
-      storeId: Number(product.storeId),
+      productId: (product.id),
+      storeId: (product.storeId),
       quantity: 1
     };
     addToCart(item);
@@ -246,7 +246,8 @@ const HomePage = () => {
         style={{ textAlign: 'center', marginTop: '20px' }}
       />
     </Container>
-    <Footer/>
+    <div className='footer'> <Footer/></div>
+   
     </>
   );
 };

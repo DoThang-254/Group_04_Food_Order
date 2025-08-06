@@ -36,8 +36,8 @@ const FoodDetail = () => {
 
     if (product && quantity > 0) {
       const item = {
-        productId: Number(product.id),
-        storeId: Number(product.storeId),
+        productId: (product.id),
+        storeId: (product.storeId),
         quantity: quantity,
       };
 
