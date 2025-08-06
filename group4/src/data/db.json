@@ -15,11 +15,11 @@
       "storeId": "0204"
     },
     {
-      "id": "e237",
+      "id": "4037",
       "name": "le binh",
       "phone": "0123456789",
       "email": "binh123@gmail.com",
-      "password": "$2b$10$R2SGMY7lqByEJ70pSsOO7uC8ycsiUQJA92ZT8paI3EobvFVsXwvBu",
+      "password": "$2b$10$i5fq77iSe9EItx6GD6fYu.AN.Rfs4QfN0bavGLfPTxjXa4aWvKbxS",
       "gender": "male",
       "dob": "2004-12-14",
       "role": "customer",
