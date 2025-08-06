@@ -13,6 +13,19 @@
       "address": "hcm",
       "active": true,
       "storeId": "0204"
+    },
+    {
+      "id": "fe9c",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangbachi2542004@gmail.com",
+      "password": "$2b$10$OROtExMnOOcFIxDsmKgYXuOEW.to.y5fK37APBXSvqonKFYZGZzZm",
+      "gender": "male",
+      "dob": "2004-02-05",
+      "role": "admin",
+      "birthDate": "2004-02-05",
+      "address": "hn",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -39,7 +52,7 @@
       "storeAddress": "hcm",
       "img": "",
       "ownerId": "0e36",
-      "state": true
+      "state": false
     }
   ],
   "stores_categories": [

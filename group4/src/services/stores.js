@@ -34,6 +34,6 @@ export const getStoreByOwnerIdAndChecking = async (ownerId) => {
   const res = await instance.get(`${endpoint.STORES}?ownerId=${ownerId}`);
   return {
     user : res.data[0] ,
-    msg : res.data[0].state ? '' : 'Your store is not active'
+    msg : res.data[0]?.state ? '' : 'Your store is not active'
   }; 
 };

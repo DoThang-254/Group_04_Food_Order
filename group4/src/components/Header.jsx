@@ -43,7 +43,6 @@ const Header = () => {
     const decode = async () => {
       const info = await decodeFakeToken(token);
       const store = await getStoreByOwnerIdAndChecking(info.id);
-      console.log(store.user)
       if (info?.id) {
         fetchCart(info.id);
         setRole(info.role);
@@ -119,6 +118,12 @@ const Header = () => {
                       <Dropdown.Item onClick={() => navigate('/owner-dashboard')}>
                         <ProfileOutlined style={{ marginRight: '8px' }} />
                         Owner Dashboard
+                      </Dropdown.Item>
+                    )}
+                    {!store && (
+                      <Dropdown.Item onClick={() => navigate('/')}>
+                        <ProfileOutlined style={{ marginRight: '8px' }} />
+                        Register Store
                       </Dropdown.Item>
                     )}
                     <Dropdown.Item onClick={toggleTheme}>
