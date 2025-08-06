@@ -16,6 +16,7 @@ import ResetPassword from '../pages/auth/ResetPassword'
 import OwnerDashboard from '../pages/OwnerDashBoard';
 import Profile from '../pages/auth/Profile';
 import RegisterStore from '../pages/auth/RegisterStore';
+import RouterAuth from './RouterAuth';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -66,23 +67,29 @@ const router = createBrowserRouter([
         element: <ResetPassword />
       },
       {
-        path: 'profile' ,
-        element: <Profile/>
-      },
-      {
         path: '*',
         element: <PageNotFound />
-      }, 
+      },
       {
         path: "owner-dashboard",
         element: <OwnerDashboard />,
       },
       {
-        path: "register-store",
-        element: <RegisterStore/>,
-      }
+        path: '',
+        element: <RouterAuth />,
+        children: [
+          {
+            path: 'profile',
+            element: <Profile />
+          },
+          {
+            path: "register-store",
+            element: <RegisterStore />,
+          }
+        ]
+      },
     ]
-  } , 
+  },
   {
     element: <RouterPrivate />,
     children: [

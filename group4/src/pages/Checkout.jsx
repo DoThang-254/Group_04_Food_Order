@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useCartStore } from "../stores/stores";
+import {DeleteOutlined} from '@ant-design/icons';
 
 const Checkout = () => {
   const cart = useCartStore((state) => state.cart);
@@ -39,6 +40,7 @@ const Checkout = () => {
 
           <Col xs={5}>
             <div className="fw-bold">{item.name}</div>
+           
           </Col>
 
           <Col xs={2} className="d-flex align-items-center">
@@ -64,11 +66,11 @@ const Checkout = () => {
           </Col>
 
           <Col xs={1} className="text-center fw-bold">
-            {item.price} ₫
+            {item.price} $
           </Col>
 
           <Col xs={1} className="text-center fw-bold">
-            {(item.price * item.quantity)} ₫
+            {(item.price * item.quantity)} $
           </Col>
 
           <Col xs={1} className="text-center">
@@ -77,7 +79,7 @@ const Checkout = () => {
               className="text-danger p-0"
               onClick={() => removeFromCart(item.id)}
             >
-              Xóa
+             <DeleteOutlined />
             </Button>
           </Col>
         </Row>
@@ -87,7 +89,7 @@ const Checkout = () => {
       <Row className="justify-content-end mt-4">
         <Col xs="auto">
           <h5>
-            <strong>TỔNG CỘNG: {total} ₫</strong>
+            <strong>TOTAL: {total} $</strong>
           </h5>
         </Col>
       </Row>

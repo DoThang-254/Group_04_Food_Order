@@ -15,10 +15,10 @@ export const useCartStore = create((set, get) => ({
       const cartItems = res.data;
 
       const products = await getAllProducts();
-      const productMap = new Map(products.map(p => [Number(p.id), p]));
+      const productMap = new Map(products.map(p => [(p.id), p]));
 
       const detailedCart = cartItems.map(item => {
-        const product = productMap.get(Number(item.productId)) || {};
+        const product = productMap.get((item.productId)) || {};
         return {
           ...item,
           name: product.name || 'No name',
@@ -49,8 +49,8 @@ export const useCartStore = create((set, get) => ({
       const existing = res.data[0];
 
       const products = await getAllProducts();
-      const productMap = new Map(products.map(p => [Number(p.id), p]));
-      const product = productMap.get(Number(productId)) || {};
+      const productMap = new Map(products.map(p => [(p.id), p]));
+      const product = productMap.get(String(productId)) || {};
 
       if (existing) {
         const updated = { ...existing, quantity: existing.quantity + quantity };

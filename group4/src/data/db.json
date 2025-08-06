@@ -41,6 +41,18 @@
       "active": false,
       "storeId": "a5dd",
       "ban": true
+
+      "id": "bae3",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "$2b$10$dEB6i9NwaePPus/M9kq.ye8DmMjL3ztOHRF40Am0eiu63yiSASJaq",
+      "gender": "male",
+      "dob": "2004-02-05",
+      "role": "customer",
+      "birthDate": "2004-02-05",
+      "address": "van dinh"
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -193,5 +205,16 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "c943",
+      "userId": "5e7a",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 1,
+      "name": "Margherita Pizza",
+      "price": 8.99,
+      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+    }
+  ]
 }
