@@ -1,0 +1,217 @@
+.owner-overview {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.overview-header {
+    margin-bottom: 30px;
+}
+
+.overview-header h3 {
+    color: #8B0000;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.overview-header p {
+    color: #6c757d;
+    margin: 0;
+}
+
+/* Statistics cards specific styling */
+.stat-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    opacity: 0.8;
+}
+
+.stat-details {
+    text-align: right;
+    flex: 1;
+}
+
+.stat-details h4 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.stat-details p {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin: 2px 0 0 0;
+    font-weight: 500;
+}
+
+/* Status overview card */
+.status-overview-card {
+    border-left: 4px solid #8B0000;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.status-item:last-child {
+    border-bottom: none;
+}
+
+.status-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Store info card */
+.store-info-card {
+    border-left: 4px solid #28a745;
+}
+
+.store-info-item {
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.store-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.store-info-item strong {
+    color: #343a40;
+    margin-right: 8px;
+}
+
+/* Recent orders card */
+.recent-orders-card {
+    border-left: 4px solid #17a2b8;
+}
+
+.recent-orders-card .table th {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #495057;
+    background-color: #f8f9fa;
+}
+
+.recent-orders-card .table td {
+    font-size: 0.9rem;
+    padding: 10px 8px;
+}
+
+/* Top products card */
+.top-products-card {
+    border-left: 4px solid #fd7e14;
+}
+
+.top-products-list {
+    padding: 0;
+}
+
+.top-product-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.top-product-item:last-child {
+    border-bottom: none;
+}
+
+.product-rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #8B0000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 12px;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-name {
+    font-weight: 600;
+    color: #343a40;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.product-price {
+    color: #28a745;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stat-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stat-icon {
+        margin-bottom: 10px;
+    }
+
+    .stat-details {
+        text-align: center;
+    }
+
+    .status-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .top-product-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .product-rank {
+        align-self: flex-start;
+    }
+}
+
+/* Card hover effects for overview */
+.owner-overview .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(139, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+/* Badge color customization */
+.owner-overview .badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.owner-overview .badge-success {
+    background-color: #28a745;
+}
+
+.owner-overview .badge-primary {
+    background-color: #8B0000;
+}
+
+/* Table row hover effect */
+.recent-orders-card .table-hover tbody tr:hover {
+    background-color: rgba(139, 0, 0, 0.05);
+}
