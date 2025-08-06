@@ -1,26 +1,68 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useCartStore } from "../stores/stores";
-import {DeleteOutlined} from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
+import { createOrder } from "../services/orders";
+import { loginContext } from "../context/LoginContext";
+import { decodeFakeToken } from "../data/token";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const cart = useCartStore((state) => state.cart);
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
-   const fetchCart = useCartStore((state) => state.fetchCart);
+  const fetchCart = useCartStore((state) => state.fetchCart);
   const clearAfterCheckout = useCartStore((state) => state.clearAfterCheckout);
-  useEffect(()=>{
+  useEffect(() => {
     fetchCart();
-  },[])
+  }, [])
 
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-   const handleCheckout = async () => {
-    await clearAfterCheckout(); 
-    alert("Checkout successfully");
+
+  const { token } = useContext(loginContext);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const decode = async () => {
+      const info = await decodeFakeToken(token);
+      if (info) {
+        setUser(info);
+      }
+      setLoading(false);
+    };
+    decode();
+  }, [token]);
+
+  if (loading) return null;
+
+  const handleCheckout = async () => {
+    if (total > 0) {
+      const isConfirmed = window.confirm("Checkout successfully. Do you want pay?");
+      if (isConfirmed) {
+        await clearAfterCheckout();
+        try {
+          const order = {
+            userId: user.id,
+            status: 'pending',
+            total: total,
+            items: cart,
+          }
+          const newOrder = await createOrder(order);
+
+          navigate(`/payment/${newOrder.id}`);
+
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+
+    //code here
   };
 
   return (
@@ -40,7 +82,7 @@ const Checkout = () => {
 
           <Col xs={5}>
             <div className="fw-bold">{item.name}</div>
-           
+
           </Col>
 
           <Col xs={2} className="d-flex align-items-center">
@@ -79,7 +121,7 @@ const Checkout = () => {
               className="text-danger p-0"
               onClick={() => removeFromCart(item.id)}
             >
-             <DeleteOutlined />
+              <DeleteOutlined />
             </Button>
           </Col>
         </Row>
@@ -96,13 +138,13 @@ const Checkout = () => {
 
       <Row className="justify-content-end mt-2">
         <Col xs="auto">
-          <Button variant="dark" className="px-4 py-2" onClick = {handleCheckout} >
+          <Button variant="dark" className="px-4 py-2" onClick={handleCheckout} >
             Checkout
           </Button>
         </Col>
       </Row>
 
-      
+
     </Container>
   );
 };

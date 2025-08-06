@@ -21,9 +21,10 @@
       "password": "$2b$10$dEB6i9NwaePPus/M9kq.ye8DmMjL3ztOHRF40Am0eiu63yiSASJaq",
       "gender": "male",
       "dob": "2004-02-05",
-      "role": "owner",
+      "role": "customer",
       "birthDate": "2004-02-05",
-      "address": "van dinh"
+      "address": "van dinh",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -158,18 +159,43 @@
         }
       ],
       "createdAt": "2025-07-28T10:00:00Z"
+    },
+    {
+      "id": "cc16",
+      "userId": "bae3",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "d7e1",
+          "userId": "bae3",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ]
+    },
+    {
+      "id": "69f0",
+      "userId": "bae3",
+      "status": "pending",
+      "total": 21.98,
+      "items": [
+        {
+          "id": "1397",
+          "userId": "bae3",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 2,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ]
     }
   ],
-  "cart": [
-    {
-      "id": "c943",
-      "userId": "5e7a",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1,
-      "name": "Margherita Pizza",
-      "price": 8.99,
-      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
-    }
-  ]
+  "cart": []
 }
