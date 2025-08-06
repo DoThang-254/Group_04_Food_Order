@@ -153,7 +153,7 @@ const Header = () => {
           {cart.length === 0 ? (
             <div className="text-center mt-5">
               <FrownOutlined style={{ fontSize: '64px', marginBottom: '16px', color: '#E53935' }} />
-              <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
+              <p>There are no products in your shopping cart.</p>
               <Button 
                 type="primary" 
                 onClick={() => {
@@ -162,7 +162,7 @@ const Header = () => {
                 }}
                 style={{ marginTop: '20px' }}
               >
-                Tiếp tục mua sắm
+                Continue shopping
               </Button>
             </div>
           ) : (

@@ -30,7 +30,7 @@ const ShopDetail = () => {
 
   const handleAddToCart = (product) => {
     if (!token) {
-      alert('Vui lòng đăng nhập để thêm vào giỏ hàng.');
+      alert('Please login to add to cart.');
       navigate('/login');
       return;
     }
@@ -49,7 +49,7 @@ const ShopDetail = () => {
     successMsg.innerHTML = `
       <div class="success-content">
         <i class="success-icon">✓</i>
-        <span>Đã thêm ${product.name} vào giỏ hàng!</span>
+        <span>Added ${product.name} to cart!</span>
       </div>
     `;
     document.body.appendChild(successMsg);
@@ -105,7 +105,7 @@ const ShopDetail = () => {
     return (
       <div className="loading-container">
         <div className="spinner"></div>
-        <p>Đang tải thông tin cửa hàng...</p>
+        <p>Loading store information...</p>
       </div>
     );
   }
@@ -130,19 +130,19 @@ const ShopDetail = () => {
                 <div className="shop-stats">
                   <div className="stat-item">
                     <span className="stat-number">{filteredProducts.length}</span>
-                    <span className="stat-label">Món ăn</span>
+                    <span className="stat-label">Dish</span>
                   </div>
                   <div className="stat-item">
                     <span className="stat-number">4.5</span>
-                    <span className="stat-label">⭐ Đánh giá</span>
+                    <span className="stat-label">⭐ Rating</span>
                   </div>
                   <div className="stat-item">
                     <span className="stat-number">30-45</span>
-                    <span className="stat-label">Phút giao hàng</span>
+                    <span className="stat-label">Delivery Minute</span>
                   </div>
                 </div>
                 <p className="shop-description">
-                  Chào mừng bạn đến với {store.name}! Chúng tôi cam kết mang đến những món ăn ngon nhất với chất lượng tuyệt vời.
+                 Welcome to {store.name}! We are committed to bringing you the best food with great quality.
                 </p>
               </div>
             </div>
@@ -155,7 +155,7 @@ const ShopDetail = () => {
         <div className="category-section">
           <h3 className="section-title">
             <span className="title-icon">🍽️</span>
-            Thực đơn của chúng tôi
+           Our menu
           </h3>
           <div className="category-filters">
             {categories.map((category) => (
@@ -164,7 +164,7 @@ const ShopDetail = () => {
                 className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
                 onClick={() => handleCategoryFilter(category)}
               >
-                {category === 'all' ? 'Tất cả' : category}
+                {category === 'all' ? 'All' : category}
               </button>
             ))}
           </div>
@@ -174,8 +174,8 @@ const ShopDetail = () => {
         {filteredProducts.length === 0 ? (
           <div className="empty-state">
             <div className="empty-icon">🍽️</div>
-            <h4>Không có món ăn nào</h4>
-            <p>Cửa hàng này hiện tại chưa có món ăn nào trong danh mục đã chọn.</p>
+            <h4>No food available</h4>
+            <p>This store currently has no dishes in the selected category.</p>
           </div>
         ) : (
           <Row className="products-grid g-4">

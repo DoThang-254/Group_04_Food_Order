@@ -13,7 +13,11 @@ import './customerstyle/HomePage.css';
 import { decodeFakeToken } from '../data/token';
 import HomeCarousel from '../components/HomeCarousel';
 import { themeContext } from '../context/ThemeContext';
+import SortBar from '../components/SortBar';
+import Footer from '../components/Footer';
 const HomePage = () => {
+  const [sortOption, setSortOption] = useState("default");
+
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [stores, setStores] = useState([]);
@@ -68,6 +72,16 @@ const HomePage = () => {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+  let sorted = [...filteredProducts];
+  if (sortOption === "asc") {
+    sorted.sort((a, b) => a.price - b.price);
+  } else if (sortOption === "desc") {
+    sorted.sort((a, b) => b.price - a.price);
+  }
+  setFilteredProducts(sorted);
+}, [sortOption]);
+
 
   useEffect(() => {
     let filtered = [...products];
@@ -116,7 +130,12 @@ const HomePage = () => {
 
   return (
     <>
+    
+
+
     <HomeCarousel onClickButton={handleScrollToContent}/>
+    
+    
     <Container fluid ref={sectionRef}>
       {/* Nút mở Drawer */}
 
@@ -128,6 +147,7 @@ const HomePage = () => {
       >
         Menu
       </AntButton>
+      <div><SortBar sortOption={sortOption} setSortOption={setSortOption} /></div>
 
       <Drawer
         title="Categories"
@@ -226,6 +246,7 @@ const HomePage = () => {
         style={{ textAlign: 'center', marginTop: '20px' }}
       />
     </Container>
+    <Footer/>
     </>
   );
 };

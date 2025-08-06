@@ -7,6 +7,19 @@
       "password": "$2b$10$USMtRVszjC5SbnVTIADIEe7yYrTCP7MNsXCAX6wU27UcMJl.SbEri",
       "role": "customer",
       "active": true
+    },
+    {
+      "id": "f692",
+      "name": "Đỗ thang",
+      "phone": "0973197802",
+      "email": "thado11204@gmail.com",
+      "password": "$2b$10$y3QRyP4ldK4oP7eGCYbO1uX/LTN8Q.EqmpYJw/OgmlX1Bg/KZL7TO",
+      "gender": "male",
+      "dob": "2005-04-19",
+      "role": "customer",
+      "birthDate": "2005-04-19",
+      "address": "số nhà 24,đường tiến thành",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -127,5 +140,16 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "c943",
+      "userId": "5e7a",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 1,
+      "name": "Margherita Pizza",
+      "price": 8.99,
+      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+    }
+  ]
 }
