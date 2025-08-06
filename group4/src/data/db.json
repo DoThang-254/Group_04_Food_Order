@@ -7,8 +7,20 @@
       "password": "$2b$10$USMtRVszjC5SbnVTIADIEe7yYrTCP7MNsXCAX6wU27UcMJl.SbEri",
       "role": "customer",
       "active": true
+    },
+    {
+      "id": "21c2",
+      "name": "Le Binh",
+      "phone": "0123456789",
+      "email": "lequangbinh14122004@gmail.com",
+      "password": "$2b$10$4B0TuUzyu13NBzpe.eJHgumwktFUcP/LXxeZ.tqSrsauclIUgow2K",
+      "gender": "male",
+      "dob": "2004-12-14",
+      "role": "admin",
+      "birthDate": "2004-12-14",
+      "address": "abc",
+      "active": true
     }
-    
   ],
   "resetRequests": [],
   "stores": [
@@ -28,7 +40,6 @@
       "ownerId": 6,
       "state": true
     }
-    
   ],
   "stores_categories": [
     {
@@ -107,7 +118,6 @@
       "storeId": 2,
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
     }
-
   ],
   "orders": [
     {
@@ -130,6 +140,5 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-
   "cart": []
 }
