@@ -4,7 +4,6 @@ import instance from "./index";
 import { getStoreByOwnerId } from "./stores";
 export const login = async (data) => {
     try {
-
         const res = await instance.get(endpoint.USERS + `?email=${data.email}`);
         const checkStore = await getStoreByOwnerId(data.id);
         console.log(checkStore)

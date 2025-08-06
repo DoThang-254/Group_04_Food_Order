@@ -51,7 +51,7 @@ const HomePage = () => {
         setStores(storesResponse);
 
         const categoryMap = new Map(categoriesResponse.map(item => [Number(item.id), item.name]));
-        const storeNameMap = new Map(storesResponse.map(item => [Number(item.id), item.name]));
+        const storeNameMap = new Map(storesResponse.map(item => [item.id, item.name]));
         const storeImgMap = new Map(storesResponse.map(item => [Number(item.id), item.img]));
 
         const mappedProducts = productsResponse.map(product => ({

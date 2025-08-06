@@ -17,12 +17,13 @@ import {
   MoonOutlined,
   ProfileOutlined,
 } from '@ant-design/icons';
-import { Drawer, List, Badge, Affix, Divider } from 'antd'; 
+import { Drawer, List, Badge, Affix, Divider } from 'antd';
 import { loginContext } from '../context/LoginContext';
 import { decodeFakeToken } from '../data/token';
 import './style/Header.css';
 import logo from './image/logo.jpg'
 import { themeContext } from '../context/ThemeContext';
+import { getStoreByOwnerId, getStoreByOwnerIdAndChecking } from '../services/stores';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -32,17 +33,26 @@ const Header = () => {
 
   const { token, setToken } = useContext(loginContext);
   const { theme, toggleTheme } = useContext(themeContext);
-
+  const [role, setRole] = useState();
   const [open, setOpen] = useState(false);
-
+  const [store, setStore] = useState();
   const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
   const totalPrice = cart.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 0)), 0);
 
   useEffect(() => {
     const decode = async () => {
       const info = await decodeFakeToken(token);
+      const store = await getStoreByOwnerIdAndChecking(info.id);
+      console.log(store.user)
       if (info?.id) {
         fetchCart(info.id);
+        setRole(info.role);
+        if (store.user.state) {
+          setStore(true);
+        }
+        else {
+          setStore(false);
+        }
       }
     };
     if (token) decode();
@@ -69,21 +79,21 @@ const Header = () => {
               <img src={logo} alt="Logo" />
             </Navbar.Brand>
 
-          <Nav className="ml-auto nav-actions" style={{ marginLeft:'1000px' }}>
+            <Nav className="ml-auto nav-actions" style={{ marginLeft: '1000px' }}>
 
-              <Badge 
-                count={totalItems} 
-                offset={[-2, 2]} 
-                showZero 
-                style={{ 
-                  backgroundColor: 'white', 
+              <Badge
+                count={totalItems}
+                offset={[-2, 2]}
+                showZero
+                style={{
+                  backgroundColor: 'white',
                   color: '#E53935',
                   border: '2px solid #E53935',
                   fontWeight: 'bold'
                 }}
               >
-                <Button 
-                  className="cart-button" 
+                <Button
+                  className="cart-button"
                   onClick={() => setOpen(true)}
                   title="Giỏ hàng"
                 >
@@ -91,7 +101,7 @@ const Header = () => {
                 </Button>
               </Badge>
             </Nav>
-            
+
             <Nav style={{ marginLeft: '15px' }}>
               {token ? (
                 <Dropdown align="end">
@@ -105,9 +115,15 @@ const Header = () => {
                       <ProfileOutlined style={{ marginRight: '8px' }} />
                       Profile
                     </Dropdown.Item>
+                    {role === 'owner' && store && (
+                      <Dropdown.Item onClick={() => navigate('/owner-dashboard')}>
+                        <ProfileOutlined style={{ marginRight: '8px' }} />
+                        Owner Dashboard
+                      </Dropdown.Item>
+                    )}
                     <Dropdown.Item onClick={toggleTheme}>
-                      {theme === "light" ? 
-                        <MoonOutlined style={{ marginRight: '8px' }} /> : 
+                      {theme === "light" ?
+                        <MoonOutlined style={{ marginRight: '8px' }} /> :
                         <SunOutlined style={{ marginRight: '8px' }} />
                       }
                       {theme === "light" ? "Dark Mode" : "Light Mode"}
@@ -120,8 +136,8 @@ const Header = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               ) : (
-                <Nav.Link 
-                  onClick={() => navigate('/login')} 
+                <Nav.Link
+                  onClick={() => navigate('/login')}
                   style={{ cursor: 'pointer' }}
                   className="login-link"
                 >
@@ -154,8 +170,8 @@ const Header = () => {
             <div className="text-center mt-5">
               <FrownOutlined style={{ fontSize: '64px', marginBottom: '16px', color: '#E53935' }} />
               <p>Không có sản phẩm nào trong giỏ hàng của bạn</p>
-              <Button 
-                type="primary" 
+              <Button
+                type="primary"
                 onClick={() => {
                   setOpen(false);
                   navigate('/');
@@ -196,11 +212,11 @@ const Header = () => {
               />
 
               <Divider style={{ borderColor: '#E53935', opacity: 0.3 }} />
-              
-              <div style={{ 
-                padding: '16px 0', 
-                display: 'flex', 
-                justifyContent: 'space-between', 
+
+              <div style={{
+                padding: '16px 0',
+                display: 'flex',
+                justifyContent: 'space-between',
                 alignItems: 'center',
                 fontSize: '1.2rem',
                 fontWeight: 'bold'
@@ -211,9 +227,9 @@ const Header = () => {
                 </span>
               </div>
 
-              <Button 
-                type="primary" 
-                block 
+              <Button
+                type="primary"
+                block
                 onClick={handleViewDetails}
                 size="large"
                 style={{ marginTop: '10px' }}
