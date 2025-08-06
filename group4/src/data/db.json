@@ -1,107 +1,57 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "password": "hashed123",
-      "role": "customer",
-      "active": true
-    },
-    {
-      "id": "2",
-      "name": "Alice Admin",
-      "email": "admin@example.com",
-      "password": "hashedAdmin",
-      "role": "admin",
-      "active": true
-    },
-    {
-      "id": "3",
-      "name": "Bob Staff",
-      "email": "staff1@pizzahouse.com",
-      "password": "hashedStaff",
-      "role": "staff",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "4",
-      "name": "Eve Staff",
-      "email": "staff2@burgertown.com",
-      "password": "hashedStaff2",
-      "role": "staff",
-      "storeId": 2,
-      "active": false
-    },
-    {
-      "id": "5",
-      "name": "Mike Owner",
-      "email": "owner1@pizzahouse.com",
-      "password": "hashedOwner1",
-      "role": "owner",
-      "storeId": 1,
-      "active": true
-    },
-    {
-      "id": "6",
-      "name": "Sarah Owner",
-      "email": "owner2@burgertown.com",
-      "password": "hashedOwner2",
-      "role": "owner",
-      "storeId": 2,
-      "active": true
-    },
-    {
-      "id": "4fc5",
+      "id": "0e36",
       "name": "do thang",
+      "phone": "0329894798",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$SBIlFqLf9Jiftyjpo1R0WuGdGN7vCoTY960EZd.OXKHFDIeQVtyMK",
+      "password": "$2b$10$aeWUDmt.gsPVyLOz6JrtHeBTP1Axhl1jhOlJYSZzBtEl0ErXIPytC",
+      "gender": "male",
+      "dob": "2004-04-25",
+      "role": "owner",
+      "birthDate": "2004-04-25",
+      "address": "hcm",
+      "active": true,
+      "storeId": "0204"
+    },
+    {
+      "id": "e237",
+      "name": "le binh",
+      "phone": "0123456789",
+      "email": "binh123@gmail.com",
+      "password": "$2b$10$R2SGMY7lqByEJ70pSsOO7uC8ycsiUQJA92ZT8paI3EobvFVsXwvBu",
+      "gender": "male",
+      "dob": "2004-12-14",
       "role": "customer",
+      "birthDate": "2004-12-14",
+      "address": "hn",
       "active": true
-    },
-    {
-      "id": "caf3",
-      "name": "do thang",
-      "email": "than2542004@gmail.com",
-      "password": "$2b$10$aNsYHLvOubqVTOJs3kSLneNDkpXfOdN3.03m5wWz7rOfRsCWOfGJu",
-      "role": "owner",
-      "active": false,
-      "storeId": "6236"
-    },
-    {
-      "id": "6324",
-      "name": "do thang",
-      "email": "thangbachi2542004@gmail.com",
-      "password": "$2b$10$p9ngmVcqnX5ijD3mcuJV6.OZiRv5I2Odx1DhOQqyldbR4BomQ2f2K",
-      "role": "owner",
-      "active": false,
-      "storeId": "f1c6"
-    },
-    {
-      "id": "bb4f",
-      "name": "do thang",
-      "email": "thangchimteo2542004@gmail.com",
-      "password": "$2b$10$iO3IlxFzoEZQiPiYB788a.2vam7uyPW/mexPWGMOuN3b2qO1CJ85.",
-      "role": "owner",
-      "active": false
     }
   ],
+  "resetRequests": [],
   "stores": [
     {
       "id": "1",
       "name": "Pizza House",
       "address": "123 Main St",
-      "img": "",
-      "ownerId": 5,
+      "img": "https://static.vecteezy.com/system/resources/previews/021/121/143/original/pizza-logo-pizzeria-logotype-fast-food-logo-illustration-vector.jpg",
+      "ownerId": "adb7",
       "state": true
     },
     {
       "id": "2",
       "name": "Burger Town",
       "address": "456 Market St",
-      "img": "",
+      "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
+      "state": true
+    },
+    {
+      "id": "0204",
+      "name": "gg",
+      "storeAddress": "hcm",
+      "img": "",
+      "ownerId": "0e36",
       "state": true
     }
   ],
@@ -150,9 +100,10 @@
       "id": "1",
       "name": "Margherita Pizza",
       "price": 8.99,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP0HbRY0SsECXq3XHqjXUBw3CqK1VfE5PX1w&s",
+      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg",
       "categoryId": 1,
-      "storeId": 1
+      "storeId": 1,
+      "description": "Pizza truyền thống với sốt cà chua tươi, phô mai mozzarella và lá húng quế."
     },
     {
       "id": "2",
@@ -160,23 +111,42 @@
       "price": 10.99,
       "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png",
       "categoryId": 1,
-      "storeId": 2
+      "storeId": 2,
+      "description": "Pizza phủ pepperoni cay nồng và phô mai béo ngậy, hoàn hảo cho tín đồ thịt."
     },
     {
       "id": "3",
       "name": "Cheese Burger",
       "price": 6.49,
-      "img": "",
+      "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg",
       "categoryId": 3,
-      "storeId": 1
+      "storeId": 1,
+      "description": "Bánh burger cổ điển với lớp thịt bò nướng và phô mai cheddar tan chảy."
     },
     {
       "id": "4",
       "name": "Bacon Burger",
       "price": 7.99,
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVIV5XAqJjQu92r2nufS8vcTzWzPm6Ed3gQ&s",
+      "img": "https://simply-delicious-food.com/wp-content/uploads/2015/07/Bacon-and-cheese-burgers-3.jpg",
       "categoryId": 3,
-      "storeId": 2
+      "storeId": 2,
+      "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
+    },
+    {
+      "id": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
+      "name": "bánh mỳ ",
+      "price": 5,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "0204"
+    },
+    {
+      "id": "58b36245-49c1-4f62-b2fe-6cc7c4a51f15",
+      "name": "a",
+      "price": 5,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "0204"
     }
   ],
   "orders": [
@@ -200,20 +170,5 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-  "cart": [
-    {
-      "id": "1",
-      "userId": 1,
-      "productId": 1,
-      "quantity": 1,
-      "storeId": 1
-    },
-    {
-      "id": "2",
-      "userId": 1,
-      "productId": 3,
-      "quantity": 2,
-      "storeId": 2
-    }
-  ]
+  "cart": []
 }

@@ -1,0 +1,195 @@
+/* Chủ đề chính: đỏ tươi #E53935 và trắng */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ListGroup category */
+.list-group-item {
+  border: none;
+  padding: 12px 18px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.list-group-item.active {
+  background-color: #E53935 !important;
+  color: #fff !important;
+  border-radius: 6px;
+}
+
+.list-group-item:hover {
+  background-color: #f0f0f0;
+  color: #E53935;
+}
+
+/* Product Card */
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-title {
+  color: #E53935;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Store image */
+.card-text img {
+  border: 2px solid #E53935;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 12px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #E53935;
+  border-color: #E53935;
+}
+
+.btn-primary:hover {
+  background-color: #cc2f2f;
+  border-color: #cc2f2f;
+}
+
+.btn-secondary {
+  background-color: #555;
+  border-color: #555;
+}
+
+.btn-secondary:hover {
+  background-color: #444;
+  border-color: #444;
+}
+
+/* Pagination */
+.ant-pagination-item-active {
+  border-color: #E53935 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #E53935 !important;
+}
+
+.ant-pagination-item a:hover {
+  color: #cc2f2f !important;
+}
+
+
+/* DARK THEME PAGINATION */
+.pagination-dark .ant-pagination-item {
+  background-color: #1e1e1e !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+}
+
+.pagination-dark .ant-pagination-item a {
+  color: #fff !important;
+  transform: translateY(-5px);
+
+}
+
+.pagination-dark .ant-pagination-item-active {
+  background-color: #f44336 !important;
+  border-color: #f44336 !important;
+  color: #fff !important;
+
+}
+
+.pagination-dark .ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+/* Nút Prev và Next */
+.pagination-dark .ant-pagination-prev,
+.pagination-dark .ant-pagination-next {
+  background-color: #1e1e1e !important;
+  border: 1px solid #fff !important;
+}
+
+.pagination-dark .ant-pagination-prev .ant-pagination-item-link,
+.pagination-dark .ant-pagination-next .ant-pagination-item-link {
+  color: #fff !important;
+  background-color: #1e1e1e !important;
+  border: none !important;
+}
+
+.pagination-dark .ant-pagination-prev .ant-pagination-item-link,
+.pagination-dark .ant-pagination-next .ant-pagination-item-link {
+  color: #fff !important;
+  background-color: #1e1e1e !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  transform: translateY(-5px);
+}
+
+
+.pagination-light .ant-pagination-item {
+  background-color: #fff !important;
+  border: 1px solid #000 !important;
+  color: #000 !important;
+}
+
+.pagination-light .ant-pagination-item a {
+  color: #000 !important;
+  transform: translateY(-5px);
+}
+
+.pagination-light .ant-pagination-item-active {
+  background-color: #f44336  !important;
+  /* màu nổi bật */
+  border-color: #f44336  !important;
+  color: #fff !important;
+}
+
+.pagination-light .ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+/* Nút Prev và Next */
+.pagination-light .ant-pagination-prev,
+.pagination-light .ant-pagination-next {
+  background-color: #fff !important;
+  border: 1px solid #000 !important;
+}
+
+.pagination-light .ant-pagination-prev .ant-pagination-item-link,
+.pagination-light .ant-pagination-next .ant-pagination-item-link {
+  color: #000 !important;
+  background-color: #fff !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 16px !important;
+  transform: translateY(-5px);
+}

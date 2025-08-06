@@ -1,0 +1,257 @@
+/* FoodDetail.css */
+.food-detail-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 8px 0;
+  transition: color 0.3s;
+}
+
+.back-btn:hover {
+  color: #333;
+}
+
+.food-detail-container {
+  display: flex;
+  gap: 40px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.food-detail-img {
+  flex: 1;
+  max-width: 500px;
+}
+
+.food-detail-img img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+}
+
+.food-detail-info {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.food-name {
+  font-size: 2.2em;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.food-price {
+  font-size: 1.8em;
+  color: #e74c3c;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Rating Section Styles */
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.rating-section .ant-rate {
+  font-size: 18px;
+}
+
+.rating-section .ant-rate-star {
+  margin-right: 4px;
+}
+
+.rating-section .ant-rate-star-full .ant-rate-star-second,
+.rating-section .ant-rate-star-half .ant-rate-star-first {
+  color: #faad14;
+}
+
+.rating-section .ant-rate-star-zero .ant-rate-star-second {
+  color: #d9d9d9;
+}
+
+.rating-text {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Food Description */
+.food-desc {
+  color: #666;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+/* Food Info Section */
+.food-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+  padding: 15px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.info-item {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #333;
+  min-width: 80px;
+}
+
+.info-value {
+  color: #666;
+}
+
+/* Quantity Controls */
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.quantity-box > span {
+  font-weight: 600;
+  color: #333;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  background: #f8f9fa;
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.qty-btn:hover {
+  background: #e9ecef;
+}
+
+.qty-btn:active {
+  background: #dee2e6;
+}
+
+.qty-value {
+  padding: 0 16px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+  background: white;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+.add-to-cart-btn:hover {
+  background: #c0392b;
+}
+
+.add-to-cart-btn:active {
+  background: #a93226;
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .food-detail-container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .food-detail-img {
+    max-width: 100%;
+  }
+
+  .food-detail-img img {
+    border-radius: 8px 8px 0 0;
+    height: 250px;
+  }
+
+  .food-detail-info {
+    padding: 20px;
+  }
+
+  .food-name {
+    font-size: 1.8em;
+  }
+
+  .food-price {
+    font-size: 1.5em;
+  }
+
+  .quantity-box {
+    justify-content: space-between;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    align-self: stretch;
+  }
+}

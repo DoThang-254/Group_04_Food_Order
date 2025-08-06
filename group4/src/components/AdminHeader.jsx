@@ -4,14 +4,15 @@ import { loginContext } from '../context/LoginContext';
 import { useNavigate } from 'react-router-dom';
 
 const AdminHeader = () => {
-  const { setIsLogin } = useContext(loginContext);
+  const { setToken } = useContext(loginContext);
   const navigate = useNavigate();
   // Lấy tên tài khoản admin từ localStorage (giả định đã lưu khi đăng nhập)
   // const adminName = localStorage.getItem('adminName') || 'Admin';
 
   const handleLogout = () => {
-    setIsLogin(false);
+    setToken('');
     localStorage.removeItem('adminName');
+    localStorage.removeItem('token');
     navigate('/login');
   };
 

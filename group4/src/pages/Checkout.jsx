@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useCartStore } from "../stores/stores";
 
@@ -7,11 +7,20 @@ const Checkout = () => {
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
+   const fetchCart = useCartStore((state) => state.fetchCart);
+  const clearAfterCheckout = useCartStore((state) => state.clearAfterCheckout);
+  useEffect(()=>{
+    fetchCart();
+  },[])
 
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+   const handleCheckout = async () => {
+    await clearAfterCheckout(); 
+    alert("Checkout successfully");
+  };
 
   return (
     <Container className="py-4">
@@ -22,7 +31,7 @@ const Checkout = () => {
         >
           <Col xs={2}>
             <img
-              src={item.image}
+              src={item.img}
               alt={item.name}
               className="img-fluid rounded"
             />
@@ -30,8 +39,6 @@ const Checkout = () => {
 
           <Col xs={5}>
             <div className="fw-bold">{item.name}</div>
-            <div>Màu: {item.color}</div>
-            <div>Size: {item.size}</div>
           </Col>
 
           <Col xs={2} className="d-flex align-items-center">
@@ -57,11 +64,11 @@ const Checkout = () => {
           </Col>
 
           <Col xs={1} className="text-center fw-bold">
-            {item.price.toLocaleString()} ₫
+            {item.price} ₫
           </Col>
 
           <Col xs={1} className="text-center fw-bold">
-            {(item.price * item.quantity).toLocaleString()} ₫
+            {(item.price * item.quantity)} ₫
           </Col>
 
           <Col xs={1} className="text-center">
@@ -80,15 +87,15 @@ const Checkout = () => {
       <Row className="justify-content-end mt-4">
         <Col xs="auto">
           <h5>
-            <strong>TỔNG CỘNG: {total.toLocaleString()} ₫</strong>
+            <strong>TỔNG CỘNG: {total} ₫</strong>
           </h5>
         </Col>
       </Row>
 
       <Row className="justify-content-end mt-2">
         <Col xs="auto">
-          <Button variant="dark" className="px-4 py-2">
-            TIẾN HÀNH THANH TOÁN
+          <Button variant="dark" className="px-4 py-2" onClick = {handleCheckout} >
+            Checkout
           </Button>
         </Col>
       </Row>
