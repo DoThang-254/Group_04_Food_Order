@@ -13,7 +13,11 @@ import './customerstyle/HomePage.css';
 import { decodeFakeToken } from '../data/token';
 import HomeCarousel from '../components/HomeCarousel';
 import { themeContext } from '../context/ThemeContext';
+import SortBar from '../components/SortBar';
+import Footer from '../components/Footer';
 const HomePage = () => {
+  const [sortOption, setSortOption] = useState("default");
+
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [stores, setStores] = useState([]);
@@ -50,15 +54,15 @@ const HomePage = () => {
         setCategories(categoriesResponse);
         setStores(storesResponse);
 
-        const categoryMap = new Map(categoriesResponse.map(item => [Number(item.id), item.name]));
-        const storeNameMap = new Map(storesResponse.map(item => [item.id, item.name]));
-        const storeImgMap = new Map(storesResponse.map(item => [Number(item.id), item.img]));
+        const categoryMap = new Map(categoriesResponse.map(item => [(item.id), item.name]));
+        const storeNameMap = new Map(storesResponse.map(item => [(item.id), item.name]));
+        const storeImgMap = new Map(storesResponse.map(item => [(item.id), item.img]));
 
         const mappedProducts = productsResponse.map(product => ({
           ...product,
-          storeName: storeNameMap.get(product.storeId),
-          categoryName: categoryMap.get(product.categoryId),
-          storeImg: storeImgMap.get(product.storeId)
+          storeName: storeNameMap.get(String(product.storeId)),
+          categoryName: categoryMap.get(String(product.categoryId)),
+          storeImg: storeImgMap.get(String(product.storeId))
         }));
 
         setProducts(mappedProducts);
@@ -68,6 +72,16 @@ const HomePage = () => {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+  let sorted = [...filteredProducts];
+  if (sortOption === "asc") {
+    sorted.sort((a, b) => a.price - b.price);
+  } else if (sortOption === "desc") {
+    sorted.sort((a, b) => b.price - a.price);
+  }
+  setFilteredProducts(sorted);
+}, [sortOption]);
+
 
   useEffect(() => {
     let filtered = [...products];
@@ -99,8 +113,8 @@ const HomePage = () => {
     }
     const item = {
       
-      productId: Number(product.id),
-      storeId: Number(product.storeId),
+      productId: (product.id),
+      storeId: (product.storeId),
       quantity: 1
     };
     addToCart(item);
@@ -116,7 +130,12 @@ const HomePage = () => {
 
   return (
     <>
+    
+
+
     <HomeCarousel onClickButton={handleScrollToContent}/>
+    
+    
     <Container fluid ref={sectionRef}>
       {/* Nút mở Drawer */}
 
@@ -128,6 +147,7 @@ const HomePage = () => {
       >
         Menu
       </AntButton>
+      <div><SortBar sortOption={sortOption} setSortOption={setSortOption} /></div>
 
       <Drawer
         title="Categories"
@@ -226,6 +246,8 @@ const HomePage = () => {
         style={{ textAlign: 'center', marginTop: '20px' }}
       />
     </Container>
+    <div className='footer'> <Footer/></div>
+   
     </>
   );
 };

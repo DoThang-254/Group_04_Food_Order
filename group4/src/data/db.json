@@ -23,8 +23,7 @@
       "dob": "2004-02-05",
       "role": "owner",
       "birthDate": "2004-02-05",
-      "address": "van dinh",
-      "active": true
+      "address": "van dinh"
     }
   ],
   "resetRequests": [],
@@ -161,5 +160,16 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "c943",
+      "userId": "5e7a",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 1,
+      "name": "Margherita Pizza",
+      "price": 8.99,
+      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+    }
+  ]
 }
