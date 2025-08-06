@@ -1,20 +1,6 @@
 {
   "users": [
     {
-      "id": "0e36",
-      "name": "do thang",
-      "phone": "0329894798",
-      "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$aeWUDmt.gsPVyLOz6JrtHeBTP1Axhl1jhOlJYSZzBtEl0ErXIPytC",
-      "gender": "male",
-      "dob": "2004-04-25",
-      "role": "owner",
-      "birthDate": "2004-04-25",
-      "address": "hcm",
-      "active": true,
-      "storeId": "0204"
-    },
-    {
       "id": "fe9c",
       "name": "do thang",
       "phone": "0329894798",
@@ -25,6 +11,19 @@
       "role": "admin",
       "birthDate": "2004-02-05",
       "address": "hn",
+      "active": true
+    },
+    {
+      "id": "bae3",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "$2b$10$dEB6i9NwaePPus/M9kq.ye8DmMjL3ztOHRF40Am0eiu63yiSASJaq",
+      "gender": "male",
+      "dob": "2004-02-05",
+      "role": "owner",
+      "birthDate": "2004-02-05",
+      "address": "van dinh",
       "active": true
     }
   ],
@@ -45,14 +44,6 @@
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
       "state": true
-    },
-    {
-      "id": "0204",
-      "name": "gg",
-      "storeAddress": "hcm",
-      "img": "",
-      "ownerId": "0e36",
-      "state": false
     }
   ],
   "stores_categories": [
