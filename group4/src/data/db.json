@@ -41,7 +41,8 @@
       "active": false,
       "storeId": "a5dd",
       "ban": true
-
+    },
+    {
       "id": "bae3",
       "name": "do thang",
       "phone": "0329894798",
@@ -51,7 +52,7 @@
       "dob": "2004-02-05",
       "role": "customer",
       "birthDate": "2004-02-05",
-      "address": "van dinh"
+      "address": "van dinh",
       "active": true
     }
   ],
