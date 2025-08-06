@@ -1,0 +1,55 @@
+.sort-bar-container {
+  text-align: right;
+  margin: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.custom-sort-select .ant-select-selector {
+  border: 2px solid #E53935 !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-sort-select .ant-select-selector:hover {
+  border-color: #C62828 !important;
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2) !important;
+}
+
+.custom-sort-select.ant-select-focused .ant-select-selector {
+  border-color: #E53935 !important;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.2) !important;
+}
+
+.custom-sort-select .ant-select-arrow {
+  color: #E53935 !important;
+}
+
+.custom-sort-select .ant-select-selection-placeholder {
+  color: #E53935 !important;
+  opacity: 0.7;
+}
+
+.custom-sort-select .ant-select-selection-item {
+  color: #E53935 !important;
+  font-weight: 500;
+}
+
+/* Dropdown options styling */
+.ant-select-dropdown .ant-select-item-option-selected {
+  background-color: rgba(229, 57, 53, 0.1) !important;
+  color: #E53935 !important;
+  font-weight: 500;
+}
+
+.ant-select-dropdown .ant-select-item-option:hover {
+  background-color: rgba(229, 57, 53, 0.05) !important;
+  color: #E53935 !important;
+}
+
+.ant-select-dropdown .ant-select-item-option-active {
+  background-color: rgba(229, 57, 53, 0.15) !important;
+  color: #E53935 !important;
+}

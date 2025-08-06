@@ -1,18 +1,29 @@
 {
   "users": [
     {
-      "id": "0e36",
+      "id": "fe9c",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangbachi2542004@gmail.com",
+      "password": "$2b$10$OROtExMnOOcFIxDsmKgYXuOEW.to.y5fK37APBXSvqonKFYZGZzZm",
+      "gender": "male",
+      "dob": "2004-02-05",
+      "role": "admin",
+      "birthDate": "2004-02-05",
+      "address": "hn",
+      "active": true
+    },
+    {
+      "id": "bae3",
       "name": "do thang",
       "phone": "0329894798",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$aeWUDmt.gsPVyLOz6JrtHeBTP1Axhl1jhOlJYSZzBtEl0ErXIPytC",
+      "password": "$2b$10$dEB6i9NwaePPus/M9kq.ye8DmMjL3ztOHRF40Am0eiu63yiSASJaq",
       "gender": "male",
-      "dob": "2004-04-25",
+      "dob": "2004-02-05",
       "role": "owner",
-      "birthDate": "2004-04-25",
-      "address": "hcm",
-      "active": true,
-      "storeId": "0204"
+      "birthDate": "2004-02-05",
+      "address": "van dinh"
     }
   ],
   "resetRequests": [],
@@ -31,14 +42,6 @@
       "address": "456 Market St",
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
-      "state": true
-    },
-    {
-      "id": "0204",
-      "name": "gg",
-      "storeAddress": "hcm",
-      "img": "",
-      "ownerId": "0e36",
       "state": true
     }
   ],
@@ -157,5 +160,16 @@
       "createdAt": "2025-07-28T10:00:00Z"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "c943",
+      "userId": "5e7a",
+      "productId": 1,
+      "storeId": 1,
+      "quantity": 1,
+      "name": "Margherita Pizza",
+      "price": 8.99,
+      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+    }
+  ]
 }

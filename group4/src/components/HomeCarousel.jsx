@@ -10,17 +10,17 @@ const HomeCarousel = ({ onClickButton }) => {
     {
       img: img1,
       title: 'Pizza • Burger • Pasta',
-      subtitle: 'Thưởng thức combo hảo hạng',
+      subtitle: 'Enjoy the ultimate combo',
     },
     {
       img: img2,
-      title: 'Burger mê ly',
-      subtitle: 'Burgers nóng hổi từ lò nướng',
+      title: 'Burger delight',
+      subtitle: 'Burgers hot from the grill',
     },
     {
       img: img3,
-      title: 'Pasta Ý thơm ngon',
-      subtitle: 'Sốt kem, phô mai béo ngậy',
+      title: 'Delicious Italian Pasta',
+      subtitle: 'Creamy sauce, rich cheese',
     },
   ];
 

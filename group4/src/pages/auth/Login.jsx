@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginContext } from '../../context/LoginContext';
 import { createFakeToken } from '../../data/token';
 import { themeContext } from '../../context/ThemeContext';
-import { getStoreByOwnerId, getStoreByOwnerIdAndChecking } from '../../services/stores';
+import { getStoreByOwnerIdAndChecking } from '../../services/stores';
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         password: Yup.string()
@@ -20,6 +20,27 @@ const Login = () => {
     const { setToken } = useContext(loginContext)
     const [loginError, setLoginError] = useState('');
     const navToHome = useNavigate();
+    const authorize = (role, state) => {
+        switch (role) {
+            case 'customer': {
+                navToHome('/home');
+                break;
+            }
+            case 'admin': {
+                navToHome('/admin');
+                break;
+            }
+            case 'owner': {
+                if (state) {
+                    navToHome('/owner-dashboard');
+                }
+                else {
+                    navToHome('/home')
+                }
+                break;
+            }
+        }
+    }
     const handleLogin = async (value) => {
         const data = value
         login(data).then(async (res) => {
@@ -28,32 +49,14 @@ const Login = () => {
             if (res) {
                 if (!res.msg) {
                     const checkStore = await getStoreByOwnerIdAndChecking(res.user.id);
+                    console.log(checkStore)
                     const fakeToken = await createFakeToken(res)
-                    if (!checkStore.msg) {
-                        setToken(fakeToken);
-                        switch (res.user.role) {
-                            case 'customer': {
-                                navToHome('/home');
-                                break;
-                            }
-                            case 'admin': {
-                                navToHome('/admin');
-                                break;
-                            }
-                            case 'owner': {
-                                if (checkStore) {
-                                    navToHome('/owner-dashboard');
-                                }
-                                else {
-                                    navToHome('/home')
-                                }
-                                break;
-                            }
-                        }
+                    setToken(fakeToken);
+                    if (checkStore?.state) {
+                        authorize(res.user.role, checkStore?.state);
                     }
-                    else {
-                        setToken(fakeToken);
-                        navToHome('/home')
+                    else{
+                        authorize(res.user.role , false)
                     }
                 }
 
