@@ -22,7 +22,7 @@
       "password": "$2b$10$i5fq77iSe9EItx6GD6fYu.AN.Rfs4QfN0bavGLfPTxjXa4aWvKbxS",
       "gender": "male",
       "dob": "2004-12-14",
-      "role": "customer",
+      "role": "admin",
       "birthDate": "2004-12-14",
       "address": "hn",
       "active": true

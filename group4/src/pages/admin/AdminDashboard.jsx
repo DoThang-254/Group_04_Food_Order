@@ -19,6 +19,8 @@ const AdminDashboard = () => {
     cart: 0,
   });
   const [page, setPage] = useState('dashboard');
+  const [sidebarTab, setSidebarTab] = useState('users');
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [pendingStores, setPendingStores] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
 
@@ -64,64 +66,45 @@ const AdminDashboard = () => {
     setPendingStores(prev => prev.filter(s => s.id !== store.id));
   };
 
-  if (page === 'stores') {
-    return <AdminStoreControl />;
-  }
-  if (page === 'users') {
-    return <AdminUserControl />;
-  }
   return (
     <div className={styles.dashboardContainer}>
       <h2 className={styles.dashboardTitle}>Admin Dashboard</h2>
-      <div style={{ display: 'flex', gap: 32, flexDirection: 'row', justifyContent: 'space-between' }}>
-        {/* Các card dashboard */}
-        <div>
-          <div className={styles.dashboardCards}>
-            <div className={styles.card} style={{ cursor: 'pointer' }} onClick={() => setPage('stores')}>
-              <h3>Stores</h3>
-              <p>{stats.stores}</p>
-            </div>
-            <div className={styles.card} style={{ cursor: 'pointer' }} onClick={() => setPage('users')}>
-              <h3>Users</h3>
-              <p>{stats.users}</p>
-            </div>
-          </div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: 0 }}>
+        {/* Sidebar sát trái ngoài cùng, có thể ẩn hiện */}
+        <div style={{ position: 'relative', minWidth: sidebarOpen ? 200 : 48, maxWidth: sidebarOpen ? 220 : 48, background: '#fff', borderRight: '2px solid #bbb', height: '100vh', transition: 'min-width 0.2s, max-width 0.2s', display: 'flex', flexDirection: 'column', alignItems: sidebarOpen ? 'flex-start' : 'center', zIndex: 10 }}>
+          <button onClick={()=>setSidebarOpen(o=>!o)} style={{ position: 'absolute', top: 12, right: sidebarOpen ? -18 : -18, background: '#1890ff', color: '#fff', border: 'none', borderRadius: '50%', width: 28, height: 28, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>
+            {sidebarOpen ? '<' : '>'}
+          </button>
+          {sidebarOpen ? (
+            <>
+              <div style={{ fontWeight: 600, margin: '32px 0 18px 24px', fontSize: 18 }}>Menu</div>
+              <div style={{ width: '100%' }}>
+                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='users'?'#1890ff':'#333', fontWeight: sidebarTab==='users'?600:400 }} onClick={()=>setSidebarTab('users')}>Users</div>
+                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='stores'?'#1890ff':'#333', fontWeight: sidebarTab==='stores'?600:400 }} onClick={()=>setSidebarTab('stores')}>Stores</div>
+                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='reports'?'#1890ff':'#333', fontWeight: sidebarTab==='reports'?600:400 }} onClick={()=>setSidebarTab('reports')}>Reports</div>
+                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='feedbacks'?'#1890ff':'#333', fontWeight: sidebarTab==='feedbacks'?600:400 }} onClick={()=>setSidebarTab('feedbacks')}>Feedbacks</div>
+              </div>
+            </>
+          ) : (
+            <div style={{ marginTop: 48, fontSize: 22, color: '#1890ff', fontWeight: 700, writingMode: 'vertical-lr', textAlign: 'center', letterSpacing: 2 }}>Menu</div>
+          )}
         </div>
-        {/* Bảng phê duyệt cửa hàng */}
-        <div style={{ minWidth: 350, background: '#fff', borderRadius: 8,  padding: 20, border: '2px solid #bbb' }}>
-          <h3 style={{ marginBottom: 16 }}>Phê duyệt cửa hàng</h3>
-          <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #bbb' }}>
-            <thead>
-              <tr>
-                <th style={{ textAlign: 'left', padding: 8, border: '1px solid #bbb' }}>Tên cửa hàng</th>
-                <th style={{ textAlign: 'left', padding: 8, border: '1px solid #bbb' }}>Chủ cửa hàng</th>
-                <th style={{ textAlign: 'center', padding: 8, border: '1px solid #bbb' }}>Hành động</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pendingStores.length === 0 ? (
-                <tr><td colSpan={3} style={{ textAlign: 'center', padding: 16, color: '#888', border: '1px solid #bbb' }}>Không có cửa hàng chờ duyệt</td></tr>
-              ) : (
-                pendingStores.map(store => {
-                  let ownerDisplay = 'N/A';
-                  if (store.ownerId) {
-                    const foundUser = allUsers.find(u => String(u.id) === String(store.ownerId));
-                    ownerDisplay = foundUser ? foundUser.name : 'N/A';
-                  }
-                  return (
-                    <tr key={store.id}>
-                      <td style={{ padding: 8, border: '1px solid #bbb' }}>{store.name}</td>
-                      <td style={{ padding: 8, border: '1px solid #bbb' }}>{ownerDisplay}</td>
-                      <td style={{ padding: 8, textAlign: 'center', border: '1px solid #bbb' }}>
-                        <button onClick={() => handleApproveStore(store)} style={{ background: '#52c41a', color: '#fff', border: 'none', borderRadius: 4, padding: '4px 12px', marginRight: 8, cursor: 'pointer' }}>Chấp nhận</button>
-                        <button onClick={() => handleRejectStore(store)} style={{ background: '#ff4d4f', color: '#fff', border: 'none', borderRadius: 4, padding: '4px 12px', cursor: 'pointer' }}>Từ chối</button>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+        {/* Main content */}
+        <div style={{ flex: 1, minHeight: '100vh', background: '#f7f7f7', padding: 32 }}>
+          {sidebarTab === 'users' && <AdminUserControl />}
+          {sidebarTab === 'stores' && <AdminStoreControl />}
+          {sidebarTab === 'reports' && (
+            <div style={{ background: '#fff', borderRadius: 8, border: '2px solid #bbb', padding: 32, minHeight: 300 }}>
+              <h3 style={{ marginBottom: 16 }}>Reports</h3>
+              <div>Chức năng báo cáo sẽ được bổ sung sau.</div>
+            </div>
+          )}
+          {sidebarTab === 'feedbacks' && (
+            <div style={{ background: '#fff', borderRadius: 8, border: '2px solid #bbb', padding: 32, minHeight: 300 }}>
+              <h3 style={{ marginBottom: 16 }}>Feedbacks</h3>
+              <div>Chức năng phản hồi sẽ được bổ sung sau.</div>
+            </div>
+          )}
         </div>
       </div>
     </div>
