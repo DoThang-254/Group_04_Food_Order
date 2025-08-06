@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginContext } from '../../context/LoginContext';
 import { createFakeToken } from '../../data/token';
 import { themeContext } from '../../context/ThemeContext';
+import { getStoreByOwnerIdAndChecking } from '../../services/stores';
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         password: Yup.string()
@@ -19,28 +20,46 @@ const Login = () => {
     const { setToken } = useContext(loginContext)
     const [loginError, setLoginError] = useState('');
     const navToHome = useNavigate();
+    const authorize = (role , checkStore) => {
+        switch (role) {
+            case 'customer': {
+                navToHome('/home');
+                break;
+            }
+            case 'admin': {
+                navToHome('/admin');
+                break;
+            }
+            case 'owner': {
+                if (checkStore) {
+                    navToHome('/owner-dashboard');
+                }
+                else {
+                    navToHome('/home')
+                }
+                break;
+            }
+        }
+    }
     const handleLogin = async (value) => {
         const data = value
         login(data).then(async (res) => {
+            console.log(res);
+
             if (res) {
                 if (!res.msg) {
+                    const checkStore = await getStoreByOwnerIdAndChecking(res.user.id);
                     const fakeToken = await createFakeToken(res)
-                    setToken(fakeToken);
-                    switch (res.user.role) {
-                        case 'customer': {
-                            navToHome('/home');
-                            break;
-                        }
-                        case 'admin': {
-                            navToHome('/admin');
-                            break;
-                        }
-                        case 'owner': {
-                            navToHome('/owner-dashboard');
-                            break;
-                        }
+                    if (!checkStore.msg) {
+                        setToken(fakeToken);
+                        authorize(res.user.role , checkStore);
+                    }
+                    else {
+                        setToken(fakeToken);
+                        authorize(res.user.role , checkStore);
                     }
                 }
+
                 else {
                     setToken('');
                     setLoginError(res.msg);

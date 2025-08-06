@@ -3,7 +3,6 @@ import { jwtVerify, SignJWT } from 'jose';
 export const createFakeToken = async (data) => {
   const secret = new TextEncoder().encode('my_fake_secret');
   const alg = 'HS256';
-  console.log(data.user);
   const user = data.user
   const token = await new SignJWT({
     id: user.id,

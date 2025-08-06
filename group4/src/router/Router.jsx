@@ -15,6 +15,7 @@ import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword'
 import OwnerDashboard from '../pages/OwnerDashBoard';
 import Profile from '../pages/auth/Profile';
+import RegisterStore from '../pages/auth/RegisterStore';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -71,9 +72,14 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <PageNotFound />
-      }, {
+      }, 
+      {
         path: "owner-dashboard",
         element: <OwnerDashboard />,
+      },
+      {
+        path: "register-store",
+        element: <RegisterStore/>,
       }
     ]
   } , 

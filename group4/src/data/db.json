@@ -1,11 +1,30 @@
 {
   "users": [
     {
-      "id": "5e7a",
-      "name": "Đỗ Thái",
-      "email": "thaido11204@gmail.com",
-      "password": "$2b$10$USMtRVszjC5SbnVTIADIEe7yYrTCP7MNsXCAX6wU27UcMJl.SbEri",
-      "role": "customer",
+      "id": "0e36",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "$2b$10$aeWUDmt.gsPVyLOz6JrtHeBTP1Axhl1jhOlJYSZzBtEl0ErXIPytC",
+      "gender": "male",
+      "dob": "2004-04-25",
+      "role": "owner",
+      "birthDate": "2004-04-25",
+      "address": "hcm",
+      "active": true,
+      "storeId": "0204"
+    },
+    {
+      "id": "fe9c",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangbachi2542004@gmail.com",
+      "password": "$2b$10$OROtExMnOOcFIxDsmKgYXuOEW.to.y5fK37APBXSvqonKFYZGZzZm",
+      "gender": "male",
+      "dob": "2004-02-05",
+      "role": "admin",
+      "birthDate": "2004-02-05",
+      "address": "hn",
       "active": true
     },
     {
@@ -39,6 +58,14 @@
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
       "state": true
+    },
+    {
+      "id": "0204",
+      "name": "gg",
+      "storeAddress": "hcm",
+      "img": "",
+      "ownerId": "0e36",
+      "state": false
     }
   ],
   "stores_categories": [
@@ -117,6 +144,22 @@
       "categoryId": 3,
       "storeId": 2,
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
+    },
+    {
+      "id": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
+      "name": "bánh mỳ ",
+      "price": 5,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "0204"
+    },
+    {
+      "id": "58b36245-49c1-4f62-b2fe-6cc7c4a51f15",
+      "name": "a",
+      "price": 5,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "0204"
     }
   ],
   "orders": [
