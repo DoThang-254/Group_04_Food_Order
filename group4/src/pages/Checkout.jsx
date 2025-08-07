@@ -26,6 +26,7 @@ const Checkout = () => {
   const { token } = useContext(loginContext);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     const decode = async () => {
@@ -54,15 +55,14 @@ const Checkout = () => {
           }
           const newOrder = await createOrder(order);
 
-          navigate(`/payment/${newOrder.id}`);
+          // navigate(`/payment/${newOrder.id}`);
+          navigate('/qr', { state: { orderId: newOrder.id, total: total } });
 
         } catch (error) {
           console.log(error);
         }
       }
     }
-
-    //code here
   };
 
   return (
@@ -135,17 +135,17 @@ const Checkout = () => {
           </h5>
         </Col>
       </Row>
-<Button 
-                type="primary" 
+      <Button
+        type="primary"
 
-                onClick={() => {
-                  setOpen(false);
-                  navigate('/');
-                }}
-                style={{ marginTop: '20px' }}
-              >
-                Continue shopping
-              </Button>
+        onClick={() => {
+          setOpen(false);
+          navigate('/');
+        }}
+        style={{ marginTop: '20px' }}
+      >
+        Continue shopping
+      </Button>
       <Row className="justify-content-end mt-2">
         <Col xs="auto">
           <Button variant="dark" className="px-4 py-2" onClick={handleCheckout} >

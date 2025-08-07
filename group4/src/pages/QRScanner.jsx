@@ -15,7 +15,7 @@ const QRScanner = () => {
       (result) => {
         console.log('QR Code detected:', result);
         scanner.clear();
-        navigate('/success'); // Chuyển hướng sau khi quét thành công
+        navigate('/payment'); // Chuyển hướng sau khi quét thành công
       },
       (error) => {
         // console.log('Scan error', error); // Có thể tắt log này nếu cần
