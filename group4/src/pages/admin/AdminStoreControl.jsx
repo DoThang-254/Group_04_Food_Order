@@ -9,9 +9,11 @@ const AdminStoreControl = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const pageSize = 1;
+  const pageSize = 8;
   const [selectedStore, setSelectedStore] = useState(null);
   const [products, setProducts] = useState([]);
+  const [banModalStore, setBanModalStore] = useState(null);
+  const [banReasonInput, setBanReasonInput] = useState("");
 
   useEffect(() => {
     // Fetch stores, users (for owner name), products (for menu)
@@ -27,6 +29,7 @@ const AdminStoreControl = () => {
   };
 
   const filteredStores = stores.filter(store => {
+    if (store.ban === true) return false;
     const ownerName = getOwnerName(store.ownerId).toLowerCase();
     const matchSearch =
       store.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -66,10 +69,11 @@ const AdminStoreControl = () => {
             <th>Tên cửa hàng</th>
             <th>Địa chỉ</th>
             <th>Chủ cửa hàng</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {paginatedStores.map(store => (
+          {paginatedStores.filter(store => !store.ban).map(store => (
             <tr
               key={store.id}
               style={{ cursor: 'pointer', position: 'relative' }}
@@ -85,8 +89,34 @@ const AdminStoreControl = () => {
               <td>{store.name}</td>
               <td>{store.address}</td>
               <td>{getOwnerName(store.ownerId)}</td>
+              <td>
+                <button
+                  style={{ background: '#f44336', color: '#fff', border: 'none', borderRadius: 4, padding: '4px 10px', cursor: 'pointer' }}
+                  onClick={async e => {
+                    e.stopPropagation();
+                    const reason = window.prompt('Nhập nguyên nhân ban cửa hàng này:');
+                    if (!reason) return;
+                    try {
+                      await fetch(`http://localhost:3000/stores/${store.id}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ban: true, banReason: reason })
+                      });
+                      await fetch(`http://localhost:3000/blacklist`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ storeId: store.id, reason, bannedAt: new Date().toISOString() })
+                      });
+                      setStores(prev => prev.map(s => s.id === store.id ? { ...s, ban: true, banReason: reason } : s));
+                    } catch (err) {
+                      alert('Cập nhật trạng thái thất bại!');
+                    }
+                  }}
+                >Ban</button>
+              </td>
             </tr>
           ))}
+     
         </tbody>
       </table>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20, gap: 8 }}>
@@ -132,6 +162,7 @@ const AdminStoreControl = () => {
           </div>
         </div>
       )}
+
     </div>
   );
 };

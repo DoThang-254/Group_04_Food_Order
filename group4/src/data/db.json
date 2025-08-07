@@ -12,7 +12,9 @@
       "birthDate": "2004-04-25",
       "address": "hcm",
       "active": true,
-      "storeId": "0204"
+      "storeId": "0204",
+      "ban": false,
+      "banReason": ""
     },
     {
       "id": "4037",
@@ -38,9 +40,10 @@
       "role": "owner",
       "birthDate": "2004-12-14",
       "address": "HN",
-      "active": false,
+      "active": true,
       "storeId": "a5dd",
-      "ban": true
+      "ban": false,
+      "banReason": ""
     },
     {
       "id": "bae3",
@@ -53,6 +56,21 @@
       "role": "customer",
       "birthDate": "2004-02-05",
       "address": "van dinh",
+      "active": true,
+      "ban": false,
+      "banReason": ""
+    },
+    {
+      "id": "265d",
+      "name": "customer1  ",
+      "phone": "0123456789",
+      "email": "customer1@gmail.com",
+      "password": "$2b$10$xUrXZKghzdYGsqmaiVCPL.5JxJDyVpKdX4YYPbOYEYkrvuMiJ42ZK",
+      "gender": "male",
+      "dob": "2004-12-14",
+      "role": "customer",
+      "birthDate": "2004-12-14",
+      "address": "hn",
       "active": true
     }
   ],
@@ -64,7 +82,9 @@
       "address": "123 Main St",
       "img": "https://static.vecteezy.com/system/resources/previews/021/121/143/original/pizza-logo-pizzeria-logotype-fast-food-logo-illustration-vector.jpg",
       "ownerId": "adb7",
-      "state": true
+      "state": true,
+      "ban": true,
+      "banReason": "bac"
     },
     {
       "id": "2",
@@ -72,7 +92,9 @@
       "address": "456 Market St",
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
-      "state": true
+      "state": true,
+      "ban": false,
+      "banReason": "bnm"
     },
     {
       "id": "0204",
@@ -80,7 +102,9 @@
       "storeAddress": "hcm",
       "img": "",
       "ownerId": "0e36",
-      "state": false
+      "state": true,
+      "ban": false,
+      "banReason": "ac"
     },
     {
       "id": "a5dd",
@@ -88,7 +112,9 @@
       "storeAddress": "123 Street - HN - VN",
       "img": "",
       "ownerId": "0b68",
-      "state": false
+      "state": true,
+      "ban": true,
+      "banReason": "abc"
     }
   ],
   "stores_categories": [

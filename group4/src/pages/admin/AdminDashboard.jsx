@@ -8,7 +8,8 @@ import { getAllCart } from "../../services/cart";
 import { getAllUsers } from "../../services/users";
 import styles from "./styles/AdminDashboard.module.css";
 import AdminUserControl from "./AdminUserControl";
-import AdminBlacklist from "./AdminBlacklist";
+import AdminBlacklistUsers from "./AdminBlacklistUsers";
+import AdminBlacklistStores from "./AdminBlacklistStores";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -80,7 +81,15 @@ const AdminDashboard = () => {
               <div style={{ width: '100%' }}>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='users'?'#1890ff':'#333', fontWeight: sidebarTab==='users'?600:400 }} onClick={()=>setSidebarTab('users')}>Users</div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='stores'?'#1890ff':'#333', fontWeight: sidebarTab==='stores'?600:400 }} onClick={()=>setSidebarTab('stores')}>Stores</div>
-                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='blacklist'?'#1890ff':'#333', fontWeight: sidebarTab==='blacklist'?600:400 }} onClick={()=>setSidebarTab('blacklist')}>Blacklist</div>
+                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab.startsWith('blacklist')?'#1890ff':'#333', fontWeight: sidebarTab.startsWith('blacklist')?600:400 }}>
+                  <span style={{ cursor: 'pointer' }} onClick={()=>setSidebarTab('blacklist-users')}>Blacklist</span>
+                  {sidebarTab.startsWith('blacklist') && (
+                    <div style={{ marginLeft: 16 }}>
+                      <div style={{ padding: '8px 0', cursor: 'pointer', color: sidebarTab==='blacklist-users'?'#1890ff':'#333', fontWeight: sidebarTab==='blacklist-users'?600:400 }} onClick={()=>setSidebarTab('blacklist-users')}>Users</div>
+                      <div style={{ padding: '8px 0', cursor: 'pointer', color: sidebarTab==='blacklist-stores'?'#1890ff':'#333', fontWeight: sidebarTab==='blacklist-stores'?600:400 }} onClick={()=>setSidebarTab('blacklist-stores')}>Stores</div>
+                    </div>
+                  )}
+                </div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='reports'?'#1890ff':'#333', fontWeight: sidebarTab==='reports'?600:400 }} onClick={()=>setSidebarTab('reports')}>Reports</div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='feedbacks'?'#1890ff':'#333', fontWeight: sidebarTab==='feedbacks'?600:400 }} onClick={()=>setSidebarTab('feedbacks')}>Feedbacks</div>
               </div>
@@ -93,7 +102,8 @@ const AdminDashboard = () => {
         <div style={{ flex: 1, minHeight: '100vh', background: '#f7f7f7', padding: 32 }}>
           {sidebarTab === 'users' && <AdminUserControl />}
           {sidebarTab === 'stores' && <AdminStoreControl />}
-          {sidebarTab === 'blacklist' && <AdminBlacklist />}
+          {sidebarTab === 'blacklist-users' && <AdminBlacklistUsers />}
+          {sidebarTab === 'blacklist-stores' && <AdminBlacklistStores />}
           {sidebarTab === 'reports' && (
             <div style={{ background: '#fff', borderRadius: 8, border: '2px solid #bbb', padding: 32, minHeight: 300 }}>
               <h3 style={{ marginBottom: 16 }}>Reports</h3>

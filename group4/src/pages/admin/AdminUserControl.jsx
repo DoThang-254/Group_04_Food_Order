@@ -35,7 +35,7 @@ const AdminUserControl = () => {
         await fetch(`http://localhost:3000/users/${user.id}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ active: false, ban: true })
+          body: JSON.stringify({ active: false, ban: true, banReason: reason })
         });
         // Thêm vào blacklist
         await fetch(`http://localhost:3000/blacklist`, {
@@ -44,7 +44,7 @@ const AdminUserControl = () => {
           body: JSON.stringify({ userId: user.id, reason, bannedAt: new Date().toISOString() })
         });
         alert('Đã ban user. Nguyên nhân: ' + reason);
-        setUsers(prev => prev.map(u => u.id === user.id ? { ...u, active: false, ban: true } : u));
+        setUsers(prev => prev.map(u => u.id === user.id ? { ...u, active: false, ban: true, banReason: reason } : u));
       } catch (e) {
         alert('Cập nhật trạng thái thất bại!');
       }

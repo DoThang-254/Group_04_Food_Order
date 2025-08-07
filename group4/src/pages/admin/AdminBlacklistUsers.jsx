@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAllUsers } from "../../services/users";
 import "./styles/AdminStoreControl.css";
 
-const AdminBlacklist = () => {
+const AdminBlacklistUsers = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
@@ -51,6 +51,8 @@ const AdminBlacklist = () => {
             <th>Tên</th>
             <th>Email</th>
             <th>Vai trò</th>
+            <th>Lý do ban</th>
+            <th>Hành động</th>
           </tr>
         </thead>
         <tbody>
@@ -64,6 +66,25 @@ const AdminBlacklist = () => {
                 user.role === 'owner' ? 'Chủ cửa hàng' :
                 user.role === 'admin' ? 'Admin' : user.role
               }</td>
+              <td>{user.banReason || 'Không có'}</td>
+              <td>
+                <button
+                  style={{background:'#2d8202ff',color:'#fff',border:'none',borderRadius:4,padding:'4px 12px',cursor:'pointer'}}
+                  onClick={async () => {
+                    if (!window.confirm('Bạn có chắc chắn muốn kích hoạt lại tài khoản này không?')) return;
+                    try {
+                      await fetch(`http://localhost:3000/users/${user.id}`, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ active: true, ban: false, banReason: '' })
+                      });
+                      setUsers(prev => prev.map(u => u.id === user.id ? { ...u, active: true, ban: false, banReason: '' } : u));
+                    } catch (e) {
+                      alert('Cập nhật trạng thái thất bại!');
+                    }
+                  }}
+                >Active</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -77,4 +98,4 @@ const AdminBlacklist = () => {
   );
 };
 
-export default AdminBlacklist;
+export default AdminBlacklistUsers;
