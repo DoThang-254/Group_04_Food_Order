@@ -193,6 +193,20 @@
       "name": "Margherita Pizza",
       "price": 8.99,
       "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+    },
+    {
+      "id": "ec32",
+      "userId": "f692",
+      "productId": "2",
+      "storeId": 2,
+      "quantity": 1
+    },
+    {
+      "id": "1a88",
+      "userId": "f692",
+      "productId": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
+      "storeId": "0204",
+      "quantity": 1
     }
   ]
 }

@@ -93,7 +93,17 @@ const Checkout = () => {
           </h5>
         </Col>
       </Row>
+<Button 
+                type="primary" 
 
+                onClick={() => {
+                  setOpen(false);
+                  navigate('/');
+                }}
+                style={{ marginTop: '20px' }}
+              >
+                Continue shopping
+              </Button>
       <Row className="justify-content-end mt-2">
         <Col xs="auto">
           <Button variant="dark" className="px-4 py-2" onClick = {handleCheckout} >
