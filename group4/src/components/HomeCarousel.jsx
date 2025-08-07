@@ -32,7 +32,7 @@ const HomeCarousel = ({ onClickButton }) => {
           <div className="slide-caption">
             <h2>{s.title}</h2>
             <p>{s.subtitle}</p>
-            <Button type="primary" onClick={onClickButton}>Xem ngay</Button>
+            <Button type="primary" onClick={onClickButton}>View now</Button>
           </div>
         </div>
       ))}
