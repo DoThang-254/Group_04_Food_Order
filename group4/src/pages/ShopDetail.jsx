@@ -10,6 +10,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import { loginContext } from '../context/LoginContext';
+import { Flex, Rate } from 'antd';
+
+const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
 const ShopDetail = () => {
   const { id } = useParams();
@@ -20,9 +23,18 @@ const ShopDetail = () => {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const { token } = useContext(loginContext);
- const nav = useNavigate();
   const addToCart = useCartStore((state) => state.addToCart);
   const fetchCart = useCartStore((state) => state.fetchCart);
+
+  const [value, setValue] = useState(3); // ⭐ Đánh giá mặc định là 3 sao
+
+  // ⭐ Lấy lại rating từ localStorage
+  useEffect(() => {
+    const savedRating = localStorage.getItem(`rating-store-${id}`);
+    if (savedRating) {
+      setValue(Number(savedRating));
+    }
+  }, [id]);
 
   useEffect(() => {
     if (token) fetchCart();
@@ -36,14 +48,13 @@ const ShopDetail = () => {
     }
 
     const item = {
-      productId: (product.id),
-      storeId: (product.storeId),
+      productId: product.id,
+      storeId: product.storeId,
       quantity: 1,
     };
 
     addToCart(item);
-    
-    // Show success message
+
     const successMsg = document.createElement('div');
     successMsg.className = 'success-toast';
     successMsg.innerHTML = `
@@ -53,7 +64,7 @@ const ShopDetail = () => {
       </div>
     `;
     document.body.appendChild(successMsg);
-    
+
     setTimeout(() => {
       successMsg.remove();
     }, 3000);
@@ -83,22 +94,16 @@ const ShopDetail = () => {
     fetchData();
   }, [id]);
 
-  // Get unique categories
   const categories = ['all', ...new Set(filteredProducts.map(p => p.category).filter(Boolean))];
 
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
-    if (category === 'all') {
-      const filtered = products.filter(
-        (p) => Number(p.storeId) === Number(id)
-      );
-      setFilteredProducts(filtered);
-    } else {
-      const filtered = products.filter(
-        (p) => Number(p.storeId) === Number(id) && p.category === category
-      );
-      setFilteredProducts(filtered);
-    }
+    const filtered = products.filter(
+      (p) =>
+        Number(p.storeId) === Number(id) &&
+        (category === 'all' || p.category === category)
+    );
+    setFilteredProducts(filtered);
   };
 
   if (loading) {
@@ -109,11 +114,9 @@ const ShopDetail = () => {
       </div>
     );
   }
-  
 
   return (
     <div className="shop-detail-wrapper">
-      {/* Hero Section */}
       {store && (
         <div className="shop-hero">
           <div className="hero-background">
@@ -133,8 +136,17 @@ const ShopDetail = () => {
                     <span className="stat-label">Dish</span>
                   </div>
                   <div className="stat-item">
-                    <span className="stat-number">4.5</span>
-                    <span className="stat-label">⭐ Rating</span>
+                    <Flex gap="middle" vertical>
+                      <Rate
+                        tooltips={desc}
+                        onChange={(val) => {
+                          setValue(val);
+                          localStorage.setItem(`rating-store-${id}`, val);
+                        }}
+                        value={value}
+                      />
+                      {value ? <span>{desc[value - 1]}</span> : null}
+                    </Flex>
                   </div>
                   <div className="stat-item">
                     <span className="stat-number">30-45</span>
@@ -142,7 +154,7 @@ const ShopDetail = () => {
                   </div>
                 </div>
                 <p className="shop-description">
-                 Welcome to {store.name}! We are committed to bringing you the best food with great quality.
+                  Welcome to {store.name}! We are committed to bringing you the best food with great quality.
                 </p>
               </div>
             </div>
@@ -151,11 +163,9 @@ const ShopDetail = () => {
       )}
 
       <Container className="shop-content">
-        {/* Category Filter */}
         <div className="category-section">
           <h3 className="section-title">
-            <span className="title-icon">🍽️</span>
-           Our menu
+            <span className="title-icon">🍽️</span> Our menu
           </h3>
           <div className="category-filters">
             {categories.map((category) => (
@@ -170,7 +180,6 @@ const ShopDetail = () => {
           </div>
         </div>
 
-        {/* Products Grid */}
         {filteredProducts.length === 0 ? (
           <div className="empty-state">
             <div className="empty-icon">🍽️</div>
@@ -181,38 +190,34 @@ const ShopDetail = () => {
           <Row className="products-grid g-4">
             {filteredProducts.map((product, index) => (
               <Col key={product.id} xs={12} sm={6} md={4} lg={3}>
-                <Card 
-                  className="product-card animate-fade-in" 
+                <Card
+                  className="product-card animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
-                 onClick={() => navigate(`/food/${product.id}/detail`)}
+                  onClick={() => navigate(`/food/${product.id}/detail`)}
                 >
                   <div className="card-image-wrapper">
                     <Card.Img
                       variant="top"
                       src={product.img}
                       alt={product.name}
-                      className="product-image"
+                      className="product-image" 
+                      style={{width:"100%",height:"100%"}}
                     />
                     <div className="image-overlay">
-                      <button 
+                      <button
                         className="quick-view-btn"
                         onClick={(e) => {
                           e.stopPropagation();
-                           navigate(`/food/${product.id}/detail`);
+                          navigate(`/food/${product.id}/detail`);
                         }}
                       >
-                        <i className="view-icon" >👁️</i>
-                        View Detail
+                        <i className="view-icon">👁️</i> View Detail
                       </button>
                     </div>
                   </div>
                   <Card.Body>
                     <div className="product-header">
                       <Card.Title className="product-name">{product.name}</Card.Title>
-                      <div className="rating">
-                        <span className="stars">⭐⭐⭐⭐⭐</span>
-                        <span className="rating-text">(4.5)</span>
-                      </div>
                     </div>
                     <Card.Text className="product-price">
                       {product.price.toLocaleString()}₫
@@ -224,8 +229,7 @@ const ShopDetail = () => {
                         handleAddToCart(product);
                       }}
                     >
-                      <span className="btn-icon">🛒</span>
-                      Add To Cart
+                      <span className="btn-icon">🛒</span> Add To Cart
                     </Button>
                   </Card.Body>
                 </Card>

@@ -195,20 +195,12 @@
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
     },
     {
-      "id": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
-      "name": "bánh mỳ ",
-      "price": 5,
-      "img": "",
-      "categoryId": 1,
-      "storeId": "0204"
-    },
-    {
-      "id": "58b36245-49c1-4f62-b2fe-6cc7c4a51f15",
+      "id": "5cff",
       "name": "a",
-      "price": 5,
+      "price": 4,
       "img": "",
       "categoryId": 1,
-      "storeId": "0204"
+      "storeId": "53dc"
     }
   ],
   "orders": [
@@ -234,14 +226,11 @@
   ],
   "cart": [
     {
-      "id": "c943",
-      "userId": "5e7a",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1,
-      "name": "Margherita Pizza",
-      "price": 8.99,
-      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+      "id": "78e0",
+      "userId": "fe9c",
+      "productId": "4",
+      "storeId": 2,
+      "quantity": 1
     }
   ]
 }

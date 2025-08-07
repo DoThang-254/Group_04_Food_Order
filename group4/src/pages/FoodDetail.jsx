@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Rate } from 'antd';
+import { Rate, Flex } from 'antd';
 import { getAnProduct } from '../services/products';
 import { useCartStore } from '../stores/stores';
 import { loginContext } from '../context/LoginContext';
 import './customerstyle/FoodDetail.css';
 
+const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
+
 const FoodDetail = () => {
+  const [value, setValue] = useState(3); // ⭐ Mặc định 3 sao
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -14,6 +17,14 @@ const FoodDetail = () => {
   const addToCart = useCartStore((state) => state.addToCart);
   const fetchCart = useCartStore((state) => state.fetchCart);
   const { token } = useContext(loginContext);
+
+  // ⭐ Lấy rating từ localStorage khi vào trang
+  useEffect(() => {
+    const savedRating = localStorage.getItem(`rating-product-${id}`);
+    if (savedRating) {
+      setValue(Number(savedRating));
+    }
+  }, [id]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -36,8 +47,8 @@ const FoodDetail = () => {
 
     if (product && quantity > 0) {
       const item = {
-        productId: (product.id),
-        storeId: (product.storeId),
+        productId: product.id,
+        storeId: product.storeId,
         quantity: quantity,
       };
 
@@ -59,19 +70,30 @@ const FoodDetail = () => {
 
         <div className="food-detail-info">
           <h1 className="food-name">{product?.name}</h1>
-          <p className="food-price">${Number(product?.price).toLocaleString()}</p>
-          
-          {/* Rating Section */}
+          <p className="food-price">
+            {Number(product?.price).toLocaleString()}₫
+          </p>
+
+          {/* ⭐ Rating Section */}
           <div className="rating-section">
-            <Rate disabled defaultValue={4.5} allowHalf />
-            <span className="rating-text">(4.5 Rating)</span>
+            <Flex gap="middle" vertical>
+              <Rate
+                tooltips={desc}
+                onChange={(val) => {
+                  setValue(val);
+                  localStorage.setItem(`rating-product-${id}`, val);
+                }}
+                value={value}
+              />
+              {value ? <span>{desc[value - 1]}</span> : null}
+            </Flex>
           </div>
 
           <p className="food-desc">
-            {product?.description || 'Delicious food made from fresh ingredients, ensuring hygiene and authentic restaurant flavors. Sweet spicy vegetable with delicious prosciutto. Fried and the yellow sauce flavoring served.'}
+            {product?.description ||
+              'Delicious food made from fresh ingredients, ensuring hygiene and authentic restaurant flavors. Sweet spicy vegetable with delicious prosciutto. Fried and the yellow sauce flavoring served.'}
           </p>
 
-          {/* Food Info */}
           <div className="food-info">
             <div className="info-item">
               <span className="info-label">SKU:</span>

@@ -54,16 +54,20 @@ const HomePage = () => {
         setCategories(categoriesResponse);
         setStores(storesResponse);
 
-        const categoryMap = new Map(categoriesResponse.map(item => [(item.id), item.name]));
-        const storeNameMap = new Map(storesResponse.map(item => [(item.id), item.name]));
-        const storeImgMap = new Map(storesResponse.map(item => [(item.id), item.img]));
+        const categoryMap = new Map(categoriesResponse.map(item => [(item.id), item]));
+        const storeMap = new Map(storesResponse.map(item => [(item.id), item]));
 
-        const mappedProducts = productsResponse.map(product => ({
-          ...product,
-          storeName: storeNameMap.get(String(product.storeId)),
-          categoryName: categoryMap.get(String(product.categoryId)),
-          storeImg: storeImgMap.get(String(product.storeId))
-        }));
+       const mappedProducts = productsResponse.map(product => {
+  const store = storeMap.get(String(product.storeId));
+  const category = categoryMap.get(String(product.categoryId));
+  
+  return {
+    ...product,
+    storeName: store?.name,
+    storeImg: store?.img,
+    categoryName: category?.name
+  };
+});
 
         setProducts(mappedProducts);
       } catch (error) {
