@@ -50,7 +50,7 @@ export const useCartStore = create((set, get) => ({
 
       const products = await getAllProducts();
       const productMap = new Map(products.map(p => [(p.id), p]));
-      const product = productMap.get(String(productId)) || {};
+      const product = productMap.get((productId)) || {};
 
       if (existing) {
         const updated = { ...existing, quantity: existing.quantity + quantity };

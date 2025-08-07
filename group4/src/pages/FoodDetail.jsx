@@ -5,8 +5,12 @@ import { getAnProduct } from '../services/products';
 import { useCartStore } from '../stores/stores';
 import { loginContext } from '../context/LoginContext';
 import './customerstyle/FoodDetail.css';
-
+import React, { useState } from 'react';
+import { Flex, Rate } from 'antd';
+ const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 const FoodDetail = () => {
+ 
+  const [value, setValue] = useState(3);
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -63,8 +67,10 @@ const FoodDetail = () => {
           
           {/* Rating Section */}
           <div className="rating-section">
-            <Rate disabled defaultValue={4.5} allowHalf />
-            <span className="rating-text">(4.5 Rating)</span>
+             <Flex gap="middle" vertical>
+      <Rate tooltips={desc} onChange={setValue} value={value} />
+      {value ? <span>{desc[value - 1]}</span> : null}
+    </Flex>
           </div>
 
           <p className="food-desc">
