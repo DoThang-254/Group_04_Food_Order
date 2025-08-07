@@ -130,6 +130,14 @@
       "categoryId": 3,
       "storeId": 2,
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
+    },
+    {
+      "id": "5cff",
+      "name": "a",
+      "price": 4,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "53dc"
     }
   ],
   "orders": [
@@ -151,152 +159,10 @@
         }
       ],
       "createdAt": "2025-07-28T10:00:00Z"
-    },
-    {
-      "id": "91b5",
-      "userId": "fe9c",
-      "status": "pending",
-      "total": 10.99,
-      "items": [
-        {
-          "id": "3f55",
-          "userId": "fe9c",
-          "productId": "2",
-          "storeId": 2,
-          "quantity": 1,
-          "name": "Pepperoni Pizza",
-          "price": 10.99,
-          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
-        }
-      ]
-    },
-    {
-      "id": "daee",
-      "userId": "fe9c",
-      "status": "pending",
-      "total": 7.99,
-      "items": [
-        {
-          "id": "214a",
-          "userId": "fe9c",
-          "productId": "4",
-          "storeId": 2,
-          "quantity": 1,
-          "name": "Bacon Burger",
-          "price": 7.99,
-          "img": "https://simply-delicious-food.com/wp-content/uploads/2015/07/Bacon-and-cheese-burgers-3.jpg"
-        }
-      ]
-    },
-    {
-      "id": "b20e",
-      "userId": "fe9c",
-      "status": "pending",
-      "total": 53.94,
-      "items": [
-        {
-          "id": "0652",
-          "userId": "fe9c",
-          "productId": "1",
-          "storeId": 1,
-          "quantity": 6,
-          "name": "Margherita Pizza",
-          "price": 8.99,
-          "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
-        }
-      ]
-    },
-    {
-      "id": "b016",
-      "userId": "fe9c",
-      "status": "pending",
-      "total": 92.9,
-      "items": [
-        {
-          "id": "1652",
-          "userId": "fe9c",
-          "productId": "1",
-          "storeId": 1,
-          "quantity": 4,
-          "name": "Margherita Pizza",
-          "price": 8.99,
-          "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
-        },
-        {
-          "id": "b777",
-          "userId": "fe9c",
-          "productId": "2",
-          "storeId": 2,
-          "quantity": 4,
-          "name": "Pepperoni Pizza",
-          "price": 10.99,
-          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
-        },
-        {
-          "id": "1113",
-          "userId": "fe9c",
-          "productId": "3",
-          "storeId": 1,
-          "quantity": 2,
-          "name": "Cheese Burger",
-          "price": 6.49,
-          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
-        }
-      ]
     }
-  ],
+  ], 
   "cart": [
-    {
-      "id": "c943",
-      "userId": "5e7a",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1,
-      "name": "Margherita Pizza",
-      "price": 8.99,
-      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
-    },
-    {
-      "id": "ec32",
-      "userId": "f692",
-      "productId": "2",
-      "storeId": 2,
-      "quantity": 1
-    },
-    {
-      "id": "1a88",
-      "userId": "f692",
-      "productId": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
-      "storeId": "0204",
-      "quantity": 1
-    },
-    {
-      "id": "dd5c",
-      "userId": "fe9c",
-      "productId": "1",
-      "storeId": 1,
-      "quantity": 2
-    },
-    {
-      "id": "ffff",
-      "userId": "fe9c",
-      "productId": "2",
-      "storeId": 2,
-      "quantity": 1
-    },
-    {
-      "id": "30b9",
-      "userId": "fe9c",
-      "productId": "4",
-      "storeId": 2,
-      "quantity": 2
-    },
-    {
-      "id": "6261",
-      "userId": "fe9c",
-      "productId": "3",
-      "storeId": 1,
-      "quantity": 1
-    }
+    
   ]
+
 }
