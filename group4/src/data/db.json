@@ -8,7 +8,7 @@
       "password": "$2b$10$OROtExMnOOcFIxDsmKgYXuOEW.to.y5fK37APBXSvqonKFYZGZzZm",
       "gender": "male",
       "dob": "2004-02-05",
-      "role": "admin",
+      "role": "customer",
       "birthDate": "2004-02-05",
       "address": "hn",
       "active": true
@@ -21,10 +21,11 @@
       "password": "$2b$10$dEB6i9NwaePPus/M9kq.ye8DmMjL3ztOHRF40Am0eiu63yiSASJaq",
       "gender": "male",
       "dob": "2004-02-05",
-      "role": "customer",
+      "role": "owner",
       "birthDate": "2004-02-05",
       "address": "van dinh",
-      "active": true
+      "active": true,
+      "storeId": "53dc"
     }
   ],
   "resetRequests": [],
@@ -44,6 +45,13 @@
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
       "state": true
+    },
+    {
+      "id": "53dc",
+      "storeName": "a",
+      "storeAddress": "hcm",
+      "state": true,
+      "ownerId": "bae3"
     }
   ],
   "stores_categories": [
@@ -122,22 +130,6 @@
       "categoryId": 3,
       "storeId": 2,
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
-    },
-    {
-      "id": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
-      "name": "bánh mỳ ",
-      "price": 5,
-      "img": "",
-      "categoryId": 1,
-      "storeId": "0204"
-    },
-    {
-      "id": "58b36245-49c1-4f62-b2fe-6cc7c4a51f15",
-      "name": "a",
-      "price": 5,
-      "img": "",
-      "categoryId": 1,
-      "storeId": "0204"
     }
   ],
   "orders": [
@@ -159,45 +151,8 @@
         }
       ],
       "createdAt": "2025-07-28T10:00:00Z"
-    },
-    {
-      "id": "cc16",
-      "userId": "bae3",
-      "status": "pending",
-      "total": 10.99,
-      "items": [
-        {
-          "id": "d7e1",
-          "userId": "bae3",
-          "productId": "2",
-          "storeId": 2,
-          "quantity": 1,
-          "name": "Pepperoni Pizza",
-          "price": 10.99,
-          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
-        }
-      ]
-    },
-    {
-      "id": "69f0",
-      "userId": "bae3",
-      "status": "pending",
-      "total": 21.98,
-      "items": [
-        {
-          "id": "1397",
-          "userId": "bae3",
-          "productId": "2",
-          "storeId": 2,
-          "quantity": 2,
-          "name": "Pepperoni Pizza",
-          "price": 10.99,
-          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
-        }
-      ]
     }
   ],
-
   "cart": [
     {
       "id": "c943",
@@ -224,6 +179,4 @@
       "quantity": 1
     }
   ]
-
-
 }

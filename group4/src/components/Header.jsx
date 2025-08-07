@@ -120,7 +120,7 @@ const Header = () => {
                         Owner Dashboard
                       </Dropdown.Item>
                     )}
-                    {role != 'owner' || !store && (
+                    {!store && (
                       <Dropdown.Item onClick={() => navigate('/')}>
                         <ProfileOutlined style={{ marginRight: '8px' }} />
                         Register Store
