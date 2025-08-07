@@ -160,9 +160,14 @@
       ],
       "createdAt": "2025-07-28T10:00:00Z"
     }
-  ], 
+  ],
   "cart": [
-    
+    {
+      "id": "78e0",
+      "userId": "fe9c",
+      "productId": "4",
+      "storeId": 2,
+      "quantity": 1
+    }
   ]
-
 }
