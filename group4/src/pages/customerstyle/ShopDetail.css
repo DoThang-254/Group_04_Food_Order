@@ -240,9 +240,7 @@
     object-fit: cover;
     transition: transform 0.3s ease;
   }
-  .product-image .image {
-    width: 200px;
-  }
+ 
   
 
   .product-card:hover .product-image {
