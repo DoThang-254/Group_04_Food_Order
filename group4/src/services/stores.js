@@ -26,14 +26,19 @@ export const postStore = async (data) => {
   }
 };
 export const getStoreByOwnerId = async (ownerId) => {
-  const res = await instance.get(`${endpoint.STORES}?ownerId=${ownerId}`);
-  return res.data[0]; 
+  try {
+    const res = await instance.get(`${endpoint.STORES}?ownerId=${ownerId}`);
+    return res.data[0];
+  } catch (error) {
+    console.log(error)
+  }
+
 };
 
 export const getStoreByOwnerIdAndChecking = async (ownerId) => {
   const res = await instance.get(`${endpoint.STORES}?ownerId=${ownerId}`);
   return {
-    user : res.data[0] ,
-    msg : res.data[0]?.state ? '' : 'Your store is not active'
-  }; 
+    user: res.data[0],
+    state: res.data[0]?.state
+  };
 };

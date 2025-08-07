@@ -20,7 +20,7 @@ const Login = () => {
     const { setToken } = useContext(loginContext)
     const [loginError, setLoginError] = useState('');
     const navToHome = useNavigate();
-    const authorize = (role , checkStore) => {
+    const authorize = (role, state) => {
         switch (role) {
             case 'customer': {
                 navToHome('/home');
@@ -31,7 +31,7 @@ const Login = () => {
                 break;
             }
             case 'owner': {
-                if (checkStore) {
+                if (state) {
                     navToHome('/owner-dashboard');
                 }
                 else {
@@ -49,14 +49,14 @@ const Login = () => {
             if (res) {
                 if (!res.msg) {
                     const checkStore = await getStoreByOwnerIdAndChecking(res.user.id);
+                    console.log(checkStore)
                     const fakeToken = await createFakeToken(res)
-                    if (!checkStore.msg) {
-                        setToken(fakeToken);
-                        authorize(res.user.role , checkStore);
+                    setToken(fakeToken);
+                    if (checkStore?.state) {
+                        authorize(res.user.role, checkStore?.state);
                     }
-                    else {
-                        setToken(fakeToken);
-                        authorize(res.user.role , checkStore);
+                    else{
+                        authorize(res.user.role , false)
                     }
                 }
 

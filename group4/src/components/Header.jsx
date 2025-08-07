@@ -46,7 +46,7 @@ const Header = () => {
       if (info?.id) {
         fetchCart(info.id);
         setRole(info.role);
-        if (store.user.state) {
+        if (store.state) {
           setStore(true);
         }
         else {
@@ -120,7 +120,7 @@ const Header = () => {
                         Owner Dashboard
                       </Dropdown.Item>
                     )}
-                    {!store && (
+                    {role != 'owner' || !store && (
                       <Dropdown.Item onClick={() => navigate('/')}>
                         <ProfileOutlined style={{ marginRight: '8px' }} />
                         Register Store

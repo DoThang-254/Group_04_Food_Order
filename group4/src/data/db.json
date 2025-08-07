@@ -1,20 +1,6 @@
 {
   "users": [
     {
-      "id": "0e36",
-      "name": "do thang",
-      "phone": "0329894798",
-      "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$aeWUDmt.gsPVyLOz6JrtHeBTP1Axhl1jhOlJYSZzBtEl0ErXIPytC",
-      "gender": "male",
-      "dob": "2004-04-25",
-      "role": "owner",
-      "birthDate": "2004-04-25",
-      "address": "hcm",
-      "active": true,
-      "storeId": "0204"
-    },
-    {
       "id": "fe9c",
       "name": "do thang",
       "phone": "0329894798",
@@ -28,16 +14,16 @@
       "active": true
     },
     {
-      "id": "f692",
-      "name": "Đỗ thang",
-      "phone": "0973197802",
-      "email": "thado11204@gmail.com",
-      "password": "$2b$10$y3QRyP4ldK4oP7eGCYbO1uX/LTN8Q.EqmpYJw/OgmlX1Bg/KZL7TO",
+      "id": "bae3",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "$2b$10$dEB6i9NwaePPus/M9kq.ye8DmMjL3ztOHRF40Am0eiu63yiSASJaq",
       "gender": "male",
-      "dob": "2005-04-19",
+      "dob": "2004-02-05",
       "role": "customer",
-      "birthDate": "2005-04-19",
-      "address": "số nhà 24,đường tiến thành",
+      "birthDate": "2004-02-05",
+      "address": "van dinh",
       "active": true
     }
   ],
@@ -58,14 +44,6 @@
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
       "state": true
-    },
-    {
-      "id": "0204",
-      "name": "gg",
-      "storeAddress": "hcm",
-      "img": "",
-      "ownerId": "0e36",
-      "state": false
     }
   ],
   "stores_categories": [
@@ -181,8 +159,45 @@
         }
       ],
       "createdAt": "2025-07-28T10:00:00Z"
+    },
+    {
+      "id": "cc16",
+      "userId": "bae3",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "d7e1",
+          "userId": "bae3",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ]
+    },
+    {
+      "id": "69f0",
+      "userId": "bae3",
+      "status": "pending",
+      "total": 21.98,
+      "items": [
+        {
+          "id": "1397",
+          "userId": "bae3",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 2,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ]
     }
   ],
+
   "cart": [
     {
       "id": "c943",
@@ -209,4 +224,6 @@
       "quantity": 1
     }
   ]
+
+
 }

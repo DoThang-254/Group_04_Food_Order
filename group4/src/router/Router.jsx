@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Layout from '../pages/Layout';
 import Login from '../pages/auth/Login';
@@ -16,92 +15,101 @@ import ResetPassword from '../pages/auth/ResetPassword'
 import OwnerDashboard from '../pages/OwnerDashBoard';
 import Profile from '../pages/auth/Profile';
 import RegisterStore from '../pages/auth/RegisterStore';
+import RouterAuth from './RouterAuth';
+import Payment from '../pages/Payment'; 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '',
-        element: <Navigate to='/home' />
+        path: "",
+        element: <Navigate to="/home" />,
       },
       {
-        path: 'login',
-        element: <Login />
+        path: "login",
+        element: <Login />,
       },
       {
-        path: 'home',
-        element: <HomePage />
+        path: "home",
+        element: <HomePage />,
       },
       {
-        path: 'register',
-        element: <Register />
+        path: "register",
+        element: <Register />,
       },
       {
-        path: 'admin',
-        element: <AdminDashboard />
+        path: "admin",
+        element: <AdminDashboard />,
       },
       {
-        path: 'checkout',
-        element: <Checkout />
+        path: "checkout",
+        element: <Checkout />,
       },
       {
-        path: 'food/:id/detail',
-        element: <FoodDetail />
+        path: "food/:id/detail",
+        element: <FoodDetail />,
       },
       {
-        path: 'shop/:id/detail',
-        element: <ShopDetail />
+        path: "shop/:id/detail",
+        element: <ShopDetail />,
       },
       {
-        path: 'register',
-        element: <Register />
+        path: "register",
+        element: <Register />,
       },
       {
-        path: 'forgot-password',
-        element: <ForgotPassword />
+        path: "forgot-password",
+        element: <ForgotPassword />,
       },
       {
-        path: 'reset-password',
-        element: <ResetPassword />
+        path: "reset-password",
+        element: <ResetPassword />,
       },
       {
-        path: 'profile' ,
-        element: <Profile/>
+        path: "*",
+        element: <PageNotFound />,
       },
-      {
-        path: '*',
-        element: <PageNotFound />
-      }, 
       {
         path: "owner-dashboard",
         element: <OwnerDashboard />,
       },
       {
-        path: "register-store",
-        element: <RegisterStore/>,
+        path: "",
+        element: <RouterAuth />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+          {
+            path: "register-store",
+            element: <RegisterStore />,
+          },
+          {
+            path: 'payment/:id',
+            element: <Payment />
+          }
+        ]
       }
-    ]
-  } , 
+    ],
+  },
   {
     element: <RouterPrivate />,
     children: [
       {
-        path: '/admin',
+        path: "/admin",
         element: <AdminLayout />,
         children: [
           {
-            path: '',
-            element: <AdminDashboard />
-          }
-        ]
+            path: "",
+            element: <AdminDashboard />,
+          },
+        ],
       },
-
-    ]
-  }
-]
-
-)
+    ],
+  },
+]);
 const Router = () => {
   return (
     <div>
