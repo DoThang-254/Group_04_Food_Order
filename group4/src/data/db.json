@@ -130,6 +130,14 @@
       "categoryId": 3,
       "storeId": 2,
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
+    },
+    {
+      "id": "5cff",
+      "name": "a",
+      "price": 4,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "53dc"
     }
   ],
   "orders": [
@@ -151,32 +159,43 @@
         }
       ],
       "createdAt": "2025-07-28T10:00:00Z"
+    },
+    {
+      "id": "daed",
+      "userId": "fe9c",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "2052",
+          "userId": "fe9c",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ]
+    },
+    {
+      "id": "9892",
+      "userId": "fe9c",
+      "status": "preparing",
+      "total": 4,
+      "items": [
+        {
+          "id": "755e",
+          "userId": "fe9c",
+          "productId": "5cff",
+          "storeId": "53dc",
+          "quantity": 1,
+          "name": "a",
+          "price": 4,
+          "img": ""
+        }
+      ]
     }
   ],
-  "cart": [
-    {
-      "id": "c943",
-      "userId": "5e7a",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1,
-      "name": "Margherita Pizza",
-      "price": 8.99,
-      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
-    },
-    {
-      "id": "ec32",
-      "userId": "f692",
-      "productId": "2",
-      "storeId": 2,
-      "quantity": 1
-    },
-    {
-      "id": "1a88",
-      "userId": "f692",
-      "productId": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
-      "storeId": "0204",
-      "quantity": 1
-    }
-  ]
+  "cart": []
 }

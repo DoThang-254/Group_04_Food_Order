@@ -17,6 +17,8 @@ import Profile from '../pages/auth/Profile';
 import RegisterStore from '../pages/auth/RegisterStore';
 import RouterAuth from './RouterAuth';
 import Payment from '../pages/Payment'; 
+import QRScanner from '../pages/QRScanner';
+import MyQRCode from '../pages/MyQrCode';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -90,6 +92,14 @@ const router = createBrowserRouter([
             path: 'payment/:id',
             element: <Payment />
           },
+          {
+            path: 'qr',
+            element: <MyQRCode/>
+          },
+          {
+            path: 'scan',
+            element: <QRScanner/>
+          }
         ]
       }
     ],
