@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col, Alert, Spinner } from "react-bootstrap";
-import { LoginContext } from "../../context/LoginContext.jsx";
+import { loginContext } from "../../context/LoginContext";
 import { Navigate } from "react-router-dom";
 import { decodeFakeToken } from "../../data/token";
 import { hashPassword } from "../../data/util";
@@ -26,7 +26,7 @@ import "./styles/OwnerDashboard.css";
 import db from "../../data/db"; // Add this import
 
 const OwnerDashboard = () => {
-  const { token } = useContext(LoginContext);
+  const { token } = useContext(loginContext);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("overview");
@@ -111,7 +111,7 @@ const OwnerDashboard = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...productData,
-          storeId: Number(store.id),
+          storeId: store.id,
         }),
       });
       const newProduct = await response.json();

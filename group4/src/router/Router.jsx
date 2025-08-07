@@ -12,7 +12,7 @@ import PageNotFound from '../pages/auth/PageNotFound';
 import ShopDetail from '../pages/ShopDetail';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword'
-import OwnerDashboard from '../pages/OwnerDashBoard';
+import OwnerDashboard from '../pages/Owner/OwnerDashBoard';
 import Profile from '../pages/auth/Profile';
 import RegisterStore from '../pages/auth/RegisterStore';
 import RouterAuth from './RouterAuth';
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
           {
             path: 'payment/:id',
             element: <Payment />
-          }
+          },
         ]
       }
     ],
