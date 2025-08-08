@@ -29,3 +29,13 @@ export const createOrder = async (value) => {
     return [];
   }
 };
+
+export const getOrdersByUserId = async (userId) => {
+  try {
+    const res = await instance.get(endpoint.ORDERS + `?userId=${userId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+
+};
