@@ -26,13 +26,26 @@
       "address": "van dinh",
       "active": true,
       "storeId": "53dc"
+    },
+    {
+      "id": "9d4c",
+      "name": "thai  dep zai",
+      "phone": "0973197802",
+      "email": "thaibachi2542004@gmail.com",
+      "password": "$2b$10$mkfU/tDOKQxd5.QM0h8BdOl/KtbNm7iFM.005GUTJKYIXRVQZX82a",
+      "gender": "male",
+      "dob": "2006-01-07",
+      "role": "customer",
+      "birthDate": "2006-01-07",
+      "address": "số nhà 24,đường tiến thành",
+      "active": true
     }
   ],
   "resetRequests": [],
   "stores": [
     {
       "id": "1",
-      "name": "Pizza House",
+      "storeName": "Pizza House",
       "address": "123 Main St",
       "img": "https://static.vecteezy.com/system/resources/previews/021/121/143/original/pizza-logo-pizzeria-logotype-fast-food-logo-illustration-vector.jpg",
       "ownerId": "adb7",
@@ -40,7 +53,7 @@
     },
     {
       "id": "2",
-      "name": "Burger Town",
+      "storeName": "Burger Town",
       "address": "456 Market St",
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
@@ -167,6 +180,20 @@
       "userId": "fe9c",
       "productId": "4",
       "storeId": 2,
+      "quantity": 1
+    },
+    {
+      "id": "5006",
+      "userId": "fe9c",
+      "productId": "3",
+      "storeId": 1,
+      "quantity": 1
+    },
+    {
+      "id": "567e",
+      "userId": "9d4c",
+      "productId": "1",
+      "storeId": 1,
       "quantity": 1
     }
   ]
