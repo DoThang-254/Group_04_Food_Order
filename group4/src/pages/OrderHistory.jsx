@@ -7,7 +7,6 @@ import { Button, Card, Col, Container, Row, Spinner, Table } from 'react-bootstr
 
 const OrderHistory = () => {
     const { token } = useContext(loginContext);
-    const [user, setUser] = useState();
     const [loading, setLoading] = useState(true);
     const [orders, setOrders] = useState();
     const [expanded, setExpanded] = useState({});
@@ -16,7 +15,6 @@ const OrderHistory = () => {
         const decode = async () => {
             const info = await decodeFakeToken(token);
             if (info) {
-                setUser(info);
                 const res = await getOrdersByUserId(info.id);
                 setOrders(res);
             }
