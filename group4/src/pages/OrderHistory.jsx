@@ -3,13 +3,17 @@ import { loginContext } from '../context/LoginContext';
 import { useNavigate } from 'react-router-dom';
 import { decodeFakeToken } from '../data/token';
 import { getOrdersByUserId } from '../services/orders';
-import { Button, Card, Col, Container, Row, Spinner, Table } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row, Spinner, Table, Pagination } from 'react-bootstrap';
 
 const OrderHistory = () => {
     const { token } = useContext(loginContext);
     const [loading, setLoading] = useState(true);
-    const [orders, setOrders] = useState();
+    const [orders, setOrders] = useState([]);
     const [expanded, setExpanded] = useState({});
+
+    // state phân trang
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 5; // số đơn hàng mỗi trang
 
     useEffect(() => {
         const decode = async () => {
@@ -30,14 +34,41 @@ const OrderHistory = () => {
             </div>
         );
     }
-    console.log(orders)
 
     const toggleExpand = (orderId) => {
         setExpanded((prev) => ({
             ...prev,
-            [orderId]: !prev[orderId], // đảo trạng thái ẩn/hiện cho order đó
+            [orderId]: !prev[orderId],
         }));
     };
+
+    // Tính toán dữ liệu hiển thị cho trang hiện tại
+    const indexOfLastOrder = currentPage * pageSize;
+    const indexOfFirstOrder = indexOfLastOrder - pageSize;
+    const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
+
+    // Tổng số trang
+    const totalPages = Math.ceil(orders.length / pageSize);
+
+    // Render nút phân trang
+    const renderPagination = () => {
+        let items = [];
+        for (let i = 1; i <= totalPages; i++) {
+            items.push(
+                <Pagination.Item
+                    key={i}
+                    active={i === currentPage}
+                    onClick={() => setCurrentPage(i)}
+                >
+                    {i}
+                </Pagination.Item>
+            );
+        }
+        return (
+            <Pagination className="mt-3 justify-content-center">{items}</Pagination>
+        );
+    };
+
     return (
         <Container className="mt-5">
             <Row>
@@ -57,9 +88,8 @@ const OrderHistory = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {orders.map((order) => (
+                                    {currentOrders.map((order) => (
                                         <React.Fragment key={order.id}>
-                                            {/* Hàng thông tin đơn hàng */}
                                             <tr>
                                                 <td>{order.id}</td>
                                                 <td>{order.status}</td>
@@ -75,7 +105,6 @@ const OrderHistory = () => {
                                                 </td>
                                             </tr>
 
-                                            {/* Hàng chi tiết sản phẩm */}
                                             {expanded[order.id] && (
                                                 <tr>
                                                     <td colSpan="4">
@@ -106,6 +135,8 @@ const OrderHistory = () => {
                                     ))}
                                 </tbody>
                             </Table>
+
+                            {renderPagination()}
                         </Card.Body>
                     </Card>
                 </Col>

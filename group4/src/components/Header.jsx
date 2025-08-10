@@ -125,7 +125,7 @@ const Header = () => {
                       </Dropdown.Item>
                     )}
                     {!store && (
-                      <Dropdown.Item onClick={() => navigate('/')}>
+                      <Dropdown.Item onClick={() => navigate('/register-store')}>
                         <ProfileOutlined style={{ marginRight: '8px' }} />
                         Register Store
                       </Dropdown.Item>

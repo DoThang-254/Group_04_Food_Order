@@ -52,6 +52,7 @@ const Checkout = () => {
             status: 'pending',
             total: total,
             items: cart,
+            createdAt: new Date().toISOString()
           }
           const newOrder = await createOrder(order);
 

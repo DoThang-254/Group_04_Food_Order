@@ -110,7 +110,7 @@ const AdminDashboard = () => {
                   }
                   return (
                     <tr key={store.id}>
-                      <td style={{ padding: 8, border: '1px solid #bbb' }}>{store.name}</td>
+                      <td style={{ padding: 8, border: '1px solid #bbb' }}>{store.storeName}</td>
                       <td style={{ padding: 8, border: '1px solid #bbb' }}>{ownerDisplay}</td>
                       <td style={{ padding: 8, textAlign: 'center', border: '1px solid #bbb' }}>
                         <button onClick={() => handleApproveStore(store)} style={{ background: '#52c41a', color: '#fff', border: 'none', borderRadius: 4, padding: '4px 12px', marginRight: 8, cursor: 'pointer' }}>Chấp nhận</button>
