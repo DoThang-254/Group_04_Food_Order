@@ -90,6 +90,19 @@
       "active": true,
       "storeId": "fd80",
       "ban": false
+    },
+    {
+      "id": "95fc",
+      "name": "customer A",
+      "phone": "0123456789",
+      "email": "customerA@gmail.com",
+      "password": "$2b$10$19UHlgUdzi.uQBgfAScPa.ocAK6ltbAPyqFBc5UePo8lUOQmD6bGm",
+      "gender": "male",
+      "dob": "2004-03-12",
+      "role": "customer",
+      "birthDate": "2004-03-12",
+      "address": "HN",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -256,6 +269,25 @@
     }
   ],
   "orders": [
+    {
+      "id": "d15a",
+      "userId": "b481",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "331e",
+          "userId": "b481",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ],
+      "createdAt": "2025-08-11T02:16:05.864Z"
+    }
   ],
   "cart": [
     {
@@ -263,13 +295,6 @@
       "userId": "fe9c",
       "productId": "4",
       "storeId": 2,
-      "quantity": 1
-    },
-    {
-      "id": "6757",
-      "userId": "b481",
-      "productId": "6f50",
-      "storeId": "fd80",
       "quantity": 1
     }
   ]

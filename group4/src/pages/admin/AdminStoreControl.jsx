@@ -30,6 +30,7 @@ const AdminStoreControl = () => {
 
   const filteredStores = stores.filter(store => {
     if (store.ban === true) return false;
+    if (!store.name || !store.address) return false;
     const ownerName = getOwnerName(store.ownerId).toLowerCase();
     const matchSearch =
       store.name.toLowerCase().includes(search.toLowerCase()) ||
