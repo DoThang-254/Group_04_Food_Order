@@ -97,7 +97,7 @@ const OwnerProducts = ({
   };
 
   const getCategoryName = (categoryId) => {
-    const category = categories.find((cat) => cat.id === categoryId);
+    const category = categories.find((cat) => cat.id == categoryId);
     return category ? category.name : "Unknown";
   };
 

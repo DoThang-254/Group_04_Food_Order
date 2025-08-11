@@ -40,6 +40,19 @@
       "birthDate": "2006-01-07",
       "address": "số nhà 24,đường tiến thành",
       "active": true
+    },
+    {
+      "id": "4edb",
+      "name": "do thai",
+      "phone": "1234567890",
+      "email": "thaido11204@gmail.com",
+      "password": "$2b$10$Hv8/jjF5bbZSMO3bmUufB./R77BGV/GcVvRVTkzJE4rF8GE9sY7te",
+      "gender": "female",
+      "dob": "2004-04-25",
+      "role": "customer",
+      "birthDate": "2004-04-25",
+      "address": "hànội",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -153,30 +166,6 @@
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
     },
     {
-      "id": "5cff",
-      "name": "a",
-      "price": 4,
-      "img": "",
-      "categoryId": 1,
-      "storeId": "53dc"
-    },
-    {
-      "id": "9e79",
-      "name": "b",
-      "price": 1,
-      "img": "",
-      "categoryId": 1,
-      "storeId": "53dc"
-    },
-    {
-      "id": "abc",
-      "name": "Margherita Pizza",
-      "price": 8.99,
-      "categoryId": 1,
-      "storeId": "53dc",
-      "description": "Pizza truyền thống với sốt cà chua tươi, phô mai mozzarella và lá húng quế."
-    },
-    {
       "id": "5305",
       "name": "bánh mỳ ",
       "price": 3,
@@ -185,7 +174,6 @@
       "storeId": "3dd5"
     }
   ],
-  "orders": [
-  ],
+  "orders": [],
   "cart": []
 }
