@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../../services/users";
-import "./styles/AdminStoreControl.css";
+import styles from "./styles/AdminUserControl.module.css";
 
 const AdminUserControl = () => {
   const [users, setUsers] = useState([]);
@@ -69,7 +69,7 @@ const AdminUserControl = () => {
   };
 
   return (
-    <div className="adminstore-dashboardContainer" style={{ padding: 0, marginTop: 0 }}>
+    <div className={styles.dashboardContainer}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2 className="adminstore-dashboardTitle">Users</h2>
         <button onClick={handleBack} style={{ padding: '8px 20px', borderRadius: 4, background: '#eee', border: '1px solid #ccc', cursor: 'pointer', fontWeight: 500 }}>
@@ -90,7 +90,7 @@ const AdminUserControl = () => {
           <option value="owner">Chủ cửa hàng</option>
         </select>
       </div>
-      <table className="adminstore-table">
+      <table className={styles.tableUserControl}>
         <thead>
           <tr>
             <th>STT</th>
@@ -114,7 +114,7 @@ const AdminUserControl = () => {
               <td>
                 {user.active ? (
                   <button
-                    style={{background:'rgb(139, 0, 0)',color:'#fff',border:'none',borderRadius:4,padding:'4px 12px',cursor:'pointer'}}
+                    style={{background:'#E53935 ',color:'#fff',border:'none',borderRadius:4,padding:'4px 12px',cursor:'pointer'}}
                     onClick={() => handleToggleActive(user)}
                   >Ban</button>
                 ) : (

@@ -1,0 +1,14 @@
+/* CSS cho trang AdminStoreControl */
+.tableStoreControl {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableStoreControl th, .tableStoreControl td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tableStoreControl th {
+  background: #f5f5f5;
+}

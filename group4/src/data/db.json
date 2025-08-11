@@ -71,7 +71,24 @@
       "role": "customer",
       "birthDate": "2004-12-14",
       "address": "hn",
-      "active": true
+      "active": false,
+      "ban": true,
+      "banReason": "Vi phạm nguyên tắc"
+    },
+    {
+      "id": "b481",
+      "name": "le tuan",
+      "phone": "0123456789",
+      "email": "letuan123@gmail.com",
+      "password": "$2b$10$AdTBCESe8zAUq.3h.67Z7O0upgrXn5eO0rhDwTMUIrITgJd8QzfDO",
+      "gender": "male",
+      "dob": "2004-12-14",
+      "role": "owner",
+      "birthDate": "2004-12-14",
+      "address": "hn",
+      "active": true,
+      "storeId": "fd80",
+      "ban": false
     }
   ],
   "resetRequests": [],
@@ -115,6 +132,14 @@
       "state": true,
       "ban": true,
       "banReason": "abc"
+    },
+    {
+      "id": "fd80",
+      "name": "TuanStore",
+      "storeAddress": "Hn-VN",
+      "img": "",
+      "ownerId": "b481",
+      "state": false
     }
   ],
   "stores_categories": [
@@ -201,6 +226,14 @@
       "img": "",
       "categoryId": 1,
       "storeId": "53dc"
+    },
+    {
+      "id": "6f50",
+      "name": "Cơm tấm",
+      "price": 100000,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "fd80"
     }
   ],
   "orders": [
@@ -230,6 +263,13 @@
       "userId": "fe9c",
       "productId": "4",
       "storeId": 2,
+      "quantity": 1
+    },
+    {
+      "id": "6757",
+      "userId": "b481",
+      "productId": "6f50",
+      "storeId": "fd80",
       "quantity": 1
     }
   ]

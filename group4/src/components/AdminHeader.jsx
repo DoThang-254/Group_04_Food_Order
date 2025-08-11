@@ -17,7 +17,7 @@ const AdminHeader = () => {
   return (
     <div style={{
       width: '100%',
-      background: '#8B0000',
+      background: '#E53935 ',
       color: 'white',
       display: 'flex',
       alignItems: 'center',
