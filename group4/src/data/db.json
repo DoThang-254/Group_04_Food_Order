@@ -33,16 +33,22 @@
       "name": "thai  dep zai",
       "phone": "0973197802",
       "email": "thaibachi2542004@gmail.com",
-      "password": "$2b$10$mkfU/tDOKQxd5.QM0h8BdOl/KtbNm7iFM.005GUTJKYIXRVQZX82a",
+      "password": "$2b$10$xI5JiD27fM/KUz93.SY9ZOMa0AME51cAeiWU8cnJmqvoYv7TA9oba",
       "gender": "male",
       "dob": "2006-01-07",
-      "role": "admin",
+      "role": "customer",
       "birthDate": "2006-01-07",
       "address": "số nhà 24,đường tiến thành",
       "active": true
     }
   ],
-  "resetRequests": [],
+  "resetRequests": [
+    {
+      "id": "376a",
+      "email": "th",
+      "createdAt": "2025-08-11T02:27:48.598Z"
+    }
+  ],
   "stores": [
     {
       "id": "1",
@@ -113,6 +119,114 @@
     {
       "id": "3",
       "name": "Burgers"
+    },
+    {
+      "id": "4",
+      "name": "Sushi"
+    },
+    {
+      "id": "5",
+      "name": "Pasta"
+    },
+    {
+      "id": "6",
+      "name": "Sandwiches"
+    },
+    {
+      "id": "7",
+      "name": "Salads"
+    },
+    {
+      "id": "8",
+      "name": "Desserts"
+    },
+    {
+      "id": "9",
+      "name": "Seafood"
+    },
+    {
+      "id": "10",
+      "name": "Steak"
+    },
+    {
+      "id": "11",
+      "name": "Barbecue"
+    },
+    {
+      "id": "12",
+      "name": "Asian Cuisine"
+    },
+    {
+      "id": "13",
+      "name": "Indian Cuisine"
+    },
+    {
+      "id": "14",
+      "name": "Mexican Cuisine"
+    },
+    {
+      "id": "15",
+      "name": "Middle Eastern Cuisine"
+    },
+    {
+      "id": "16",
+      "name": "Vegan"
+    },
+    {
+      "id": "17",
+      "name": "Vegetarian"
+    },
+    {
+      "id": "18",
+      "name": "Gluten-Free"
+    },
+    {
+      "id": "19",
+      "name": "Coffee & Tea"
+    },
+    {
+      "id": "20",
+      "name": "Smoothies"
+    },
+    {
+      "id": "21",
+      "name": "Bakery"
+    },
+    {
+      "id": "22",
+      "name": "Ice Cream"
+    },
+    {
+      "id": "23",
+      "name": "Street Food"
+    },
+    {
+      "id": "24",
+      "name": "Hot Pot"
+    },
+    {
+      "id": "25",
+      "name": "Dim Sum"
+    },
+    {
+      "id": "26",
+      "name": "Noodles"
+    },
+    {
+      "id": "27",
+      "name": "Fried Chicken"
+    },
+    {
+      "id": "28",
+      "name": "Wraps"
+    },
+    {
+      "id": "29",
+      "name": "Curry"
+    },
+    {
+      "id": "30",
+      "name": "Soup"
     }
   ],
   "products": [
@@ -186,6 +300,242 @@
     }
   ],
   "orders": [
+    {
+      "id": "9ff6",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "72f8",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:29:20.853Z"
+    },
+    {
+      "id": "5a67",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "6d65",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:30:07.267Z"
+    },
+    {
+      "id": "a228",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 12.98,
+      "items": [
+        {
+          "id": "952e",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 2,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:31:23.589Z"
+    },
+    {
+      "id": "aa81",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "419d",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:32:09.729Z"
+    },
+    {
+      "id": "7375",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "83d2",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:34:32.908Z"
+    },
+    {
+      "id": "2b6f",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "6ba7",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:36:19.047Z"
+    },
+    {
+      "id": "c5a2",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "7fe0",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:37:34.595Z"
+    },
+    {
+      "id": "6d5b",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "6105",
+          "userId": "9d4c",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ],
+      "createdAt": "2025-08-11T02:44:37.655Z"
+    },
+    {
+      "id": "61f9",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "93de",
+          "userId": "9d4c",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ],
+      "createdAt": "2025-08-11T02:45:19.000Z"
+    },
+    {
+      "id": "09fa",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "6c1d",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:46:03.308Z"
+    },
+    {
+      "id": "a78f",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "b5a8",
+          "userId": "9d4c",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ],
+      "createdAt": "2025-08-11T02:46:34.435Z"
+    },
+    {
+      "id": "fe65",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 6.49,
+      "items": [
+        {
+          "id": "a383",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:48:34.281Z"
+    }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "9d05",
+      "userId": "9d4c",
+      "productId": "2",
+      "storeId": 2,
+      "quantity": 1
+    }
+  ]
 }

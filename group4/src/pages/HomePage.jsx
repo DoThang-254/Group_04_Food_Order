@@ -15,17 +15,17 @@ import HomeCarousel from '../components/HomeCarousel';
 import { themeContext } from '../context/ThemeContext';
 import SortBar from '../components/SortBar';
 import Footer from '../components/Footer';
+
 const HomePage = () => {
   const [sortOption, setSortOption] = useState("default");
-
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [stores, setStores] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [idUser, setIdUser] = useState();
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // thêm state tìm kiếm
   const { theme } = useContext(themeContext);
   const pageSize = 9;
   const sectionRef = useRef();
@@ -76,6 +76,7 @@ const HomePage = () => {
     };
     fetchData();
   }, []);
+
   useEffect(() => {
     let sorted = [...filteredProducts];
     if (sortOption === "asc") {
@@ -86,17 +87,20 @@ const HomePage = () => {
     setFilteredProducts(sorted);
   }, [sortOption]);
 
-
+  // lọc theo category + search term
   useEffect(() => {
     let filtered = [...products];
     if (selectedCategoryId !== "all") {
       filtered = filtered.filter(p => p.categoryName === selectedCategoryId);
     }
+    if (searchTerm.trim() !== "") {
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
     setFilteredProducts(filtered);
-
     setCurrentPage(1);
-
-  }, [selectedCategoryId, products]);
+  }, [selectedCategoryId, products, searchTerm]);
 
   const paginatedProducts = useMemo(() => {
     const start = (currentPage - 1) * pageSize;
@@ -116,7 +120,6 @@ const HomePage = () => {
       return;
     }
     const item = {
-
       productId: (product.id),
       storeId: (product.storeId),
       quantity: 1
@@ -134,15 +137,10 @@ const HomePage = () => {
 
   return (
     <>
-
-
-
       <HomeCarousel onClickButton={handleScrollToContent} />
-
 
       <Container fluid ref={sectionRef}>
         {/* Nút mở Drawer */}
-
         <AntButton
           icon={<MenuOutlined />}
           type="primary"
@@ -151,6 +149,25 @@ const HomePage = () => {
         >
           Menu
         </AntButton>
+
+        {/* Thanh tìm kiếm */}
+        <input
+          type="text"
+          placeholder="Search product name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{
+            padding: '8px',
+            margin: '16px 0',
+            width: '100%',
+            maxWidth: '300px',
+            border: '1px solid #ccc',
+            borderRadius: '6px',
+            backgroundColor: theme === 'dark' ? '#333' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#000'
+          }}
+        />
+
         <div><SortBar sortOption={sortOption} setSortOption={setSortOption} /></div>
 
         <Drawer
@@ -203,23 +220,27 @@ const HomePage = () => {
               </Menu.Item>
             ))}
           </Menu>
-
         </Drawer>
-
 
         {/* Sản phẩm */}
         <Row>
           {paginatedProducts.map((product) => (
             <Col key={product.id} sm={6} md={4} className="mb-4">
               <Card className={theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark'}>
-                <Card.Img variant="top" src={product.img} onClick={() => handleViewDetail(product.id)} style={{ cursor: "pointer" }} />
+                <Card.Img
+                  variant="top"
+                  src={product.img}
+                  onClick={() => handleViewDetail(product.id)}
+                  style={{ cursor: "pointer" }}
+                />
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
-                  <Card.Text style={{ color: theme === 'dark' ? 'white' : 'black' }}
-                  >Price: ${product.price}</Card.Text>
-                  <Card.Text style={{
-                    color: theme === 'dark' ? 'white' : 'black'
-                  }}>Category: {product.categoryName || "Unknown"}</Card.Text>
+                  <Card.Text style={{ color: theme === 'dark' ? 'white' : 'black' }}>
+                    Price: ${product.price}
+                  </Card.Text>
+                  <Card.Text style={{ color: theme === 'dark' ? 'white' : 'black' }}>
+                    Category: {product.categoryName || "Unknown"}
+                  </Card.Text>
                   <Card.Text>
                     <Image
                       src={product.storeImg}
@@ -229,12 +250,23 @@ const HomePage = () => {
                       }}
                       onClick={() => handleShopDetail(product.storeId)}
                     />
-                    <span onClick={() => handleShopDetail(product.storeId)} style={{
-                      cursor: "pointer",
-                      color: theme === 'dark' ? 'white' : 'black'
-                    }} > {product.storeName || "Unknown"}</span>
+                    <span
+                      onClick={() => handleShopDetail(product.storeId)}
+                      style={{
+                        cursor: "pointer",
+                        color: theme === 'dark' ? 'white' : 'black'
+                      }}
+                    >
+                      {product.storeName || "Unknown"}
+                    </span>
                   </Card.Text>
-                  <Button type="button" onClick={() => handleAddToCart(product)} className="me-2">Add to Cart</Button>
+                  <Button
+                    type="button"
+                    onClick={() => handleAddToCart(product)}
+                    className="me-2"
+                  >
+                    Add to Cart
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
@@ -250,8 +282,10 @@ const HomePage = () => {
           style={{ textAlign: 'center', marginTop: '20px' }}
         />
       </Container>
-      <div className='footer'> <Footer /></div>
 
+      <div className='footer'>
+        <Footer />
+      </div>
     </>
   );
 };

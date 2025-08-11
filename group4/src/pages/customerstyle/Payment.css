@@ -1,0 +1,117 @@
+/* Container chính */
+.payment-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Animation fade-in toàn trang */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card chung */
+.payment-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.payment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Card thông tin khách hàng */
+.customer-card {
+  background: linear-gradient(135deg, #f0fff4, #ffffff);
+}
+
+/* Card đơn hàng */
+.order-card {
+  background: #ffffff;
+}
+
+/* Tiêu đề */
+.payment-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #28a745;
+  border-bottom: 2px solid #e6f4ea;
+  padding-bottom: 8px;
+}
+
+/* Nội dung text */
+.payment-text {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+/* Bảng thanh toán */
+.payment-table {
+  font-size: 0.95rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.payment-th {
+  background-color: #28a745;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+}
+
+.payment-td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.payment-row {
+  transition: background-color 0.2s ease;
+}
+
+.payment-row:hover {
+  background-color: #e9f9ec;
+}
+
+/* Tổng tiền */
+.payment-total {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin-top: 20px;
+  color: #1e7e34;
+}
+
+/* Nút thanh toán */
+.payment-button {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.payment-button:hover {
+  background-color: #218838 !important;
+  transform: scale(1.02);
+}
+
+/* Loading */
+.loading-text {
+  font-size: 1.1rem;
+  color: #28a745;
+  text-align: center;
+}

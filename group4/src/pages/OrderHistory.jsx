@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { decodeFakeToken } from '../data/token';
 import { getOrdersByUserId } from '../services/orders';
 import { Button, Card, Col, Container, Row, Spinner, Table, Pagination } from 'react-bootstrap';
+import './customerstyle/OrderHistory.css'; // Import CSS file
 
 const OrderHistory = () => {
     const { token } = useContext(loginContext);
@@ -29,8 +30,8 @@ const OrderHistory = () => {
 
     if (loading) {
         return (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-                <Spinner animation="border" variant="primary" />
+            <div className="loading-container d-flex justify-content-center align-items-center vh-100">
+                <Spinner animation="border" className="loading-spinner" />
             </div>
         );
     }
@@ -40,6 +41,22 @@ const OrderHistory = () => {
             ...prev,
             [orderId]: !prev[orderId],
         }));
+    };
+
+    // Function to get status class
+    const getStatusClass = (status) => {
+        switch (status.toLowerCase()) {
+            case 'pending':
+                return 'status-pending';
+            case 'completed':
+                return 'status-completed';
+            case 'cancelled':
+                return 'status-cancelled';
+            case 'processing':
+                return 'status-processing';
+            default:
+                return 'status-pending';
+        }
     };
 
     // Tính toán dữ liệu hiển thị cho trang hiện tại
@@ -70,78 +87,142 @@ const OrderHistory = () => {
     };
 
     return (
-        <Container className="mt-5">
-            <Row>
-                <Col md={8}>
-                    <Card className="shadow">
-                        <Card.Header className="bg-success text-white">
-                            Order Summary
-                        </Card.Header>
-                        <Card.Body>
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Status</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {currentOrders.map((order) => (
-                                        <React.Fragment key={order.id}>
-                                            <tr>
-                                                <td>{order.id}</td>
-                                                <td>{order.status}</td>
-                                                <td>${order.total}</td>
-                                                <td>
-                                                    <Button
-                                                        size="sm"
-                                                        variant={expanded[order.id] ? "secondary" : "primary"}
-                                                        onClick={() => toggleExpand(order.id)}
-                                                    >
-                                                        {expanded[order.id] ? "Ẩn chi tiết" : "Xem chi tiết"}
-                                                    </Button>
-                                                </td>
-                                            </tr>
-
-                                            {expanded[order.id] && (
+        <div className="order-history-container">
+            <Container className="mt-5">
+                <Row>
+                    <Col md={12}>
+                        <Card className="order-card shadow">
+                            <Card.Header className="card-header-red">
+                                <i className="fas fa-shopping-cart me-2"></i>
+                                Lịch Sử Đơn Hàng
+                            </Card.Header>
+                            <Card.Body>
+                                {orders.length === 0 ? (
+                                    <div className="empty-state">
+                                        <div className="icon">📦</div>
+                                        <h3>Chưa có đơn hàng nào</h3>
+                                        <p>Bạn chưa thực hiện đơn hàng nào. Hãy bắt đầu mua sắm!</p>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <Table className="order-table" hover>
+                                            <thead>
                                                 <tr>
-                                                    <td colSpan="4">
-                                                        <Table striped bordered size="sm" className="mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Item</th>
-                                                                    <th>Price</th>
-                                                                    <th>Quantity</th>
-                                                                    <th>Total</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {order.items.map((item) => (
-                                                                    <tr key={item.id}>
-                                                                        <td>{item.name}</td>
-                                                                        <td>${item.price}</td>
-                                                                        <td>{item.quantity}</td>
-                                                                        <td>${(item.price * item.quantity).toFixed(2)}</td>
-                                                                    </tr>
-                                                                ))}
-                                                            </tbody>
-                                                        </Table>
-                                                    </td>
+                                                    <th>Mã Đơn Hàng</th>
+                                                    <th>Trạng Thái</th>
+                                                    <th className="d-none d-md-table-cell">Tổng Tiền</th>
+                                                    <th>Thao Tác</th>
                                                 </tr>
-                                            )}
-                                        </React.Fragment>
-                                    ))}
-                                </tbody>
-                            </Table>
+                                            </thead>
+                                            <tbody>
+                                                {currentOrders.map((order) => (
+                                                    <React.Fragment key={order.id}>
+                                                        <tr>
+                                                            <td>
+                                                                <span className="order-id">#{order.id}</span>
+                                                            </td>
+                                                            <td>
+                                                                <span className={`order-status ${getStatusClass(order.status)}`}>
+                                                                    {order.status}
+                                                                </span>
+                                                            </td>
+                                                            <td className="d-none d-md-table-cell">
+                                                                <span className="order-total price-highlight">
+                                                                    ${order.total}
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <Button
+                                                                    size="sm"
+                                                                    className={`btn-detail ${expanded[order.id] ? "btn-detail-secondary" : "btn-detail-primary"}`}
+                                                                    onClick={() => toggleExpand(order.id)}
+                                                                >
+                                                                    {expanded[order.id] ? (
+                                                                        <>
+                                                                            <i className="fas fa-eye-slash me-1"></i>
+                                                                            Ẩn Chi Tiết
+                                                                        </>
+                                                                    ) : (
+                                                                        <>
+                                                                            <i className="fas fa-eye me-1"></i>
+                                                                            Xem Chi Tiết
+                                                                        </>
+                                                                    )}
+                                                                </Button>
+                                                            </td>
+                                                        </tr>
 
-                            {renderPagination()}
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
+                                                        {expanded[order.id] && (
+                                                            <tr className="expanded-row">
+                                                                <td colSpan="4">
+                                                                    <div className="p-3">
+                                                                        <h6 className="mb-3 text-danger fw-bold">
+                                                                            <i className="fas fa-list me-2"></i>
+                                                                            Chi Tiết Đơn Hàng #{order.id}
+                                                                        </h6>
+                                                                        <Table className="detail-table" size="sm">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Sản Phẩm</th>
+                                                                                    <th>Giá</th>
+                                                                                    <th>Số Lượng</th>
+                                                                                    <th>Thành Tiền</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                {order.items.map((item) => (
+                                                                                    <tr key={item.id}>
+                                                                                        <td>
+                                                                                            <div className="d-flex align-items-center">
+                                                                                                <i className="fas fa-box me-2 text-danger"></i>
+                                                                                                {item.name}
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <span className="price-highlight">
+                                                                                                ${item.price}
+                                                                                            </span>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <span className="badge bg-secondary">
+                                                                                                {item.quantity}
+                                                                                            </span>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <strong className="price-highlight">
+                                                                                                ${(item.price * item.quantity).toFixed(2)}
+                                                                                            </strong>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                ))}
+                                                                            </tbody>
+                                                                        </Table>
+                                                                        <div className="text-end mt-3">
+                                                                            <h6 className="mb-0">
+                                                                                <span className="text-muted">Tổng cộng: </span>
+                                                                                <span className="price-highlight fs-5 fw-bold">
+                                                                                    ${order.total}
+                                                                                </span>
+                                                                            </h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        )}
+                                                    </React.Fragment>
+                                                ))}
+                                            </tbody>
+                                        </Table>
+
+                                        {totalPages > 1 && renderPagination()}
+                                    </>
+                                )}
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 };
 
