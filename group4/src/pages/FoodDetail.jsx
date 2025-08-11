@@ -147,20 +147,6 @@ const FoodDetail = () => {
               "Delicious food made from fresh ingredients, ensuring hygiene and authentic restaurant flavors."}
           </p>
 
-          <div className="food-info">
-            <div className="info-item">
-              <span className="info-label">SKU:</span>
-              <span className="info-value">R1017</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Category:</span>
-              <span className="info-value">Burgers</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Tags:</span>
-              <span className="info-value">Fast Food, Hot, Soft, Trend</span>
-            </div>
-          </div>
 
           <div className="quantity-box">
             <span>Quantity:</span>

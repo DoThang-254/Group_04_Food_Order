@@ -33,10 +33,10 @@
       "name": "thai  dep zai",
       "phone": "0973197802",
       "email": "thaibachi2542004@gmail.com",
-      "password": "$2b$10$mkfU/tDOKQxd5.QM0h8BdOl/KtbNm7iFM.005GUTJKYIXRVQZX82a",
+      "password": "$2b$10$xI5JiD27fM/KUz93.SY9ZOMa0AME51cAeiWU8cnJmqvoYv7TA9oba",
       "gender": "male",
       "dob": "2006-01-07",
-      "role": "admin",
+      "role": "customer",
       "birthDate": "2006-01-07",
       "address": "số nhà 24,đường tiến thành",
       "active": true
@@ -55,7 +55,13 @@
       "active": true
     }
   ],
-  "resetRequests": [],
+  "resetRequests": [
+    {
+      "id": "376a",
+      "email": "th",
+      "createdAt": "2025-08-11T02:27:48.598Z"
+    }
+  ],
   "stores": [
     {
       "id": "1",
@@ -126,6 +132,114 @@
     {
       "id": "3",
       "name": "Burgers"
+    },
+    {
+      "id": "4",
+      "name": "Sushi"
+    },
+    {
+      "id": "5",
+      "name": "Pasta"
+    },
+    {
+      "id": "6",
+      "name": "Sandwiches"
+    },
+    {
+      "id": "7",
+      "name": "Salads"
+    },
+    {
+      "id": "8",
+      "name": "Desserts"
+    },
+    {
+      "id": "9",
+      "name": "Seafood"
+    },
+    {
+      "id": "10",
+      "name": "Steak"
+    },
+    {
+      "id": "11",
+      "name": "Barbecue"
+    },
+    {
+      "id": "12",
+      "name": "Asian Cuisine"
+    },
+    {
+      "id": "13",
+      "name": "Indian Cuisine"
+    },
+    {
+      "id": "14",
+      "name": "Mexican Cuisine"
+    },
+    {
+      "id": "15",
+      "name": "Middle Eastern Cuisine"
+    },
+    {
+      "id": "16",
+      "name": "Vegan"
+    },
+    {
+      "id": "17",
+      "name": "Vegetarian"
+    },
+    {
+      "id": "18",
+      "name": "Gluten-Free"
+    },
+    {
+      "id": "19",
+      "name": "Coffee & Tea"
+    },
+    {
+      "id": "20",
+      "name": "Smoothies"
+    },
+    {
+      "id": "21",
+      "name": "Bakery"
+    },
+    {
+      "id": "22",
+      "name": "Ice Cream"
+    },
+    {
+      "id": "23",
+      "name": "Street Food"
+    },
+    {
+      "id": "24",
+      "name": "Hot Pot"
+    },
+    {
+      "id": "25",
+      "name": "Dim Sum"
+    },
+    {
+      "id": "26",
+      "name": "Noodles"
+    },
+    {
+      "id": "27",
+      "name": "Fried Chicken"
+    },
+    {
+      "id": "28",
+      "name": "Wraps"
+    },
+    {
+      "id": "29",
+      "name": "Curry"
+    },
+    {
+      "id": "30",
+      "name": "Soup"
     }
   ],
   "products": [
@@ -176,4 +290,5 @@
   ],
   "orders": [],
   "cart": []
+
 }
