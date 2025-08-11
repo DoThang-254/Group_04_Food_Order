@@ -34,45 +34,14 @@ const MyQRCode = () => {
                 };
                 setQrCode(JSON.stringify(dataToEncode));
                 setUser(info);
+                
             }
             setLoading(false);
         };
         decode();
     }, [token, location.state, navigate]);
 
-    // Khởi tạo QR Scanner
-    useEffect(() => {
-        if (!loading && !scannerRef.current) {
-            scannerRef.current = new Html5QrcodeScanner(
-                "reader",
-                { fps: 10, qrbox: 250 },
-                false
-            );
-
-            scannerRef.current.render(
-                (decodedText, decodedResult) => {
-                    console.log("✅ QR decoded:", decodedText);
-                    try {
-                        const data = JSON.parse(decodedText);
-                        if (data.orderId) {
-                            navigate(`/payment/${data.orderId}`, { state: data });
-                        }
-                    } catch (err) {
-                        alert("❌ Không thể đọc được mã QR");
-                    }
-                },
-                (errorMessage) => {
-                    // console.log("QR error:", errorMessage);
-                }
-            );
-        }
-
-        return () => {
-            if (scannerRef.current) {
-                scannerRef.current.clear().catch(err => console.error(err));
-            }
-        };
-    }, [loading, navigate]);
+   
 
     if (loading) {
         return (

@@ -52,11 +52,12 @@ const Checkout = () => {
             status: 'pending',
             total: total,
             items: cart,
+            createdAt: new Date().toISOString()
           }
           const newOrder = await createOrder(order);
 
-          // navigate(`/payment/${newOrder.id}`);
-          navigate('/qr', { state: { orderId: newOrder.id, total: total } });
+          navigate(`/payment/${newOrder.id}`);
+          // navigate('/qr', { state: { orderId: newOrder.id, total: total } });
 
         } catch (error) {
           console.log(error);
