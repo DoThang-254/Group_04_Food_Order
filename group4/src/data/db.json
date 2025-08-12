@@ -1,43 +1,9 @@
 {
   "users": [
-    {
-      "id": "7d88",
-      "name": "Đỗ  Thắng",
-      "phone": "0329894798",
-      "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$AhOJuOREmZWuAVLXhfUzv.XNzG6X1GMI.cQpNVX0Gyul5qUndABke",
-      "gender": "male",
-      "dob": "2004-04-25",
-      "role": "admin",
-      "birthDate": "2004-04-25",
-      "address": "Hà Nội",
-      "active": true
-    },
-    {
-      "id": "cbe5",
-      "name": "Đỗ  Thắng",
-      "phone": "0329894799",
-      "email": "thangbachi2542004@gmail.com",
-      "password": "$2b$10$pzXZByHBIeDEAZiQ7v2/xOhqctVT1ko7JlpTmPaLOvIjAawxX3Vl.",
-      "gender": "male",
-      "dob": "2004-04-25",
-      "role": "owner",
-      "birthDate": "2004-04-25",
-      "address": "Hà Nội",
-      "active": true,
-      "storeId": "9d82"
-    }
+    {}
   ],
   "resetRequests": [],
   "stores": [
-    {
-      "id": "9d82",
-      "storeName": "Thang Shop ",
-      "storeAddress": "Hà Nội",
-      "img": "",
-      "ownerId": "cbe5",
-      "state": true
-    }
   ],
   "stores_categories": [],
   "categories": [
@@ -163,14 +129,6 @@
     }
   ],
   "products": [
-    {
-      "id": "5956",
-      "name": "phở",
-      "price": 2,
-      "img": "",
-      "categoryId": 26,
-      "storeId": "9d82"
-    }
   ],
   "orders": [],
   "cart": []

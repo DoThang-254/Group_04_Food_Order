@@ -4,16 +4,14 @@ import { getAllUsers } from "../../services/users";
 import { getAllProducts } from "../../services/products";
 import "./styles/AdminStoreControl.css";
 
-const AdminStoreControl = () => {
+const StoreApproval = () => {
   const [stores, setStores] = useState([]);
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-    const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const pageSize = 8;
   const [selectedStore, setSelectedStore] = useState(null);
   const [products, setProducts] = useState([]);
-  const [banModalStore, setBanModalStore] = useState(null);
-  const [banReasonInput, setBanReasonInput] = useState("");
 
   useEffect(() => {
     getAllStores().then(setStores);
@@ -27,9 +25,9 @@ const AdminStoreControl = () => {
   };
 
   const filteredStores = stores.filter(store => {
-    // Chỉ hiển thị các cửa hàng có (state === false && ban === false) hoặc (state === true && ban === false)
+    // Chỉ hiển thị các cửa hàng có state === false và ban === false
     if (store.ban === true) return false;
-      if (store.state !== true) return false;
+    if (store.state !== false) return false;
     if (!store.name || !store.storeAddress) return false;
     const ownerName = getOwnerName(store.ownerId).toLowerCase();
     const matchSearch =
@@ -49,7 +47,7 @@ const AdminStoreControl = () => {
   return (
     <div className="adminstore-dashboardContainer">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2 className="adminstore-dashboardTitle">Stores</h2>
+        <h2 className="adminstore-dashboardTitle">Store Approval</h2>
         <button onClick={handleBack} style={{ padding: '8px 20px', borderRadius: 4, background: '#eee', border: '1px solid #ccc', cursor: 'pointer', fontWeight: 500 }}>
           Back
         </button>
@@ -91,32 +89,25 @@ const AdminStoreControl = () => {
               <td>{getOwnerName(store.ownerId)}</td>
               <td>
                 <button
-                  style={{ background: '#f44336', color: '#fff', border: 'none', borderRadius: 4, padding: '4px 10px', cursor: 'pointer' }}
+                  style={{ background: '#4caf50', color: '#fff', border: 'none', borderRadius: 4, padding: '4px 10px', cursor: 'pointer' }}
                   onClick={async e => {
                     e.stopPropagation();
-                    const reason = window.prompt('Nhập nguyên nhân ban cửa hàng này:');
-                    if (!reason) return;
                     try {
                       await fetch(`http://localhost:3000/stores/${store.id}`, {
                         method: 'PATCH',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ ban: true, banReason: reason })
+                        body: JSON.stringify({ state: true })
                       });
-                      await fetch(`http://localhost:3000/blacklist`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ storeId: store.id, reason, bannedAt: new Date().toISOString() })
-                      });
-                      setStores(prev => prev.map(s => s.id === store.id ? { ...s, ban: true, banReason: reason } : s));
+                      setStores(prev => prev.map(s => s.id === store.id ? { ...s, state: true } : s));
                     } catch (err) {
                       alert('Cập nhật trạng thái thất bại!');
                     }
                   }}
-                >Ban</button>
+                >Approve</button>
               </td>
             </tr>
           ))}
-     
+      
         </tbody>
       </table>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20, gap: 8 }}>
@@ -167,4 +158,4 @@ const AdminStoreControl = () => {
   );
 };
 
-export default AdminStoreControl;
+export default StoreApproval;
