@@ -156,7 +156,7 @@ const OrderHistory = () => {
                                                             <tr className="expanded-row">
                                                                 <td colSpan="4">
                                                                     <div className="p-3">
-                                                                        <h6 className="mb-3 text-danger fw-bold">
+                                                                        <h6>
                                                                             <i className="fas fa-list me-2"></i>
                                                                             Chi Tiết Đơn Hàng #{order.id}
                                                                         </h6>
@@ -174,7 +174,7 @@ const OrderHistory = () => {
                                                                                     <tr key={item.id}>
                                                                                         <td>
                                                                                             <div className="d-flex align-items-center">
-                                                                                                <i className="fas fa-box me-2 text-danger"></i>
+                                                                                                
                                                                                                 {item.name}
                                                                                             </div>
                                                                                         </td>
