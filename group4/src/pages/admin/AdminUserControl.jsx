@@ -25,7 +25,6 @@ const AdminUserControl = () => {
   const totalPages = Math.ceil(filteredUsers.length / pageSize) || 1;
   const paginatedUsers = filteredUsers.slice((page - 1) * pageSize, page * pageSize);
 
-  // Hàm cập nhật trạng thái active của user
   const handleToggleActive = async (user) => {
     const action = user.active ? 'ban' : 'kích hoạt';
     const confirmMsg = `Bạn có chắc chắn muốn ${action} tài khoản này không?`;
@@ -36,7 +35,6 @@ const AdminUserControl = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ active: !user.active })
       });
-      // Cập nhật lại state local
       setUsers(prev => prev.map(u => u.id === user.id ? { ...u, active: !u.active } : u));
     } catch (e) {
       alert('Cập nhật trạng thái thất bại!');

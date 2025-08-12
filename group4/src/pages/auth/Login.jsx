@@ -131,11 +131,9 @@ const Login = () => {
                             <GoogleLogin
                                 onSuccess={async (credentialResponse) => {
                                     try {
-                                        // Giải mã thông tin Google
                                         const decoded = jwtDecode(credentialResponse.credential);
                                         console.log("Google user:", decoded);
 
-                                        // Giả sử bạn có API backend để login/register user Google
                                         const res = await loginByGoogle({
                                             email: decoded.email,
                                             googleId: decoded.sub,

@@ -79,7 +79,6 @@ const OwnerStaff = ({ staff, onAddStaff, onUpdateStaff, onDeleteStaff }) => {
     };
 
     if (editingStaff) {
-      // If password is empty during edit, don't update it
       if (!formData.password) {
         delete staffData.password;
       }

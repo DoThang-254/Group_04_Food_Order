@@ -47,7 +47,6 @@ const Register = () => {
             .matches(/^[0-9]{10,11}$/, 'Invalid phone number'),
         address: Yup.string().required('Address is required'),
 
-        // // 👇 Dynamic store validation
         // storeName: Yup.string().when('role', {
         //     is: 'owner',
         //     then: Yup.string().required('Store name is required'),
@@ -76,14 +75,14 @@ const Register = () => {
             role: value.role,
             birthDate: value.dob,
             address: value.address,
-            active: value.role === "customer" ? true : false
+            active: true
         };
 
         try {
             const user = await register(commonData)
             if (value.role == "owner") {
                 const storeData = {
-                    name: value.storeName,
+                    storeName: value.storeName,
                     storeAddress: value.storeAddress,
                     img: "",
                     ownerId: user.id,

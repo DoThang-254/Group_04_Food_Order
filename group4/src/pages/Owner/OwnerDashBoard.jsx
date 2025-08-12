@@ -10,7 +10,7 @@ import { getAllProducts } from "../../services/products";
 import { getAllCategories } from "../../services/categories";
 import { getAllUsers } from "../../services/users";
 import { getAllOrders } from "../../services/orders";
-import { getAllStores } from "../../services/stores";
+import { getAllStores, getStoreByOwnerId } from "../../services/stores";
 
 // Import components
 import OwnerSidebar from "./OwnerSidebar";
@@ -37,12 +37,19 @@ const OwnerDashboard = () => {
   const [staff, setStaff] = useState([]);
   const [orders, setOrders] = useState([]);
   const [categories, setCategories] = useState([]);
-
+  const [checkStore, setCheckStore] = useState();
   useEffect(() => {
     const decode = async () => {
       const info = await decodeFakeToken(token);
       if (info) {
-        setUser(info);
+        const check = await getStoreByOwnerId(info.id)
+        if (check.state) {
+          setUser(info);
+          setCheckStore(true);
+        }
+        else {
+          setCheckStore(false);
+        }
       }
       setLoading(false);
     };
@@ -50,7 +57,7 @@ const OwnerDashboard = () => {
   }, [token]);
 
   useEffect(() => {
-    if (user && user?.role === "owner") {
+    if (user && user?.role === "owner" && checkStore) {
       // Get store data
       const storeData = db.stores.find(
         (s) => String(s?.ownerId) === String(user?.id)
@@ -223,7 +230,7 @@ const OwnerDashboard = () => {
     return <Navigate to="/" replace />;
   }
 
-  if (!store) {
+  if (!checkStore) {
     return (
       <Container className="my-4">
         <div className="text-center">
@@ -293,7 +300,7 @@ const OwnerDashboard = () => {
           <OwnerSidebar
             activeTab={activeTab}
             onTabChange={setActiveTab}
-            storeName={store.name}
+            storeName={store?.storeName}
           />
         </Col>
         <Col md={9} lg={10} className="content-col">
