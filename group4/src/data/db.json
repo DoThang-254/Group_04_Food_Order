@@ -116,10 +116,24 @@
       "address": "HCM",
       "active": false,
       "storeId": "8ee9"
+    },
+    {
+      "id": "be7c",
+      "name": "Customer B",
+      "phone": "0123456789",
+      "email": "customerB@gmail.com",
+      "password": "$2b$10$DwsJ2stso5X5lbbolOqtfO/Ce5.DjUTcNOBJvTXhBorp4BTxyDgH2",
+      "gender": "male",
+      "dob": "2004-12-12",
+      "role": "owner",
+      "birthDate": "2004-12-12",
+      "address": "Hn - Vn ",
+      "active": true,
+      "storeId": "5ecb",
+      "ban": false
     }
   ],
   "resetRequests": [],
-
   "stores": [
     {
       "id": "1",
@@ -178,6 +192,14 @@
       "img": "",
       "ownerId": "b329",
       "state": false
+    },
+    {
+      "id": "5ecb",
+      "name": "CustomerBStore",
+      "storeAddress": "HN - VN",
+      "img": "",
+      "ownerId": "be7c",
+      "state": true
     }
   ],
   "stores_categories": [
@@ -401,7 +423,8 @@
       "price": 3,
       "img": "",
       "categoryId": 25,
-      "storeId": "3dd5"
+      "storeId": "3dd5",
+      "id": "2199"
     },
     {
       "id": "6bf7",
@@ -453,6 +476,5 @@
     }
   ],
   "orders": [],
-
   "cart": []
 }
