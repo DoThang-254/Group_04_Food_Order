@@ -357,3 +357,14 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
 }
+.btn-cancel {
+    border-radius: 20px; /* Bo tròn */
+    min-width: 120px; /* Đảm bảo ngang với View Details */
+    background-color: #dc3545; /* Màu đỏ */
+    color: white;
+    border: none;
+}
+
+.btn-cancel:hover {
+    background-color: #b02a37; /* Màu hover đậm hơn */
+}

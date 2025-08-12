@@ -39,3 +39,13 @@ export const getOrdersByUserId = async (userId) => {
   }
 
 };
+export const removeOrder = async (id) => {
+  try {
+    const res = await instance.delete(endpoint.ORDERS + `${id}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+
+};
+

@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { loginContext } from '../context/LoginContext';
 import { useNavigate } from 'react-router-dom';
 import { decodeFakeToken } from '../data/token';
-import { getOrdersByUserId } from '../services/orders';
+import { getOrdersByUserId, removeOrder } from '../services/orders';
 import { Button, Card, Col, Container, Row, Spinner, Table, Pagination } from 'react-bootstrap';
 import './customerstyle/OrderHistory.css'; // Import CSS file
+import { DeleteOutlined } from '@ant-design/icons';
 
 const OrderHistory = () => {
     const { token } = useContext(loginContext);
@@ -16,16 +17,17 @@ const OrderHistory = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 5; // số đơn hàng mỗi trang
 
+    const fetchOrders = async () => {
+        const info = await decodeFakeToken(token);
+        if (info) {
+            const res = await getOrdersByUserId(info.id);
+            setOrders(res);
+        }
+        setLoading(false);
+    };
+
     useEffect(() => {
-        const decode = async () => {
-            const info = await decodeFakeToken(token);
-            if (info) {
-                const res = await getOrdersByUserId(info.id);
-                setOrders(res);
-            }
-            setLoading(false);
-        };
-        decode();
+        fetchOrders();
     }, [token]);
 
     if (loading) {
@@ -42,6 +44,11 @@ const OrderHistory = () => {
             [orderId]: !prev[orderId],
         }));
     };
+
+    const handleRemove = async (orderId) => {
+        await removeOrder(orderId);
+        fetchOrders();
+    }
 
     // Function to get status class
     const getStatusClass = (status) => {
@@ -94,24 +101,24 @@ const OrderHistory = () => {
                         <Card className="order-card shadow">
                             <Card.Header className="card-header-red">
                                 <i className="fas fa-shopping-cart me-2"></i>
-                                Lịch Sử Đơn Hàng
+                                Order History
                             </Card.Header>
                             <Card.Body>
                                 {orders.length === 0 ? (
                                     <div className="empty-state">
                                         <div className="icon">📦</div>
-                                        <h3>Chưa có đơn hàng nào</h3>
-                                        <p>Bạn chưa thực hiện đơn hàng nào. Hãy bắt đầu mua sắm!</p>
+                                        <h3>Not Yet Order</h3>
+                                        <p>You are not take any order , Please shopping!</p>
                                     </div>
                                 ) : (
                                     <>
                                         <Table className="order-table" hover>
                                             <thead>
                                                 <tr>
-                                                    <th>Mã Đơn Hàng</th>
-                                                    <th>Trạng Thái</th>
-                                                    <th className="d-none d-md-table-cell">Tổng Tiền</th>
-                                                    <th>Thao Tác</th>
+                                                    <th>Order Id</th>
+                                                    <th>Status</th>
+                                                    <th className="d-none d-md-table-cell">Total</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -140,14 +147,23 @@ const OrderHistory = () => {
                                                                     {expanded[order.id] ? (
                                                                         <>
                                                                             <i className="fas fa-eye-slash me-1"></i>
-                                                                            Ẩn Chi Tiết
+                                                                            Hidden
                                                                         </>
+
                                                                     ) : (
                                                                         <>
                                                                             <i className="fas fa-eye me-1"></i>
-                                                                            Xem Chi Tiết
+                                                                            View Details
                                                                         </>
                                                                     )}
+                                                                </Button>
+                                                                <Button
+                                                                    size="sm"
+                                                                    className="btn-cancel"
+                                                                    style={{marginLeft: '10px', backgroundColor: "black" , color: "white"}}
+                                                                    onClick={() => handleRemove(order.id)}
+                                                                >
+                                                                   <DeleteOutlined />
                                                                 </Button>
                                                             </td>
                                                         </tr>
@@ -158,15 +174,15 @@ const OrderHistory = () => {
                                                                     <div className="p-3">
                                                                         <h6>
                                                                             <i className="fas fa-list me-2"></i>
-                                                                            Chi Tiết Đơn Hàng #{order.id}
+                                                                            Order Detail #{order.id}
                                                                         </h6>
                                                                         <Table className="detail-table" size="sm">
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>Sản Phẩm</th>
-                                                                                    <th>Giá</th>
-                                                                                    <th>Số Lượng</th>
-                                                                                    <th>Thành Tiền</th>
+                                                                                    <th>Products</th>
+                                                                                    <th>Price</th>
+                                                                                    <th>Amount</th>
+                                                                                    <th>Total</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -174,7 +190,7 @@ const OrderHistory = () => {
                                                                                     <tr key={item.id}>
                                                                                         <td>
                                                                                             <div className="d-flex align-items-center">
-                                                                                                
+
                                                                                                 {item.name}
                                                                                             </div>
                                                                                         </td>
@@ -199,7 +215,7 @@ const OrderHistory = () => {
                                                                         </Table>
                                                                         <div className="text-end mt-3">
                                                                             <h6 className="mb-0">
-                                                                                <span className="text-muted">Tổng cộng: </span>
+                                                                                <span className="text-muted">Total: </span>
                                                                                 <span className="price-highlight fs-5 fw-bold">
                                                                                     ${order.total}
                                                                                 </span>

@@ -3,16 +3,17 @@
     {
       "id": "fe9c",
       "name": "do thang",
-      "phone": "",
+      "phone": "0329894798",
       "email": "thangbachi2542004@gmail.com",
       "password": "$2b$10$I2xfZlBRcb0vTs5i/H1a0uPKeNsN0JN5eZkqYR.gd/7UIq3m8vuem",
       "gender": "Male",
       "dob": "2004-02-05",
       "role": "owner",
       "birthDate": "",
-      "address": "hn",
+      "address": "Hà Nội",
       "active": true,
-      "storeId": "3dd5"
+      "storeId": "3dd5",
+      "avatar": ""
     },
     {
       "id": "bae3",
@@ -56,6 +57,7 @@
     }
   ],
   "resetRequests": [],
+
   "stores": [
     {
       "id": "1",
@@ -337,6 +339,7 @@
     }
   ],
   "orders": [],
+<<<<<<< HEAD
   "cart": [
     {
       "id": "e3dd",
@@ -346,4 +349,7 @@
       "quantity": 4
     }
   ]
+=======
+  "cart": []
+>>>>>>> 8d8dcac52c9a7628d02a0af0a28c766bb9fe4e31
 }

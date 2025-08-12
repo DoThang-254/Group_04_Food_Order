@@ -16,6 +16,8 @@ import {
   SunOutlined,
   MoonOutlined,
   ProfileOutlined,
+  HistoryOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
 import { Drawer, List, Badge, Affix, Divider } from 'antd';
 import { loginContext } from '../context/LoginContext';
@@ -115,12 +117,12 @@ const Header = () => {
                       Profile
                     </Dropdown.Item>
                     <Dropdown.Item onClick={() => navigate('/order-history')}>
-                      <ProfileOutlined style={{ marginRight: '8px' }} />
+                      <HistoryOutlined style={{ marginRight: '8px' }} />
                       Orders History
                     </Dropdown.Item>
                     {role === 'owner' && store && (
                       <Dropdown.Item onClick={() => navigate('/owner-dashboard')}>
-                        <ProfileOutlined style={{ marginRight: '8px' }} />
+                        <HomeOutlined style={{ marginRight: '8px' }} />
                         Owner Dashboard
                       </Dropdown.Item>
                     )}
