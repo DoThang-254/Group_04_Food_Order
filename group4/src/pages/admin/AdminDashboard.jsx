@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminStoreControl from "./AdminStoreControl";
+import StoreApproval from "./StoreApproval";
 import { getAllStores } from "../../services/stores";
 import { getAllCategories } from "../../services/categories";
 import { getAllProducts } from "../../services/products";
@@ -81,6 +82,7 @@ const AdminDashboard = () => {
               <div style={{ width: '100%' }}>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='users'?'#1890ff':'#333', fontWeight: sidebarTab==='users'?600:400 }} onClick={()=>setSidebarTab('users')}>Users</div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='stores'?'#1890ff':'#333', fontWeight: sidebarTab==='stores'?600:400 }} onClick={()=>setSidebarTab('stores')}>Stores</div>
+                <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab==='store-approval'?'#1890ff':'#333', fontWeight: sidebarTab==='store-approval'?600:400 }} onClick={()=>setSidebarTab('store-approval')}>Store Approval</div>
                 <div style={{ padding: '10px 24px', cursor: 'pointer', color: sidebarTab.startsWith('blacklist')?'#1890ff':'#333', fontWeight: sidebarTab.startsWith('blacklist')?600:400 }}>
                   <span style={{ cursor: 'pointer' }} onClick={()=>setSidebarTab('blacklist-users')}>Blacklist</span>
                   {sidebarTab.startsWith('blacklist') && (
@@ -102,6 +104,7 @@ const AdminDashboard = () => {
         <div style={{ flex: 1, minHeight: '100vh', background: '#f7f7f7', padding: 32 }}>
           {sidebarTab === 'users' && <AdminUserControl />}
           {sidebarTab === 'stores' && <AdminStoreControl />}
+          {sidebarTab === 'store-approval' && <StoreApproval />}
           {sidebarTab === 'blacklist-users' && <AdminBlacklistUsers />}
           {sidebarTab === 'blacklist-stores' && <AdminBlacklistStores />}
           {sidebarTab === 'reports' && (

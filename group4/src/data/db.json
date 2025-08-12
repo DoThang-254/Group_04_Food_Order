@@ -103,6 +103,20 @@
       "birthDate": "2004-03-12",
       "address": "HN",
       "active": true
+    },
+    {
+      "id": "b329",
+      "name": "Do Uyen",
+      "phone": "0123456789",
+      "email": "uyen123@gmail.com",
+      "password": "$2b$10$cXku20QpUziUMsxfh4NKWe8p5GYCKpNOLrOyq472dkopVZPzqKNoq",
+      "gender": "female",
+      "dob": "2004-02-11",
+      "role": "owner",
+      "birthDate": "2004-02-11",
+      "address": "HCM",
+      "active": false,
+      "storeId": "8ee9"
     }
   ],
   "resetRequests": [],
@@ -156,6 +170,14 @@
       "state": false,
       "ban": false,
       "banReason": ""
+    },
+    {
+      "id": "8ee9",
+      "name": "Pizza-Shop",
+      "storeAddress": "HN",
+      "img": "",
+      "ownerId": "b329",
+      "state": false
     }
   ],
   "stores_categories": [
@@ -287,6 +309,25 @@
         }
       ],
       "createdAt": "2025-08-11T02:16:05.864Z"
+    },
+    {
+      "id": "27a6",
+      "userId": "95fc",
+      "status": "pending",
+      "total": 8.99,
+      "items": [
+        {
+          "id": "7d28",
+          "userId": "95fc",
+          "productId": "1",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Margherita Pizza",
+          "price": 8.99,
+          "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:29:11.839Z"
     }
   ],
   "cart": [
