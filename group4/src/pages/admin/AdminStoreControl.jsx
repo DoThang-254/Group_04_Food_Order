@@ -16,11 +16,13 @@ const AdminStoreControl = () => {
   const [banReasonInput, setBanReasonInput] = useState("");
 
   useEffect(() => {
+    // Fetch stores, users (for owner name), products (for menu)
     getAllStores().then(setStores);
     getAllUsers().then(setUsers);
     getAllProducts().then(setProducts);
   }, []);
 
+  // Helper to get owner name by ownerId
   const getOwnerName = (ownerId) => {
     const owner = users.find(u => String(u.id) === String(ownerId));
     return owner ? owner.name : "";
@@ -39,6 +41,7 @@ const AdminStoreControl = () => {
     return matchSearch;
   });
 
+  // Pagination logic
   const totalPages = Math.ceil(filteredStores.length / pageSize) || 1;
   const paginatedStores = filteredStores.slice((page - 1) * pageSize, page * pageSize);
 

@@ -1,9 +1,43 @@
 {
   "users": [
-    {}
+    {
+      "id": "ae80",
+      "name": "Đỗ  Thắng",
+      "phone": "0329894799",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "$2b$10$uHEaMB.1Hik4HqWATx4SOOfcnYQ0Zh7KoANz19SrJ5VC7XIhJKIdi",
+      "gender": "male",
+      "dob": "2004-04-25",
+      "role": "admin",
+      "birthDate": "2004-04-25",
+      "address": "Hà Nội",
+      "active": true
+    },
+    {
+      "id": "1bd1",
+      "name": "Đỗ  Thắng",
+      "phone": "0329894799",
+      "email": "thangbachi2542004@gmail.com",
+      "password": "$2b$10$iXkgRbDGBt5w/ZUB2js4hOh.4Joo5pdeWb3OYddSVyPyalaIZaD0.",
+      "gender": "male",
+      "dob": "2004-04-25",
+      "role": "owner",
+      "birthDate": "2004-04-25",
+      "address": "Hà Nội",
+      "active": true,
+      "storeId": "5aad"
+    }
   ],
   "resetRequests": [],
   "stores": [
+    {
+      "id": "5aad",
+      "storeName": "Thang Shop ",
+      "storeAddress": "Hà Nội",
+      "img": "",
+      "ownerId": "1bd1",
+      "state": false
+    }
   ],
   "stores_categories": [],
   "categories": [
@@ -128,8 +162,7 @@
       "name": "Soup"
     }
   ],
-  "products": [
-  ],
+  "products": [],
   "orders": [],
   "cart": []
 }

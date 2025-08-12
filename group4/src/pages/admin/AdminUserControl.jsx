@@ -25,6 +25,7 @@ const AdminUserControl = () => {
   const totalPages = Math.ceil(filteredUsers.length / pageSize) || 1;
   const paginatedUsers = filteredUsers.slice((page - 1) * pageSize, page * pageSize);
 
+  // Hàm cập nhật trạng thái active của user
   const handleToggleActive = async (user) => {
     if (user.active) {
       // Ban user: hỏi lý do
