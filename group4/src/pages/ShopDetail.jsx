@@ -80,7 +80,7 @@ const ShopDetail = () => {
         setProducts(productsRes);
 
         const filtered = productsRes.filter(
-          (p) => Number(p.storeId) === Number(id)
+          (p) => p.storeId == id
         );
         setFilteredProducts(filtered);
       } catch (error) {
