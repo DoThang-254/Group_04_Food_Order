@@ -339,17 +339,6 @@
     }
   ],
   "orders": [],
-<<<<<<< HEAD
-  "cart": [
-    {
-      "id": "e3dd",
-      "userId": "fe9c",
-      "productId": "2",
-      "storeId": 2,
-      "quantity": 4
-    }
-  ]
-=======
+
   "cart": []
->>>>>>> 8d8dcac52c9a7628d02a0af0a28c766bb9fe4e31
 }
