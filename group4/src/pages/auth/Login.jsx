@@ -9,7 +9,7 @@ import { themeContext } from '../../context/ThemeContext';
 import { getStoreByOwnerIdAndChecking } from '../../services/stores';
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from 'jwt-decode';
-
+import '../auth/Login.css'
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         password: Yup.string()
@@ -83,8 +83,10 @@ const Login = () => {
     }
 
     return (
-        <div className={`container d-flex justify-content-center align-items-center min-vh-100 ${theme === 'dark' ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
-            <div className={`card shadow p-4 ${theme === 'dark' ? 'bg-secondary text-white' : 'bg-white text-dark'}`} style={{ width: '100%', maxWidth: '400px' }}>
+        <div className={`login-bg d-flex justify-content-center align-items-center min-vh-100`}>
+            <div className={`card shadow p-4 ${theme === 'dark' ? 'bg-secondary text-white' : 'bg-white text-dark'}`}
+                style={{ width: '100%', maxWidth: '400px', position: 'relative', zIndex: 2 }}
+            >
                 <div className="d-flex justify-content-between align-items-center mb-3">
                     <h3 className="mb-0">Login</h3>
                 </div>
