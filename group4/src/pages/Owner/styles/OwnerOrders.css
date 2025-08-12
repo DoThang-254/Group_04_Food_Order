@@ -1,0 +1,367 @@
+.owner-orders {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.orders-header {
+  margin-bottom: 30px;
+}
+
+.orders-header h3 {
+  color: #8B0000;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.orders-header p {
+  color: #6c757d;
+  margin: 0;
+}
+
+/* Order statistics cards */
+.owner-orders .stat-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.owner-orders .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+}
+
+.owner-orders .stat-card .card-body {
+  padding: 20px;
+}
+
+.owner-orders .stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.owner-orders .stat-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Customer info styling */
+.customer-info {
+  font-size: 0.9rem;
+}
+
+.customer-id {
+  color: #6c757d;
+  font-weight: 500;
+}
+
+/* Order items styling */
+.order-items {
+  max-width: 200px;
+}
+
+.item-summary {
+  font-size: 0.85rem;
+  color: #495057;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.item-summary:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Order total styling */
+.order-total {
+  color: #28a745;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Order time styling */
+.order-time {
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.order-time div {
+  color: #495057;
+  font-weight: 500;
+}
+
+.order-time small {
+  color: #6c757d;
+}
+
+/* Status select dropdown */
+.status-select {
+  min-width: 130px;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.status-select:focus {
+  border-color: #8B0000;
+  box-shadow: 0 0 0 0.2rem rgba(139, 0, 0, 0.15);
+}
+
+/* Orders table styling */
+.owner-orders .table {
+  font-size: 0.9rem;
+  background-color: #fff;
+}
+
+.owner-orders .table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  border-top: none;
+  padding: 16px 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.owner-orders .table td {
+  padding: 16px 10px;
+  vertical-align: middle;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Action buttons styling */
+.owner-orders .action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 140px;
+}
+
+.owner-orders .action-buttons .btn {
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  font-weight: 500;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Filter controls styling */
+.owner-orders .input-group-text {
+  background-color: #f8f9fa;
+  border-color: #ddd;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.owner-orders .form-control,
+.owner-orders .form-select {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.owner-orders .form-control:focus,
+.owner-orders .form-select:focus {
+  border-color: #8B0000;
+  box-shadow: 0 0 0 0.2rem rgba(139, 0, 0, 0.15);
+}
+
+/* Empty state styling */
+.owner-orders .empty-state {
+  background-color: #fff;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 2px dashed #e9ecef;
+  padding: 40px 20px;
+}
+
+.owner-orders .empty-icon {
+  color: #adb5bd;
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+.owner-orders .empty-state h5 {
+  color: #6c757d;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.owner-orders .empty-state p {
+  color: #adb5bd;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Order detail modal styling */
+.owner-orders .modal-header {
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.owner-orders .modal-title {
+  color: white;
+  font-weight: 600;
+}
+
+.owner-orders .modal-header .btn-close {
+  filter: invert(1);
+}
+
+.owner-orders .modal-body {
+  padding: 25px;
+}
+
+.order-detail h6 {
+  color: #8B0000;
+  font-weight: 600;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f1f3f4;
+  padding-bottom: 8px;
+}
+
+.order-detail p {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.order-detail strong {
+  color: #343a40;
+}
+
+/* Order detail table */
+.order-detail .table {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.order-detail .table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  border-top: none;
+  padding: 12px;
+}
+
+.order-detail .table td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+/* Status badges for orders */
+.owner-orders .badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.7em;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+/* Hover effects */
+.owner-orders .table-hover tbody tr:hover {
+  background-color: rgba(139, 0, 0, 0.04);
+}
+
+/* Button hover effects */
+.owner-orders .btn-outline-info:hover {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.owner-orders .btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .owner-orders .action-buttons {
+    min-width: 120px;
+  }
+
+  .order-items {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  .owner-orders .table {
+    font-size: 0.8rem;
+  }
+
+  .owner-orders .table th,
+  .owner-orders .table td {
+    padding: 12px 8px;
+  }
+
+  .owner-orders .action-buttons {
+    min-width: 100px;
+  }
+
+  .status-select {
+    min-width: 100px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .owner-orders .stat-card .card-body {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .owner-orders .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .owner-orders .action-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    min-width: auto;
+  }
+
+  .owner-orders .action-buttons .btn {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+
+  .order-items {
+    max-width: none;
+  }
+
+  .item-summary {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .owner-orders .modal-dialog {
+    margin: 10px;
+  }
+
+  .owner-orders .modal-body {
+    padding: 20px;
+  }
+
+  .orders-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .orders-header p {
+    font-size: 0.9rem;
+  }
+
+  .owner-orders .table {
+    font-size: 0.75rem;
+  }
+
+  .order-detail h6 {
+    font-size: 1rem;
+  }
+}

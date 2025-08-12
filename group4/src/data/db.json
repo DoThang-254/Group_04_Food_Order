@@ -23,7 +23,23 @@
       "dob": "2004-02-05",
       "role": "owner",
       "birthDate": "2004-02-05",
-      "address": "van dinh"
+      "address": "van dinh",
+      "active": true,
+      "storeId": "53dc"
+    },
+    {
+      "id": "a111",
+      "name": "Tuan Nguyen",
+      "phone": "0865855204",
+      "email": "tuanminh2424@gmail.com",
+      "password": "$2b$10$KElhFMT9gY8LUkn6zXqJTORSoVzLuvn7DNQ2/PxHCOQUQ2U8W9hz2",
+      "gender": "male",
+      "dob": "2004-08-08",
+      "role": "owner",
+      "birthDate": "2004-08-08",
+      "address": "Hola",
+      "active": true,
+      "storeId": "fc04"
     }
   ],
   "resetRequests": [],
@@ -43,6 +59,21 @@
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
       "state": true
+    },
+    {
+      "id": "53dc",
+      "storeName": "a",
+      "storeAddress": "hcm",
+      "state": true,
+      "ownerId": "bae3"
+    },
+    {
+      "id": "fc04",
+      "name": "HolaLmao",
+      "storeAddress": "Hola",
+      "img": "",
+      "ownerId": "a111",
+      "state": false
     }
   ],
   "stores_categories": [
@@ -128,15 +159,16 @@
       "price": 5,
       "img": "",
       "categoryId": 1,
-      "storeId": "0204"
+
+      "storeId": "53dc"
     },
     {
-      "id": "58b36245-49c1-4f62-b2fe-6cc7c4a51f15",
-      "name": "a",
-      "price": 5,
-      "img": "",
-      "categoryId": 1,
-      "storeId": "0204"
+      "id": "e0fa",
+      "name": "Coca",
+      "price": 5000,
+      "img": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnamanmarket.com%2Fproducts%2Fcoca-cola-original-500ml%3Fview%3Dload-breadcrumb-en%26srsltid%3DAfmBOoo2pj7ZUSrj9u1df3Dy5iub0KTLF_rvw2u-2H4laqrNun3LkBIZ&psig=AOvVaw26ly8kRVtGrhQ4_UOtppqD&ust=1754705670980000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOD9m5SS-o4DFQAAAAAdAAAAABAU",
+      "categoryId": 2,
+      "storeId": "fc04"
     }
   ],
   "orders": [
