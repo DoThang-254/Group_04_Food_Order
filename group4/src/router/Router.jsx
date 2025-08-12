@@ -19,6 +19,7 @@ import RouterAuth from './RouterAuth';
 import Payment from '../pages/Payment'; 
 import QRScanner from '../pages/QRScanner';
 import MyQRCode from '../pages/MyQrCode';
+import OrderHistory from '../pages/OrderHistory';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "reset-password",
         element: <ResetPassword />,
+      },
+      {
+        path: "order-history",
+        element: <OrderHistory/>,
       },
       {
         path: "*",

@@ -1,15 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Rate, Flex } from 'antd';
-import { getAnProduct } from '../services/products';
-import { useCartStore } from '../stores/stores';
-import { loginContext } from '../context/LoginContext';
-import './customerstyle/FoodDetail.css';
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Rate, Flex } from "antd";
+import { getAnProduct } from "../services/products";
+import { useCartStore } from "../stores/stores";
+import { loginContext } from "../context/LoginContext";
+import "./customerstyle/FoodDetail.css";
 
-const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
+const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 
 const FoodDetail = () => {
-  const [value, setValue] = useState(3); // ⭐ Mặc định 3 sao
+  const [value, setValue] = useState(0);
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -17,19 +17,30 @@ const FoodDetail = () => {
   const addToCart = useCartStore((state) => state.addToCart);
   const fetchCart = useCartStore((state) => state.fetchCart);
   const { token } = useContext(loginContext);
-
-  // ⭐ Lấy rating từ localStorage khi vào trang
-  useEffect(() => {
-    const savedRating = localStorage.getItem(`rating-product-${id}`);
-    if (savedRating) {
-      setValue(Number(savedRating));
-    }
-  }, [id]);
+  const [userRating, setUserRating] = useState(0);
 
   useEffect(() => {
     const fetchProduct = async () => {
       const data = await getAnProduct(id);
       setProduct(data);
+
+      // Lấy rating từ localStorage
+      const savedRating =
+        JSON.parse(localStorage.getItem(`rating-product-${id}`)) || {
+          totalScore: 0,
+          voteCount: 0,
+        };
+
+      if (savedRating.voteCount > 0) {
+        setValue(savedRating.totalScore / savedRating.voteCount);
+      }
+      const votersData =
+        JSON.parse(localStorage.getItem(`voters-product-${id}`)) || [];
+      const userId = token;
+      const userVote = votersData.find((v) => v.userId === userId);
+      if (userVote) {
+        setUserRating(userVote.score);
+      }
     };
     fetchProduct();
   }, [id]);
@@ -38,10 +49,50 @@ const FoodDetail = () => {
     if (token) fetchCart();
   }, [token]);
 
+  const handleRatingChange = (val) => {
+    if (!token) {
+      alert("Vui lòng đăng nhập để vote.");
+      navigate("/login");
+      return;
+    }
+
+    const ratingKey = `rating-product-${id}`;
+    const votersKey = `voters-product-${id}`;
+    const userId = token; // ở đây giả sử token là userId, nếu là JWT thì decode
+
+    const ratingData =
+      JSON.parse(localStorage.getItem(ratingKey)) || {
+        totalScore: 0,
+        voteCount: 0,
+      };
+    const votersData = JSON.parse(localStorage.getItem(votersKey)) || [];
+
+    const existingVoteIndex = votersData.findIndex((v) => v.userId === userId);
+
+    if (existingVoteIndex !== -1) {
+      // Update điểm cũ
+      const oldScore = votersData[existingVoteIndex].score;
+      ratingData.totalScore = ratingData.totalScore - oldScore + val;
+      votersData[existingVoteIndex].score = val;
+    } else {
+      // Vote mới
+      ratingData.totalScore += val;
+      ratingData.voteCount += 1;
+      votersData.push({ userId, score: val });
+    }
+
+    localStorage.setItem(ratingKey, JSON.stringify(ratingData));
+    localStorage.setItem(votersKey, JSON.stringify(votersData));
+
+    // Cập nhật UI
+    setUserRating(val);
+    setValue(ratingData.totalScore / ratingData.voteCount);
+  };
+
   const handleAddToCart = () => {
     if (!token) {
-      alert('Please log in to add to cart.');
-      navigate('/login');
+      alert("Please log in to add to cart.");
+      navigate("/login");
       return;
     }
 
@@ -51,9 +102,8 @@ const FoodDetail = () => {
         storeId: product.storeId,
         quantity: quantity,
       };
-
       addToCart(item);
-      alert('Added to cart!');
+      alert("Added to cart!");
     }
   };
 
@@ -61,7 +111,9 @@ const FoodDetail = () => {
 
   return (
     <div className="food-detail-wrapper">
-      <button className="back-btn" onClick={() => navigate(-1)}>← Back</button>
+      <button className="back-btn" onClick={() => navigate(-1)}>
+        ← Back
+      </button>
 
       <div className="food-detail-container">
         <div className="food-detail-img">
@@ -74,40 +126,27 @@ const FoodDetail = () => {
             {Number(product?.price).toLocaleString()}₫
           </p>
 
-          {/* ⭐ Rating Section */}
+          {/* Rating */}
           <div className="rating-section">
             <Flex gap="middle" vertical>
               <Rate
                 tooltips={desc}
-                onChange={(val) => {
-                  setValue(val);
-                  localStorage.setItem(`rating-product-${id}`, val);
-                }}
-                value={value}
+                onChange={handleRatingChange}
+                value={userRating}
               />
-              {value ? <span>{desc[value - 1]}</span> : null}
+              {value ? (
+                <span>
+                  {desc[Math.round(value) - 1]} ({value.toFixed(1)})
+                </span>
+              ) : null}
             </Flex>
           </div>
 
           <p className="food-desc">
             {product?.description ||
-              'Delicious food made from fresh ingredients, ensuring hygiene and authentic restaurant flavors. Sweet spicy vegetable with delicious prosciutto. Fried and the yellow sauce flavoring served.'}
+              "Delicious food made from fresh ingredients, ensuring hygiene and authentic restaurant flavors."}
           </p>
 
-          <div className="food-info">
-            <div className="info-item">
-              <span className="info-label">SKU:</span>
-              <span className="info-value">R1017</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Category:</span>
-              <span className="info-value">Burgers</span>
-            </div>
-            <div className="info-item">
-              <span className="info-label">Tags:</span>
-              <span className="info-value">Fast Food, Hot, Soft, Trend</span>
-            </div>
-          </div>
 
           <div className="quantity-box">
             <span>Quantity:</span>

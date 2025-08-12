@@ -1,0 +1,278 @@
+/* Payment.css - Red Theme (#E53935) */
+
+.payment-page {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 50%, #ef9a9a 100%);
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+/* Container styling */
+.payment-page .container {
+  max-width: 1200px;
+}
+
+/* Card styling */
+.payment-page .card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(229, 57, 53, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.payment-page .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(229, 57, 53, 0.25);
+}
+
+/* Card headers */
+.payment-page .card-header {
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 15px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.payment-page .card-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5722, #E53935, #D32F2F);
+}
+
+/* Card body */
+.payment-page .card-body {
+  padding: 25px;
+  background: white;
+}
+
+/* Customer information styling */
+.payment-page .card-body p {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #424242;
+  border-bottom: 1px solid #ffebee;
+  padding-bottom: 8px;
+}
+
+.payment-page .card-body p:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.payment-page .card-body p strong {
+  color: #E53935;
+  font-weight: 600;
+  display: inline-block;
+  width: 100px;
+  margin-right: 10px;
+}
+
+/* Table styling */
+.payment-page .table {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(229, 57, 53, 0.1);
+}
+
+.payment-page .table thead th {
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.95rem;
+}
+
+.payment-page .table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.payment-page .table tbody tr:hover {
+  background-color: rgba(229, 57, 53, 0.05);
+}
+
+.payment-page .table tbody td {
+  padding: 12px 10px;
+  vertical-align: middle;
+  border-color: #ffebee;
+  text-align: center;
+  color: #424242;
+}
+
+.payment-page .table tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.payment-page .table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Total amount styling */
+.payment-page h5 {
+  color: #E53935;
+  font-weight: 700;
+  margin-top: 20px;
+  padding: 15px;
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-radius: 10px;
+  border-left: 5px solid #E53935;
+}
+
+.payment-page h5 strong {
+  font-size: 1.3rem;
+  color: #C62828;
+}
+
+/* QR Code section */
+.qr-section {
+  margin-top: 25px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+  border-radius: 15px;
+  border: 2px dashed #E53935;
+  text-align: center;
+}
+
+.qr-section p {
+  color: #E53935;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.qr-section img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.qr-section img:hover {
+  transform: scale(1.05);
+}
+
+/* Loading spinner */
+.payment-page .spinner-border {
+  color: #E53935;
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .payment-page {
+    padding: 10px 0;
+  }
+  
+  .payment-page .container {
+    padding: 0 15px;
+  }
+  
+  .payment-page .card {
+    margin-bottom: 20px;
+  }
+  
+  .payment-page .card-body {
+    padding: 20px;
+  }
+  
+  .payment-page .card-body p strong {
+    width: 80px;
+    font-size: 0.9rem;
+  }
+  
+  .payment-page .table {
+    font-size: 0.85rem;
+  }
+  
+  .payment-page .table thead th,
+  .payment-page .table tbody td {
+    padding: 8px 5px;
+  }
+  
+  .qr-section img {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .payment-page .card-header {
+    font-size: 1rem;
+    padding: 12px 15px;
+  }
+  
+  .payment-page h5 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .payment-page .table {
+    font-size: 0.8rem;
+  }
+  
+  .qr-section {
+    padding: 15px;
+  }
+  
+  .qr-section img {
+    max-width: 100px;
+  }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.payment-page .card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.payment-page .card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+/* Success color override for order summary header */
+.payment-page .bg-success {
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%) !important;
+}
+
+/* Print styles */
+@media print {
+  .payment-page {
+    background: white;
+    padding: 0;
+  }
+  
+  .payment-page .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .payment-page .card-header {
+    background: #E53935 !important;
+    -webkit-print-color-adjust: exact;
+  }
+}

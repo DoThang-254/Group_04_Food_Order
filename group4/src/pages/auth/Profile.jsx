@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { loginContext } from '../../context/LoginContext';
 import { decodeFakeToken } from '../../data/token';
 import { Button, Card, Col, Container, Form, Image, Row, Spinner } from 'react-bootstrap';
-import { saveRequest, updateUser } from '../../services/users';
+import { checkEmail, saveRequest, updateUser } from '../../services/users';
 import { useNavigate } from 'react-router-dom';
 import { themeContext } from '../../context/ThemeContext';
+import { Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const Profile = () => {
     const [loading, setLoading] = useState(true);
@@ -13,6 +15,7 @@ const Profile = () => {
     const [editMode, setEditMode] = useState(false);
     const { theme } = useContext(themeContext);
     const nav = useNavigate();
+
     useEffect(() => {
         const decode = async () => {
             const info = await decodeFakeToken(token);
@@ -33,190 +36,170 @@ const Profile = () => {
         );
     }
 
-    const handleChange = (e) => {
-        setUser(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
-    };
+    const originalEmail = user.email;
 
-    const handleSave = async () => {
-        setUser(user);
+    const validationSchema = Yup.object({
+        name: Yup.string().required('Full name is required'),
+        email: Yup.string()
+            .email('Invalid email')
+            .required('Email is required')
+            .test(
+                'unique-email',
+                'Email already exists',
+                async function (value) {
+                    if (!value) return false;
+
+                    // Nếu user nhập lại đúng email ban đầu thì bỏ qua check
+                    if (value === originalEmail) return true;
+
+                    const isUnique = await checkEmail(value);
+                    return isUnique.length === 0;
+                }
+            ),
+        phone: Yup.string()
+            .matches(/^[0-9]+$/, 'Phone must be numeric')
+            .required('Phone is required'),
+        birthDate: Yup.date().nullable(),
+        address: Yup.string().nullable()
+    });
+
+    const handleSave = async (values) => {
+        await updateUser(user.id, values);
+        setUser(values);
         setEditMode(false);
-        await updateUser(user.id, user);
     };
 
     const handleCancel = () => {
-        setUser(user);
         setEditMode(false);
     };
 
     return (
-        <Container className="mt-5" data-bs-theme={theme}
+        <Container
+            className="mt-5"
+            data-bs-theme={theme}
             style={{
                 backgroundColor: theme === 'dark' ? '#000' : '#fff',
                 color: theme === 'dark' ? '#fff' : '#000',
                 minHeight: '100vh',
                 padding: '2rem',
-            }}>
+            }}
+        >
             <Row className="justify-content-center">
-                <Col md={6} >
-                    <Card className="shadow-sm p-3 bg-body text-body" >
-                        <div className="text-center mb-3">
-                            <Image
-                                src={user.picture || '...'}
-                                roundedCircle
-                                width={100}
-                                height={100}
-                                alt="Avatar"
-                            />
-                        </div>
+                <Col md={6}>
+                    <Card className="shadow-sm p-3 bg-body text-body">
+                        
                         <Card.Body>
-                            <Card.Text style={{
-                                color: theme === 'dark' ? '#fff' : '#000'
-                            }}>
-                                <strong>Full name:</strong><br />
-                                {editMode ? (
-                                    <Form.Control
-                                        type="text"
-                                        name="name"
-                                        value={user.name || ''}
-                                        onChange={handleChange}
-                                        className="bg-body text-body"
-                                    />
-                                ) : (
-                                    user.name || 'No Name'
-                                )}
-                                <br /><br />
+                            {editMode ? (
+                                <Formik
+                                    initialValues={user}
+                                    validationSchema={validationSchema}
+                                    onSubmit={handleSave}
+                                >
+                                    {({ handleSubmit }) => (
+                                        <Form onSubmit={handleSubmit}>
+                                            <Card.Text>
+                                                <strong>Full name:</strong><br />
+                                                <Field name="name" type="text" className="form-control bg-body text-body" />
+                                                <ErrorMessage name="name" component="div" className="text-danger" />
+                                                <br /><br />
 
-                                <strong>Email:</strong><br />
-                                {editMode ? (
-                                    <Form.Control
-                                        type="email"
-                                        name="email"
-                                        value={user.email || ''}
-                                        onChange={handleChange}
-                                        className="bg-body text-body"
-                                    />
-                                ) : (
-                                    user.email || 'N/A'
-                                )}
-                                <br /><br />
+                                                <strong>Email:</strong><br />
+                                                <Field name="email" type="email" className="form-control bg-body text-body" />
+                                                <ErrorMessage name="email" component="div" className="text-danger" />
+                                                <br /><br />
 
-                                <strong>Password:</strong><br />
-                                <Button variant="warning" onClick={async () => {
-                                    await saveRequest(user.email);
-                                    nav("/reset-password")
-                                }}>
-                                    Change Password
-                                </Button>
-                                <br /><br />
+                                                <strong>Password:</strong><br />
+                                                <Button
+                                                    variant="warning"
+                                                    onClick={async () => {
+                                                        await saveRequest(user.email);
+                                                        nav("/reset-password");
+                                                    }}
+                                                >
+                                                    Change Password
+                                                </Button>
+                                                <br /><br />
 
-                                <strong>Role:</strong><br />
-                                {user.role || 'customer'}
-                                <br /><br />
+                                                <strong>Role:</strong><br />
+                                                {user.role || 'customer'}
+                                                <br /><br />
 
-                                <strong>Phone:</strong><br />
-                                {editMode ? (
-                                    <Form.Control
-                                        type="text"
-                                        name="phone"
-                                        value={user.phone || ''}
-                                        onChange={handleChange}
-                                        className="bg-body text-body"
-                                    />
-                                ) : (
-                                    user.phone || 'N/A'
-                                )}
-                                <br /><br />
+                                                <strong>Phone:</strong><br />
+                                                <Field name="phone" type="text" className="form-control bg-body text-body" />
+                                                <ErrorMessage name="phone" component="div" className="text-danger" />
+                                                <br /><br />
 
-                                <strong>Gender:</strong><br />
-                                {editMode ? (
-                                    <>
-                                        <Form.Check
-                                            type="radio"
-                                            label="Male"
-                                            name="gender"
-                                            value="Male"
-                                            checked={user.gender === 'Male'}
-                                            onChange={handleChange}
-                                            inline
-                                        />
-                                        <Form.Check
-                                            type="radio"
-                                            label="Female"
-                                            name="gender"
-                                            value="Female"
-                                            checked={user.gender === 'Female'}
-                                            onChange={handleChange}
-                                            inline
-                                        />
-                                        <Form.Check
-                                            type="radio"
-                                            label="Other"
-                                            name="gender"
-                                            value="Other"
-                                            checked={user.gender === 'Other'}
-                                            onChange={handleChange}
-                                            inline
-                                        />
-                                    </>
-                                ) : (
-                                    user.gender || 'N/A'
-                                )}
-                                <br /><br />
+                                                <strong>Gender:</strong><br />
+                                                <div>
+                                                    <label className="me-2">
+                                                        <Field type="radio" name="gender" value="Male" /> Male
+                                                    </label>
+                                                    <label className="me-2">
+                                                        <Field type="radio" name="gender" value="Female" /> Female
+                                                    </label>
+                                                    <label>
+                                                        <Field type="radio" name="gender" value="Other" /> Other
+                                                    </label>
+                                                </div>
+                                                <br /><br />
 
-                                <strong>Birth Date:</strong><br />
-                                {editMode ? (
-                                    <Form.Control
-                                        type="date"
-                                        name="birthDate"
-                                        value={user.birthDate || ''}
-                                        onChange={handleChange}
-                                        className="bg-body text-body"
-                                    />
-                                ) : (
-                                    user.birthDate || 'N/A'
-                                )}
-                                <br /><br />
+                                                <strong>Birth Date:</strong><br />
+                                                <Field name="birthDate" type="date" className="form-control bg-body text-body" />
+                                                <ErrorMessage name="birthDate" component="div" className="text-danger" />
+                                                <br /><br />
 
-                                <strong>Address:</strong><br />
-                                {editMode ? (
-                                    <Form.Control
-                                        type="text"
-                                        name="address"
-                                        value={user.address || ''}
-                                        onChange={handleChange}
-                                        className="bg-body text-body"
-                                    />
-                                ) : (
-                                    user.address || 'N/A'
-                                )}
-                            </Card.Text>
+                                                <strong>Address:</strong><br />
+                                                <Field name="address" type="text" className="form-control bg-body text-body" />
+                                                <ErrorMessage name="address" component="div" className="text-danger" />
+                                            </Card.Text>
 
-                            <div className="text-center">
-                                {editMode ? (
-                                    <>
-                                        <Button variant="success" className="me-2" onClick={handleSave}>
-                                            Save
+                                            <div className="text-center mt-3">
+                                                <Button type="submit" variant="success" className="me-2">
+                                                    Save
+                                                </Button>
+                                                <Button variant="secondary" onClick={handleCancel}>
+                                                    Cancel
+                                                </Button>
+                                            </div>
+                                        </Form>
+                                    )}
+                                </Formik>
+                            ) : (
+                                <>
+                                    <Card.Text>
+                                        <strong>Full name:</strong><br /> {user.name || 'No Name'}<br /><br />
+                                        <strong>Email:</strong><br /> {user.email || 'N/A'}<br /><br />
+                                        <strong>Password:</strong><br />
+                                        <Button
+                                            variant="warning"
+                                            onClick={async () => {
+                                                await saveRequest(user.email);
+                                                nav("/reset-password");
+                                            }}
+                                        >
+                                            Change Password
                                         </Button>
-                                        <Button variant="secondary" onClick={handleCancel}>
-                                            Cancel
+                                        <br /><br />
+                                        <strong>Role:</strong><br /> {user.role || 'customer'}<br /><br />
+                                        <strong>Phone:</strong><br /> {user.phone || 'N/A'}<br /><br />
+                                        <strong>Gender:</strong><br /> {user.gender || 'N/A'}<br /><br />
+                                        <strong>Birth Date:</strong><br /> {user.birthDate || 'N/A'}<br /><br />
+                                        <strong>Address:</strong><br /> {user.address || 'N/A'}
+                                    </Card.Text>
+
+                                    <div className="text-center">
+                                        <Button variant="primary" onClick={() => setEditMode(true)}>
+                                            Edit Profile
                                         </Button>
-                                    </>
-                                ) : (
-                                    <Button variant="primary" onClick={() => setEditMode(true)}>
-                                        Edit Profile
-                                    </Button>
-                                )}
-                            </div>
+                                    </div>
+                                </>
+                            )}
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
         </Container>
     );
-
 };
 
 export default Profile;

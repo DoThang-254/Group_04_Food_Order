@@ -16,6 +16,8 @@ import {
   SunOutlined,
   MoonOutlined,
   ProfileOutlined,
+  HistoryOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
 import { Drawer, List, Badge, Affix, Divider } from 'antd';
 import { loginContext } from '../context/LoginContext';
@@ -114,14 +116,18 @@ const Header = () => {
                       <ProfileOutlined style={{ marginRight: '8px' }} />
                       Profile
                     </Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate('/order-history')}>
+                      <HistoryOutlined style={{ marginRight: '8px' }} />
+                      Orders History
+                    </Dropdown.Item>
                     {role === 'owner' && store && (
                       <Dropdown.Item onClick={() => navigate('/owner-dashboard')}>
-                        <ProfileOutlined style={{ marginRight: '8px' }} />
+                        <HomeOutlined style={{ marginRight: '8px' }} />
                         Owner Dashboard
                       </Dropdown.Item>
                     )}
                     {!store && (
-                      <Dropdown.Item onClick={() => navigate('/')}>
+                      <Dropdown.Item onClick={() => navigate('/register-store')}>
                         <ProfileOutlined style={{ marginRight: '8px' }} />
                         Register Store
                       </Dropdown.Item>
@@ -176,8 +182,8 @@ const Header = () => {
               <FrownOutlined style={{ fontSize: '64px', marginBottom: '16px', color: '#E53935' }} />
 
               <p>There are no products in your shopping cart.</p>
-              <Button 
-                type="primary" 
+              <Button
+                type="primary"
 
                 onClick={() => {
                   setOpen(false);

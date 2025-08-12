@@ -33,7 +33,36 @@ export const login = async (data) => {
 
     }
 }
+export const loginByGoogle = async (data) => {
+    try {
+        const res = await instance.get(endpoint.USERS + `?email=${data.email}`);
+        const checkStore = await getStoreByOwnerId(data.id);
+        console.log(checkStore)
+        if (res.data.length > 0) {
+            const user = res.data[0];
+            if (!user) {
+                return {
+                    user: null,
+                    msg: 'Email or password is wrong'
+                }
 
+            }
+            return {
+                user: user,
+                msg: user.active ? null : 'Please wait for activation'
+            }
+        }
+        else {
+            return {
+                user: null,
+                msg: 'Email or password is wrong'
+            };
+        }
+    } catch (err) {
+        console.log(err)
+
+    }
+}
 export const register = async (data) => {
     try {
         const res = await instance.post(endpoint.USERS, data)

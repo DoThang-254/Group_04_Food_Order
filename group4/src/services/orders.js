@@ -29,3 +29,23 @@ export const createOrder = async (value) => {
     return [];
   }
 };
+
+export const getOrdersByUserId = async (userId) => {
+  try {
+    const res = await instance.get(endpoint.ORDERS + `?userId=${userId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+
+};
+export const removeOrder = async (id) => {
+  try {
+    const res = await instance.delete(endpoint.ORDERS + `${id}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+
+};
+

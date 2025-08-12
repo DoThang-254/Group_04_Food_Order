@@ -15,13 +15,13 @@ const Register = () => {
         lastname: Yup.string().required("Last name is required"),
         role: Yup.string().required("Role is required"),
         password: Yup.string()
-            .required('Required')
+            .required('Password is required')
             .min(8, 'Password must be at least 8 characters')
             .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
             .matches(/[0-9]/, 'Password must contain at least one number'),
         email: Yup.string()
             .email('Required email format!')
-            .required('Required')
+            .required('Email is required')
             .test(
                 'checkEmailUnique',
                 'Email already exists',
@@ -153,37 +153,38 @@ const Register = () => {
                     >
                         <Form>
                             <div className="mb-3">
-                                <label htmlFor="firstname" className="form-label">First Name</label>
+                                <label htmlFor="firstname" className="form-label">First Name *
+                                </label>
                                 <Field name="firstname" className="form-control" />
                                 <ErrorMessage name="firstname" component="div" className="text-danger" />
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="lastname" className="form-label">Last Name</label>
+                                <label htmlFor="lastname" className="form-label">Last Name *</label>
                                 <Field name="lastname" className="form-control" />
                                 <ErrorMessage name="lastname" component="div" className="text-danger" />
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="email" className="form-label">Email</label>
+                                <label htmlFor="email" className="form-label">Email *</label>
                                 <Field name="email" type="email" className="form-control" />
                                 <ErrorMessage name="email" component="div" className="text-danger" />
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="phone" className="form-label">Phone</label>
+                                <label htmlFor="phone" className="form-label">Phone *</label>
                                 <Field name="phone" className="form-control" />
                                 <ErrorMessage name="phone" component="div" className="text-danger" />
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="password" className="form-label">Password</label>
+                                <label htmlFor="password" className="form-label">Password *</label>
                                 <Field name="password" type="password" className="form-control" />
                                 <ErrorMessage name="password" component="div" className="text-danger" />
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="role" className="form-label">Role</label>
+                                <label htmlFor="role" className="form-label">Role *</label>
                                 <Field as="select" name="role" className="form-select">
                                     <option value="customer">Customer</option>
                                     <option value="owner">Owner</option>
@@ -192,7 +193,7 @@ const Register = () => {
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="dob" className="form-label">Date of Birth</label>
+                                <label htmlFor="dob" className="form-label">Date of Birth *</label>
                                 <Field type="date" name="dob" className="form-control" />
                                 <ErrorMessage name="dob" component="div" className="text-danger" />
                             </div>
@@ -205,7 +206,7 @@ const Register = () => {
 
 
                             <div className="mb-3">
-                                <label htmlFor="address" className="form-label">Address</label>
+                                <label htmlFor="address" className="form-label">Address *</label>
                                 <Field name="address" className="form-control" />
                                 <ErrorMessage name="address" component="div" className="text-danger" />
                             </div>
