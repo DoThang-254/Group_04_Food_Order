@@ -1,409 +1,369 @@
-/* Header.css - Red & White Theme */
+/* Header.css - Compact Design with Red Theme (#E53935) */
 
-/* Custom Navbar Styling */
-.navbar {
-  background: linear-gradient(135deg, #E53935 0%, #C62828 100%) !important;
-  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(229, 57, 53, 0.3) !important;
-  padding: 12px 0;
+/* Main navbar styling */
+.custom-navbar {
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  padding: 8px 0 !important;
+  box-shadow: 0 2px 15px rgba(229, 57, 53, 0.3);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+  min-height: 60px;
   transition: all 0.3s ease;
 }
 
-.navbar:hover {
-  box-shadow: 0 6px 25px rgba(229, 57, 53, 0.4) !important;
+.custom-navbar:hover {
+  box-shadow: 0 4px 20px rgba(229, 57, 53, 0.4);
 }
 
-/* Container Styling */
-.navbar .container {
-  background: transparent !important;
+/* Container adjustments */
+.custom-navbar .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  padding: 0 15px;
 }
 
-/* Brand/Logo Styling */
-.navbar-brand {
-  display: flex;
-  align-items: center;
+/* Logo styling - more compact */
+.custom-navbar .navbar-brand {
+  padding: 0;
+  margin-right: 0;
   transition: transform 0.3s ease;
 }
 
-.navbar-brand:hover {
+.custom-navbar .navbar-brand:hover {
   transform: scale(1.05);
 }
 
-.navbar-brand img {
-  height: 45px;
-  width: 45px;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+.custom-navbar .navbar-brand img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.3s ease;
 }
 
-.navbar-brand img:hover {
-  border-color: white;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  transform: rotate(5deg);
+.custom-navbar .navbar-brand img:hover {
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Navigation Actions */
+/* Navigation actions container */
 .nav-actions {
+  margin-left: auto !important;
+  margin-right: 15px !important;
   display: flex;
   align-items: center;
-  gap: 15px;
 }
 
-/* Cart Button Styling */
+/* Cart button styling - more compact */
 .cart-button {
   background: rgba(255, 255, 255, 0.15) !important;
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: 50% !important;
-  width: 50px !important;
-  height: 50px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: all 0.3s ease !important;
-  backdrop-filter: blur(10px) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
   color: white !important;
+  font-size: 18px !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-button:hover {
   background: rgba(255, 255, 255, 0.25) !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
 }
 
-.cart-button:active {
-  transform: translateY(0px) !important;
+.cart-button:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Badge Styling */
-.ant-badge-count {
-  background: white !important;
-  color: #E53935 !important;
-  border: 2px solid #E53935 !important;
-  font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-  animation: pulse 2s infinite !important;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Dropdown Styling */
-.dropdown-toggle {
+/* Account dropdown styling - more compact */
+.account-dropdown {
   background: rgba(255, 255, 255, 0.15) !important;
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
-  border-radius: 25px !important;
-  padding: 8px 20px !important;
-  color: white !important;
-  font-weight: 600 !important;
-  transition: all 0.3s ease !important;
-  backdrop-filter: blur(10px) !important;
-}
-
-.dropdown-toggle:hover {
-  background: rgba(255, 255, 255, 0.25) !important;
-  border-color: rgba(255, 255, 255, 0.5) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
-}
-
-.dropdown-toggle:focus {
-  background: rgba(255, 255, 255, 0.25) !important;
-  border-color: rgba(255, 255, 255, 0.5) !important;
-  color: white !important;
-  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25) !important;
-}
-
-.dropdown-toggle::after {
-  border-top-color: white !important;
-  margin-left: 8px !important;
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-  background: white !important;
-  border: none !important;
   border-radius: 12px !important;
-  box-shadow: 0 10px 40px rgba(229, 57, 53, 0.2) !important;
-  padding: 8px 0 !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px);
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.account-dropdown:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.account-dropdown:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+}
+
+.account-dropdown::after {
+  margin-left: 8px;
+  border-top-color: white;
+}
+
+/* Login link styling */
+.login-link {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 12px !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.login-link:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+  text-decoration: none !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  border: none !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
   margin-top: 8px !important;
-  min-width: 180px !important;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.95) !important;
+  animation: dropdownFadeIn 0.3s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .dropdown-item {
-  color: #333 !important;
-  padding: 12px 20px !important;
-  font-weight: 500 !important;
-  transition: all 0.3s ease !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
+  border-radius: 8px !important;
+  padding: 10px 15px !important;
+  margin-bottom: 2px !important;
+  font-size: 14px !important;
+  color: #424242 !important;
+  transition: all 0.2s ease !important;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-item:hover {
-  background: linear-gradient(135deg, #E53935, #C62828) !important;
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%) !important;
   color: white !important;
-  transform: translateX(5px) !important;
+  transform: translateX(5px);
 }
 
-.dropdown-item:active {
-  background: linear-gradient(135deg, #D32F2F, #B71C1C) !important;
-  color: white !important;
+.dropdown-item:last-child {
+  margin-bottom: 0 !important;
 }
 
 .dropdown-divider {
-  border-top: 1px solid rgba(229, 57, 53, 0.2) !important;
+  border-color: rgba(229, 57, 53, 0.2) !important;
   margin: 8px 0 !important;
 }
 
-/* Login Link */
-.nav-link {
-  color: white !important;
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
-  padding: 8px 20px !important;
-  border-radius: 25px !important;
-  transition: all 0.3s ease !important;
-  text-decoration: none !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 2px solid rgba(255, 255, 255, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
+/* Badge styling for cart */
+.ant-badge-count {
+  background-color: white !important;
+  color: #E53935 !important;
+  border: 2px solid #E53935 !important;
+  font-weight: bold !important;
+  font-size: 11px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  line-height: 16px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.3) !important;
 }
 
-.nav-link:hover {
-  color: white !important;
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2) !important;
-}
-
-/* Drawer Styling */
+/* Drawer customization */
 .drawer-light .ant-drawer-header {
-  background: linear-gradient(135deg, #E53935, #C62828) !important;
-  border-bottom: none !important;
-  padding: 20px 24px !important;
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  color: white;
+  border-bottom: none;
+  padding: 16px 24px;
 }
 
-.drawer-light .ant-drawer-title {
-  color: white !important;
-  font-weight: 700 !important;
-  font-size: 1.2rem !important;
+.drawer-light .ant-drawer-header .ant-drawer-title {
+  color: white;
+  font-weight: 600;
 }
 
 .drawer-light .ant-drawer-close {
-  color: white !important;
+  color: white;
 }
 
-.drawer-light .ant-drawer-body {
-  background: #fafafa !important;
-  padding: 20px !important;
+.drawer-light .ant-drawer-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
 }
 
-.drawer-dark .ant-drawer-header {
-  background: linear-gradient(135deg, #E53935, #C62828) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-.drawer-dark .ant-drawer-title {
-  color: white !important;
-  font-weight: 700 !important;
-}
-
-.drawer-dark .ant-drawer-close {
-  color: white !important;
-}
-
-.drawer-dark .ant-drawer-body {
-  background: #1e1e1e !important;
-  color: white !important;
-}
-
-/* Cart List Styling */
+/* Cart list styling */
 .cart-list-light .ant-list-item {
-  background: white !important;
-  margin-bottom: 8px !important;
-  border-radius: 8px !important;
-  padding: 16px !important;
-  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.1) !important;
-  border: 1px solid rgba(229, 57, 53, 0.1) !important;
-  transition: all 0.3s ease !important;
-}
-
-.cart-list-light .ant-list-item:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.15) !important;
-  border-color: rgba(229, 57, 53, 0.2) !important;
-}
-
-.cart-list-dark .ant-list-item {
-  background: #2a2a2a !important;
-  margin-bottom: 8px !important;
-  border-radius: 8px !important;
-  padding: 16px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid rgba(229, 57, 53, 0.3) !important;
-  transition: all 0.3s ease !important;
-}
-
-.cart-list-dark .ant-list-item:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4) !important;
-  border-color: rgba(229, 57, 53, 0.5) !important;
+  border-bottom: 1px solid #ffebee;
+  padding: 12px 0;
 }
 
 .cart-list-light .ant-list-item-meta-title {
-  color: #333 !important;
-  font-weight: 600 !important;
+  color: #424242;
+  font-weight: 500;
 }
 
 .cart-list-light .ant-list-item-meta-description {
-  color: #666 !important;
+  color: #666;
+}
+
+/* Dark theme drawer */
+.drawer-dark .ant-drawer-header {
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.drawer-dark .ant-drawer-body {
+  background: #1e1e1e;
+  color: white;
+}
+
+.cart-list-dark .ant-list-item {
+  border-bottom: 1px solid #333;
+  padding: 12px 0;
 }
 
 .cart-list-dark .ant-list-item-meta-title {
-  color: white !important;
-  font-weight: 600 !important;
+  color: white;
 }
 
 .cart-list-dark .ant-list-item-meta-description {
-  color: #ccc !important;
+  color: #ccc;
 }
 
-/* Empty Cart State */
-.text-center {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 40px 20px !important;
-}
-
-.text-center .anticon {
-  color: #E53935 !important;
-  margin-bottom: 16px !important;
-  animation: bounce 2s infinite !important;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
-.text-center p {
-  color: #666 !important;
-  font-size: 1.1rem !important;
-  text-align: center !important;
-  max-width: 250px !important;
-  line-height: 1.5 !important;
-}
-
-/* View Details Button */
+/* Button styling in drawer */
 .ant-btn-primary {
-  background: linear-gradient(135deg, #E53935, #C62828) !important;
-  border-color: transparent !important;
+  background: linear-gradient(135deg, #E53935 0%, #C62828 100%) !important;
+  border: none !important;
   border-radius: 8px !important;
-  font-weight: 600 !important;
-  height: 45px !important;
-  font-size: 1rem !important;
+  font-weight: 500 !important;
   transition: all 0.3s ease !important;
 }
 
 .ant-btn-primary:hover {
-  background: linear-gradient(135deg, #D32F2F, #B71C1C) !important;
-  border-color: transparent !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(229, 57, 53, 0.4) !important;
+  background: linear-gradient(135deg, #C62828 0%, #B71C1C 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3) !important;
 }
 
-.ant-btn-primary:focus {
-  background: linear-gradient(135deg, #E53935, #C62828) !important;
-  border-color: transparent !important;
-  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2) !important;
+/* Responsive design */
+@media (max-width: 991px) {
+  .custom-navbar {
+    padding: 6px 0 !important;
+    min-height: 55px;
+  }
+  
+  .custom-navbar .navbar-brand img {
+    height: 35px;
+  }
+  
+  .cart-button,
+  .account-dropdown,
+  .login-link {
+    height: 36px;
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+  }
+  
+  .nav-actions {
+    margin-right: 10px !important;
+  }
 }
 
-/* Affix Shadow */
-.ant-affix {
-  z-index: 1000;
-}
-
-/* Price in cart */
-.cart-list-light .ant-list-item > div:last-child,
-.cart-list-dark .ant-list-item > div:last-child {
-  font-weight: 700 !important;
-  color: #E53935 !important;
-  font-size: 1.1rem !important;
-}
-
-/* Responsive Styles */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 8px 0;
+  .custom-navbar {
+    padding: 5px 0 !important;
+    min-height: 50px;
   }
   
-  .navbar-brand img {
-    height: 40px;
-    width: 40px;
+  .custom-navbar .container {
+    padding: 0 10px;
   }
   
-  .cart-button {
-    width: 45px !important;
-    height: 45px !important;
+  .custom-navbar .navbar-brand img {
+    height: 32px;
   }
   
-  .dropdown-toggle {
-    padding: 6px 15px !important;
-    font-size: 0.9rem !important;
+  .cart-button,
+  .account-dropdown,
+  .login-link {
+    height: 32px;
+    padding: 4px 10px !important;
+    font-size: 12px !important;
   }
   
-  .nav-link {
-    font-size: 1rem !important;
-    padding: 6px 15px !important;
+  .nav-actions {
+    margin-right: 8px !important;
   }
   
-  .ant-drawer-content {
-    width: 300px !important;
+  .dropdown-menu {
+    margin-top: 5px !important;
   }
 }
 
 @media (max-width: 576px) {
-  .container {
-    padding: 0 10px !important;
+  .custom-navbar .navbar-brand img {
+    height: 28px;
   }
   
-  .nav-actions {
-    gap: 10px;
+  .cart-button {
+    padding: 4px 8px !important;
   }
   
-  .dropdown-toggle {
-    padding: 6px 12px !important;
-    font-size: 0.85rem !important;
+  .account-dropdown,
+  .login-link {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
   }
   
-  .ant-drawer-content {
-    width: 280px !important;
+  .drawer-right {
+    width: 300px !important;
   }
+}
+
+/* Affix styling */
+.ant-affix .custom-navbar {
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Smooth animations */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }

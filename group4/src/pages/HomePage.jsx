@@ -77,30 +77,35 @@ const HomePage = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    let sorted = [...filteredProducts];
-    if (sortOption === "asc") {
-      sorted.sort((a, b) => a.price - b.price);
-    } else if (sortOption === "desc") {
-      sorted.sort((a, b) => b.price - a.price);
-    }
-    setFilteredProducts(sorted);
-  }, [sortOption]);
+
 
   // lọc theo category + search term
   useEffect(() => {
-    let filtered = [...products];
-    if (selectedCategoryId !== "all") {
-      filtered = filtered.filter(p => p.categoryName === selectedCategoryId);
-    }
-    if (searchTerm.trim() !== "") {
-      filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-    setFilteredProducts(filtered);
-    setCurrentPage(1);
-  }, [selectedCategoryId, products, searchTerm]);
+  let filtered = [...products];
+
+  // Lọc theo category
+  if (selectedCategoryId !== "all") {
+    filtered = filtered.filter(p => p.categoryName === selectedCategoryId);
+  }
+
+  // Lọc theo search term
+  if (searchTerm.trim() !== "") {
+    filtered = filtered.filter(p =>
+      p.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+
+  // Sắp xếp
+  if (sortOption === "asc") {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (sortOption === "desc") {
+    filtered.sort((a, b) => b.price - a.price);
+  }
+
+  setFilteredProducts(filtered);
+  setCurrentPage(1);
+}, [products, selectedCategoryId, searchTerm, sortOption]);
+
 
   const paginatedProducts = useMemo(() => {
     const start = (currentPage - 1) * pageSize;

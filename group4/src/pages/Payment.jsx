@@ -64,7 +64,7 @@ const Payment = () => {
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>
-               P                         <th>Item</th>
+                                        <th>Item</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>

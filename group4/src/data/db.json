@@ -53,6 +53,19 @@
       "birthDate": "2004-04-25",
       "address": "hànội",
       "active": true
+    },
+    {
+      "id": "c2f0",
+      "name": "Đỗ Thái",
+      "phone": "0973197802",
+      "email": "thaibachi142004@gmail.com",
+      "password": "$2b$10$fSkg.YKIKMvb4A48w56zLOdqZLTm7oiqo1NCfIgfjOvjPNexnfXee",
+      "gender": "male",
+      "dob": "2005-02-12",
+      "role": "customer",
+      "birthDate": "2005-02-12",
+      "address": "số nhà 24,đường tiến thành",
+      "active": true
     }
   ],
   "resetRequests": [
@@ -288,7 +301,99 @@
       "storeId": "3dd5"
     }
   ],
-  "orders": [],
-  "cart": []
-
+  "orders": [
+    {
+      "id": "5b48",
+      "userId": "fe9c",
+      "status": "pending",
+      "total": 8.99,
+      "items": [
+        {
+          "id": "0973",
+          "userId": "fe9c",
+          "productId": "1",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Margherita Pizza",
+          "price": 8.99,
+          "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+        }
+      ],
+      "createdAt": "2025-08-11T03:50:43.658Z"
+    },
+    {
+      "id": "f6db",
+      "userId": "9d4c",
+      "status": "pending",
+      "total": 74.91,
+      "items": [
+        {
+          "id": "f281",
+          "userId": "9d4c",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 2,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        },
+        {
+          "id": "0c63",
+          "userId": "9d4c",
+          "productId": "3",
+          "storeId": 1,
+          "quantity": 4,
+          "name": "Cheese Burger",
+          "price": 6.49,
+          "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg"
+        },
+        {
+          "id": "4f3f",
+          "userId": "9d4c",
+          "productId": "1",
+          "storeId": 1,
+          "quantity": 3,
+          "name": "Margherita Pizza",
+          "price": 8.99,
+          "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+        }
+      ],
+      "createdAt": "2025-08-12T03:40:26.234Z"
+    },
+    {
+      "id": "c2c8",
+      "userId": "c2f0",
+      "status": "pending",
+      "total": 17.98,
+      "items": [
+        {
+          "id": "5d0d",
+          "userId": "c2f0",
+          "productId": "1",
+          "storeId": 1,
+          "quantity": 2,
+          "name": "Margherita Pizza",
+          "price": 8.99,
+          "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+        }
+      ],
+      "createdAt": "2025-08-12T03:50:11.853Z"
+    }
+  ],
+  "cart": [
+    {
+      "id": "e6c2",
+      "userId": "9d4c",
+      "productId": "3",
+      "storeId": 1,
+      "quantity": 1
+    },
+    {
+      "id": "43bb",
+      "userId": "c2f0",
+      "productId": "2",
+      "storeId": 2,
+      "quantity": 2
+    }
+  ]
 }
