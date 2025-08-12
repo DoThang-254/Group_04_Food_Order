@@ -90,7 +90,7 @@ const AdminStoreControl = () => {
               title="Xem chi tiết cửa hàng"
             >
               <td>{store.name}</td>
-              <td>{store.address}</td>
+              <td>{store.storeAddress}</td>
               <td>{getOwnerName(store.ownerId)}</td>
               <td>
                 <button

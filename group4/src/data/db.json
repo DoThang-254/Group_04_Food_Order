@@ -1,45 +1,255 @@
 {
   "users": [
     {
-      "id": "ae80",
-      "name": "Đỗ  Thắng",
-      "phone": "0329894799",
+      "id": "0e36",
+      "name": "do thang",
+      "phone": "0329894798",
       "email": "thangmoneo2542004@gmail.com",
-      "password": "$2b$10$uHEaMB.1Hik4HqWATx4SOOfcnYQ0Zh7KoANz19SrJ5VC7XIhJKIdi",
+      "password": "$2b$10$aeWUDmt.gsPVyLOz6JrtHeBTP1Axhl1jhOlJYSZzBtEl0ErXIPytC",
       "gender": "male",
       "dob": "2004-04-25",
       "role": "admin",
       "birthDate": "2004-04-25",
-      "address": "Hà Nội",
+      "address": "hcm",
+      "active": true,
+      "storeId": "0204",
+      "ban": false,
+      "banReason": ""
+    },
+    {
+      "id": "4037",
+      "name": "le binh",
+      "phone": "0123456789",
+      "email": "binh123@gmail.com",
+      "password": "$2b$10$i5fq77iSe9EItx6GD6fYu.AN.Rfs4QfN0bavGLfPTxjXa4aWvKbxS",
+      "gender": "male",
+      "dob": "2004-12-14",
+      "role": "admin",
+      "birthDate": "2004-12-14",
+      "address": "hn",
+      "active": true,
+      "storeId": "3dd5"
+    },
+    {
+      "id": "0b68",
+      "name": "trang uyen",
+      "phone": "0123456789",
+      "email": "tranguyen123@gmail.com",
+      "password": "$2b$10$Sub/sxy2Hfnu910TLcvyHujr6lHbQyVo1BrEe/zq3N1EhblVLUdU2",
+      "gender": "female",
+      "dob": "2004-12-14",
+      "role": "owner",
+      "birthDate": "2004-12-14",
+      "address": "HN",
+      "active": true,
+      "storeId": "a5dd",
+      "ban": false,
+      "banReason": ""
+    },
+    {
+      "id": "bae3",
+      "name": "do thang",
+      "phone": "0329894798",
+      "email": "thangmoneo2542004@gmail.com",
+      "password": "$2b$10$dEB6i9NwaePPus/M9kq.ye8DmMjL3ztOHRF40Am0eiu63yiSASJaq",
+      "gender": "male",
+      "dob": "2004-02-05",
+      "role": "customer",
+      "birthDate": "2004-02-05",
+      "address": "van dinh",
+      "active": true,
+      "ban": false,
+      "banReason": ""
+    },
+    {
+      "id": "265d",
+      "name": "customer1  ",
+      "phone": "0123456789",
+      "email": "customer1@gmail.com",
+      "password": "$2b$10$xUrXZKghzdYGsqmaiVCPL.5JxJDyVpKdX4YYPbOYEYkrvuMiJ42ZK",
+      "gender": "male",
+      "dob": "2004-12-14",
+      "role": "customer",
+      "birthDate": "2004-12-14",
+      "address": "hn",
+      "active": false,
+      "ban": true,
+      "banReason": "Vi phạm nguyên tắc"
+    },
+    {
+      "id": "b481",
+      "name": "le tuan",
+      "phone": "0123456789",
+      "email": "letuan123@gmail.com",
+      "password": "$2b$10$AdTBCESe8zAUq.3h.67Z7O0upgrXn5eO0rhDwTMUIrITgJd8QzfDO",
+      "gender": "male",
+      "dob": "2004-12-14",
+      "role": "owner",
+      "birthDate": "2004-12-14",
+      "address": "hn",
+      "active": true,
+      "storeId": "fd80",
+      "ban": false
+    },
+    {
+      "id": "95fc",
+      "name": "customer A",
+      "phone": "0123456789",
+      "email": "customerA@gmail.com",
+      "password": "$2b$10$19UHlgUdzi.uQBgfAScPa.ocAK6ltbAPyqFBc5UePo8lUOQmD6bGm",
+      "gender": "male",
+      "dob": "2004-03-12",
+      "role": "customer",
+      "birthDate": "2004-03-12",
+      "address": "HN",
       "active": true
     },
     {
-      "id": "1bd1",
+      "id": "b329",
+      "name": "Do Uyen",
+      "phone": "0123456789",
+      "email": "uyen123@gmail.com",
+      "password": "$2b$10$cXku20QpUziUMsxfh4NKWe8p5GYCKpNOLrOyq472dkopVZPzqKNoq",
+      "gender": "female",
+      "dob": "2004-02-11",
+      "role": "owner",
+      "birthDate": "2004-02-11",
+      "address": "HCM",
+      "active": false,
+      "storeId": "8ee9"
+    },
+    {
+      "id": "fb5b",
+      "name": "customer C",
+      "phone": "0123456789",
+      "email": "customerC@gmail.com",
+      "password": "$2b$10$RxWts4c0bcIwDUkNEqhDP.hSh06vVP4BnOXLrUR5tDoctHdz.QZ2C",
+      "gender": "male",
+      "dob": "2004-12-14",
+      "role": "owner",
+      "birthDate": "2004-12-14",
+      "address": "HN",
+      "active": false,
+      "storeId": "ffa3"
+    },
+    {
+      "id": "ac80",
       "name": "Đỗ  Thắng",
       "phone": "0329894799",
       "email": "thangbachi2542004@gmail.com",
-      "password": "$2b$10$iXkgRbDGBt5w/ZUB2js4hOh.4Joo5pdeWb3OYddSVyPyalaIZaD0.",
+      "password": "$2b$10$/icwOlKjzgkJUqE3Vk4oZu3CFwsdAJinvE8xOAvKbrg8LXuvwTQMC",
       "gender": "male",
       "dob": "2004-04-25",
       "role": "owner",
       "birthDate": "2004-04-25",
       "address": "Hà Nội",
       "active": true,
-      "storeId": "5aad"
+      "storeId": "7208"
     }
   ],
   "resetRequests": [],
   "stores": [
     {
-      "id": "5aad",
-      "storeName": "Thang Shop ",
+      "id": "1",
+      "storeName": "Pizza House",
+      "address": "123 Main St",
+      "img": "https://static.vecteezy.com/system/resources/previews/021/121/143/original/pizza-logo-pizzeria-logotype-fast-food-logo-illustration-vector.jpg",
+      "ownerId": "adb7",
+      "state": true,
+      "ban": true,
+      "banReason": "bac"
+    },
+    {
+      "id": "2",
+      "storeName": "Burger Town",
+      "address": "456 Market St",
+      "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
+      "ownerId": 6,
+      "state": true,
+      "ban": false,
+      "banReason": "bnm"
+    },
+    {
+      "id": "0204",
+      "name": "gg",
+      "storeAddress": "hcm",
+      "img": "",
+      "ownerId": "0e36",
+      "state": true,
+      "ban": false,
+      "banReason": "ac"
+    },
+    {
+      "id": "a5dd",
+      "name": "TrangUyenShop",
+      "storeAddress": "123 Street - HN - VN",
+      "img": "",
+      "ownerId": "0b68",
+      "state": true,
+      "ban": true,
+      "banReason": "abc"
+    },
+    {
+      "id": "fd80",
+      "name": "TuanStore",
+      "storeAddress": "Hn-VN",
+      "img": "",
+      "ownerId": "b481",
+      "state": false,
+      "ban": false,
+      "banReason": ""
+    },
+    {
+      "id": "8ee9",
+      "name": "Pizza-Shop",
+      "storeAddress": "HN",
+      "img": "",
+      "ownerId": "b329",
+      "state": false
+    },
+    {
+      "id": "ffa3",
+      "name": "Customer C store",
+      "storeAddress": "HN",
+      "img": "",
+      "ownerId": "fb5b",
+      "state": false
+    },
+    {
+      "id": "7208",
+      "name": "Thang Shop ",
       "storeAddress": "Hà Nội",
       "img": "",
-      "ownerId": "1bd1",
-      "state": false
+      "ownerId": "ac80",
+      "state": true
     }
   ],
-  "stores_categories": [],
+  "stores_categories": [
+    {
+      "scid": "1",
+      "storeId": "1",
+      "categoryId": "1",
+      "id": "8313"
+    },
+    {
+      "scid": "2",
+      "storeId": "1",
+      "categoryId": "2",
+      "id": "a41c"
+    },
+    {
+      "scid": "3",
+      "storeId": "2",
+      "categoryId": "1",
+      "id": "a4a7"
+    },
+    {
+      "scid": "4",
+      "storeId": "2",
+      "categoryId": "2",
+      "id": "a144"
+    }
+  ],
   "categories": [
     {
       "id": "1",
@@ -52,117 +262,125 @@
     {
       "id": "3",
       "name": "Burgers"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Margherita Pizza",
+      "price": 8.99,
+      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg",
+      "categoryId": 1,
+      "storeId": 1,
+      "description": "Pizza truyền thống với sốt cà chua tươi, phô mai mozzarella và lá húng quế."
+    },
+    {
+      "id": "2",
+      "name": "Pepperoni Pizza",
+      "price": 10.99,
+      "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png",
+      "categoryId": 1,
+      "storeId": 2,
+      "description": "Pizza phủ pepperoni cay nồng và phô mai béo ngậy, hoàn hảo cho tín đồ thịt."
+    },
+    {
+      "id": "3",
+      "name": "Cheese Burger",
+      "price": 6.49,
+      "img": "https://brookrest.com/wp-content/uploads/2020/05/AdobeStock_282247995-scaled.jpeg",
+      "categoryId": 3,
+      "storeId": 1,
+      "description": "Bánh burger cổ điển với lớp thịt bò nướng và phô mai cheddar tan chảy."
     },
     {
       "id": "4",
-      "name": "Sushi"
+      "name": "Bacon Burger",
+      "price": 7.99,
+      "img": "https://simply-delicious-food.com/wp-content/uploads/2015/07/Bacon-and-cheese-burgers-3.jpg",
+      "categoryId": 3,
+      "storeId": 2,
+      "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
     },
     {
-      "id": "5",
-      "name": "Pasta"
+      "id": "5cff",
+      "name": "a",
+      "price": 4,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "53dc"
     },
     {
-      "id": "6",
-      "name": "Sandwiches"
+      "id": "9e79",
+      "name": "b",
+      "price": 1,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "53dc"
     },
     {
-      "id": "7",
-      "name": "Salads"
+      "id": "abc",
+      "name": "Margherita Pizza",
+      "price": 8.99,
+      "categoryId": 1,
+      "storeId": "53dc",
+      "description": "Pizza truyền thống với sốt cà chua tươi, phô mai mozzarella và lá húng quế."
     },
     {
-      "id": "8",
-      "name": "Desserts"
-    },
-    {
-      "id": "9",
-      "name": "Seafood"
-    },
-    {
-      "id": "10",
-      "name": "Steak"
-    },
-    {
-      "id": "11",
-      "name": "Barbecue"
-    },
-    {
-      "id": "12",
-      "name": "Asian Cuisine"
-    },
-    {
-      "id": "13",
-      "name": "Indian Cuisine"
-    },
-    {
-      "id": "14",
-      "name": "Mexican Cuisine"
-    },
-    {
-      "id": "15",
-      "name": "Middle Eastern Cuisine"
-    },
-    {
-      "id": "16",
-      "name": "Vegan"
-    },
-    {
-      "id": "17",
-      "name": "Vegetarian"
-    },
-    {
-      "id": "18",
-      "name": "Gluten-Free"
-    },
-    {
-      "id": "19",
-      "name": "Coffee & Tea"
-    },
-    {
-      "id": "20",
-      "name": "Smoothies"
-    },
-    {
-      "id": "21",
-      "name": "Bakery"
-    },
-    {
-      "id": "22",
-      "name": "Ice Cream"
-    },
-    {
-      "id": "23",
-      "name": "Street Food"
-    },
-    {
-      "id": "24",
-      "name": "Hot Pot"
-    },
-    {
-      "id": "25",
-      "name": "Dim Sum"
-    },
-    {
-      "id": "26",
-      "name": "Noodles"
-    },
-    {
-      "id": "27",
-      "name": "Fried Chicken"
-    },
-    {
-      "id": "28",
-      "name": "Wraps"
-    },
-    {
-      "id": "29",
-      "name": "Curry"
-    },
-    {
-      "id": "30",
-      "name": "Soup"
+      "id": "5305",
+      "name": "bánh mỳ ",
+      "price": 3,
+      "img": "data:image/jpeg;base64,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",
+      "categoryId": 3,
+      "storeId": "3dd5"
     }
   ],
-  "products": [],
-  "orders": [],
-  "cart": []
+  "orders": [
+    {
+      "id": "d15a",
+      "userId": "b481",
+      "status": "pending",
+      "total": 10.99,
+      "items": [
+        {
+          "id": "331e",
+          "userId": "b481",
+          "productId": "2",
+          "storeId": 2,
+          "quantity": 1,
+          "name": "Pepperoni Pizza",
+          "price": 10.99,
+          "img": "https://www.cobsbread.com/us/wp-content//uploads/2022/09/Pepperoni-pizza-850x630-1.png"
+        }
+      ],
+      "createdAt": "2025-08-11T02:16:05.864Z"
+    },
+    {
+      "id": "27a6",
+      "userId": "95fc",
+      "status": "pending",
+      "total": 8.99,
+      "items": [
+        {
+          "id": "7d28",
+          "userId": "95fc",
+          "productId": "1",
+          "storeId": 1,
+          "quantity": 1,
+          "name": "Margherita Pizza",
+          "price": 8.99,
+          "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
+        }
+      ],
+      "createdAt": "2025-08-11T02:29:11.839Z"
+    }
+  ],
+  "cart": [
+    {
+      "id": "78e0",
+      "userId": "fe9c",
+      "productId": "4",
+      "storeId": 2,
+      "quantity": 1
+    }
+  ]
 }
