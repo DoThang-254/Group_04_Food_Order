@@ -14,6 +14,7 @@ import "./styles/OwnerProducts.css";
 
 const OwnerProducts = ({
   products,
+  store,
   categories,
   onAddProduct,
   onUpdateProduct,
@@ -23,6 +24,7 @@ const OwnerProducts = ({
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [showWarningModal, setShowWarningModal] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -97,10 +99,10 @@ const OwnerProducts = ({
   };
 
   const getCategoryName = (categoryId) => {
-    const category = categories.find((cat) => cat.id == categoryId);
+    const category = categories.find((cat) => cat.id === categoryId);
+    console.log(categoryId);
     return category ? category.name : "Unknown";
   };
-
   return (
     <div className="owner-products">
       <div className="products-header">
@@ -139,7 +141,13 @@ const OwnerProducts = ({
             <Col md={2}>
               <Button
                 variant="primary"
-                onClick={() => handleShowModal()}
+                onClick={() => {
+                  if (!store.state) {
+                    setShowWarningModal(true);
+                    return;
+                  }
+                  handleShowModal();
+                }}
                 className="w-100"
               >
                 ➕ Thêm sản phẩm
@@ -387,6 +395,29 @@ const OwnerProducts = ({
             </Button>
           </Modal.Footer>
         </Form>
+      </Modal>
+      {/* Warning Modal */}
+      <Modal
+        show={showWarningModal}
+        onHide={() => setShowWarningModal(false)}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>⚠️ Không thể thêm sản phẩm</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Cửa hàng của bạn hiện đang <strong>tạm ngưng hoạt động</strong> nên
+          không thể thêm sản phẩm mới.
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => setShowWarningModal(false)}
+          >
+            Đóng
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

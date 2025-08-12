@@ -1,0 +1,312 @@
+.owner-staff {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.staff-header {
+  margin-bottom: 30px;
+}
+
+.staff-header h3 {
+  color: #8B0000;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.staff-header p {
+  color: #6c757d;
+  margin: 0;
+}
+
+/* Staff info styling */
+.staff-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.staff-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.staff-name {
+  font-weight: 600;
+  color: #343a40;
+  font-size: 0.95rem;
+}
+
+/* Statistics cards for staff */
+.owner-staff .stat-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+.owner-staff .stat-card .card-body {
+  padding: 25px;
+}
+
+.owner-staff .stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.owner-staff .stat-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Staff table styling */
+.owner-staff .table {
+  font-size: 0.9rem;
+  background-color: #fff;
+}
+
+.owner-staff .table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  border-top: none;
+  padding: 16px 12px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.owner-staff .table td {
+  padding: 16px 12px;
+  vertical-align: middle;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Action buttons specific styling */
+.owner-staff .action-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.owner-staff .action-buttons .btn {
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  font-weight: 500;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Status badges */
+.owner-staff .badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.7em;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+/* Modal styling for staff */
+.owner-staff .modal-header {
+  background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+  color: white;
+  border-bottom: none;
+}
+
+.owner-staff .modal-title {
+  color: white;
+  font-weight: 600;
+}
+
+.owner-staff .modal-header .btn-close {
+  filter: invert(1);
+}
+
+.owner-staff .modal-body {
+  padding: 25px;
+}
+
+.owner-staff .form-group {
+  margin-bottom: 20px;
+}
+
+.owner-staff .form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+.owner-staff .form-control,
+.owner-staff .form-select {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.owner-staff .form-control:focus,
+.owner-staff .form-select:focus {
+  border-color: #8B0000;
+  box-shadow: 0 0 0 0.2rem rgba(139, 0, 0, 0.15);
+}
+
+/* Alert styling */
+.owner-staff .alert {
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.owner-staff .alert-info {
+  background-color: #e7f3ff;
+  border-color: #b6d7ff;
+  color: #004085;
+}
+
+/* Form check styling */
+.owner-staff .form-check {
+  margin: 15px 0;
+}
+
+.owner-staff .form-check-input:checked {
+  background-color: #8B0000;
+  border-color: #8B0000;
+}
+
+.owner-staff .form-check-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Empty state for staff */
+.owner-staff .empty-state {
+  background-color: #fff;
+  border-radius: 12px;
+  margin: 20px 0;
+  border: 2px dashed #e9ecef;
+  padding: 40px 20px;
+}
+
+.owner-staff .empty-icon {
+  color: #adb5bd;
+  font-size: 4rem;
+  margin-bottom: 15px;
+}
+
+.owner-staff .empty-state h5 {
+  color: #6c757d;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.owner-staff .empty-state p {
+  color: #adb5bd;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Search and filter styling */
+.owner-staff .input-group-text {
+  background-color: #f8f9fa;
+  border-color: #ddd;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+/* Hover effects */
+.owner-staff .table-hover tbody tr:hover {
+  background-color: rgba(139, 0, 0, 0.04);
+}
+
+.owner-staff .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+.owner-staff .btn-outline-primary:hover {
+  background-color: #8B0000;
+  border-color: #8B0000;
+}
+
+.owner-staff .btn-outline-warning:hover {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #212529;
+}
+
+.owner-staff .btn-outline-success:hover {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.owner-staff .btn-outline-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .owner-staff .staff-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .staff-avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .owner-staff .action-buttons {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .owner-staff .action-buttons .btn {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+
+  .owner-staff .stat-card .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .owner-staff .table {
+    font-size: 0.8rem;
+  }
+
+  .owner-staff .table th,
+  .owner-staff .table td {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .owner-staff .modal-dialog {
+    margin: 10px;
+  }
+
+  .owner-staff .modal-body {
+    padding: 20px;
+  }
+
+  .staff-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .staff-header p {
+    font-size: 0.9rem;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col, Alert, Spinner } from "react-bootstrap";
-import { loginContext } from "../../context/LoginContext";
+import { loginContext } from "../../context/LoginContext.jsx";
 import { Navigate } from "react-router-dom";
 import { decodeFakeToken } from "../../data/token";
 import { hashPassword } from "../../data/util";
