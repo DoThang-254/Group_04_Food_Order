@@ -55,9 +55,7 @@
       "active": true
     }
   ],
-  "resetRequests": [
-    
-  ],
+  "resetRequests": [],
   "stores": [
     {
       "id": "1",
@@ -284,7 +282,6 @@
       "storeId": "3dd5"
     },
     {
-
       "price": 3,
       "img": "",
       "categoryId": 25,
@@ -339,8 +336,14 @@
       "storeId": "3dd5"
     }
   ],
-  "orders": [
-   
-  ],
-  "cart": []
+  "orders": [],
+  "cart": [
+    {
+      "id": "e3dd",
+      "userId": "fe9c",
+      "productId": "2",
+      "storeId": 2,
+      "quantity": 4
+    }
+  ]
 }
