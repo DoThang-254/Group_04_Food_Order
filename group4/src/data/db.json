@@ -145,6 +145,20 @@
       "address": "Hà Nội",
       "active": true,
       "storeId": "7208"
+    },
+    {
+      "id": "9f4d",
+      "name": "Đỗ  Thắng",
+      "phone": "0329894799",
+      "email": "thaibachi2542004@gmail.com",
+      "password": "$2b$10$T.6Mc0OIksq.gS6YAMIdq.7BUmZL4hejgmO2KGJ4mlhlHDwKwN1kS",
+      "gender": "male",
+      "dob": "2004-02-05",
+      "role": "owner",
+      "birthDate": "2004-02-05",
+      "address": "Hà Nội",
+      "active": true,
+      "storeId": "fdef"
     }
   ],
   "resetRequests": [],
@@ -217,10 +231,18 @@
     },
     {
       "id": "7208",
-      "name": "Thang Shop ",
+      "storeName": "Thang Shop ",
       "storeAddress": "Hà Nội",
       "img": "",
       "ownerId": "ac80",
+      "state": false
+    },
+    {
+      "id": "fdef",
+      "storeName": "Thang Shop ",
+      "storeAddress": "Hà Nội",
+      "img": "",
+      "ownerId": "9f4d",
       "state": true
     }
   ],

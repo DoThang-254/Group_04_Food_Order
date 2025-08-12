@@ -18,8 +18,8 @@ const AdminBlacklistStores = () => {
   // Chỉ lấy các store bị ban (state === false hoặc có trường ban === true)
   const filteredStores = stores.filter(store => {
   if (!store.ban !== false) return false;
-  if (!store.name) return false;
-  const matchSearch = store.name.toLowerCase().includes(search.toLowerCase());
+  if (!store.storeName) return false;
+  const matchSearch = store.storeName.toLowerCase().includes(search.toLowerCase());
   return matchSearch;
   });
 
@@ -57,8 +57,8 @@ const AdminBlacklistStores = () => {
             return (
               <tr key={store.id}>
                 <td>{(page - 1) * pageSize + idx + 1}</td>
-                <td>{store.name}</td>
-                <td>{store.address || store.storeAddress}</td>
+                <td>{store.storeName}</td>
+                <td>{store.storeAddress || store.storeAddress}</td>
                 <td>{owner ? owner.name : store.ownerId}</td>
                 <td>{store.banReason || ''}</td>
                 <td>

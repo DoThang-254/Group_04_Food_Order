@@ -28,11 +28,11 @@ const StoreApproval = () => {
     // Chỉ hiển thị các cửa hàng có state === false và ban === false
     if (store.ban === true) return false;
     if (store.state !== false) return false;
-    if (!store.name || !store.storeAddress) return false;
+  if (!store.storeName || !store.storeAddress) return false;
     const ownerName = getOwnerName(store.ownerId).toLowerCase();
     const matchSearch =
-      store.name.toLowerCase().includes(search.toLowerCase()) ||
-      store.address.toLowerCase().includes(search.toLowerCase()) ||
+      store.storeName.toLowerCase().includes(search.toLowerCase()) ||
+      store.storeAddress.toLowerCase().includes(search.toLowerCase()) ||
       ownerName.includes(search.toLowerCase());
     return matchSearch;
   });
@@ -84,8 +84,8 @@ const StoreApproval = () => {
               }}
               title="Xem chi tiết cửa hàng"
             >
-              <td>{store.name}</td>
-              <td>{store.address}</td>
+              <td>{store.storeName}</td>
+              <td>{store.storeAddress}</td>
               <td>{getOwnerName(store.ownerId)}</td>
               <td>
                 <button
@@ -130,7 +130,7 @@ const StoreApproval = () => {
             <div className="adminstore-modal-content">
               <div className="adminstore-modal-row">
                 <div className="adminstore-modal-label">Tên cửa hàng:</div>
-                <div>{selectedStore.name}</div>
+                <div>{selectedStore.storeName}</div>
               </div>
               <div className="adminstore-modal-row">
                 <div className="adminstore-modal-label">Chủ cửa hàng:</div>
@@ -138,7 +138,7 @@ const StoreApproval = () => {
               </div>
               <div className="adminstore-modal-row">
                 <div className="adminstore-modal-label">Địa chỉ:</div>
-                <div>{selectedStore.address}</div>
+                <div>{selectedStore.storeAddress}</div>
               </div>
               <div className="adminstore-modal-row adminstore-modal-row-menu">
                 <div className="adminstore-modal-label">Menu:</div>
