@@ -15,17 +15,17 @@ import HomeCarousel from '../components/HomeCarousel';
 import { themeContext } from '../context/ThemeContext';
 import SortBar from '../components/SortBar';
 import Footer from '../components/Footer';
+
 const HomePage = () => {
   const [sortOption, setSortOption] = useState("default");
-
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [stores, setStores] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState("all");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [idUser, setIdUser] = useState();
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // thêm state tìm kiếm
   const { theme } = useContext(themeContext);
   const pageSize = 9;
   const sectionRef = useRef();
@@ -36,11 +36,11 @@ const HomePage = () => {
   const addToCart = useCartStore((state) => state.addToCart);
   const fetchCart = useCartStore((state) => state.fetchCart);
 
-   const handleScrollToContent = () => {
+  const handleScrollToContent = () => {
     sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-    useEffect(() => {
+  useEffect(() => {
     if (token) fetchCart();
   }, [token]);
 
@@ -54,16 +54,20 @@ const HomePage = () => {
         setCategories(categoriesResponse);
         setStores(storesResponse);
 
-        const categoryMap = new Map(categoriesResponse.map(item => [(item.id), item.name]));
-        const storeNameMap = new Map(storesResponse.map(item => [(item.id), item.name]));
-        const storeImgMap = new Map(storesResponse.map(item => [(item.id), item.img]));
+        const categoryMap = new Map(categoriesResponse.map(item => [(item.id), item]));
+        const storeMap = new Map(storesResponse.map(item => [String(item.id), item]));
 
-        const mappedProducts = productsResponse.map(product => ({
-          ...product,
-          storeName: storeNameMap.get(String(product.storeId)),
-          categoryName: categoryMap.get(String(product.categoryId)),
-          storeImg: storeImgMap.get(String(product.storeId))
-        }));
+        const mappedProducts = productsResponse.map(product => {
+          const store = storeMap.get(String(product.storeId));
+          const category = categoryMap.get(String(product.categoryId));
+
+          return {
+            ...product,
+            storeName: store?.storeName,
+            storeImg: store?.img,
+            categoryName: category?.name
+          };
+        });
 
         setProducts(mappedProducts);
       } catch (error) {
@@ -72,27 +76,31 @@ const HomePage = () => {
     };
     fetchData();
   }, []);
+
   useEffect(() => {
-  let sorted = [...filteredProducts];
-  if (sortOption === "asc") {
-    sorted.sort((a, b) => a.price - b.price);
-  } else if (sortOption === "desc") {
-    sorted.sort((a, b) => b.price - a.price);
-  }
-  setFilteredProducts(sorted);
-}, [sortOption]);
+    let sorted = [...filteredProducts];
+    if (sortOption === "asc") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOption === "desc") {
+      sorted.sort((a, b) => b.price - a.price);
+    }
+    setFilteredProducts(sorted);
+  }, [sortOption]);
 
-
+  // lọc theo category + search term
   useEffect(() => {
     let filtered = [...products];
     if (selectedCategoryId !== "all") {
       filtered = filtered.filter(p => p.categoryName === selectedCategoryId);
     }
+    if (searchTerm.trim() !== "") {
+      filtered = filtered.filter(p =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
     setFilteredProducts(filtered);
-
     setCurrentPage(1);
-
-  }, [selectedCategoryId, products]);
+  }, [selectedCategoryId, products, searchTerm]);
 
   const paginatedProducts = useMemo(() => {
     const start = (currentPage - 1) * pageSize;
@@ -112,7 +120,6 @@ const HomePage = () => {
       return;
     }
     const item = {
-      
       productId: (product.id),
       storeId: (product.storeId),
       quantity: 1
@@ -130,124 +137,155 @@ const HomePage = () => {
 
   return (
     <>
-    
+      <HomeCarousel onClickButton={handleScrollToContent} />
 
+      <Container fluid ref={sectionRef}>
+        {/* Nút mở Drawer */}
+        <AntButton
+          icon={<MenuOutlined />}
+          type="primary"
+          style={{ margin: '16px' }}
+          onClick={() => setDrawerVisible(true)}
+        >
+          Menu
+        </AntButton>
 
-    <HomeCarousel onClickButton={handleScrollToContent}/>
-    
-    
-    <Container fluid ref={sectionRef}>
-      {/* Nút mở Drawer */}
-
-      <AntButton
-        icon={<MenuOutlined />}
-        type="primary"
-        style={{ margin: '16px' }}
-        onClick={() => setDrawerVisible(true)}
-      >
-        Menu
-      </AntButton>
-      <div><SortBar sortOption={sortOption} setSortOption={setSortOption} /></div>
-
-      <Drawer
-        title="Categories"
-        placement="left"
-        onClose={() => setDrawerVisible(false)}
-        open={drawerVisible}
-        className={theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark'}
-        bodyStyle={{
-          backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
-          color: theme === 'dark' ? 'white' : 'black'
-        }}
-        headerStyle={{
-          backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
-          color: theme === 'dark' ? 'white' : 'black'
-        }}
-      >
-        <Menu
-          mode="inline"
-          selectedKeys={[selectedCategoryId]}
-          onClick={(e) => handleCategoryClick(e.key)}
-          theme={theme}
+        {/* Thanh tìm kiếm */}
+        <input
+          type="text"
+          placeholder="Search product name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           style={{
+            padding: '8px',
+            margin: '16px 0',
+            width: '100%',
+            maxWidth: '300px',
+            border: '1px solid #ccc',
+            borderRadius: '6px',
+            backgroundColor: theme === 'dark' ? '#333' : '#fff',
+            color: theme === 'dark' ? '#fff' : '#000'
+          }}
+        />
+
+        <div><SortBar sortOption={sortOption} setSortOption={setSortOption} /></div>
+
+        <Drawer
+          title="Categories"
+          placement="left"
+          onClose={() => setDrawerVisible(false)}
+          open={drawerVisible}
+          className={theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark'}
+          bodyStyle={{
             backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
-            color: theme === 'dark' ? '#fff' : '#000',
+            color: theme === 'dark' ? 'white' : 'black'
+          }}
+          headerStyle={{
+            backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
+            color: theme === 'dark' ? 'white' : 'black'
           }}
         >
-          <Menu.Item
-            key="all"
+          <Menu
+            mode="inline"
+            selectedKeys={[selectedCategoryId]}
+            onClick={(e) => handleCategoryClick(e.key)}
+            theme={theme}
             style={{
+              backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
               color: theme === 'dark' ? '#fff' : '#000',
-              backgroundColor: selectedCategoryId === 'all'
-                ? theme === 'dark' ? '#f44336' : '#f0f0f0'
-                : 'transparent',
             }}
           >
-            All
-          </Menu.Item>
-          {uniqueCategories.map((cat) => (
             <Menu.Item
-              key={cat.name}
+              key="all"
               style={{
                 color: theme === 'dark' ? '#fff' : '#000',
-                backgroundColor: selectedCategoryId === cat.name
+                backgroundColor: selectedCategoryId === 'all'
                   ? theme === 'dark' ? '#f44336' : '#f0f0f0'
                   : 'transparent',
               }}
             >
-              {cat.name}
+              All
             </Menu.Item>
+            {uniqueCategories.map((cat) => (
+              <Menu.Item
+                key={cat.name}
+                style={{
+                  color: theme === 'dark' ? '#fff' : '#000',
+                  backgroundColor: selectedCategoryId === cat.name
+                    ? theme === 'dark' ? '#f44336' : '#f0f0f0'
+                    : 'transparent',
+                }}
+              >
+                {cat.name}
+              </Menu.Item>
+            ))}
+          </Menu>
+        </Drawer>
+
+        {/* Sản phẩm */}
+        <Row>
+          {paginatedProducts.map((product) => (
+            <Col key={product.id} sm={6} md={4} className="mb-4">
+              <Card className={theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark'}>
+                <Card.Img
+                  variant="top"
+                  src={product.img}
+                  onClick={() => handleViewDetail(product.id)}
+                  style={{ cursor: "pointer" }}
+                />
+                <Card.Body>
+                  <Card.Title>{product.name}</Card.Title>
+                  <Card.Text style={{ color: theme === 'dark' ? 'white' : 'black' }}>
+                    Price: ${product.price}
+                  </Card.Text>
+                  <Card.Text style={{ color: theme === 'dark' ? 'white' : 'black' }}>
+                    Category: {product.categoryName || "Unknown"}
+                  </Card.Text>
+                  <Card.Text>
+                    <Image
+                      src={product.storeImg}
+                      roundedCircle
+                      style={{
+                        width: '30px', height: '30px', cursor: 'pointer', marginRight: '8px'
+                      }}
+                      onClick={() => handleShopDetail(product.storeId)}
+                    />
+                    <span
+                      onClick={() => handleShopDetail(product.storeId)}
+                      style={{
+                        cursor: "pointer",
+                        color: theme === 'dark' ? 'white' : 'black'
+                      }}
+                    >
+                      {product.storeName || "Unknown"}
+                    </span>
+                  </Card.Text>
+                  <Button
+                    type="button"
+                    onClick={() => handleAddToCart(product)}
+                    className="me-2"
+                  >
+                    Add to Cart
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </Menu>
+        </Row>
 
-      </Drawer>
+        <Pagination
+          current={currentPage}
+          pageSize={pageSize}
+          total={filteredProducts.length}
+          onChange={(page) => setCurrentPage(page)}
+          className={theme === 'dark' ? 'pagination-dark' : 'pagination-light'}
+          style={{ textAlign: 'center', marginTop: '20px' }}
+        />
+      </Container>
 
-
-      {/* Sản phẩm */}
-      <Row>
-        {paginatedProducts.map((product) => (
-          <Col key={product.id} sm={6} md={4} className="mb-4">
-            <Card className={theme === 'dark' ? 'bg-dark text-white' : 'bg-light text-dark'}>
-              <Card.Img variant="top" src={product.img} onClick={() => handleViewDetail(product.id)} style={{ cursor: "pointer" }} />
-              <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text style={{ color: theme === 'dark' ? 'white' : 'black' }}
-                >Price: ${product.price}</Card.Text>
-                <Card.Text style={{
-                  color: theme === 'dark' ? 'white' : 'black'
-                }}>Category: {product.categoryName || "Unknown"}</Card.Text>
-                <Card.Text>
-                  <Image
-                    src={product.storeImg}
-                    roundedCircle
-                    style={{
-                      width: '30px', height: '30px', cursor: 'pointer', marginRight: '8px'
-                    }}
-                    onClick={() => handleShopDetail(product.storeId)}
-                  />
-                  <span onClick={() => handleShopDetail(product.storeId)} style={{
-                    cursor: "pointer",
-                    color: theme === 'dark' ? 'white' : 'black'
-                  }} > {product.storeName || "Unknown"}</span>
-                </Card.Text>
-                <Button type="button" onClick={() => handleAddToCart(product)} className="me-2">Add to Cart</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-
-      <Pagination
-        current={currentPage}
-        pageSize={pageSize}
-        total={filteredProducts.length}
-        onChange={(page) => setCurrentPage(page)}
-        className={theme === 'dark' ? 'pagination-dark' : 'pagination-light'}
-        style={{ textAlign: 'center', marginTop: '20px' }}
-      />
-    </Container>
-    <div className='footer'> <Footer/></div>
-   
+      <div className='footer'>
+        <Footer />
+      </div>
     </>
   );
 };

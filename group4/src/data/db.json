@@ -5,13 +5,14 @@
       "name": "do thang",
       "phone": "0329894798",
       "email": "thangbachi2542004@gmail.com",
-      "password": "$2b$10$OROtExMnOOcFIxDsmKgYXuOEW.to.y5fK37APBXSvqonKFYZGZzZm",
-      "gender": "male",
+      "password": "$2b$10$bjwBUqr2GWr40t2d/zTHSOOdZrKosIb3zVmxSLYhMxb.McwbL/vJW",
+      "gender": "Male",
       "dob": "2004-02-05",
-      "role": "admin",
+      "role": "owner",
       "birthDate": "2004-02-05",
       "address": "hn",
-      "active": true
+      "active": true,
+      "storeId": "3dd5"
     },
     {
       "id": "bae3",
@@ -28,25 +29,43 @@
       "storeId": "53dc"
     },
     {
-      "id": "a111",
-      "name": "Tuan Nguyen",
-      "phone": "0865855204",
-      "email": "tuanminh2424@gmail.com",
-      "password": "$2b$10$KElhFMT9gY8LUkn6zXqJTORSoVzLuvn7DNQ2/PxHCOQUQ2U8W9hz2",
+      "id": "9d4c",
+      "name": "thai  dep zai",
+      "phone": "0973197802",
+      "email": "thaibachi2542004@gmail.com",
+      "password": "$2b$10$xI5JiD27fM/KUz93.SY9ZOMa0AME51cAeiWU8cnJmqvoYv7TA9oba",
       "gender": "male",
-      "dob": "2004-08-08",
-      "role": "owner",
-      "birthDate": "2004-08-08",
-      "address": "Hola",
-      "active": true,
-      "storeId": "fc04"
+      "dob": "2006-01-07",
+      "role": "customer",
+      "birthDate": "2006-01-07",
+      "address": "số nhà 24,đường tiến thành",
+      "active": true
+    },
+    {
+      "id": "4edb",
+      "name": "do thai",
+      "phone": "1234567890",
+      "email": "thaido11204@gmail.com",
+      "password": "$2b$10$Hv8/jjF5bbZSMO3bmUufB./R77BGV/GcVvRVTkzJE4rF8GE9sY7te",
+      "gender": "female",
+      "dob": "2004-04-25",
+      "role": "customer",
+      "birthDate": "2004-04-25",
+      "address": "hànội",
+      "active": true
     }
   ],
-  "resetRequests": [],
+  "resetRequests": [
+    {
+      "id": "376a",
+      "email": "th",
+      "createdAt": "2025-08-11T02:27:48.598Z"
+    }
+  ],
   "stores": [
     {
       "id": "1",
-      "name": "Pizza House",
+      "storeName": "Pizza House",
       "address": "123 Main St",
       "img": "https://static.vecteezy.com/system/resources/previews/021/121/143/original/pizza-logo-pizzeria-logotype-fast-food-logo-illustration-vector.jpg",
       "ownerId": "adb7",
@@ -54,7 +73,7 @@
     },
     {
       "id": "2",
-      "name": "Burger Town",
+      "storeName": "Burger Town",
       "address": "456 Market St",
       "img": "https://img.freepik.com/premium-vector/burger-shop-logo-design_187482-32.jpg?w=2000",
       "ownerId": 6,
@@ -114,6 +133,114 @@
     {
       "id": "3",
       "name": "Burgers"
+    },
+    {
+      "id": "4",
+      "name": "Sushi"
+    },
+    {
+      "id": "5",
+      "name": "Pasta"
+    },
+    {
+      "id": "6",
+      "name": "Sandwiches"
+    },
+    {
+      "id": "7",
+      "name": "Salads"
+    },
+    {
+      "id": "8",
+      "name": "Desserts"
+    },
+    {
+      "id": "9",
+      "name": "Seafood"
+    },
+    {
+      "id": "10",
+      "name": "Steak"
+    },
+    {
+      "id": "11",
+      "name": "Barbecue"
+    },
+    {
+      "id": "12",
+      "name": "Asian Cuisine"
+    },
+    {
+      "id": "13",
+      "name": "Indian Cuisine"
+    },
+    {
+      "id": "14",
+      "name": "Mexican Cuisine"
+    },
+    {
+      "id": "15",
+      "name": "Middle Eastern Cuisine"
+    },
+    {
+      "id": "16",
+      "name": "Vegan"
+    },
+    {
+      "id": "17",
+      "name": "Vegetarian"
+    },
+    {
+      "id": "18",
+      "name": "Gluten-Free"
+    },
+    {
+      "id": "19",
+      "name": "Coffee & Tea"
+    },
+    {
+      "id": "20",
+      "name": "Smoothies"
+    },
+    {
+      "id": "21",
+      "name": "Bakery"
+    },
+    {
+      "id": "22",
+      "name": "Ice Cream"
+    },
+    {
+      "id": "23",
+      "name": "Street Food"
+    },
+    {
+      "id": "24",
+      "name": "Hot Pot"
+    },
+    {
+      "id": "25",
+      "name": "Dim Sum"
+    },
+    {
+      "id": "26",
+      "name": "Noodles"
+    },
+    {
+      "id": "27",
+      "name": "Fried Chicken"
+    },
+    {
+      "id": "28",
+      "name": "Wraps"
+    },
+    {
+      "id": "29",
+      "name": "Curry"
+    },
+    {
+      "id": "30",
+      "name": "Soup"
     }
   ],
   "products": [
@@ -154,7 +281,7 @@
       "description": "Burger thịt bò nướng kết hợp cùng bacon giòn rụm và nước sốt đặc biệt."
     },
     {
-      "id": "765e4a46-7f93-4b38-b8fa-687ca3136b35",
+      "id": "5305",
       "name": "bánh mỳ ",
       "price": 5,
       "img": "",
@@ -190,18 +317,10 @@
         }
       ],
       "createdAt": "2025-07-28T10:00:00Z"
+]
     }
   ],
-  "cart": [
-    {
-      "id": "c943",
-      "userId": "5e7a",
-      "productId": 1,
-      "storeId": 1,
-      "quantity": 1,
-      "name": "Margherita Pizza",
-      "price": 8.99,
-      "img": "https://as2.ftcdn.net/v2/jpg/10/89/10/89/1000_F_1089108952_Bcas8LmgFuWgin1mbHG9eQjfCKva2uYb.jpg"
-    }
-  ]
+  "orders": [],
+  "cart": []
+
 }

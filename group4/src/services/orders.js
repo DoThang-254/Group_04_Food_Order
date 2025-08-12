@@ -10,7 +10,32 @@ export const getAllOrders = async () => {
     return [];
   }
 };
-export const getOrders = async () => {
-  const res = await instance.get(endpoint.ORDERS);
-  return res.data;
+export const getOrders = async (id) => {
+  try {
+    const res = await instance.get(endpoint.ORDERS + `${id}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+
+};
+
+export const createOrder = async (value) => {
+  try {
+    const res = await instance.post(endpoint.ORDERS, value);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+export const getOrdersByUserId = async (userId) => {
+  try {
+    const res = await instance.get(endpoint.ORDERS + `?userId=${userId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+
 };

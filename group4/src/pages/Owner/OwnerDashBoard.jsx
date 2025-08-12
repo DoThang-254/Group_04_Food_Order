@@ -60,7 +60,7 @@ const OwnerDashboard = () => {
       if (storeData) {
         // Get products for this store
         const storeProducts = db.products.filter(
-          (p) => p.storeId == Number(storeData.id)
+          (p) => p.storeId == storeData.id
         );
         setProducts(storeProducts);
 
@@ -111,7 +111,7 @@ const OwnerDashboard = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...productData,
-          storeId: Number(store.id),
+          storeId: store.id,
         }),
       });
       const newProduct = await response.json();

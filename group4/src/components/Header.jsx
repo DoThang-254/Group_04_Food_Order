@@ -114,14 +114,18 @@ const Header = () => {
                       <ProfileOutlined style={{ marginRight: '8px' }} />
                       Profile
                     </Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate('/order-history')}>
+                      <ProfileOutlined style={{ marginRight: '8px' }} />
+                      Orders History
+                    </Dropdown.Item>
                     {role === 'owner' && store && (
                       <Dropdown.Item onClick={() => navigate('/owner-dashboard')}>
                         <ProfileOutlined style={{ marginRight: '8px' }} />
                         Owner Dashboard
                       </Dropdown.Item>
                     )}
-                    {role != 'owner' || !store && (
-                      <Dropdown.Item onClick={() => navigate('/')}>
+                    {!store && (
+                      <Dropdown.Item onClick={() => navigate('/register-store')}>
                         <ProfileOutlined style={{ marginRight: '8px' }} />
                         Register Store
                       </Dropdown.Item>
@@ -176,8 +180,8 @@ const Header = () => {
               <FrownOutlined style={{ fontSize: '64px', marginBottom: '16px', color: '#E53935' }} />
 
               <p>There are no products in your shopping cart.</p>
-              <Button 
-                type="primary" 
+              <Button
+                type="primary"
 
                 onClick={() => {
                   setOpen(false);

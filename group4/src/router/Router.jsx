@@ -1,26 +1,25 @@
-import React from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-} from "react-router-dom";
-import Layout from "../pages/Layout";
-import Login from "../pages/auth/Login";
-import HomePage from "../pages/HomePage";
-import Register from "../pages/auth/Register";
-import AdminDashboard from "../pages/admin/AdminDashboard";
-import AdminLayout from "../pages/admin/AdminLayout";
-import Checkout from "../pages/Checkout";
-import FoodDetail from "../pages/FoodDetail";
-import RouterPrivate from "./RouterPrivate";
-import PageNotFound from "../pages/auth/PageNotFound";
-import ShopDetail from "../pages/ShopDetail";
-import ForgotPassword from "../pages/auth/ForgotPassword";
-import ResetPassword from "../pages/auth/ResetPassword";
-import OwnerDashboard from "../pages/Owner/OwnerDashBoard";
-import Profile from "../pages/auth/Profile";
-import RegisterStore from "../pages/auth/RegisterStore";
-import RouterAuth from "./RouterAuth";
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import Layout from '../pages/Layout';
+import Login from '../pages/auth/Login';
+import HomePage from '../pages/HomePage';
+import Register from '../pages/auth/Register';
+import AdminDashboard from '../pages/admin/AdminDashboard';
+import AdminLayout from '../pages/admin/AdminLayout';
+import Checkout from '../pages/Checkout';
+import FoodDetail from '../pages/FoodDetail';
+import RouterPrivate from './RouterPrivate';
+import PageNotFound from '../pages/auth/PageNotFound';
+import ShopDetail from '../pages/ShopDetail';
+import ForgotPassword from '../pages/auth/ForgotPassword';
+import ResetPassword from '../pages/auth/ResetPassword'
+import OwnerDashboard from '../pages/Owner/OwnerDashBoard';
+import Profile from '../pages/auth/Profile';
+import RegisterStore from '../pages/auth/RegisterStore';
+import RouterAuth from './RouterAuth';
+import Payment from '../pages/Payment'; 
+import QRScanner from '../pages/QRScanner';
+import MyQRCode from '../pages/MyQrCode';
+import OrderHistory from '../pages/OrderHistory';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -71,6 +70,10 @@ const router = createBrowserRouter([
         element: <ResetPassword />,
       },
       {
+        path: "order-history",
+        element: <OrderHistory/>,
+      },
+      {
         path: "*",
         element: <PageNotFound />,
       },
@@ -90,8 +93,20 @@ const router = createBrowserRouter([
             path: "register-store",
             element: <RegisterStore />,
           },
-        ],
-      },
+          {
+            path: 'payment/:id',
+            element: <Payment />
+          },
+          {
+            path: 'qr',
+            element: <MyQRCode/>
+          },
+          {
+            path: 'scan',
+            element: <QRScanner/>
+          }
+        ]
+      }
     ],
   },
   {

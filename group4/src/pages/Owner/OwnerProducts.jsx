@@ -103,7 +103,6 @@ const OwnerProducts = ({
     console.log(categoryId);
     return category ? category.name : "Unknown";
   };
-
   return (
     <div className="owner-products">
       <div className="products-header">

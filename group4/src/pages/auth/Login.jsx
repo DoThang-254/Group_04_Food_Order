@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { login } from '../../services/users';
+import { login, loginByGoogle } from '../../services/users';
 import * as Yup from "yup";
 import { Link, useNavigate } from 'react-router-dom';
 import { loginContext } from '../../context/LoginContext';
 import { createFakeToken } from '../../data/token';
 import { themeContext } from '../../context/ThemeContext';
 import { getStoreByOwnerIdAndChecking } from '../../services/stores';
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from 'jwt-decode';
+
 const Login = () => {
     const LoginSchema = Yup.object().shape({
         password: Yup.string()
@@ -17,7 +20,7 @@ const Login = () => {
     });
 
     const { theme } = useContext(themeContext);
-    const { setToken } = useContext(loginContext)
+    const { setToken, setRemember } = useContext(loginContext)
     const [loginError, setLoginError] = useState('');
     const navToHome = useNavigate();
     const authorize = (role, state) => {
@@ -51,12 +54,18 @@ const Login = () => {
                     const checkStore = await getStoreByOwnerIdAndChecking(res.user.id);
                     console.log(checkStore)
                     const fakeToken = await createFakeToken(res)
+                    setRemember(data.rememberMe);
                     setToken(fakeToken);
+                    if (data.rememberMe) {
+                        localStorage.setItem("savedEmail", data.email);
+                    } else {
+                        localStorage.removeItem("savedEmail");
+                    }
                     if (checkStore?.state) {
                         authorize(res.user.role, checkStore?.state);
                     }
-                    else{
-                        authorize(res.user.role , false)
+                    else {
+                        authorize(res.user.role, false)
                     }
                 }
 
@@ -81,7 +90,11 @@ const Login = () => {
                 </div>
 
                 <Formik
-                    initialValues={{ email: '', password: '', rememberMe: false }}
+                    initialValues={{
+                        email: localStorage.getItem("savedEmail") || ""
+                        , password: ''
+                        , rememberMe: localStorage.getItem("savedEmail") ? true : false
+                    }}
                     onSubmit={handleLogin}
                     validationSchema={LoginSchema}
                 >
@@ -113,14 +126,47 @@ const Login = () => {
                         </div>
 
                         <div className="d-grid mb-3">
-                            <button type="button" className="btn btn-outline-danger">
-                                <img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS60QdtjCrts2iWAX83BB_EgJiBLSCn1-9Nag&s"
-                                    alt="Google"
-                                    style={{ width: '20px', marginRight: '8px' }}
-                                />
-                                Login with Google
-                            </button>
+                            <GoogleLogin
+                                onSuccess={async (credentialResponse) => {
+                                    try {
+                                        // Giải mã thông tin Google
+                                        const decoded = jwtDecode(credentialResponse.credential);
+                                        console.log("Google user:", decoded);
+
+                                        // Giả sử bạn có API backend để login/register user Google
+                                        const res = await loginByGoogle({
+                                            email: decoded.email,
+                                            googleId: decoded.sub,
+                                            name: decoded.name,
+                                            avatar: decoded.picture,
+                                            loginType: "google"
+                                        });
+
+                                        if (res && !res.msg) {
+                                            const fakeToken = await createFakeToken(res);
+                                            setRemember(true);
+                                            setToken(fakeToken);
+                                            localStorage.setItem("savedEmail", decoded.email);
+
+                                            const checkStore = await getStoreByOwnerIdAndChecking(res.user.id);
+                                            if (checkStore?.state) {
+                                                authorize(res.user.role, checkStore?.state);
+                                            } else {
+                                                authorize(res.user.role, false);
+                                            }
+                                        } else {
+                                            setLoginError(res.msg || "Google login failed");
+                                        }
+                                    } catch (err) {
+                                        console.error(err);
+                                        setLoginError("Google login failed");
+                                    }
+                                }}
+                                onError={() => {
+                                    console.log("Google Login Failed");
+                                    setLoginError("Google login failed");
+                                }}
+                            />
                         </div>
 
                         <div className="text-center">

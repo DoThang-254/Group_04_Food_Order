@@ -50,7 +50,7 @@ export const useCartStore = create((set, get) => ({
 
       const products = await getAllProducts();
       const productMap = new Map(products.map(p => [(p.id), p]));
-      const product = productMap.get(String(productId)) || {};
+      const product = productMap.get((productId)) || {};
 
       if (existing) {
         const updated = { ...existing, quantity: existing.quantity + quantity };
@@ -69,18 +69,7 @@ export const useCartStore = create((set, get) => ({
           storeId,
           quantity,
         });
-         const newItem = newItemRes.data;
-         set((state) => ({
-    cart: [
-      ...state.cart,
-      {
-        ...newItem,
-        name: product.name,
-        price: product.price,
-        img: product.img,
-      },
-    ],
-  }));
+          await get().fetchCart(userId);
       }
     } catch (err) {
       console.error("Add to cart failed:", err);
