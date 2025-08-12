@@ -17,9 +17,10 @@ const AdminBlacklistStores = () => {
 
   // Chỉ lấy các store bị ban (state === false hoặc có trường ban === true)
   const filteredStores = stores.filter(store => {
-    if (!store.ban !== false) return false;
-    const matchSearch = store.name.toLowerCase().includes(search.toLowerCase());
-    return matchSearch;
+  if (!store.ban !== false) return false;
+  if (!store.name) return false;
+  const matchSearch = store.name.toLowerCase().includes(search.toLowerCase());
+  return matchSearch;
   });
 
   const totalPages = Math.ceil(filteredStores.length / pageSize) || 1;
