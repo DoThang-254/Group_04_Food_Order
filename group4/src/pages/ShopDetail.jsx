@@ -219,7 +219,7 @@ const ShopDetail = () => {
                       <Card.Title className="product-name">{product.name}</Card.Title>
                     </div>
                     <Card.Text className="product-price">
-                      {product.price.toLocaleString()}₫
+                      {product.price.toLocaleString()} $
                     </Card.Text>
                     <Button
                       className="add-to-cart-btn"
