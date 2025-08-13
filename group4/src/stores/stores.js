@@ -9,13 +9,14 @@
     cart: [],
 
     fetchCart: async (userId) => {
-      if (!userId) return;
+     
       try {
         if (!userId) {
-          const token = localStorage.getItem("token");
+          const token = localStorage.getItem("token")|| sessionStorage.getItem("token");
           const decoded = await decodeFakeToken(token);
           userId = decoded?.id;
         }
+        
         
         const res = await instance.get(endpoint.CART + `?userId=${userId}`);
         const cartItems = res.data;
@@ -43,12 +44,15 @@
       try {
         let { userId, productId, storeId, quantity } = item;
         if (!userId) {
-          const token = localStorage.getItem("token");
-          const decoded = await decodeFakeToken(token);
-          userId = decoded?.id;
-        }
-        if (!userId || !productId || !storeId) return;
-
+  const token =
+    localStorage.getItem("token") || sessionStorage.getItem("token");
+  if (!token) {
+    console.warn("No token found");
+    return;
+  }
+  const decoded = await decodeFakeToken(token);
+  userId = decoded?.id;
+}
         const res = await instance.get(
           endpoint.CART + `?userId=${userId}&productId=${productId}`
         );
@@ -79,7 +83,9 @@
         }
       } catch (err) {
         console.error("Add to cart failed:", err);
+
       }
+      
     },
 
     removeFromCart: async (id) => {

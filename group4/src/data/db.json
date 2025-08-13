@@ -52,6 +52,19 @@
       "birthDate": "2004-08-22",
       "address": "Hà Nội",
       "active": true
+    },
+    {
+      "id": "8174",
+      "name": "thai 2 dang 2",
+      "phone": "0973197802",
+      "email": "thai12345@gmail.com",
+      "password": "$2b$10$8KuXj5OQk2rRh.SISYm1CO938jR88i6o4g33m.go6WdGjq9ZQinJ2",
+      "gender": "male",
+      "dob": "2004-01-01",
+      "role": "customer",
+      "birthDate": "2004-01-01",
+      "address": "số nhà 24,đường tiến thành",
+      "active": true
     }
   ],
   "resetRequests": [],
@@ -225,18 +238,24 @@
   "orders": [],
   "cart": [
     {
-      "id": "8077",
-      "userId": "7beb",
-      "productId": "c7ac",
+      "id": "5a8a",
+      "userId": "8174",
+      "productId": "9291",
       "storeId": "b26e",
-      "quantity": 2
+      "quantity": 1
     },
     {
-      "id": "b84b",
-      "userId": "7beb",
+      "id": "55b2",
+      "userId": "8174",
       "productId": "e2c5",
       "storeId": "b26e",
-      "quantity": 2
+      "quantity": 3
+    },
+    {
+      "id": "d5f6",
+      "productId": "9291",
+      "storeId": "b26e",
+      "quantity": 3
     }
   ]
 }
