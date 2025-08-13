@@ -34,7 +34,7 @@
       "name": "thai  dep zai",
       "phone": "0973197802",
       "email": "thaibachi2542004@gmail.com",
-      "password": "$2b$10$xI5JiD27fM/KUz93.SY9ZOMa0AME51cAeiWU8cnJmqvoYv7TA9oba",
+      "password": "$2b$10$w3opQg8nhZ7mm08MpTGWjOmaGYn6JK5YEZW3qBrcD61b5alAxdGS.",
       "gender": "male",
       "dob": "2006-01-07",
       "role": "customer",
@@ -57,7 +57,6 @@
     }
   ],
   "resetRequests": [],
-
   "stores": [
     {
       "id": "1",
@@ -339,6 +338,5 @@
     }
   ],
   "orders": [],
-
   "cart": []
 }
