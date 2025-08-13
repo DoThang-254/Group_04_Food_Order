@@ -26,6 +26,19 @@
       "birthDate": "2004-04-25",
       "address": "Hà Nội",
       "active": true
+    },
+    {
+      "id": "63f4",
+      "name": "thai  dang ",
+      "phone": "0973197802",
+      "email": "thai1234@gmail.com",
+      "password": "$2b$10$0FigxM0sB8TAhYZVg4.qXutqIWBt.1ZoG/1WoxPNzhsUer9SccHOq",
+      "gender": "male",
+      "dob": "2004-01-01",
+      "role": "customer",
+      "birthDate": "2004-01-01",
+      "address": "số nhà 24,đường tiến thành",
+      "active": true
     }
   ],
   "resetRequests": [],

@@ -140,6 +140,7 @@ const HomePage = () => {
       return;
     }
     addToCart({ productId: product.id, storeId: product.storeId, quantity: 1 });
+    console.log(product)
   };
 
   return (
