@@ -426,3 +426,276 @@ body {
 .footer::-webkit-scrollbar-thumb:hover {
   background: rgba(229, 57, 53, 0.5);
 }
+
+/* Custom Pagination Styling với màu #E53935 - Fixed Arrow Alignment */
+
+/* Container của pagination */
+.ant-pagination {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* Các nút pagination */
+.ant-pagination-item,
+.ant-pagination-prev,
+.ant-pagination-next,
+.ant-pagination-jump-prev,
+.ant-pagination-jump-next {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Nút pagination thông thường */
+.ant-pagination-item a {
+  color: #262626;
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  padding: 0 8px;
+  line-height: 30px;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.ant-pagination-item:hover,
+.ant-pagination-prev:hover,
+.ant-pagination-next:hover {
+  border-color: #E53935;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.2);
+}
+
+.ant-pagination-item:hover a {
+  color: #E53935;
+}
+
+/* Active/Current page */
+.ant-pagination-item-active {
+  background-color: #E53935 !important;
+  border-color: #E53935 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.ant-pagination-item-active:hover {
+  background-color: #D32F2F !important;
+  border-color: #D32F2F !important;
+}
+
+/* Previous/Next buttons - FIX CHÍNH TẠI ĐÂY */
+.ant-pagination-prev,
+.ant-pagination-next {
+  min-width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination-next .ant-pagination-item-link {
+  color: #595959;
+  border: none !important;
+  background-color: transparent !important;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Fix icon SVG trong mũi tên */
+.ant-pagination-prev .ant-pagination-item-link > *,
+.ant-pagination-next .ant-pagination-item-link > * {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+
+/* Fix cho anticon */
+.ant-pagination-prev .anticon,
+.ant-pagination-next .anticon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+
+/* Fix cho SVG bên trong anticon */
+.ant-pagination-prev .anticon svg,
+.ant-pagination-next .anticon svg {
+  display: block !important;
+  margin: 0 auto !important;
+  vertical-align: middle !important;
+}
+
+.ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link {
+  color: #E53935;
+}
+
+/* Disabled state */
+.ant-pagination-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ant-pagination-disabled:hover {
+  border-color: #d9d9d9 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.ant-pagination-disabled .ant-pagination-item-link {
+  color: #bfbfbf !important;
+}
+
+/* Jump buttons (ellipsis) */
+.ant-pagination-jump-prev .ant-pagination-item-container,
+.ant-pagination-jump-next .ant-pagination-item-container {
+  color: #595959;
+  transition: color 0.3s ease;
+}
+
+.ant-pagination-jump-prev:hover .ant-pagination-item-container,
+.ant-pagination-jump-next:hover .ant-pagination-item-container {
+  color: #E53935;
+}
+
+/* Options (page size selector) */
+.ant-pagination-options {
+  margin-left: 16px;
+}
+
+.ant-pagination-options .ant-select-selector {
+  border-color: #d9d9d9;
+  transition: border-color 0.3s ease;
+}
+
+.ant-pagination-options .ant-select:hover .ant-select-selector {
+  border-color: #E53935;
+}
+
+.ant-pagination-options .ant-select-focused .ant-select-selector {
+  border-color: #E53935;
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+}
+
+/* Total info */
+.ant-pagination-total-text {
+  color: #595959;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* Dark theme support */
+.bg-dark .ant-pagination-item,
+.bg-dark .ant-pagination-prev,
+.bg-dark .ant-pagination-next,
+.bg-dark .ant-pagination-jump-prev,
+.bg-dark .ant-pagination-jump-next {
+  background-color: #2d2d2d;
+  border-color: #434343;
+}
+
+.bg-dark .ant-pagination-item a {
+  color: #ffffff;
+}
+
+.bg-dark .ant-pagination-item:hover {
+  background-color: #363636;
+  border-color: #E53935;
+}
+
+.bg-dark .ant-pagination-prev .ant-pagination-item-link,
+.bg-dark .ant-pagination-next .ant-pagination-item-link {
+  color: #ffffff;
+}
+
+.bg-dark .ant-pagination-total-text {
+  color: #ffffff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ant-pagination {
+    gap: 2px;
+  }
+  
+  .ant-pagination-item,
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    margin: 0 2px;
+    min-width: 32px;
+    height: 32px;
+  }
+  
+  .ant-pagination-item a {
+    line-height: 30px;
+    padding: 0 6px;
+    font-size: 13px;
+  }
+  
+  .ant-pagination-options {
+    margin-left: 8px;
+    margin-top: 8px;
+  }
+}
+
+/* Animation cho smooth transition */
+.ant-pagination-item,
+.ant-pagination-prev,
+.ant-pagination-next {
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-pagination-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(229, 57, 53, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.ant-pagination-item:hover::before {
+  left: 100%;
+}
+
+/* Fallback fix nếu vẫn còn lệch */
+.ant-pagination-prev .ant-pagination-item-link::before,
+.ant-pagination-next .ant-pagination-item-link::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}
