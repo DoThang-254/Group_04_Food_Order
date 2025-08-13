@@ -210,5 +210,20 @@
     }
   ],
   "orders": [],
-  "cart": []
+  "cart": [
+    {
+      "id": "8077",
+      "userId": "7beb",
+      "productId": "c7ac",
+      "storeId": "b26e",
+      "quantity": 2
+    },
+    {
+      "id": "b84b",
+      "userId": "7beb",
+      "productId": "e2c5",
+      "storeId": "b26e",
+      "quantity": 2
+    }
+  ]
 }
