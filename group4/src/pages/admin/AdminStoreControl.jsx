@@ -8,7 +8,7 @@ const AdminStoreControl = () => {
   const [stores, setStores] = useState([]);
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-    const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const pageSize = 8;
   const [selectedStore, setSelectedStore] = useState(null);
   const [products, setProducts] = useState([]);
@@ -31,14 +31,14 @@ const AdminStoreControl = () => {
   const filteredStores = stores.filter(store => {
     // Chỉ hiển thị các cửa hàng có (state === false && ban === false) hoặc (state === true && ban === false)
     if (store.ban === true) return false;
-  if (store.state !== true) return false;
-  if (!store.storeName || !store.storeAddress) return false;
-  const ownerName = getOwnerName(store.ownerId).toLowerCase();
-  const matchSearch =
-    store.storeName.toLowerCase().includes(search.toLowerCase()) ||
-    store.storeAddress.toLowerCase().includes(search.toLowerCase()) ||
-    ownerName.includes(search.toLowerCase());
-  return matchSearch;
+    if (store.state !== true) return false;
+    if (!store.storeName || !store.storeAddress) return false;
+    const ownerName = getOwnerName(store.ownerId).toLowerCase();
+    const matchSearch =
+      store.storeName.toLowerCase().includes(search.toLowerCase()) ||
+      store.storeAddress.toLowerCase().includes(search.toLowerCase()) ||
+      ownerName.includes(search.toLowerCase());
+    return matchSearch;
   });
 
   // Pagination logic
@@ -89,6 +89,7 @@ const AdminStoreControl = () => {
               }}
               title="Xem chi tiết cửa hàng"
             >
+              <td>{store.storeName}</td>
               <td>{store.storeAddress}</td>
               <td>{getOwnerName(store.ownerId)}</td>
               <td>
@@ -118,7 +119,7 @@ const AdminStoreControl = () => {
               </td>
             </tr>
           ))}
-     
+
         </tbody>
       </table>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20, gap: 8 }}>
