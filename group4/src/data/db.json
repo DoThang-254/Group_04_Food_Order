@@ -39,6 +39,19 @@
       "birthDate": "2004-01-01",
       "address": "số nhà 24,đường tiến thành",
       "active": true
+    },
+    {
+      "id": "d5f8",
+      "name": "Đỗ  Thắng",
+      "phone": "0943210987",
+      "email": "thangg@gmail.com",
+      "password": "$2b$10$tfhqlkzOrcsSbujko2SQj.v8uutkv0owDqM/MP/bCA5.22lncMezW",
+      "gender": "male",
+      "dob": "2004-08-22",
+      "role": "customer",
+      "birthDate": "2004-08-22",
+      "address": "Hà Nội",
+      "active": true
     }
   ],
   "resetRequests": [],
