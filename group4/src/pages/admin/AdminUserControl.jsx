@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../../services/users";
-import "./styles/AdminStoreControl.css";
+import styles from "./styles/AdminUserControl.module.css";
 
 const AdminUserControl = () => {
   const [users, setUsers] = useState([]);
@@ -14,7 +14,7 @@ const AdminUserControl = () => {
   }, []);
 
   const filteredUsers = users.filter(user => {
-    if (user.role === 'admin') return false;
+    if (user.role === 'admin' || user.ban === true) return false;
     const matchSearch =
       user.name.toLowerCase().includes(search.toLowerCase()) ||
       user.email.toLowerCase().includes(search.toLowerCase());
@@ -27,19 +27,40 @@ const AdminUserControl = () => {
 
   // Hàm cập nhật trạng thái active của user
   const handleToggleActive = async (user) => {
-    const action = user.active ? 'ban' : 'kích hoạt';
-    const confirmMsg = `Bạn có chắc chắn muốn ${action} tài khoản này không?`;
-    if (!window.confirm(confirmMsg)) return;
-    try {
-      await fetch(`http://localhost:3000/users/${user.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ active: !user.active })
-      });
-      // Cập nhật lại state local
-      setUsers(prev => prev.map(u => u.id === user.id ? { ...u, active: !u.active } : u));
-    } catch (e) {
-      alert('Cập nhật trạng thái thất bại!');
+    if (user.active) {
+      // Ban user: hỏi lý do
+      const reason = window.prompt('Nhập nguyên nhân ban tài khoản này:');
+      if (!reason) return;
+      try {
+        await fetch(`http://localhost:3000/users/${user.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ active: false, ban: true, banReason: reason })
+        });
+        // Thêm vào blacklist
+        await fetch(`http://localhost:3000/blacklist`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: user.id, reason, bannedAt: new Date().toISOString() })
+        });
+        alert('Đã ban user. Nguyên nhân: ' + reason);
+        setUsers(prev => prev.map(u => u.id === user.id ? { ...u, active: false, ban: true, banReason: reason } : u));
+      } catch (e) {
+        alert('Cập nhật trạng thái thất bại!');
+      }
+    } else {
+      // Kích hoạt lại user
+      if (!window.confirm('Bạn có chắc chắn muốn kích hoạt tài khoản này không?')) return;
+      try {
+        await fetch(`http://localhost:3000/users/${user.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ active: true, ban: false })
+        });
+        setUsers(prev => prev.map(u => u.id === user.id ? { ...u, active: true, ban: false } : u));
+      } catch (e) {
+        alert('Cập nhật trạng thái thất bại!');
+      }
     }
   };
 
@@ -48,7 +69,7 @@ const AdminUserControl = () => {
   };
 
   return (
-    <div className="adminstore-dashboardContainer">
+    <div className={styles.dashboardContainer}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2 className="adminstore-dashboardTitle">Users</h2>
         <button onClick={handleBack} style={{ padding: '8px 20px', borderRadius: 4, background: '#eee', border: '1px solid #ccc', cursor: 'pointer', fontWeight: 500 }}>
@@ -67,10 +88,9 @@ const AdminUserControl = () => {
           <option value="">Tất cả vai trò</option>
           <option value="customer">Khách hàng</option>
           <option value="owner">Chủ cửa hàng</option>
-          <option value="staff">Nhân viên</option>
         </select>
       </div>
-      <table className="adminstore-table">
+      <table className={styles.tableUserControl}>
         <thead>
           <tr>
             <th>STT</th>
@@ -89,13 +109,12 @@ const AdminUserControl = () => {
               <td>{
                 user.role === 'customer' ? 'Khách hàng' :
                 user.role === 'owner' ? 'Chủ cửa hàng' :
-                user.role === 'admin' ? 'Admin' :
-                user.role === 'staff' ? 'Nhân viên' : user.role
+                user.role === 'admin' ? 'Admin' : user.role
               }</td>
               <td>
                 {user.active ? (
                   <button
-                    style={{background:'rgb(139, 0, 0)',color:'#fff',border:'none',borderRadius:4,padding:'4px 12px',cursor:'pointer'}}
+                    style={{background:'#E53935 ',color:'#fff',border:'none',borderRadius:4,padding:'4px 12px',cursor:'pointer'}}
                     onClick={() => handleToggleActive(user)}
                   >Ban</button>
                 ) : (

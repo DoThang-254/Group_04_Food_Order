@@ -116,10 +116,10 @@ const OwnerOverview = ({ store, products, orders, staff }) => {
             </Card.Header>
             <Card.Body>
               <div className="store-info-item">
-                <strong>Tên cửa hàng:</strong> {store?.name}
+                <strong>Tên cửa hàng:</strong> {store?.storeName}
               </div>
               <div className="store-info-item">
-                <strong>Địa chỉ:</strong> {store?.address}
+                <strong>Địa chỉ:</strong> {store?.storeAddress}
               </div>
               <div className="store-info-item">
                 <strong>Trạng thái:</strong>{" "}

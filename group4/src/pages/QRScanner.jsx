@@ -15,14 +15,12 @@ const QRScanner = () => {
       (result) => {
         console.log('QR Code detected:', result);
         scanner.clear();
-        navigate('/payment'); // Chuyển hướng sau khi quét thành công
+        navigate('/payment');
       },
       (error) => {
-        // console.log('Scan error', error); // Có thể tắt log này nếu cần
       }
     );
 
-    // Cleanup
     return () => {
       scanner.clear().catch((error) => {
         console.error('Cleanup failed', error);

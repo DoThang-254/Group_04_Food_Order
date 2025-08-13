@@ -26,15 +26,14 @@ const ShopDetail = () => {
   const addToCart = useCartStore((state) => state.addToCart);
   const fetchCart = useCartStore((state) => state.fetchCart);
 
-  const [value, setValue] = useState(3); // ⭐ Đánh giá mặc định là 3 sao
+  // const [value, setValue] = useState(3); 
 
-  // ⭐ Lấy lại rating từ localStorage
-  useEffect(() => {
-    const savedRating = localStorage.getItem(`rating-store-${id}`);
-    if (savedRating) {
-      setValue(Number(savedRating));
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   const savedRating = localStorage.getItem(`rating-store-${id}`);
+  //   if (savedRating) {
+  //     setValue(Number(savedRating));
+  //   }
+  // }, [id]);
 
   useEffect(() => {
     if (token) fetchCart();
@@ -81,7 +80,7 @@ const ShopDetail = () => {
         setProducts(productsRes);
 
         const filtered = productsRes.filter(
-          (p) => Number(p.storeId) === Number(id)
+          (p) => p.storeId == id
         );
         setFilteredProducts(filtered);
       } catch (error) {
@@ -135,7 +134,7 @@ const ShopDetail = () => {
                     <span className="stat-number">{filteredProducts.length}</span>
                     <span className="stat-label">Dish</span>
                   </div>
-                  <div className="stat-item">
+                  {/* <div className="stat-item">
                     <Flex gap="middle" vertical>
                       <Rate
                         tooltips={desc}
@@ -147,7 +146,7 @@ const ShopDetail = () => {
                       />
                       {value ? <span>{desc[value - 1]}</span> : null}
                     </Flex>
-                  </div>
+                  </div> */}
                   <div className="stat-item">
                     <span className="stat-number">30-45</span>
                     <span className="stat-label">Delivery Minute</span>

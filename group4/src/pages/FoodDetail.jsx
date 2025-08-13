@@ -24,7 +24,6 @@ const FoodDetail = () => {
       const data = await getAnProduct(id);
       setProduct(data);
 
-      // Lấy rating từ localStorage
       const savedRating =
         JSON.parse(localStorage.getItem(`rating-product-${id}`)) || {
           totalScore: 0,
@@ -58,7 +57,7 @@ const FoodDetail = () => {
 
     const ratingKey = `rating-product-${id}`;
     const votersKey = `voters-product-${id}`;
-    const userId = token; // ở đây giả sử token là userId, nếu là JWT thì decode
+    const userId = token; 
 
     const ratingData =
       JSON.parse(localStorage.getItem(ratingKey)) || {
@@ -70,12 +69,10 @@ const FoodDetail = () => {
     const existingVoteIndex = votersData.findIndex((v) => v.userId === userId);
 
     if (existingVoteIndex !== -1) {
-      // Update điểm cũ
       const oldScore = votersData[existingVoteIndex].score;
       ratingData.totalScore = ratingData.totalScore - oldScore + val;
       votersData[existingVoteIndex].score = val;
     } else {
-      // Vote mới
       ratingData.totalScore += val;
       ratingData.voteCount += 1;
       votersData.push({ userId, score: val });
@@ -84,7 +81,6 @@ const FoodDetail = () => {
     localStorage.setItem(ratingKey, JSON.stringify(ratingData));
     localStorage.setItem(votersKey, JSON.stringify(votersData));
 
-    // Cập nhật UI
     setUserRating(val);
     setValue(ratingData.totalScore / ratingData.voteCount);
   };

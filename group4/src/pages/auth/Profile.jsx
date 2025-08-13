@@ -49,7 +49,6 @@ const Profile = () => {
                 async function (value) {
                     if (!value) return false;
 
-                    // Nếu user nhập lại đúng email ban đầu thì bỏ qua check
                     if (value === originalEmail) return true;
 
                     const isUnique = await checkEmail(value);
