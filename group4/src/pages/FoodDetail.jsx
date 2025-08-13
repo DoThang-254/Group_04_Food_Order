@@ -119,7 +119,7 @@ const FoodDetail = () => {
         <div className="food-detail-info">
           <h1 className="food-name">{product?.name}</h1>
           <p className="food-price">
-            {Number(product?.price).toLocaleString()}₫
+            {Number(product?.price).toLocaleString()} $
           </p>
 
           {/* Rating */}
