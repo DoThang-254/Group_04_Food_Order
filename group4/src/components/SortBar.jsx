@@ -16,7 +16,9 @@ const SortBar = ({ sortOption, setSortOption }) => {
         dropdownStyle={{ borderRadius: '8px' }}
         className="custom-sort-select"
       >
+
         <Option value="default">Sort by Price</Option>
+
         <Option value="asc">Price: Low to High</Option>
         <Option value="desc">Price: High to Low</Option>
       </Select>
