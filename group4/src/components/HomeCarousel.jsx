@@ -14,7 +14,7 @@ const HomeCarousel = ({ onClickButton }) => {
     },
     {
       img: img2,
-      title: 'Burger delight',
+      title: 'Burger Delight',
       subtitle: 'Burgers hot from the grill',
     },
     {
