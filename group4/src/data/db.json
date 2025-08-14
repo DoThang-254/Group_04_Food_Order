@@ -236,26 +236,5 @@
     }
   ],
   "orders": [],
-  "cart": [
-    {
-      "id": "5a8a",
-      "userId": "8174",
-      "productId": "9291",
-      "storeId": "b26e",
-      "quantity": 1
-    },
-    {
-      "id": "55b2",
-      "userId": "8174",
-      "productId": "e2c5",
-      "storeId": "b26e",
-      "quantity": 3
-    },
-    {
-      "id": "d5f6",
-      "productId": "9291",
-      "storeId": "b26e",
-      "quantity": 3
-    }
-  ]
+  "cart": []
 }

@@ -132,12 +132,12 @@
       localStorage.removeItem("cart");
     },
     clearAfterCheckout: async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const decoded = await decodeFakeToken(token);
-      const userId = decoded?.id;
-      if (!userId) return;
-
+   try {
+     const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token"); // ✅ Check cả 2
+    const decoded = await decodeFakeToken(token);
+    const userId = decoded?.id;
+    if (!userId) return;
     
       const res = await instance.get(endpoint.CART + `?userId=${userId}`);
       const cartItems = res.data;
