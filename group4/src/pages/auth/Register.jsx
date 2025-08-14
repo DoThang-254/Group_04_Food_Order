@@ -120,7 +120,7 @@ const Register = () => {
                                     storeName: '',
                                     storeAddress: '',
                                     address: '',
-                                    gender: 'male',
+                                    gender: 'Male',
                                     dob: '',
                                     phone: ''
                                 }}
@@ -168,9 +168,9 @@ const Register = () => {
                                     <div className="mb-3">
                                         <label htmlFor="gender" className="form-label">Gender *</label>
                                         <Field as="select" name="gender" className="form-select">
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
                                         </Field>
                                     </div>
                                     <div className="mb-3">

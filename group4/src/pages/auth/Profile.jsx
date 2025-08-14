@@ -57,6 +57,8 @@ const Profile = () => {
             ),
         phone: Yup.string()
             .matches(/^[0-9]+$/, 'Phone must be numeric')
+            .min(10, 'Phone must be at least 10 digits')
+            .max(11, 'Phone must be at most 11 digits')
             .required('Phone is required'),
         birthDate: Yup.date().nullable(),
         address: Yup.string().nullable()
@@ -86,10 +88,11 @@ const Profile = () => {
             <Row className="justify-content-center">
                 <Col md={6}>
                     <Card className="shadow-sm p-3 bg-body text-body">
-                        
+
                         <Card.Body>
                             {editMode ? (
                                 <Formik
+                                    enableReinitialize
                                     initialValues={user}
                                     validationSchema={validationSchema}
                                     onSubmit={handleSave}
