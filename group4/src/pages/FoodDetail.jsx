@@ -57,7 +57,7 @@ const FoodDetail = () => {
 
     const ratingKey = `rating-product-${id}`;
     const votersKey = `voters-product-${id}`;
-    const userId = token; 
+    const userId = token;
 
     const ratingData =
       JSON.parse(localStorage.getItem(ratingKey)) || {
@@ -99,7 +99,18 @@ const FoodDetail = () => {
         quantity: quantity,
       };
       addToCart(item);
-      alert("Added to cart!");
+      const successMsg = document.createElement('div');
+      successMsg.className = 'success-toast';
+      successMsg.innerHTML = `
+      <div class="success-content">
+        <i class="success-icon">✓</i>
+        <span>Added ${product.name} to cart!</span>
+      </div>
+    `;
+      document.body.appendChild(successMsg);
+      setTimeout(() => {
+        successMsg.remove();
+      }, 3000);
     }
   };
 

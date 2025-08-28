@@ -5,14 +5,14 @@
       "name": "Đỗ  Thắng",
       "phone": "0329894798",
       "email": "thangbachi2542004@gmail.com",
-      "password": "$2b$10$N11BmKdZzMpq6WZYA.HyHu6c7Z5r5n73BPbMpR94Y0QuHFb/vDsUK",
+      "password": "$2b$10$PQ3rWsv4MpEUqkj6cWqugukKJkMPoGA55xLLKTT0EIHURExKz5yj6",
       "gender": "Male",
       "dob": "2004-02-05",
-      "role": "admin",
+      "role": "owner",
       "birthDate": "2004-02-05",
       "address": "Hà Nội",
       "active": true,
-      "storeId": "b26e"
+      "storeId": "c4e9"
     },
     {
       "id": "e53c",
@@ -27,9 +27,50 @@
       "address": "Hà Nội",
       "active": true,
       "storeId": "edef"
+    },
+    {
+      "id": "031b",
+      "name": "Đỗ  Thắng",
+      "phone": "0329894798",
+      "email": "thang@gmail.com",
+      "password": "$2b$10$iqtVKg2G.lFO5DxPnPlc0exYMQajQrztv92hMp8zv3TA9cRYtGMPa",
+      "gender": "Male",
+      "dob": "2004-04-25",
+      "role": "owner",
+      "birthDate": "2004-04-25",
+      "address": "Hà Nội",
+      "active": true,
+      "storeId": "2d86",
+      "ban": false,
+      "banReason": ""
+    },
+    {
+      "id": "0d7d",
+      "name": "Đỗ  Thắng",
+      "phone": "0329894798",
+      "email": "thang2@gmail.com",
+      "password": "$2b$10$52TaARCRhWkWcfL1O.nsHeLc99NUf3vCJBeSdTnNpbeFmtUc317He",
+      "gender": "Male",
+      "dob": "2004-04-25",
+      "role": "customer",
+      "birthDate": "2004-04-25",
+      "address": "Hà Nội",
+      "active": true,
+      "storeId": "55b2"
     }
   ],
-  "resetRequests": [],
+  "resetRequests": [
+    {
+      "id": "f2c3",
+      "email": "thang@gmail.com",
+      "createdAt": "2025-08-14T07:06:16.348Z"
+    },
+    {
+      "id": "26a6",
+      "email": "thang@gmail.com",
+      "createdAt": "2025-08-14T07:06:31.520Z"
+    }
+  ],
   "stores": [
     {
       "id": "edef",
@@ -37,6 +78,28 @@
       "storeAddress": "Hà Nội",
       "state": true,
       "ownerId": "e53c"
+    },
+    {
+      "id": "2d86",
+      "storeName": "a",
+      "storeAddress": "Hà Nội",
+      "img": "",
+      "ownerId": "031b",
+      "state": true
+    },
+    {
+      "id": "c4e9",
+      "storeName": "Thang Shop ",
+      "storeAddress": "Hà Nội",
+      "state": true,
+      "ownerId": "7beb"
+    },
+    {
+      "id": "55b2",
+      "storeName": "Thang 2 Store",
+      "storeAddress": "Hà Nội",
+      "state": true,
+      "ownerId": "0d7d"
     }
   ],
   "stores_categories": [],
@@ -250,6 +313,22 @@
       "img": "",
       "categoryId": 1,
       "storeId": "b1b9"
+    },
+    {
+      "id": "ea2f",
+      "name": "cơm",
+      "price": 1,
+      "img": "data:image/jpeg;base64,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",
+      "categoryId": 23,
+      "storeId": "2d86"
+    },
+    {
+      "id": "a37b",
+      "name": "a",
+      "price": 2,
+      "img": "",
+      "categoryId": 1,
+      "storeId": "2d86"
     }
   ],
   "orders": [],

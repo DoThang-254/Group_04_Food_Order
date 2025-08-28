@@ -93,7 +93,7 @@ const HomePage = () => {
     fetchData();
   }, []);
 
-console.log
+  console.log
   // Lọc + Sắp xếp
   useEffect(() => {
     let result = [...products];
@@ -140,8 +140,18 @@ console.log
       return;
     }
     addToCart({ productId: product.id, storeId: product.storeId, quantity: 1 });
-   
-    
+    const successMsg = document.createElement('div');
+    successMsg.className = 'success-toast';
+    successMsg.innerHTML = `
+      <div class="success-content">
+        <i class="success-icon">✓</i>
+        <span>Added ${product.name} to cart!</span>
+      </div>
+    `;
+    document.body.appendChild(successMsg);
+    setTimeout(() => {
+      successMsg.remove();
+    }, 3000);
   };
 
   return (
@@ -242,66 +252,76 @@ console.log
 
         {/* Danh sách sản phẩm */}
         <Row>
-          {paginatedProducts.map((product) => (
-            <Col key={product.id} sm={6} md={4} className="mb-4">
-              <Card
-                className={
-                  theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"
-                }
-              >
-                <Card.Img
-                  variant="top"
-                  src={product.img}
-                  onClick={() => nav(`/food/${product.id}/detail`)}
-                  style={{ cursor: "pointer" }}
-                />
-                <Card.Body>
-                  <Card.Title>{product.name}</Card.Title>
-                  <Card.Text>
-                    <Rate disabled allowHalf value={product.avgRating} />
-                    <span style={{ marginLeft: "8px" }}>
-                      {product.avgRating > 0 ? product.avgRating.toFixed(1) : "No rating"}
-                    </span>
-                  </Card.Text>
-
-                  <Card.Text>Price: ${product.price}</Card.Text>
-                  <Card.Text>Category: {product.categoryName}</Card.Text>
-                  <Card.Text>
-                    <Image
-                      src={product.storeImg}
-                      roundedCircle
-                      style={{
-                        width: "30px",
-                        height: "30px",
-                        cursor: "pointer",
-                        marginRight: "8px",
-                      }}
-                      onClick={() => nav(`/shop/${product.storeId}/detail`)}
-                    />
-                    <span
-                      onClick={() => nav(`/shop/${product.storeId}/detail`)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {product.storeName}
-                    </span>
-                  </Card.Text>
-                  <Button onClick={() => handleAddToCart(product)}>
-                    Add to Cart
-                  </Button>
-                </Card.Body>
-              </Card>
+          {filteredProducts.length === 0 ? (
+            <Col style={{ textAlign: "center", marginTop: "20px" }}>
+              <h5>Cant find your products.</h5>
             </Col>
-          ))}
+          ) : (
+            paginatedProducts.map((product) => (
+              <Col key={product.id} sm={6} md={4} className="mb-4">
+                <Card
+                  className={
+                    theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"
+                  }
+                >
+                  <Card.Img
+                    variant="top"
+                    src={product.img}
+                    onClick={() => nav(`/food/${product.id}/detail`)}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <Card.Body>
+                    <Card.Title>{product.name}</Card.Title>
+                    <Card.Text>
+                      <Rate disabled allowHalf value={product.avgRating} />
+                      <span style={{ marginLeft: "8px" }}>
+                        {product.avgRating > 0
+                          ? product.avgRating.toFixed(1)
+                          : "No rating"}
+                      </span>
+                    </Card.Text>
+                    <Card.Text>Price: ${product.price}</Card.Text>
+                    <Card.Text>Category: {product.categoryName}</Card.Text>
+                    <Card.Text>
+                      <Image
+                        src={product.storeImg}
+                        roundedCircle
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          cursor: "pointer",
+                          marginRight: "8px",
+                        }}
+                        onClick={() => nav(`/shop/${product.storeId}/detail`)}
+                      />
+                      <span
+                        onClick={() => nav(`/shop/${product.storeId}/detail`)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {product.storeName}
+                      </span>
+                    </Card.Text>
+                    <Button onClick={() => handleAddToCart(product)}>
+                      Add to Cart
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          )}
         </Row>
 
         {/* Phân trang */}
-        <Pagination
-          current={currentPage}
-          pageSize={pageSize}
-          total={filteredProducts.length}
-          onChange={(page) => setCurrentPage(page)}
-          style={{ textAlign: "center", marginTop: "20px" }}
-        />
+        {filteredProducts.length > 0 && (
+          <Pagination
+            current={currentPage}
+            pageSize={pageSize}
+            total={filteredProducts.length}
+            onChange={(page) => setCurrentPage(page)}
+            style={{ textAlign: "center", marginTop: "20px" }}
+          />
+        )}
+
       </Container>
 
       <Footer />
